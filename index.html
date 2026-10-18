@@ -59,58 +59,254 @@ button,input,textarea,select{font:inherit}button{cursor:pointer}.shell{width:min
   <div class="panel" id="authPanel">
     <div id="authMessage" class="message" role="status"></div>
     <div id="loginFormWrap">
-      <h2 class="section-title">Entrar na área administrativa</h2><p class="section-note">Use a conta de administrador cadastrada neste navegador.</p>
+      <h2 class="section-title">Entrar na área administrativa</h2><p class="section-note">Entre com sua conta administrativa autorizada no Supabase.</p>
       <form id="loginForm">
         <div class="field"><label for="loginEmail">E-mail *</label><input id="loginEmail" type="email" autocomplete="username" placeholder="admin@exemplo.com" required></div>
         <div class="field"><label for="loginPassword">Senha *</label><input id="loginPassword" type="password" autocomplete="current-password" placeholder="Sua senha" required></div>
         <button class="primary" type="submit">Entrar</button>
       </form>
-      <p style="font-size:12px;color:#aaa;text-align:center;margin:18px 0 0">Primeiro acesso? <button class="small-link" onclick="toggleRegister(true)">Cadastrar administrador inicial</button></p>
-    </div>
-    <div id="registerWrap" class="hidden">
-      <h2 class="section-title">Cadastro do administrador inicial</h2><p class="section-note">O primeiro cadastro será salvo localmente neste navegador.</p>
-      <form id="registerForm">
-        <div class="field"><label for="registerEmail">E-mail *</label><input id="registerEmail" type="email" autocomplete="username" placeholder="seu@email.com" required></div>
-        <div class="field"><label for="registerPassword">Criar senha (mínimo 8 caracteres) *</label><input id="registerPassword" type="password" minlength="8" autocomplete="new-password" required></div>
-        <div class="field"><label for="registerConfirm">Confirmar senha *</label><input id="registerConfirm" type="password" minlength="8" autocomplete="new-password" required></div>
-        <button class="primary" type="submit">Cadastrar e continuar</button>
-        <p style="font-size:12px;text-align:center;margin:16px 0 0"><button type="button" class="small-link" onclick="toggleRegister(false)">Voltar para login</button></p>
-      </form>
-    </div>
-    <div class="security-note"><strong>Importante:</strong> esta versão é um protótipo local. Os cadastros e as respostas ficam apenas neste navegador/dispositivo; não existe ainda um servidor seguro nem sincronização entre usuários. Não use dados reais ou senhas importantes nesta demonstração.</div>
+</div>
+<div class="security-note"><strong>Importante:</strong> A autenticação é feita pelo Supabase. A leitura e a exclusão das solicitações dependem das permissões configuradas no banco de dados.</div>
   </div>
   <div id="adminPanel" class="panel wide hidden">
-    <div class="admin-head"><div><span class="badge">● ACESSO AUTORIZADO</span><h2 style="margin-top:12px">Solicitações de recrutamento</h2><p id="adminSummary">Gerencie as respostas recebidas neste navegador.</p></div><button class="ghost" onclick="logout()">Sair da conta</button></div>
+    <div class="admin-head"><div><span class="badge">● ACESSO AUTORIZADO</span><h2 style="margin-top:12px">Solicitações de recrutamento</h2><p id="adminSummary">Gerencie as solicitações recebidas pelo sistema.</p></div><button class="ghost" onclick="logout()">Sair da conta</button></div>
     <div class="toolbar"><input class="search" id="searchRequests" placeholder="Buscar por nome, passaporte ou Discord..."><button onclick="exportCSV()">Exportar CSV</button></div>
     <div id="requestList" class="request-list"></div>
-    <div class="security-note">Os dados desta tela estão armazenados no armazenamento local do navegador. Para acesso real por vários membros autorizados, será necessário configurar backend, banco de dados e autenticação segura.</div>
+    <div class="security-note">As solicitações são armazenadas no banco centralizado. Somente contas autorizadas pela política do banco podem consultá-las ou excluí-las.</div>
   </div>
   <div class="foot">NORTH MECHANICS · PAINEL ADMINISTRATIVO</div>
 </section>
 </main>
 </div>
-<script>
-const KEYS={requests:'northMechanics.requests.v1',admin:'northMechanics.admin.v1',session:'northMechanics.session.v1'};
-const $=id=>document.getElementById(id);
-function read(key,fallback){try{return JSON.parse(localStorage.getItem(key))??fallback}catch{return fallback}}
-function write(key,value){localStorage.setItem(key,JSON.stringify(value))}
-function showView(view){$('viewApply').classList.toggle('hidden',view!=='apply');$('viewAccess').classList.toggle('hidden',view!=='access');$('navApply').classList.toggle('active',view==='apply');$('navAccess').classList.toggle('active',view==='access');if(view==='access')refreshAccess()}
-function showMessage(id,text,type='error'){const el=$(id);el.textContent=text;el.className='message show '+type}
-function clearMessage(id){$(id).className='message'}
-function toggleRegister(show){$('loginFormWrap').classList.toggle('hidden',show);$('registerWrap').classList.toggle('hidden',!show);clearMessage('authMessage')}
-function isLoggedIn(){return read(KEYS.session,null)?.ok===true}
-function refreshAccess(){const logged=isLoggedIn();$('authPanel').classList.toggle('hidden',logged);$('adminPanel').classList.toggle('hidden',!logged);if(logged)renderRequests()}
-$('applicationForm').addEventListener('submit',e=>{e.preventDefault();clearMessage('applyMessage');const days=[...document.querySelectorAll('#days input:checked')].map(x=>x.value);if(!days.length){showMessage('applyMessage','Selecione pelo menos um dia da semana.');return}const item={id:crypto.randomUUID?crypto.randomUUID():String(Date.now()),createdAt:new Date().toISOString(),fullName:$('fullName').value.trim(),passport:$('passport').value.trim(),phone:$('phone').value.trim(),days,hours:$('hours').value.trim(),discord:$('discord').value.trim(),experience:$('experience').value,about:$('about').value.trim()};const all=read(KEYS.requests,[]);all.unshift(item);write(KEYS.requests,all);e.target.reset();showMessage('applyMessage','Solicitação enviada com sucesso neste navegador. Guarde em mente que ela não será enviada a outros dispositivos nesta versão.','success');window.scrollTo({top:0,behavior:'smooth'})});
-$('registerForm').addEventListener('submit',async e=>{e.preventDefault();clearMessage('authMessage');if(read(KEYS.admin,null)){showMessage('authMessage','Já existe um administrador cadastrado neste navegador. Para adicionar mais usuários, configure o backend da versão de produção.');return}const email=$('registerEmail').value.trim().toLowerCase(),password=$('registerPassword').value,confirm=$('registerConfirm').value;if(password!==confirm){showMessage('authMessage','As senhas não coincidem.');return}if(password.length<8){showMessage('authMessage','Use uma senha com pelo menos 8 caracteres.');return}const salt=crypto.getRandomValues(new Uint8Array(16));const hash=await hashPassword(password,salt);write(KEYS.admin,{email,salt:Array.from(salt),hash});write(KEYS.session,{ok:true,at:Date.now()});e.target.reset();refreshAccess()});
-$('loginForm').addEventListener('submit',async e=>{e.preventDefault();clearMessage('authMessage');const admin=read(KEYS.admin,null);if(!admin){showMessage('authMessage','Nenhum administrador cadastrado neste navegador. Use o cadastro inicial.');return}const email=$('loginEmail').value.trim().toLowerCase(),password=$('loginPassword').value;if(email!==admin.email){showMessage('authMessage','E-mail ou senha incorretos.');return}const hash=await hashPassword(password,new Uint8Array(admin.salt));if(hash!==admin.hash){showMessage('authMessage','E-mail ou senha incorretos.');return}write(KEYS.session,{ok:true,at:Date.now()});e.target.reset();refreshAccess()});
-async function hashPassword(password,salt){const bytes=new TextEncoder().encode(password);const data=new Uint8Array(salt.length+bytes.length);data.set(salt);data.set(bytes,salt.length);const digest=await crypto.subtle.digest('SHA-256',data);return Array.from(new Uint8Array(digest)).map(x=>x.toString(16).padStart(2,'0')).join('')}
-function logout(){localStorage.removeItem(KEYS.session);refreshAccess()}
-$('searchRequests').addEventListener('input',renderRequests);
-function escapeHTML(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function renderRequests(){if(!isLoggedIn())return;const all=read(KEYS.requests,[]),q=($('searchRequests').value||'').toLowerCase();const filtered=all.filter(x=>[x.fullName,x.passport,x.discord,x.phone].join(' ').toLowerCase().includes(q));$('adminSummary').textContent=`${all.length} solicitação(ões) recebida(s) neste navegador.`;const list=$('requestList');if(!filtered.length){list.innerHTML='<div class="empty">'+(all.length?'Nenhuma solicitação corresponde à busca.':'Nenhuma solicitação recebida ainda.')+'</div>';return}list.innerHTML=filtered.map(x=>`<article class="request"><div class="request-top"><div><h3>${escapeHTML(x.fullName)}</h3><small>Recebida em ${new Date(x.createdAt).toLocaleString('pt-BR')}</small></div><span class="badge">PASSAPORTE ${escapeHTML(x.passport)}</span></div><p><strong>Telefone:</strong> ${escapeHTML(x.phone)}<br><strong>Discord:</strong> ${escapeHTML(x.discord)}<br><strong>Dias:</strong> ${x.days.map(escapeHTML).join(', ')}<br><strong>Horários:</strong> ${escapeHTML(x.hours)}<br><strong>Experiência:</strong> ${escapeHTML(x.experience)}${x.about?'<br><strong>Sobre:</strong> '+escapeHTML(x.about):''}</p><div class="request-actions"><button onclick="copyDiscord('${String(x.discord).replace(/'/g,"\\'")}')">Copiar Discord</button><button class="danger" onclick="deleteRequest('${x.id}')">Excluir solicitação</button></div></article>`).join('')}
-function copyDiscord(value){navigator.clipboard?.writeText(value).then(()=>alert('Discord copiado.')).catch(()=>alert('Discord: '+value))}
-function deleteRequest(id){if(!confirm('Deseja excluir esta solicitação? Esta ação não pode ser desfeita.'))return;write(KEYS.requests,read(KEYS.requests,[]).filter(x=>x.id!==id));renderRequests()}
-function exportCSV(){if(!isLoggedIn())return;const rows=read(KEYS.requests,[]);if(!rows.length){alert('Não há solicitações para exportar.');return}const cols=['Data','Nome completo RP','Passaporte RP','Telefone RP','Dias disponíveis','Horários','Discord','Experiência','Sobre'];const quote=v=>'"'+String(v??'').replace(/"/g,'""')+'"';const csv=[cols,...rows.map(x=>[new Date(x.createdAt).toLocaleString('pt-BR'),x.fullName,x.passport,x.phone,x.days.join('; '),x.hours,x.discord,x.experience,x.about])].map(r=>r.map(quote).join(';')).join('\r\n');const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='north-mechanics-solicitacoes.csv';a.click();URL.revokeObjectURL(url)}
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+const SUPABASE_URL = 'https://xgkvufuawoenbgfrcpfc.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_UqEmUACvcUcqeqkDHGjqQg_Dmairqoo';
+const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+
+const $ = id => document.getElementById(id);
+let requests = [];
+
+window.showView = function(view) {
+  $('viewApply').classList.toggle('hidden', view !== 'apply');
+  $('viewAccess').classList.toggle('hidden', view !== 'access');
+  $('navApply').classList.toggle('active', view === 'apply');
+  $('navAccess').classList.toggle('active', view === 'access');
+  if (view === 'access') refreshAccess();
+};
+
+function showMessage(id, text, type = 'error') {
+  const el = $(id);
+  el.textContent = text;
+  el.className = 'message show ' + type;
+}
+function clearMessage(id) { $(id).className = 'message'; }
+function escapeHTML(value) {
+  return String(value ?? '').replace(/[&<>"']/g, ch => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[ch]));
+}
+
+async function refreshAccess() {
+  clearMessage('authMessage');
+  const { data: { session } } = await supabase.auth.getSession();
+  const loggedIn = !!session;
+  $('authPanel').classList.toggle('hidden', loggedIn);
+  $('adminPanel').classList.toggle('hidden', !loggedIn);
+  if (loggedIn) await renderRequests();
+}
+
+window.logout = async function() {
+  await supabase.auth.signOut();
+  requests = [];
+  $('searchRequests').value = '';
+  await refreshAccess();
+};
+
+$('applicationForm').addEventListener('submit', async event => {
+  event.preventDefault();
+  clearMessage('applyMessage');
+
+  const days = [...document.querySelectorAll('#days input:checked')].map(input => input.value);
+  if (!days.length) {
+    showMessage('applyMessage', 'Selecione pelo menos um dia da semana.');
+    return;
+  }
+  if (!$('confirm').checked) {
+    showMessage('applyMessage', 'Confirme as informações antes de enviar.');
+    return;
+  }
+
+  const submitButton = event.submitter;
+  if (submitButton) {
+    submitButton.disabled = true;
+    submitButton.textContent = 'Enviando...';
+  }
+
+  const payload = {
+    nome_completo: $('fullName').value.trim(),
+    passaporte: $('passport').value.trim(),
+    telefone: $('phone').value.trim(),
+    dias_disponiveis: days,
+    horario_disponivel: $('hours').value.trim(),
+    discord_id: $('discord').value.trim(),
+    confirmou_regras: $('confirm').checked,
+    experiencia: $('experience').value,
+    sobre: $('about').value.trim() || null
+  };
+
+  try {
+    const { error } = await supabase.from('inscricoes').insert(payload);
+    if (error) throw error;
+    event.target.reset();
+    showMessage('applyMessage', 'Solicitação enviada com sucesso! A equipe North Mechanics analisará seus dados.', 'success');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } catch (error) {
+    console.error('Erro ao enviar inscrição:', error);
+    showMessage('applyMessage', 'Não foi possível enviar sua solicitação. Verifique a configuração do banco e tente novamente.');
+  } finally {
+    if (submitButton) {
+      submitButton.disabled = false;
+      submitButton.textContent = 'Enviar solicitação';
+    }
+  }
+});
+
+$('loginForm').addEventListener('submit', async event => {
+  event.preventDefault();
+  clearMessage('authMessage');
+  const submitButton = event.submitter;
+  if (submitButton) {
+    submitButton.disabled = true;
+    submitButton.textContent = 'Entrando...';
+  }
+
+  try {
+    const { error } = await supabase.auth.signInWithPassword({
+      email: $('loginEmail').value.trim(),
+      password: $('loginPassword').value
+    });
+    if (error) throw error;
+    event.target.reset();
+    await refreshAccess();
+  } catch (error) {
+    console.error('Falha no login:', error);
+    showMessage('authMessage', 'Não foi possível entrar. Confira o e-mail e a senha da sua conta Supabase.');
+  } finally {
+    if (submitButton) {
+      submitButton.disabled = false;
+      submitButton.textContent = 'Entrar';
+    }
+  }
+});
+
+$('searchRequests').addEventListener('input', renderRequests);
+
+async function renderRequests() {
+  const { data: { session } } = await supabase.auth.getSession();
+  if (!session) return;
+
+  const list = $('requestList');
+  list.innerHTML = '<div class="empty">Carregando solicitações...</div>';
+
+  const { data, error } = await supabase
+    .from('inscricoes')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error('Erro ao carregar inscrições:', error);
+    list.innerHTML = '<div class="empty">A conta entrou, mas não tem permissão para consultar as solicitações. Confirme se o UID dela está cadastrado em private.admin_users.</div>';
+    $('adminSummary').textContent = 'Acesso aos dados não autorizado ou erro de configuração.';
+    return;
+  }
+
+  requests = data || [];
+  const query = ($('searchRequests').value || '').toLowerCase();
+  const filtered = requests.filter(item =>
+    [item.nome_completo, item.passaporte, item.discord_id, item.telefone]
+      .join(' ').toLowerCase().includes(query)
+  );
+
+  $('adminSummary').textContent = requests.length + ' solicitação(ões) recebida(s) no banco.';
+  if (!filtered.length) {
+    list.innerHTML = '<div class="empty">' + (requests.length
+      ? 'Nenhuma solicitação corresponde à busca.'
+      : 'Nenhuma solicitação recebida ainda.') + '</div>';
+    return;
+  }
+
+  list.innerHTML = filtered.map(item => {
+    const created = item.created_at ? new Date(item.created_at).toLocaleString('pt-BR') : 'Data indisponível';
+    const days = Array.isArray(item.dias_disponiveis) ? item.dias_disponiveis.map(escapeHTML).join(', ') : '';
+    const idArg = JSON.stringify(String(item.id));
+    const discordArg = JSON.stringify(String(item.discord_id || ''));
+    return `<article class="request">
+      <div class="request-top">
+        <div><h3>${escapeHTML(item.nome_completo)}</h3><small>Recebida em ${escapeHTML(created)}</small></div>
+        <span class="badge">PASSAPORTE ${escapeHTML(item.passaporte)}</span>
+      </div>
+      <p><strong>Telefone:</strong> ${escapeHTML(item.telefone)}<br>
+      <strong>Discord:</strong> ${escapeHTML(item.discord_id)}<br>
+      <strong>Dias:</strong> ${days}<br>
+      <strong>Horários:</strong> ${escapeHTML(item.horario_disponivel)}<br>
+      <strong>Experiência:</strong> ${escapeHTML(item.experiencia || 'Não informado')}
+      ${item.sobre ? '<br><strong>Sobre:</strong> ' + escapeHTML(item.sobre) : ''}</p>
+      <div class="request-actions">
+        <button onclick='copyDiscord(${discordArg})'>Copiar Discord</button>
+        <button class="danger" onclick='deleteRequest(${idArg})'>Excluir solicitação</button>
+      </div>
+    </article>`;
+  }).join('');
+}
+
+window.copyDiscord = async function(value) {
+  try {
+    await navigator.clipboard.writeText(value);
+    alert('Discord copiado.');
+  } catch {
+    alert('Discord: ' + value);
+  }
+};
+
+window.deleteRequest = async function(id) {
+  if (!confirm('Deseja excluir esta solicitação? Esta ação não pode ser desfeita.')) return;
+  const { error } = await supabase.from('inscricoes').delete().eq('id', id);
+  if (error) {
+    console.error('Erro ao excluir solicitação:', error);
+    alert('Não foi possível excluir. Confirme se sua conta tem autorização administrativa.');
+    return;
+  }
+  await renderRequests();
+};
+
+window.exportCSV = function() {
+  if (!requests.length) {
+    alert('Não há solicitações para exportar.');
+    return;
+  }
+  const columns = ['Data', 'Nome completo RP', 'Passaporte RP', 'Telefone RP', 'Dias disponíveis', 'Horários', 'Discord', 'Experiência', 'Sobre'];
+  const quote = value => '"' + String(value ?? '').replace(/"/g, '""') + '"';
+  const csv = [columns, ...requests.map(item => [
+    item.created_at ? new Date(item.created_at).toLocaleString('pt-BR') : '',
+    item.nome_completo, item.passaporte, item.telefone,
+    (item.dias_disponiveis || []).join('; '), item.horario_disponivel,
+    item.discord_id, item.experiencia, item.sobre
+  ])].map(row => row.map(quote).join(';')).join('\r\n');
+
+  const blob = new Blob(['\ufeff' + csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement('a');
+  anchor.href = url;
+  anchor.download = 'north-mechanics-solicitacoes.csv';
+  anchor.click();
+  URL.revokeObjectURL(url);
+};
+
+supabase.auth.onAuthStateChange(() => {
+  setTimeout(() => refreshAccess(), 0);
+});
 refreshAccess();
 </script>
 </body>
