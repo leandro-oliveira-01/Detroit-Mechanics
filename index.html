@@ -66,6 +66,7 @@ button,input,textarea,select{font:inherit}button{cursor:pointer}.shell{width:min
         <button class="primary" type="submit">Entrar</button>
       </form>
       <p style="text-align:center;font-size:12px;margin:18px 0 0"><button type="button" class="small-link" onclick="toggleRegister(true)">Solicitar acesso à equipe</button></p>
+      <p style="text-align:center;font-size:12px;margin:8px 0 0"><button type="button" id="resendConfirmationButton" class="small-link" onclick="resendConfirmation()">Reenviar confirmação de e-mail</button></p>
     </div>
     <div id="registerFormWrap" class="hidden">
       <h2 class="section-title">Solicitar acesso</h2><p class="section-note">Seu cadastro ficará pendente até a aprovação de um ADM ativo. O cargo será escolhido pelo ADM.</p>
@@ -127,6 +128,26 @@ window.toggleRegister = function(show) {
   $('registerFormWrap').classList.toggle('hidden', !show);
   $('loginFormWrap').classList.toggle('hidden', show);
   clearMessage('authMessage');
+};
+
+window.resendConfirmation = async function() {
+  clearMessage('authMessage');
+  const email = $('loginEmail').value.trim();
+  if (!email) {
+    showMessage('authMessage', 'Informe seu e-mail no campo acima para solicitar uma nova confirmação.');
+    $('loginEmail').focus();
+    return;
+  }
+  const button = $('resendConfirmationButton');
+  button.disabled = true;
+  try {
+    const { error } = await supabase.auth.resend({ type: 'signup', email });
+    if (error) throw error;
+    showMessage('authMessage', 'Se existir uma confirmação pendente para este endereço, você receberá um novo e-mail. Confira também a pasta de spam. Aguarde a aprovação de um ADM para acessar o painel.', 'success');
+  } catch (error) {
+    console.error('Falha ao reenviar confirmação:', error);
+    showMessage('authMessage', 'Não foi possível reenviar a confirmação. Confira se o serviço de e-mails está configurado no Supabase. Detalhe: ' + (error.message || 'erro de envio'));
+  } finally { button.disabled = false; }
 };
 
 $('registerForm').addEventListener('submit', async event => {
@@ -286,8 +307,16 @@ $('loginForm').addEventListener('submit', async event => {
     event.target.reset();
     await refreshAccess();
   } catch (error) {
-    console.error('Falha no login:', error);
-    showMessage('authMessage', 'Não foi possível entrar. Confira o e-mail e a senha da sua conta Supabase.');
+    console.error('Falha no login:', { code: error.code, status: error.status, message: error.message });
+    if (error.code === 'email_not_confirmed') {
+      showMessage('authMessage', 'Seu e-mail ainda não foi confirmado no Supabase. Abra o e-mail de confirmação ou use "Reenviar confirmação de e-mail" abaixo.');
+    } else if (error.code === 'invalid_credentials') {
+      showMessage('authMessage', 'E-mail ou senha incorretos. Confira o mesmo e-mail e a senha usados no cadastro. Se não lembrar a senha, peça a redefinição ao administrador.');
+    } else if (error.code === 'over_email_send_rate_limit' || error.status === 429) {
+      showMessage('authMessage', 'Muitas tentativas em pouco tempo. Aguarde alguns minutos e tente novamente.');
+    } else {
+      showMessage('authMessage', 'Falha ao entrar no Supabase: ' + (error.message || 'erro desconhecido') + (error.code ? ' (' + error.code + ')' : ''));
+    }
   } finally {
     if (submitButton) {
       submitButton.disabled = false;
