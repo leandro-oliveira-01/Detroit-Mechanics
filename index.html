@@ -9,7 +9,7 @@
 :root{--red:#ff1738;--red2:#ff4058;--bg:#070707;--panel:#111113;--field:#202023;--muted:#a4a4ad;--white:#f5f5f7;--line:#303036}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% 10%,#26070d 0,transparent 36%),var(--bg);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
 button,input,textarea,select{font:inherit}button{cursor:pointer}.shell{width:min(100% - 28px,980px);margin:auto;padding:28px 0 56px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:34px}.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}.mark{width:54px;height:54px;display:grid;place-items:center;border:1px solid #ff173866;border-radius:16px;background:#16080b;box-shadow:0 0 22px #ff17382a;position:relative}.mark svg{width:34px;height:34px;filter:drop-shadow(0 0 5px #ff1738)}.brand-name{font-weight:900;letter-spacing:1.3px;line-height:1.05;font-size:clamp(17px,3vw,22px)}.brand-name span{color:var(--red)}.brand-sub{font-size:10px;color:#aaa;letter-spacing:3px;margin-top:5px}.nav{display:flex;gap:8px;flex-wrap:wrap}.nav button,.ghost{border:1px solid var(--line);background:#121214;color:#ddd;border-radius:10px;padding:10px 14px;transition:.2s}.nav button:hover,.nav button.active{border-color:var(--red);color:#fff;box-shadow:0 0 16px #ff17382b}.hero{text-align:center;margin:16px auto 22px;max-width:680px}.eyebrow{color:var(--red2);text-transform:uppercase;letter-spacing:3px;font-size:11px;font-weight:800}.hero h1{font-size:clamp(28px,5vw,42px);margin:10px 0 8px;letter-spacing:-1px}.hero h1 em{font-style:normal;color:var(--red);text-shadow:0 0 22px #ff17385c}.hero p{color:var(--muted);font-size:14px;line-height:1.6;margin:0 auto;max-width:540px}.panel{width:min(100%,610px);margin:0 auto;background:linear-gradient(145deg,#141416,#0d0d0f);border:1px solid #ff17385c;border-radius:18px;padding:clamp(18px,4vw,30px);box-shadow:0 0 0 1px #ff17380d,0 0 32px #ff17382b,0 18px 60px #0008;animation:rise .55s ease both}.panel.wide{width:100%;max-width:900px}@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}.section-title{font-size:17px;font-weight:800;margin:0 0 5px}.section-note{font-size:12px;color:var(--muted);margin:0 0 22px}.field{margin-bottom:14px}.field label,.label{display:block;font-size:12px;font-weight:700;color:#e8e8ec;margin:0 0 8px}.field input,.field textarea,.field select,.search{width:100%;background:var(--field);border:1px solid transparent;border-radius:9px;color:#fff;padding:13px 14px;outline:none;transition:border .2s,box-shadow .2s}.field input:focus,.field textarea:focus,.field select:focus,.search:focus{border-color:var(--red);box-shadow:0 0 0 3px #ff17381c}.field input::placeholder,.field textarea::placeholder{color:#85858e}.field textarea{min-height:88px;resize:vertical}.field select{appearance:auto}.days{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.day{position:relative}.day input{position:absolute;opacity:0;pointer-events:none}.day span{display:block;text-align:center;padding:11px 4px;border:1px solid #39393f;border-radius:9px;background:#19191c;color:#c5c5cc;font-size:12px;transition:.2s}.day input:checked+span{background:#3a0b13;border-color:var(--red);color:#fff;box-shadow:inset 0 0 0 1px #ff173844,0 0 13px #ff173820}.day span:hover{border-color:#a62a3b}.inline-check{display:flex;align-items:flex-start;gap:10px;font-size:12px;color:#d4d4da;line-height:1.5;margin:18px 0}.inline-check input{accent-color:var(--red);margin-top:2px;width:16px;height:16px;flex:none}.primary{width:100%;border:0;border-radius:10px;padding:14px 16px;color:white;font-weight:900;background:linear-gradient(100deg,#d80c2a,var(--red),#ff4058);box-shadow:0 0 22px #ff17382b;transition:transform .2s,box-shadow .2s}.primary:hover{transform:translateY(-1px);box-shadow:0 0 28px #ff17385c}.primary:disabled{opacity:.45;cursor:not-allowed}.message{display:none;border-radius:10px;padding:12px 14px;font-size:13px;margin:0 0 15px}.message.show{display:block}.message.error{background:#351016;border:1px solid #ff405855;color:#ffc5cd}.message.success{background:#102b1d;border:1px solid #39c87955;color:#b8f6d0}.small-link{background:none;border:0;color:#ff667b;text-decoration:underline;padding:0}.hidden{display:none!important}.foot{text-align:center;color:#6f6f78;font-size:11px;margin-top:22px}.badge{display:inline-flex;align-items:center;gap:6px;font-size:10px;letter-spacing:1px;color:#ff9aaa;border:1px solid #ff17384d;background:#26080e;border-radius:100px;padding:6px 10px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.admin-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:20px}.admin-head h2{margin:0 0 5px;font-size:22px}.admin-head p{margin:0;color:var(--muted);font-size:12px}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.toolbar .search{flex:1;min-width:170px}.toolbar button{border:1px solid var(--line);border-radius:9px;background:#19191c;color:#eee;padding:10px 12px}.request-list{display:grid;gap:10px}.request{border:1px solid #303036;border-radius:12px;background:#151517;padding:15px}.request-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.request h3{margin:0;font-size:15px}.request small{color:var(--muted)}.request p{font-size:12px;color:#c9c9d0;line-height:1.6;margin:10px 0}.request-actions{display:flex;gap:8px;flex-wrap:wrap}.request-actions button{background:#202024;color:#eee;border:1px solid #38383f;border-radius:8px;padding:8px 10px;font-size:12px}.request-actions button.danger{border-color:#792031;color:#ff9aaa}.empty{border:1px dashed #3a3a41;border-radius:12px;padding:30px;text-align:center;color:var(--muted);font-size:13px}.security-note{font-size:11px;color:#a8a8b0;line-height:1.6;border-top:1px solid #2d2d33;margin-top:18px;padding-top:14px}@media(max-width:540px){.shell{width:min(100% - 20px,980px);padding-top:18px}.topbar{align-items:flex-start;flex-direction:column;margin-bottom:26px}.nav{width:100%}.nav button{flex:1}.days{grid-template-columns:repeat(3,minmax(0,1fr))}.grid2{grid-template-columns:1fr}.brand-sub{letter-spacing:2px}}
-</style>
+ .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}.tabs button{border:1px solid #34343a;background:#1b1b1f;color:#ddd;border-radius:9px;padding:11px 15px}.tabs button.active{background:#3a1018;border-color:var(--red);color:#fff}.member-role{background:#242429;border:1px solid #444;border-radius:8px;color:#fff;padding:8px}.member-actions{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-top:10px}.member-actions button{border:1px solid #555;background:#29292d;color:white;padding:9px;border-radius:8px}.member-actions .approve{background:#174c2c;border-color:#24834b}.member-actions .danger{background:#4c1821;border-color:#933042}.state{font-size:12px;color:#c4c4cc} </style>
 </head>
 <body>
 <div class="shell">
@@ -65,13 +65,26 @@ button,input,textarea,select{font:inherit}button{cursor:pointer}.shell{width:min
         <div class="field"><label for="loginPassword">Senha *</label><input id="loginPassword" type="password" autocomplete="current-password" placeholder="Sua senha" required></div>
         <button class="primary" type="submit">Entrar</button>
       </form>
-</div>
+      <p style="text-align:center;font-size:12px;margin:18px 0 0"><button type="button" class="small-link" onclick="toggleRegister(true)">Solicitar acesso à equipe</button></p>
+    </div>
+    <div id="registerFormWrap" class="hidden">
+      <h2 class="section-title">Solicitar acesso</h2><p class="section-note">Seu cadastro ficará pendente até a aprovação de um ADM ativo. O cargo será escolhido pelo ADM.</p>
+      <form id="registerForm">
+        <div class="field"><label for="registerName">Nome *</label><input id="registerName" maxlength="100" required></div>
+        <div class="field"><label for="registerEmail">E-mail *</label><input id="registerEmail" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="registerPassword">Senha (mínimo 8 caracteres) *</label><input id="registerPassword" type="password" minlength="8" autocomplete="new-password" required></div>
+        <button class="primary" type="submit">Enviar solicitação de acesso</button>
+      </form>
+      <p style="text-align:center;font-size:12px;margin:18px 0 0"><button type="button" class="small-link" onclick="toggleRegister(false)">Voltar ao login</button></p>
+    </div>
 <div class="security-note"><strong>Importante:</strong> A autenticação é feita pelo Supabase. A leitura e a exclusão das solicitações dependem das permissões configuradas no banco de dados.</div>
   </div>
   <div id="adminPanel" class="panel wide hidden">
     <div class="admin-head"><div><span class="badge">● ACESSO AUTORIZADO</span><h2 style="margin-top:12px">Solicitações de recrutamento</h2><p id="adminSummary">Gerencie as solicitações recebidas pelo sistema.</p></div><button class="ghost" onclick="logout()">Sair da conta</button></div>
-    <div class="toolbar"><input class="search" id="searchRequests" placeholder="Buscar por nome, passaporte ou Discord..."><button onclick="exportCSV()">Exportar CSV</button></div>
-    <div id="requestList" class="request-list"></div>
+    <div id="adminTabs" class="tabs"><button id="tabRecruit" class="active" onclick="switchAdminTab('recruit')">Inscrições</button><button id="tabMembers" class="hidden" onclick="switchAdminTab('members')">Gerenciar administradores</button></div>
+    <div id="recruitSection"><div class="toolbar"><input class="search" id="searchRequests" placeholder="Buscar por nome, passaporte ou Discord..."><button onclick="exportCSV()">Exportar CSV</button></div>
+    <div id="requestList" class="request-list"></div></div>
+    <div id="membersSection" class="hidden"><div id="membersMessage" class="message" role="status"></div><h3>Solicitações e membros</h3><p class="section-note">Somente ADM ativo pode aprovar, recusar, mudar cargos ou desativar membros.</p><div id="membersList" class="request-list"></div></div>
     <div class="security-note">As solicitações são armazenadas no banco centralizado. Somente contas autorizadas pela política do banco podem consultá-las ou excluí-las.</div>
   </div>
   <div class="foot">NORTH MECHANICS · PAINEL ADMINISTRATIVO</div>
@@ -87,6 +100,8 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 
 const $ = id => document.getElementById(id);
 let requests = [];
+let currentMember = null;
+let activeTab = "recruit";
 
 window.showView = function(view) {
   $('viewApply').classList.toggle('hidden', view !== 'apply');
@@ -108,19 +123,99 @@ function escapeHTML(value) {
   }[ch]));
 }
 
-async function refreshAccess() {
+window.toggleRegister = function(show) {
+  $('registerFormWrap').classList.toggle('hidden', !show);
+  $('loginFormWrap').classList.toggle('hidden', show);
   clearMessage('authMessage');
+};
+
+$('registerForm').addEventListener('submit', async event => {
+  event.preventDefault(); clearMessage('authMessage');
+  const button = event.submitter; button.disabled = true;
+  try {
+    const { data, error } = await supabase.auth.signUp({
+      email: $('registerEmail').value.trim(), password: $('registerPassword').value,
+      options: { data: { full_name: $('registerName').value.trim() } }
+    });
+    if (error) throw error;
+    event.target.reset(); toggleRegister(false);
+    showMessage('authMessage', 'Solicitação recebida. Se a confirmação por e-mail estiver habilitada, confirme seu endereço. Aguarde a aprovação de um ADM para acessar o painel.', 'success');
+    if (data.session) await supabase.auth.signOut();
+  } catch(e) { console.error(e); showMessage('authMessage', 'Não foi possível criar a conta: ' + e.message); }
+  finally { button.disabled = false; }
+});
+
+async function refreshAccess() {
   const { data: { session } } = await supabase.auth.getSession();
-  const loggedIn = !!session;
-  $('authPanel').classList.toggle('hidden', loggedIn);
-  $('adminPanel').classList.toggle('hidden', !loggedIn);
-  if (loggedIn) await renderRequests();
+  currentMember = null;
+  if (session) {
+    const { data, error } = await supabase.from('team_members').select('user_id,nome,email,cargo,status').eq('user_id',session.user.id).maybeSingle();
+    if (!error && data?.status === 'ativo' && ['adm','recrutador'].includes(data.cargo)) currentMember = data;
+  }
+  const authorized = !!currentMember;
+  $('authPanel').classList.toggle('hidden', authorized);
+  $('adminPanel').classList.toggle('hidden', !authorized);
+  $('tabMembers').classList.toggle('hidden', currentMember?.cargo !== 'adm');
+  if (currentMember?.cargo !== 'adm') activeTab = 'recruit';
+  if (authorized) {
+    $('adminSummary').textContent = `${currentMember.nome} · ${currentMember.cargo === 'adm' ? 'ADM' : 'Recrutador'}`;
+    switchAdminTab(activeTab);
+  } else if (session) {
+    toggleRegister(false);
+    showMessage('authMessage', 'Sua conta está pendente, recusada ou desativada. Apenas membros ativos podem entrar. Se sua conta já foi aprovada, saia e entre novamente.', 'error');
+    await supabase.auth.signOut();
+  }
 }
+
+window.switchAdminTab = function(tab) {
+  if (tab === 'members' && currentMember?.cargo !== 'adm') return;
+  activeTab = tab;
+  $('recruitSection').classList.toggle('hidden', tab !== 'recruit');
+  $('membersSection').classList.toggle('hidden', tab !== 'members');
+  $('tabRecruit').classList.toggle('active', tab === 'recruit');
+  $('tabMembers').classList.toggle('active', tab === 'members');
+  if (tab === 'members') renderMembers(); else renderRequests();
+};
+
+async function renderMembers() {
+  if (currentMember?.cargo !== 'adm') return;
+  const list = $('membersList'); list.innerHTML = '<div class="empty">Carregando membros...</div>';
+  const { data, error } = await supabase.from('team_members').select('user_id,nome,email,cargo,status,created_at').order('created_at', {ascending:false});
+  if (error) { list.innerHTML = '<div class="empty">Não foi possível consultar os membros: '+escapeHTML(error.message)+'</div>'; return; }
+  if (!data?.length) { list.innerHTML = '<div class="empty">Nenhum membro cadastrado.</div>'; return; }
+  list.innerHTML = data.map(m => {
+    const self = m.user_id === currentMember.user_id;
+    const pending = m.status === 'pendente';
+    return `<article class="request"><div class="request-top"><div><h3>${escapeHTML(m.nome)}</h3><small>${escapeHTML(m.email)}</small></div><span class="badge">${escapeHTML(m.status.toUpperCase())}</span></div>
+      <p>Cargo atual: <strong>${escapeHTML(m.cargo || 'Ainda não definido')}</strong></p>
+      ${self ? '<p>Esta é a sua conta. Você não pode alterar o próprio acesso.</p>' : `<div class="member-actions">
+        <label class="state" for="role-${escapeHTML(m.user_id)}">Cargo:</label>
+        <select class="member-role" id="role-${escapeHTML(m.user_id)}"><option value="recrutador" ${m.cargo==='recrutador'?'selected':''}>Recrutador</option><option value="adm" ${m.cargo==='adm'?'selected':''}>ADM</option></select>
+        ${pending ? `<button class="approve" data-action="aprovar" data-id="${escapeHTML(m.user_id)}">Aprovar</button><button class="danger" data-action="recusar" data-id="${escapeHTML(m.user_id)}">Recusar</button>` : ''}
+        ${m.status==='ativo' ? `<button data-action="cargo" data-id="${escapeHTML(m.user_id)}">Salvar cargo</button><button class="danger" data-action="desativar" data-id="${escapeHTML(m.user_id)}">Desativar</button>` : ''}
+        ${m.status==='inativo' ? `<button class="approve" data-action="reativar" data-id="${escapeHTML(m.user_id)}">Reativar</button>` : ''}
+      </div>`}
+    </article>`;
+  }).join('');
+}
+
+$('membersList').addEventListener('click', async event => {
+  const btn = event.target.closest('button[data-action]'); if (!btn || currentMember?.cargo !== 'adm') return;
+  const id = btn.dataset.id, action = btn.dataset.action;
+  const role = document.getElementById('role-'+id)?.value || 'recrutador';
+  if (!confirm(`Confirmar ação: ${action} (${role})?`)) return;
+  btn.disabled = true;
+  const { error } = await supabase.rpc('manage_team_member', { target_user_id:id, requested_action:action, requested_role:role });
+  if (error) { showMessage('membersMessage', 'Erro: '+error.message); btn.disabled = false; return; }
+  showMessage('membersMessage', 'Alteração realizada com sucesso.', 'success');
+  await renderMembers();
+});
 
 window.logout = async function() {
   await supabase.auth.signOut();
   requests = [];
   $('searchRequests').value = '';
+  currentMember = null;
   await refreshAccess();
 };
 
@@ -205,7 +300,7 @@ $('searchRequests').addEventListener('input', renderRequests);
 
 async function renderRequests() {
   const { data: { session } } = await supabase.auth.getSession();
-  if (!session) return;
+  if (!session || !currentMember) return;
 
   const list = $('requestList');
   list.innerHTML = '<div class="empty">Carregando solicitações...</div>';
@@ -217,7 +312,7 @@ async function renderRequests() {
 
   if (error) {
     console.error('Erro ao carregar inscrições:', error);
-    list.innerHTML = '<div class="empty">A conta entrou, mas não tem permissão para consultar as solicitações. Confirme se o UID dela está cadastrado em private.admin_users.</div>';
+    list.innerHTML = '<div class="empty">A conta entrou, mas não tem permissão para consultar as solicitações. Confirme se a conta está ativa como ADM ou Recrutador.</div>';
     $('adminSummary').textContent = 'Acesso aos dados não autorizado ou erro de configuração.';
     return;
   }
@@ -255,7 +350,7 @@ async function renderRequests() {
       ${item.sobre ? '<br><strong>Sobre:</strong> ' + escapeHTML(item.sobre) : ''}</p>
       <div class="request-actions">
         <button onclick='copyDiscord(${discordArg})'>Copiar Discord</button>
-        <button class="danger" onclick='deleteRequest(${idArg})'>Excluir solicitação</button>
+        ${currentMember?.cargo === 'adm' ? `<button class="danger" onclick='deleteRequest(${idArg})'>Excluir solicitação</button>` : ''}
       </div>
     </article>`;
   }).join('');
@@ -271,6 +366,7 @@ window.copyDiscord = async function(value) {
 };
 
 window.deleteRequest = async function(id) {
+  if (currentMember?.cargo !== 'adm') return;
   if (!confirm('Deseja excluir esta solicitação? Esta ação não pode ser desfeita.')) return;
   const { error } = await supabase.from('inscricoes').delete().eq('id', id);
   if (error) {
