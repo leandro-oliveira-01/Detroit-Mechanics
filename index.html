@@ -378,8 +378,8 @@ async function renderRequests() {
       <strong>Experiência:</strong> ${escapeHTML(item.experiencia || 'Não informado')}
       ${item.sobre ? '<br><strong>Sobre:</strong> ' + escapeHTML(item.sobre) : ''}</p>
       <div class="request-actions">
-        <button onclick='copyDiscord(${discordArg})'>Copiar Discord</button>
-        ${currentMember?.cargo === 'adm' ? `<button class="danger" onclick='deleteRequest(${idArg})'>Excluir solicitação</button>` : ''}
+        <button onclick='copyDiscord(${escapeHTML(discordArg)})'>Copiar Discord</button>
+        ${currentMember?.cargo === 'adm' ? `<button class="danger" onclick='deleteRequest(${escapeHTML(idArg)})'>Excluir solicitação</button>` : ''}
       </div>
     </article>`;
   }).join('');
@@ -412,7 +412,12 @@ window.exportCSV = function() {
     return;
   }
   const columns = ['Data', 'Nome completo RP', 'Passaporte RP', 'Telefone RP', 'Dias disponíveis', 'Horários', 'Discord', 'Experiência', 'Sobre'];
-  const quote = value => '"' + String(value ?? '').replace(/"/g, '""') + '"';
+  const quote = value => {
+    const raw = String(value ?? '');
+    // Impede que células vindas de candidatos sejam interpretadas como fórmulas.
+    const safe = /^[\s\u0000-\u001f]*[=+\-@]/.test(raw) ? "'" + raw : raw;
+    return '"' + safe.replace(/"/g, '""') + '"';
+  };
   const csv = [columns, ...requests.map(item => [
     item.created_at ? new Date(item.created_at).toLocaleString('pt-BR') : '',
     item.nome_completo, item.passaporte, item.telefone,
