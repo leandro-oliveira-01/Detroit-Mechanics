@@ -4,15 +4,87 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#080808">
-<title>Detroit Mechanics | Recrutamento</title>
+<title>Detroit Mechanics 2.0 | Recrutamento Oficial</title>
 <style>
 :root{--red:#ff1738;--red2:#ff4058;--bg:#070707;--panel:#111113;--field:#202023;--muted:#a4a4ad;--white:#f5f5f7;--line:#303036}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% 10%,#26070d 0,transparent 36%),var(--bg);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
 button,input,textarea,select{font:inherit}button{cursor:pointer}.shell{width:min(100% - 28px,980px);margin:auto;padding:28px 0 56px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:34px}.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}.mark{width:54px;height:54px;display:grid;place-items:center;border:1px solid #ff173866;border-radius:16px;background:#16080b;box-shadow:0 0 22px #ff17382a;position:relative}.mark svg{width:34px;height:34px;filter:drop-shadow(0 0 5px #ff1738)}.mark.site-logo{width:76px;height:76px;flex:0 0 76px;border:0;border-radius:0;background:transparent;box-shadow:none}.mark.site-logo img{display:block;width:100%;height:100%;object-fit:contain}.brand-name{font-weight:900;letter-spacing:1.3px;line-height:1.05;font-size:clamp(17px,3vw,22px)}.brand-name span{color:var(--red)}.brand-sub{font-size:10px;color:#aaa;letter-spacing:3px;margin-top:5px}.nav{display:flex;gap:8px;flex-wrap:wrap}.nav button,.ghost{border:1px solid var(--line);background:#121214;color:#ddd;border-radius:10px;padding:10px 14px;transition:.2s}.nav button:hover,.nav button.active{border-color:var(--red);color:#fff;box-shadow:0 0 16px #ff17382b}.hero{text-align:center;margin:16px auto 22px;max-width:680px}.eyebrow{color:var(--red2);text-transform:uppercase;letter-spacing:3px;font-size:11px;font-weight:800}.hero h1{font-size:clamp(28px,5vw,42px);margin:10px 0 8px;letter-spacing:-1px}.hero h1 em{font-style:normal;color:var(--red);text-shadow:0 0 22px #ff17385c}.hero p{color:var(--muted);font-size:14px;line-height:1.6;margin:0 auto;max-width:540px}.panel{width:min(100%,610px);margin:0 auto;background:linear-gradient(145deg,#141416,#0d0d0f);border:1px solid #ff17385c;border-radius:18px;padding:clamp(18px,4vw,30px);box-shadow:0 0 0 1px #ff17380d,0 0 32px #ff17382b,0 18px 60px #0008;animation:rise .55s ease both}.panel.wide{width:100%;max-width:900px}@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}.section-title{font-size:17px;font-weight:800;margin:0 0 5px}.section-note{font-size:12px;color:var(--muted);margin:0 0 22px}.field{margin-bottom:14px}.field label,.label{display:block;font-size:12px;font-weight:700;color:#e8e8ec;margin:0 0 8px}.field input,.field textarea,.field select,.search{width:100%;background:var(--field);border:1px solid transparent;border-radius:9px;color:#fff;padding:13px 14px;outline:none;transition:border .2s,box-shadow .2s}.field input:focus,.field textarea:focus,.field select:focus,.search:focus{border-color:var(--red);box-shadow:0 0 0 3px #ff17381c}.field input::placeholder,.field textarea::placeholder{color:#85858e}.field textarea{min-height:88px;resize:vertical}.field select{appearance:auto}.days{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.day{position:relative}.day input{position:absolute;opacity:0;pointer-events:none}.day span{display:block;text-align:center;padding:11px 4px;border:1px solid #39393f;border-radius:9px;background:#19191c;color:#c5c5cc;font-size:12px;transition:.2s}.day input:checked+span{background:#3a0b13;border-color:var(--red);color:#fff;box-shadow:inset 0 0 0 1px #ff173844,0 0 13px #ff173820}.day span:hover{border-color:#a62a3b}.inline-check{display:flex;align-items:flex-start;gap:10px;font-size:12px;color:#d4d4da;line-height:1.5;margin:18px 0}.inline-check input{accent-color:var(--red);margin-top:2px;width:16px;height:16px;flex:none}.primary{width:100%;border:0;border-radius:10px;padding:14px 16px;color:white;font-weight:900;background:linear-gradient(100deg,#d80c2a,var(--red),#ff4058);box-shadow:0 0 22px #ff17382b;transition:transform .2s,box-shadow .2s}.primary:hover{transform:translateY(-1px);box-shadow:0 0 28px #ff17385c}.primary:disabled{opacity:.45;cursor:not-allowed}.message{display:none;border-radius:10px;padding:12px 14px;font-size:13px;margin:0 0 15px}.message.show{display:block}.message.error{background:#351016;border:1px solid #ff405855;color:#ffc5cd}.message.success{background:#102b1d;border:1px solid #39c87955;color:#b8f6d0}.small-link{background:none;border:0;color:#ff667b;text-decoration:underline;padding:0}.hidden{display:none!important}.foot{text-align:center;color:#6f6f78;font-size:11px;margin-top:22px}.badge{display:inline-flex;align-items:center;gap:6px;font-size:10px;letter-spacing:1px;color:#ff9aaa;border:1px solid #ff17384d;background:#26080e;border-radius:100px;padding:6px 10px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.admin-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:20px}.admin-head h2{margin:0 0 5px;font-size:22px}.admin-head p{margin:0;color:var(--muted);font-size:12px}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.toolbar .search{flex:1;min-width:170px}.toolbar button{border:1px solid var(--line);border-radius:9px;background:#19191c;color:#eee;padding:10px 12px}.request-list{display:grid;gap:10px}.request{border:1px solid #303036;border-radius:12px;background:#151517;padding:15px}.request-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.request h3{margin:0;font-size:15px}.request small{color:var(--muted)}.request p{font-size:12px;color:#c9c9d0;line-height:1.6;margin:10px 0}.request-actions{display:flex;gap:8px;flex-wrap:wrap}.request-actions button{background:#202024;color:#eee;border:1px solid #38383f;border-radius:8px;padding:8px 10px;font-size:12px}.request-actions button.danger{border-color:#792031;color:#ff9aaa}.empty{border:1px dashed #3a3a41;border-radius:12px;padding:30px;text-align:center;color:var(--muted);font-size:13px}.security-note{font-size:11px;color:#a8a8b0;line-height:1.6;border-top:1px solid #2d2d33;margin-top:18px;padding-top:14px}@media(max-width:540px){.shell{width:min(100% - 20px,980px);padding-top:18px}.topbar{align-items:flex-start;flex-direction:column;margin-bottom:26px}.nav{width:100%}.nav button{flex:1}.days{grid-template-columns:repeat(3,minmax(0,1fr))}.grid2{grid-template-columns:1fr}.brand-sub{letter-spacing:2px}}
- .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}.tabs button{border:1px solid #34343a;background:#1b1b1f;color:#ddd;border-radius:9px;padding:11px 15px}.tabs button.active{background:#3a1018;border-color:var(--red);color:#fff}.member-role{background:#242429;border:1px solid #444;border-radius:8px;color:#fff;padding:8px}.member-actions{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-top:10px}.member-actions button{border:1px solid #555;background:#29292d;color:white;padding:9px;border-radius:8px}.member-actions .approve{background:#174c2c;border-color:#24834b}.member-actions .danger{background:#4c1821;border-color:#933042}.state{font-size:12px;color:#c4c4cc} </style>
+ .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}.tabs button{border:1px solid #34343a;background:#1b1b1f;color:#ddd;border-radius:9px;padding:11px 15px}.tabs button.active{background:#3a1018;border-color:var(--red);color:#fff}.member-role{background:#242429;border:1px solid #444;border-radius:8px;color:#fff;padding:8px}.member-actions{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-top:10px}.member-actions button{border:1px solid #555;background:#29292d;color:white;padding:9px;border-radius:8px}.member-actions .approve{background:#174c2c;border-color:#24834b}.member-actions .danger{background:#4c1821;border-color:#933042}.state{font-size:12px;color:#c4c4cc} 
+/* Detroit Mechanics 2.0 - Etapa 1 */
+.v2-filters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0 0 16px}
+.v2-filters label{font-size:12px;color:#c7c7ce;display:grid;gap:7px}
+.v2-filters select{width:100%;padding:10px 9px;background:#202023;color:#fff;border:1px solid #42424a;border-radius:9px}
+.v2-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:12px}
+.v2-actions select{background:#202023;border:1px solid #42424a;color:#fff;padding:9px;border-radius:8px;min-width:150px}
+.v2-actions button{background:#26262d;border:1px solid #565663;border-radius:8px;padding:9px 12px;color:#fff}
+.v2-warning{padding:10px 12px;margin-top:10px;border-radius:8px;color:#ffd8a5;background:#362414;border:1px solid #815426;font-size:12px}
+.v2-result{margin:0 0 12px;color:#aaa;font-size:12px}
+@media(max-width:600px){.v2-filters{grid-template-columns:1fr}.v2-actions select{flex:1}}
+
+/* Premium Dark: acabamento inicial da Etapa 1 (evolucao visual mais ampla depois) */
+:root{--bg:#0b0d11;--panel:#171a20;--field:#20242c;--line:#333742}
+.request{background:#171a20;border-color:#333742;box-shadow:0 8px 24px #0004}
+.request:hover{border-color:#ff173855}
+.v2-owner{margin:12px 0 7px;padding:12px 14px;background:#11141a;border:1px solid #343846;border-radius:10px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12px;color:#d8d9df}
+.v2-owner strong{color:#fff}
+.v2-owner .v2-assumed{color:#a2a6b1}
+.v2-owner .owner-dot{width:8px;height:8px;border-radius:50%;background:#ff1738;box-shadow:0 0 9px #ff173888;flex:none}
+.v2-owner.free .owner-dot{background:#8f94a3;box-shadow:none}
+.v2-claim{border:1px solid #ff4058!important;background:#3a101b!important;color:#ffd7e0!important}
+.v2-transfer{background:#20242c;color:#f5f5f7;border:1px solid #414655;border-radius:8px;padding:9px;min-width:135px;max-width:100%}
+.v2-recruit-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:10px 0}
+.v2-recruit-actions button{background:#252a34;color:#f5f5f7;border:1px solid #474b57;border-radius:8px;padding:10px 12px;font-weight:650}
+.v2-recruit-actions button:disabled{opacity:.5;cursor:wait}
+.v2-tip{font-size:12px;color:#aaaebc;margin:8px 0}
+.v2-dev-mark{color:#ffc5ce;font-size:11px;text-align:center;letter-spacing:1px;border:1px dashed #83313e;background:#281019;padding:9px;margin-bottom:18px;border-radius:9px}
+@media(max-width:600px){.v2-recruit-actions button{flex:1}.v2-transfer{width:100%}}
+
+
+/* Detroit Mechanics 2.0 — Premium Dark / Etapa 1.5 */
+:root{--red:#f32649;--red2:#ff5d76;--bg:#090b0f;--panel:#151820;--field:#222630;--line:#313643;--muted:#a0a6b4}
+body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transparent 72%),#090b0f}
+.shell{width:min(100% - 40px,1320px);padding:20px 0 46px}
+.v2-dev-mark{font-weight:750;letter-spacing:1.4px;text-align:center;border-radius:9px;background:#291217;border:1px solid #542530;color:#f5b5c0;padding:9px 14px;margin-bottom:18px;font-size:10px}
+.pulse-dot{width:7px;height:7px;display:inline-block;border-radius:50%;background:#fb465f;box-shadow:0 0 14px #f32649;vertical-align:middle;margin-right:7px}.sep{margin:0 12px;color:#97525e}
+.topbar{background:#11141bd9;border:1px solid #292c35;border-radius:17px;padding:13px 20px;margin:0 0 30px;box-shadow:0 14px 50px #0005}
+.mark.site-logo{width:60px;height:60px;flex-basis:60px}.brand-name{font-size:20px}.brand-sub{font-size:9px;letter-spacing:2.3px}
+.nav button{background:#1c2029;border:1px solid #353947;color:#e2e3e9;font-weight:700}.nav button.active{background:#3d1823;border-color:#ac334d}
+.hero{max-width:760px;margin:30px auto}.premium-hero{margin:35px auto 32px}.premium-hero h1{font-size:clamp(35px,5vw,64px);line-height:1.06;letter-spacing:-2px}.premium-hero p{max-width:610px;font-size:15px}
+.hero-tag{color:#fa7186;letter-spacing:1.7px;font-size:10px;font-weight:800}.hero-pills{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:21px}.hero-pills span{border:1px solid #393b46;background:#171a21;border-radius:100px;padding:8px 14px;color:#c8c9d2;font-size:11px}
+#applicationForm.panel{max-width:790px;width:100%;padding:clamp(22px,4vw,40px)}#applicationForm .section-title{font-size:21px}
+.panel{border-color:#393442;background:linear-gradient(145deg,#191c25,#111319);box-shadow:0 22px 65px #0008,0 0 36px #fb1a3a0d}
+.field input,.field textarea,.field select,.search{background:#22252e;border:1px solid #323744;min-height:46px}.field input:focus,.field textarea:focus,.field select:focus,.search:focus{background:#252a35}
+.primary{background:linear-gradient(125deg,#d91739,#f6274b 58%,#ff405f);box-shadow:0 7px 23px #ed214345}
+.login-card{max-width:440px;padding:32px}.login-card .section-title{font-size:23px}
+#viewAccess:has(#adminPanel:not(.hidden)) > .hero{display:none}
+#viewAccess:has(#adminPanel:not(.hidden)) > .foot{margin-top:20px}
+#adminPanel.premium-app{display:grid;grid-template-columns:235px minmax(0,1fr);width:100%;max-width:none;min-height:650px;padding:0;overflow:hidden;border:1px solid #303643;background:#10131a;box-shadow:0 25px 75px #0009}
+.app-sidebar{background:#12151d;border-right:1px solid #2a303d;min-height:680px;padding:25px 14px;display:flex;flex-direction:column;gap:28px}
+.side-title{display:flex;align-items:center;gap:10px;padding:7px 10px}.side-title strong{display:block;color:#fff;letter-spacing:2px;font-size:14px}.side-title small{display:block;color:#7d8595;letter-spacing:1.6px;font-size:9px;margin-top:4px}
+.side-monogram{display:grid;place-items:center;width:42px;height:42px;flex:none;background:#3f1722;border:1px solid #95334a;border-radius:12px;color:#ff7891;font-weight:900;letter-spacing:-1px}
+.side-group-title{font-size:9px;letter-spacing:2px;color:#6e7584;margin:0 0 -17px 12px;font-weight:800}
+.sidebar-nav{display:grid;gap:7px}.sidebar-nav button{display:flex;gap:13px;align-items:center;width:100%;text-align:left;border:1px solid transparent;border-radius:10px;background:transparent;color:#aeb3c0;padding:14px 12px;font-size:13px;font-weight:700;cursor:pointer}.sidebar-nav button span{font-size:20px;line-height:1}.sidebar-nav button:hover{background:#242730;color:#fff}.sidebar-nav button.active{background:linear-gradient(90deg,#481a28,#241a22);border-color:#763148;color:#fff;box-shadow:inset 3px 0 0 #ff345a}
+.side-footer{margin-top:auto;border-top:1px solid #2c303c;padding:18px 10px;color:#c3aab1;font-size:11px}.side-footer small{display:block;color:#686e7b;margin:7px 0 0 16px}
+.app-main{padding:clamp(20px,3vw,34px);min-width:0}.app-eyebrow{color:#717987;letter-spacing:1.9px;font-size:10px;font-weight:800;margin-bottom:14px}.app-eyebrow span{color:#ef7790}
+.admin-head{align-items:center;margin-bottom:24px}.admin-head h2{font-size:clamp(23px,3vw,32px);font-weight:800;margin:9px 0}.admin-head p{color:#9299a8;line-height:1.6}.logout-button{white-space:nowrap}
+.dashboard-section{display:grid;gap:19px}.dash-welcome{border:1px solid #5d293b;border-radius:16px;padding:clamp(21px,3vw,30px);background:linear-gradient(112deg,#341824,#20141d 60%,#191920);position:relative;overflow:hidden}.dash-welcome:after{content:'N';position:absolute;right:22px;top:-67px;font-weight:900;font-size:240px;color:#ffffff05;pointer-events:none}.dash-welcome h3{font-size:25px;margin:12px 0 8px;color:#fff}.dash-welcome p{font-size:13px;color:#c6b6bb;max-width:540px;margin:0;line-height:1.5}
+.stat-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.stat-box{padding:18px;border:1px solid #303642;border-radius:12px;background:#191d26;display:grid;gap:6px;box-shadow:0 8px 25px #0003}.stat-box small{color:#b3bac8;font-size:11px;font-weight:700}.stat-box strong{color:#fff;font-size:31px;line-height:1.1;font-weight:900}.stat-box span{color:#808999;font-size:10px}.stat-box:nth-child(2) strong,.stat-box:nth-child(6) strong{color:#fa627c}
+.dash-bottom{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(210px,1fr);gap:12px}.dash-feed,.dash-guidance{background:#191d26;border:1px solid #303642;border-radius:13px;padding:20px;min-width:0}.dash-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;gap:10px}.dash-head button{border:0;background:none;color:#ff718b;cursor:pointer;font-size:12px}.recent-list{display:grid}.recent-item{display:flex;align-items:center;gap:10px;padding:12px 0;border-top:1px solid #303642}.recent-avatar{width:37px;height:37px;display:grid;place-items:center;border-radius:11px;background:#40212e;color:#ffa1b1;font-weight:900;flex:none}.recent-item>div:nth-child(2){flex:1;min-width:0}.recent-item strong{display:block;font-size:12px;color:#fff}.recent-item small{display:block;font-size:10px;color:#818997;margin-top:5px}.status-pill{display:inline-block;border-radius:99px;background:#353944;padding:6px 9px;color:#d0d5df;font-size:10px;white-space:nowrap}.status-em_analise{background:#153b52;color:#8cdbff}.status-entrevista{background:#473519;color:#ffd58c}.status-aprovado{background:#173d30;color:#a2efd1}.status-reprovado{background:#49242d;color:#ffafbb}
+.dash-guidance{background:linear-gradient(160deg,#251a25,#191b24)}.dash-guidance h3{font-size:19px;margin:10px 0}.dash-guidance p{color:#aab0bb;font-size:12px;line-height:1.65}.dash-guidance .primary{margin-top:17px}
+.section-banner{background:linear-gradient(110deg,#2e1822,#191b24);border:1px solid #49313e;border-radius:13px;padding:19px 22px;margin-bottom:18px}.section-banner h3{font-size:21px;margin:9px 0 4px}.section-banner p{margin:0;color:#a8adba;font-size:12px}
+#recruitSection>.toolbar{margin:0 0 13px}.toolbar button{font-weight:700;background:#262b36;border-color:#3a4150}
+.v2-filters{grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;padding:14px;background:#181c25;border:1px solid #303642;border-radius:11px;margin-bottom:15px}.v2-filters label{font-weight:700;color:#9ea7b7}.v2-filters select{background:#252a35;border-color:#373d4b;min-width:0}
+.request-list{grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));align-items:start;gap:13px}.request{background:#191d26;border-color:#303642;box-shadow:0 6px 28px #0003;border-radius:13px}.request h3{font-size:16px}.request .badge{font-size:9px;letter-spacing:.6px;white-space:normal}.request .v2-owner{margin:13px 0 10px;background:#131720}.request p{font-size:12px;line-height:1.7}.v2-recruit-actions,.request-actions{gap:7px}
+#membersSection .request-list{grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr))}
+@media(max-width:940px){#adminPanel.premium-app{grid-template-columns:195px minmax(0,1fr)}.app-sidebar{padding:18px 10px}.stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.dash-bottom{grid-template-columns:1fr}.v2-filters{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.shell{width:min(100% - 20px,1320px);padding-top:12px}.topbar{padding:11px 13px;gap:12px}.mark.site-logo{width:49px;height:49px;flex-basis:49px}.brand-name{font-size:17px}.brand-sub{font-size:8px}.sep{margin:0 5px}#adminPanel.premium-app{display:block;min-height:0}.app-sidebar{min-height:0;padding:12px;gap:10px}.side-title,.side-footer,.side-group-title{display:none}.sidebar-nav{display:flex;gap:7px;overflow-x:auto}.sidebar-nav button{width:auto;flex:none;font-size:11px;padding:10px 9px}.sidebar-nav button span{font-size:16px}.app-main{padding:17px 13px}.app-eyebrow{font-size:9px}.admin-head{gap:8px}.admin-head h2{font-size:22px}.logout-button{padding:8px 10px;font-size:12px}.premium-hero{margin:22px auto}.hero-pills span{font-size:10px}.request-list{grid-template-columns:1fr}.stat-grid{gap:8px}.stat-box{padding:14px}.v2-filters{grid-template-columns:1fr 1fr;padding:12px}.v2-filters select{font-size:12px}.recent-item .status-pill{font-size:9px;max-width:80px;white-space:normal;text-align:center}}
+@media(max-width:385px){.v2-filters{grid-template-columns:1fr}.stat-grid{grid-template-columns:1fr 1fr}.app-main{padding:15px 10px}}
+
+</style>
 </head>
 <body>
 <div class="shell">
+<div class="v2-dev-mark"><span class="pulse-dot"></span> DETROIT MECHANICS 2.0 <span class="sep">/</span> SISTEMA OFICIAL DE RECRUTAMENTO <span class="sep">/</span> INSCRIÇÕES ABERTAS</div>
 <header class="topbar">
   <a class="brand" href="#" aria-label="Detroit Mechanics início" onclick="showView('apply');return false">
     <div class="mark site-logo" aria-hidden="true"><img src="DETROIT-MECHANICS.png" alt="" width="76" height="76" decoding="async"></div>
@@ -26,7 +98,7 @@ button,input,textarea,select{font:inherit}button{cursor:pointer}.shell{width:min
 
 <main>
 <section id="viewApply">
-  <div class="hero"><div class="eyebrow">Faça parte da equipe</div><h1>Recrutamento <em>Detroit</em></h1><p>Preencha seus dados e informe sua disponibilidade. Nossa equipe analisará sua solicitação.</p></div>
+  <div class="hero premium-hero"><div class="hero-tag"><span class="pulse-dot"></span> RECRUTAMENTO · DETROIT MECHANICS</div><h1>Seu próximo passo é <em>aqui.</em></h1><p>Faça parte de uma equipe movida por desempenho. Envie sua ficha de recrutamento e acompanhe o processo com nossa equipe.</p><div class="hero-pills"><span>◆ Equipe RP</span><span>◆ Formulário seguro</span><span>◆ Avaliação pela equipe</span></div></div>
   <form class="panel" id="applicationForm">
     <div id="applyMessage" class="message" role="status"></div>
     <h2 class="section-title">Ficha de recrutamento</h2><p class="section-note">Preencha os campos abaixo com seus dados do personagem (RP).</p>
@@ -45,18 +117,18 @@ button,input,textarea,select{font:inherit}button{cursor:pointer}.shell{width:min
       <label class="day"><input type="checkbox" value="Domingo"><span>Domingo</span></label>
     </div></div>
     <div class="field"><label for="hours">Horários disponíveis *</label><textarea id="hours" maxlength="500" placeholder="Ex.: segunda a sexta, das 19h às 23h; sábado à tarde..." required></textarea></div>
-    <div class="field"><label for="discord">ID do Discord para contato *</label><input id="discord" maxlength="100" placeholder="Ex.: usuario ou ID do Discord" required></div>
+    <div class="field"><label for="discord">ID do Discord *</label><input id="discord" type="text" inputmode="numeric" autocomplete="off" minlength="17" maxlength="20" pattern="[0-9]{17,20}" title="Informe somente o ID numérico do usuário no Discord (17 a 20 dígitos)" placeholder="Ex.: 123456789012345678" aria-describedby="discord-help" required><div id="discord-help" style="font-size:12px;line-height:1.5;color:#a4a4ad;margin-top:7px">Somente números, sem @ ou nome de usuário. No Discord: ative o Modo Desenvolvedor nas configurações e escolha <strong>Copiar ID do usuário</strong> no perfil.</div></div>
     <div class="field"><label for="experience">Já trabalhou como mecânico? *</label><select id="experience" required><option value="">Selecione uma opção</option><option>Sim, tenho experiência</option><option>Não, será minha primeira experiência</option></select></div>
     <div class="field"><label for="about">Conte um pouco sobre você (opcional)</label><textarea id="about" maxlength="800" placeholder="Experiência, interesse na vaga ou outras informações..."></textarea></div>
     <label class="inline-check"><input type="checkbox" id="confirm" required><span>Confirmo que as informações enviadas são verdadeiras e que estou informando apenas dados do personagem (RP).</span></label>
     <button class="primary" type="submit">Enviar solicitação</button>
   </form>
-  <div class="foot"> MECHANICS · RECRUTAMENTO RP</div>
+  <div class="foot">DETROIT MECHANICS · RECRUTAMENTO</div>
 </section>
 
 <section id="viewAccess" class="hidden">
   <div class="hero"><div class="eyebrow">Somente equipe autorizada</div><h1>Área <em>restrita</em></h1><p>Entre com seu e-mail e senha cadastrados para acessar as solicitações recebidas.</p></div>
-  <div class="panel" id="authPanel">
+  <div class="panel login-card" id="authPanel">
     <div id="authMessage" class="message" role="status"></div>
     <div id="loginFormWrap">
       <h2 class="section-title">Entrar na área administrativa</h2><p class="section-note">Entre com sua conta administrativa autorizada no Supabase.</p>
@@ -66,7 +138,7 @@ button,input,textarea,select{font:inherit}button{cursor:pointer}.shell{width:min
         <button class="primary" type="submit">Entrar</button>
       </form>
       <p style="text-align:center;font-size:12px;margin:18px 0 0"><button type="button" class="small-link" onclick="toggleRegister(true)">Solicitar acesso à equipe</button></p>
-      <p style="text-align:center;font-size:12px;margin:8px 0 0"><button type="button" id="resendConfirmationButton" class="small-link" onclick="resendConfirmation()">Reenviar confirmação de e-mail</button></p>
+      
     </div>
     <div id="registerFormWrap" class="hidden">
       <h2 class="section-title">Solicitar acesso</h2><p class="section-note">Seu cadastro ficará pendente até a aprovação de um ADM ativo. O cargo será escolhido pelo ADM.</p>
@@ -80,15 +152,49 @@ button,input,textarea,select{font:inherit}button{cursor:pointer}.shell{width:min
     </div>
 <div class="security-note"><strong>Importante:</strong> A autenticação é feita pelo Supabase. A leitura e a exclusão das solicitações dependem das permissões configuradas no banco de dados.</div>
   </div>
-  <div id="adminPanel" class="panel wide hidden">
-    <div class="admin-head"><div><span class="badge">● ACESSO AUTORIZADO</span><h2 style="margin-top:12px">Solicitações de recrutamento</h2><p id="adminSummary">Gerencie as solicitações recebidas pelo sistema.</p></div><button class="ghost" onclick="logout()">Sair da conta</button></div>
-    <div id="adminTabs" class="tabs"><button id="tabRecruit" class="active" onclick="switchAdminTab('recruit')">Inscrições</button><button id="tabMembers" class="hidden" onclick="switchAdminTab('members')">Gerenciar administradores</button></div>
-    <div id="recruitSection"><div class="toolbar"><input class="search" id="searchRequests" placeholder="Buscar por nome, passaporte ou Discord..."><button onclick="exportCSV()">Exportar CSV</button></div>
+  <div id="adminPanel" class="panel wide hidden premium-app">
+    <aside class="app-sidebar" aria-label="Menu do painel">
+      <div class="side-title"><span class="side-monogram">DM</span><span><strong>DETROIT</strong><small>MANAGEMENT V2</small></span></div>
+      <div class="side-group-title">WORKSPACE</div>
+      <div class="sidebar-nav" id="adminTabs">
+        <button type="button" id="tabDashboard" class="active" onclick="switchAdminTab('dashboard')"><span aria-hidden="true">◫</span> Visão geral</button>
+        <button type="button" id="tabRecruit" onclick="switchAdminTab('recruit')"><span aria-hidden="true">▤</span> Inscrições</button>
+        <button type="button" id="tabMembers" class="hidden" onclick="switchAdminTab('members')"><span aria-hidden="true">♧</span> Administradores</button>
+      </div>
+      <div class="side-footer"><span class="pulse-dot"></span> Sistema oficial<small>Detroit Mechanics · 2.0</small></div>
+    </aside>
+    <div class="app-main">
+    <div class="app-eyebrow">WORKSPACE / <span id="appBreadcrumb">VISÃO GERAL</span></div>
+    <div class="admin-head"><div><span class="badge">● ACESSO AUTORIZADO</span><h2 id="appHeading" style="margin-top:12px">Visão geral</h2><p id="adminSummary">Acompanhe o recrutamento em tempo real.</p></div><button class="ghost logout-button" onclick="logout()">↪ Sair da conta</button></div>
+    <section id="dashboardSection" class="dashboard-section">
+      <div class="dash-welcome"><span class="hero-tag">DETROIT MECHANICS / RECRUTAMENTO</span><h3>Bem-vindo ao painel.</h3><p>Acompanhe as inscrições e organize o trabalho da equipe em um único lugar.</p></div>
+      <div class="stat-grid" id="dashboardStats" aria-live="polite">
+        <div class="stat-box"><small>Inscrições totais</small><strong id="dashTotal">—</strong><span>Recebidas no sistema</span></div>
+        <div class="stat-box"><small>Pendentes</small><strong id="dashPending">—</strong><span>Aguardando recrutador</span></div>
+        <div class="stat-box"><small>Em análise</small><strong id="dashAnalysis">—</strong><span>Em acompanhamento</span></div>
+        <div class="stat-box"><small>Entrevistas</small><strong id="dashInterview">—</strong><span>Em etapa de entrevista</span></div>
+        <div class="stat-box"><small>Aprovados</small><strong id="dashApproved">—</strong><span>Resultado positivo</span></div>
+        <div class="stat-box"><small>Duplicidades</small><strong id="dashDuplicate">—</strong><span>Possíveis registros repetidos</span></div>
+      </div>
+      <div class="dash-bottom"><div class="dash-feed"><div class="dash-head"><strong>Inscrições recentes</strong><button type="button" onclick="switchAdminTab('recruit')">Ver todas →</button></div><div id="dashboardRecent" class="recent-list"><div class="empty">Carregando dados...</div></div></div>
+      <div class="dash-guidance"><span class="hero-tag">FLUXO DE TRABALHO</span><h3>Organize sua equipe</h3><p>Assuma uma inscrição para movê-la automaticamente de Pendente para Em análise. O sistema registra o responsável e evita conflitos.</p><button class="primary" type="button" onclick="switchAdminTab('recruit')">Ir para inscrições →</button></div></div>
+    </section>
+
+    <div id="recruitSection" class="hidden"><div class="section-banner"><span class="hero-tag">GESTÃO DE CANDIDATOS</span><h3>Inscrições recebidas</h3><p>Pesquise, filtre e acompanhe cada etapa do recrutamento.</p></div><div class="toolbar"><input class="search" id="searchRequests" placeholder="Buscar por nome, passaporte ou ID do Discord..."><button onclick="exportCSV()">Exportar CSV</button></div>
+    <div class="v2-filters">
+      <label>Status<select id="v2StatusFilter"><option value="">Todos</option><option value="pendente">Pendente</option><option value="em_analise">Em análise</option><option value="entrevista">Entrevista</option><option value="aprovado">Aprovado</option><option value="reprovado">Reprovado</option></select></label>
+      <label>Experiência<select id="v2ExperienceFilter"><option value="">Todas</option><option value="sim">Com experiência</option><option value="nao">Sem experiência</option></select></label>
+      <label>Duplicidade<select id="v2DuplicateFilter"><option value="">Todos</option><option value="duplicado">Somente possíveis duplicados</option></select></label>
+      <label>Responsável<select id="v2OwnerFilter"><option value="">Todos</option><option value="meus">Minhas inscrições</option><option value="livres">Sem responsável</option><option value="outros">Outros responsáveis</option></select></label>
+    </div>
+    <div id="v2ResultCount" class="v2-result" aria-live="polite"></div>
+    <div id="v2StatusMessage" class="message" role="status"></div>
     <div id="requestList" class="request-list"></div></div>
-    <div id="membersSection" class="hidden"><div id="membersMessage" class="message" role="status"></div><h3>Solicitações e membros</h3><p class="section-note">Somente ADM ativo pode aprovar, recusar, mudar cargos ou desativar membros.</p><div id="membersList" class="request-list"></div></div>
+    <div id="membersSection" class="hidden"><div class="section-banner"><span class="hero-tag">ACESSO DA EQUIPE</span><h3>Gerenciar membros</h3><p>Aprove solicitações e controle os cargos da equipe.</p></div><div id="membersMessage" class="message" role="status"></div><h3>Solicitações e membros</h3><p class="section-note">Somente ADM ativo pode aprovar, recusar, mudar cargos ou desativar membros.</p><div id="membersList" class="request-list"></div></div>
     <div class="security-note">As solicitações são armazenadas no banco centralizado. Somente contas autorizadas pela política do banco podem consultá-las ou excluí-las.</div>
+    </div>
   </div>
-  <div class="foot">DETROIT MECHANICS · PAINEL ADMINISTRATIVO</div>
+  <div class="foot">DETROIT MECHANICS · PREMIUM DARK V2.0</div>
 </section>
 </main>
 </div>
@@ -101,8 +207,9 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 
 const $ = id => document.getElementById(id);
 let requests = [];
+let activeAssignees = [];
 let currentMember = null;
-let activeTab = "recruit";
+let activeTab = "dashboard";
 
 window.showView = function(view) {
   $('viewApply').classList.toggle('hidden', view !== 'apply');
@@ -130,26 +237,6 @@ window.toggleRegister = function(show) {
   clearMessage('authMessage');
 };
 
-window.resendConfirmation = async function() {
-  clearMessage('authMessage');
-  const email = $('loginEmail').value.trim();
-  if (!email) {
-    showMessage('authMessage', 'Informe seu e-mail no campo acima para solicitar uma nova confirmação.');
-    $('loginEmail').focus();
-    return;
-  }
-  const button = $('resendConfirmationButton');
-  button.disabled = true;
-  try {
-    const { error } = await supabase.auth.resend({ type: 'signup', email });
-    if (error) throw error;
-    showMessage('authMessage', 'Se existir uma confirmação pendente para este endereço, você receberá um novo e-mail. Confira também a pasta de spam. Aguarde a aprovação de um ADM para acessar o painel.', 'success');
-  } catch (error) {
-    console.error('Falha ao reenviar confirmação:', error);
-    showMessage('authMessage', 'Não foi possível reenviar a confirmação. Confira se o serviço de e-mails está configurado no Supabase. Detalhe: ' + (error.message || 'erro de envio'));
-  } finally { button.disabled = false; }
-};
-
 $('registerForm').addEventListener('submit', async event => {
   event.preventDefault(); clearMessage('authMessage');
   const button = event.submitter; button.disabled = true;
@@ -160,7 +247,7 @@ $('registerForm').addEventListener('submit', async event => {
     });
     if (error) throw error;
     event.target.reset(); toggleRegister(false);
-    showMessage('authMessage', 'Solicitação recebida. Se a confirmação por e-mail estiver habilitada, confirme seu endereço. Aguarde a aprovação de um ADM para acessar o painel.', 'success');
+    showMessage('authMessage', 'Solicitação recebida. Aguarde a aprovação de um ADM para acessar o painel.', 'success');
     if (data.session) await supabase.auth.signOut();
   } catch(e) { console.error(e); showMessage('authMessage', 'Não foi possível criar a conta: ' + e.message); }
   finally { button.disabled = false; }
@@ -177,7 +264,7 @@ async function refreshAccess() {
   $('authPanel').classList.toggle('hidden', authorized);
   $('adminPanel').classList.toggle('hidden', !authorized);
   $('tabMembers').classList.toggle('hidden', currentMember?.cargo !== 'adm');
-  if (currentMember?.cargo !== 'adm') activeTab = 'recruit';
+  if (currentMember?.cargo !== 'adm' && activeTab === 'members') activeTab = 'dashboard';
   if (authorized) {
     $('adminSummary').textContent = `${currentMember.nome} · ${currentMember.cargo === 'adm' ? 'ADM' : 'Recrutador'}`;
     switchAdminTab(activeTab);
@@ -190,13 +277,31 @@ async function refreshAccess() {
 
 window.switchAdminTab = function(tab) {
   if (tab === 'members' && currentMember?.cargo !== 'adm') return;
+  if (!['dashboard','recruit','members'].includes(tab)) return;
   activeTab = tab;
-  $('recruitSection').classList.toggle('hidden', tab !== 'recruit');
-  $('membersSection').classList.toggle('hidden', tab !== 'members');
-  $('tabRecruit').classList.toggle('active', tab === 'recruit');
-  $('tabMembers').classList.toggle('active', tab === 'members');
-  if (tab === 'members') renderMembers(); else renderRequests();
+  for (const [name, id, buttonId] of [['dashboard','dashboardSection','tabDashboard'],['recruit','recruitSection','tabRecruit'],['members','membersSection','tabMembers']]) {
+    $(id).classList.toggle('hidden', tab !== name);
+    $(buttonId).classList.toggle('active', tab === name);
+  }
+  const titles = {dashboard:'Visão geral',recruit:'Inscrições',members:'Administradores'};
+  $('appHeading').textContent = titles[tab];
+  $('appBreadcrumb').textContent = titles[tab].toUpperCase();
+  if (tab === 'members') renderMembers();
+  else renderRequests();
 };
+
+function refreshDashboard(items) {
+  const freq = new Map();
+  const personDup = new Set();
+  for (const item of items) for(const val of [item.passaporte,item.discord_id]) {
+    const key = String(val||'').trim().toLowerCase();
+    if (key) freq.set(key,(freq.get(key)||0)+1);
+  }
+  for (const item of items) if([item.passaporte,item.discord_id].some(val => val && freq.get(String(val).trim().toLowerCase()) > 1)) personDup.add(item.id);
+  const byStatus = (k) => items.filter(item => (item.status_candidato||'pendente')===k).length;
+  for (const [id,count] of [['dashTotal',items.length],['dashPending',byStatus('pendente')],['dashAnalysis',byStatus('em_analise')],['dashInterview',byStatus('entrevista')],['dashApproved',byStatus('aprovado')],['dashDuplicate',personDup.size]]) $(id).textContent = count.toLocaleString('pt-BR');
+  $('dashboardRecent').innerHTML = items.length ? items.slice(0,5).map(item => `<div class="recent-item"><div class="recent-avatar">${escapeHTML(String(item.nome_completo||'?').trim().charAt(0).toUpperCase())}</div><div><strong>${escapeHTML(item.nome_completo)}</strong><small>Passaporte #${escapeHTML(item.passaporte)} · ${escapeHTML(new Date(item.created_at).toLocaleDateString('pt-BR'))}</small></div><span class="status-pill status-${escapeHTML(item.status_candidato||'pendente')}">${escapeHTML(({pendente:'Pendente',em_analise:'Em análise',entrevista:'Entrevista',aprovado:'Aprovado',reprovado:'Reprovado'})[item.status_candidato||'pendente']||'Pendente')}</span></div>`).join('') : '<div class="empty">Nenhuma inscrição recebida ainda.</div>';
+}
 
 async function renderMembers() {
   if (currentMember?.cargo !== 'adm') return;
@@ -276,7 +381,7 @@ $('applicationForm').addEventListener('submit', async event => {
     const { error } = await supabase.from('inscricoes').insert(payload);
     if (error) throw error;
     event.target.reset();
-    showMessage('applyMessage', 'Solicitação enviada com sucesso! A equipe Detroit Mechanics analisará seus dados.', 'success');
+    showMessage('applyMessage', 'Solicitação enviada com sucesso! A equipe Detroit Mechanics analisará seus dados e entrará em contato.', 'success');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   } catch (error) {
     console.error('Erro ao enviar inscrição:', error);
@@ -325,72 +430,170 @@ $('loginForm').addEventListener('submit', async event => {
   }
 });
 
-$('searchRequests').addEventListener('input', renderRequests);
+const V2_STATUS_LABELS = {
+  pendente:'Pendente', em_analise:'Em análise', entrevista:'Entrevista',
+  aprovado:'Aprovado', reprovado:'Reprovado'
+};
+const v2Normalize = value => String(value ?? '').trim().toLocaleLowerCase('pt-BR').replace(/\s+/g,'');
+const v2Status = item => V2_STATUS_LABELS[item.status_candidato] ? item.status_candidato : 'pendente';
+
+for (const id of ['searchRequests','v2StatusFilter','v2ExperienceFilter','v2DuplicateFilter','v2OwnerFilter']) {
+  $(id).addEventListener(id === 'searchRequests' ? 'input' : 'change', paintRequests);
+}
 
 async function renderRequests() {
   const { data: { session } } = await supabase.auth.getSession();
   if (!session || !currentMember) return;
-
-  const list = $('requestList');
-  list.innerHTML = '<div class="empty">Carregando solicitações...</div>';
-
-  const { data, error } = await supabase
-    .from('inscricoes')
-    .select('*')
-    .order('created_at', { ascending: false });
-
+  $('requestList').innerHTML = '<div class="empty">Carregando solicitações...</div>';
+  const { data, error } = await supabase.from('inscricoes').select('*').order('created_at',{ascending:false});
   if (error) {
     console.error('Erro ao carregar inscrições:', error);
-    list.innerHTML = '<div class="empty">A conta entrou, mas não tem permissão para consultar as solicitações. Confirme se a conta está ativa como ADM ou Recrutador.</div>';
-    $('adminSummary').textContent = 'Acesso aos dados não autorizado ou erro de configuração.';
+    $('requestList').innerHTML = '<div class="empty">Não foi possível carregar as inscrições. Confira as permissões no Supabase.</div>';
     return;
   }
-
   requests = data || [];
-  const query = ($('searchRequests').value || '').toLowerCase();
-  const filtered = requests.filter(item =>
-    [item.nome_completo, item.passaporte, item.discord_id, item.telefone]
-      .join(' ').toLowerCase().includes(query)
-  );
+  refreshDashboard(requests);
+  const { data: colleagues, error: colleagueError } = await supabase.rpc('north_active_recruiters');
+  if (colleagueError) {
+    console.error('Falha ao consultar responsaveis', colleagueError);
+    showMessage('v2StatusMessage', 'A lista de responsáveis não pôde ser carregada. Confira a migração SQL da etapa 1. ' + (colleagueError.message || ''));
+    activeAssignees = [];
+  } else activeAssignees = colleagues || [];
+  paintRequests();
+}
 
-  $('adminSummary').textContent = requests.length + ' solicitação(ões) recebida(s) no banco.';
-  if (!filtered.length) {
-    list.innerHTML = '<div class="empty">' + (requests.length
-      ? 'Nenhuma solicitação corresponde à busca.'
-      : 'Nenhuma solicitação recebida ainda.') + '</div>';
+function paintRequests() {
+  if (!currentMember) return;
+  const counts = {passaporte:new Map(),discord:new Map()};
+  for(const item of requests) {
+    for(const field of ['passaporte','discord']) {
+      const value=v2Normalize(field==='discord'?item.discord_id:item.passaporte);
+      if(value) counts[field].set(value,(counts[field].get(value)||0)+1);
+    }
+  }
+  const duplicatesFor = item => {
+    const found=[];
+    for(const [field,label] of [['passaporte','passaporte RP'],['discord','ID do Discord']]) {
+      const value=v2Normalize(field==='discord'?item.discord_id:item.passaporte);
+      if(value && (counts[field].get(value)||0)>1) found.push(label);
+    }
+    return found;
+  };
+  const query=($('searchRequests').value||'').toLocaleLowerCase('pt-BR').trim();
+  const status=$('v2StatusFilter').value;
+  const experience=$('v2ExperienceFilter').value;
+  const duplicates=$('v2DuplicateFilter').value;
+  const ownerFilter=$('v2OwnerFilter').value;
+  const filtered=requests.filter(item=>{
+    if(query && ![item.nome_completo,item.passaporte,item.discord_id,item.telefone].join(' ').toLocaleLowerCase('pt-BR').includes(query)) return false;
+    if(status && v2Status(item)!==status) return false;
+    if(experience){
+      const has=String(item.experiencia||'').trim().toLocaleLowerCase('pt-BR').startsWith('sim');
+      if(experience==='sim'?!has:has) return false;
+    }
+    if(duplicates==='duplicado' && !duplicatesFor(item).length) return false;
+    const owner = item.responsavel_id || null;
+    if (ownerFilter==='meus' && owner!==currentMember.user_id) return false;
+    if (ownerFilter==='livres' && owner!==null) return false;
+    if (ownerFilter==='outros' && (!owner || owner===currentMember.user_id)) return false;
+    return true;
+  });
+  $('adminSummary').textContent=requests.length+' solicitação(ões) recebida(s) no banco.';
+  $('v2ResultCount').textContent=filtered.length+' de '+requests.length+' inscrições exibidas. Possíveis duplicidades são avisos, não bloqueios.';
+  const list=$('requestList');
+  if(!filtered.length){
+    list.innerHTML='<div class="empty">'+(requests.length?'Nenhuma inscrição corresponde aos filtros.':'Nenhuma inscrição recebida ainda.')+'</div>';
     return;
   }
-
-  list.innerHTML = filtered.map(item => {
-    const created = item.created_at ? new Date(item.created_at).toLocaleString('pt-BR') : 'Data indisponível';
-    const days = Array.isArray(item.dias_disponiveis) ? item.dias_disponiveis.map(escapeHTML).join(', ') : '';
-    const idArg = JSON.stringify(String(item.id));
-    const discordArg = JSON.stringify(String(item.discord_id || ''));
+  list.innerHTML=filtered.map(item=>{
+    const created=item.created_at?new Date(item.created_at).toLocaleString('pt-BR'):'Data indisponível';
+    const days=Array.isArray(item.dias_disponiveis)?item.dias_disponiveis.map(escapeHTML).join(', '):'';
+    const idArg=JSON.stringify(String(item.id));
+    const discordArg=JSON.stringify(String(item.discord_id||''));
+    const possibleDuplicates=duplicatesFor(item);
+    const badge=possibleDuplicates.length?`<div class="v2-warning">⚠ Possível inscrição duplicada por ${escapeHTML(possibleDuplicates.join(' e '))}. Confira antes de decidir.</div>`:'';
+    const currentStatus=v2Status(item);
+    const ownerId=item.responsavel_id||null;
+    const ownerName=ownerId ? (activeAssignees.find(m=>m.user_id===ownerId)?.nome||'Membro inativo ou indisponível') : 'Ninguém assumiu esta inscrição';
+    const isMine=ownerId===currentMember.user_id;
+    const isAdmin=currentMember.cargo==='adm';
+    const canEditStatus=isAdmin||isMine;
+    const closed=['aprovado','reprovado'].includes(currentStatus);
+    const claimButton=!ownerId&&!closed?'<button type="button" class="v2-claim" data-v2-claim="'+escapeHTML(String(item.id))+'">Assumir inscrição</button>':'';
+    const releaseButton=ownerId&&(isMine||isAdmin)?'<button type="button" data-v2-release="'+escapeHTML(String(item.id))+'">Liberar inscrição</button>':'';
+    const transferOptions=activeAssignees.filter(m=>m.user_id!==ownerId).map(m=>'<option value="'+escapeHTML(m.user_id)+'">'+escapeHTML(m.nome)+' ('+escapeHTML(m.cargo.toUpperCase())+')</option>').join('');
+    const transferTools=isAdmin&&!closed&&transferOptions?'<select class="v2-transfer" data-v2-target="'+escapeHTML(String(item.id))+'" aria-label="Novo responsável"><option value="">Transferir para...</option>'+transferOptions+'</select><button type="button" data-v2-transfer="'+escapeHTML(String(item.id))+'">Transferir</button>':'';
+    const ownerMarkup='<div class="v2-owner '+(!ownerId?'free':'')+'"><span class="owner-dot" aria-hidden="true"></span><div><strong>Responsável: '+escapeHTML(ownerName)+'</strong>'+(item.assumida_em ? '<div class="v2-assumed">Assumida em '+escapeHTML(new Date(item.assumida_em).toLocaleString('pt-BR'))+'</div>' : '')+'</div></div>';
+    const options=Object.entries(V2_STATUS_LABELS).map(([value,label])=>`<option value="${value}" ${currentStatus===value?'selected':''}>${label}</option>`).join('');
     return `<article class="request">
-      <div class="request-top">
-        <div><h3>${escapeHTML(item.nome_completo)}</h3><small>Recebida em ${escapeHTML(created)}</small></div>
-        <span class="badge">PASSAPORTE ${escapeHTML(item.passaporte)}</span>
-      </div>
-      <p><strong>Telefone:</strong> ${escapeHTML(item.telefone)}<br>
-      <strong>Discord:</strong> ${escapeHTML(item.discord_id)}<br>
-      <strong>Dias:</strong> ${days}<br>
-      <strong>Horários:</strong> ${escapeHTML(item.horario_disponivel)}<br>
-      <strong>Experiência:</strong> ${escapeHTML(item.experiencia || 'Não informado')}
-      ${item.sobre ? '<br><strong>Sobre:</strong> ' + escapeHTML(item.sobre) : ''}</p>
-      <div class="request-actions">
-        <button onclick='copyDiscord(${escapeHTML(discordArg)})'>Copiar Discord</button>
-        ${currentMember?.cargo === 'adm' ? `<button class="danger" onclick='deleteRequest(${escapeHTML(idArg)})'>Excluir solicitação</button>` : ''}
-      </div>
+      <div class="request-top"><div><h3>${escapeHTML(item.nome_completo)}</h3><small>Recebida em ${escapeHTML(created)}</small></div><span class="badge">PASSAPORTE ${escapeHTML(item.passaporte)}</span></div>
+      <p><strong>Telefone:</strong> ${escapeHTML(item.telefone)}<br><strong>ID do Discord:</strong> ${escapeHTML(item.discord_id)}<br><strong>Dias:</strong> ${days}<br><strong>Horários:</strong> ${escapeHTML(item.horario_disponivel)}<br><strong>Experiência:</strong> ${escapeHTML(item.experiencia||'Não informado')}${item.sobre?'<br><strong>Sobre:</strong> '+escapeHTML(item.sobre):''}</p>
+      ${badge}
+      ${ownerMarkup}
+      <div class="v2-recruit-actions">${claimButton}${releaseButton}${transferTools}</div>
+      ${canEditStatus?`<div class="v2-actions"><label for="v2-status-${escapeHTML(String(item.id))}">Status:</label><select id="v2-status-${escapeHTML(String(item.id))}" data-candidate-status="${escapeHTML(String(item.id))}">${options}</select><button data-save-status="${escapeHTML(String(item.id))}">Salvar status</button></div>`:'<p class="v2-tip">Para alterar o status, assuma esta inscrição. Se ela já tiver responsável, peça a transferência a um ADM.</p>'}
+      <div class="request-actions"><button type="button" data-copy-discord="${escapeHTML(String(item.discord_id||''))}">Copiar ID do Discord</button>${currentMember?.cargo==='adm'?`<button type="button" class="danger" data-delete-request="${escapeHTML(String(item.id))}">Excluir solicitação</button>`:''}</div>
     </article>`;
   }).join('');
 }
 
+$('requestList').addEventListener('click',async event=>{
+  const copyButton=event.target.closest('button[data-copy-discord]');
+  if(copyButton){await window.copyDiscord(copyButton.dataset.copyDiscord||'');return;}
+  const deleteButton=event.target.closest('button[data-delete-request]');
+  if(deleteButton){await window.deleteRequest(deleteButton.dataset.deleteRequest);return;}
+  const claim=event.target.closest('button[data-v2-claim]');
+  const release=event.target.closest('button[data-v2-release]');
+  const transfer=event.target.closest('button[data-v2-transfer]');
+  const ownerButton=claim||release||transfer;
+  if(ownerButton){
+    const id=ownerButton.dataset.v2Claim||ownerButton.dataset.v2Release||ownerButton.dataset.v2Transfer;
+    const action=claim?'assumir':release?'liberar':'transferir';
+    const target=transfer ? document.querySelector('[data-v2-target="'+id+'"]')?.value : null;
+    if(transfer&&!target){showMessage('v2StatusMessage','Escolha o novo responsável antes de transferir.');return;}
+    if(release&&!confirm('Liberar esta inscrição para que outra pessoa possa assumir?'))return;
+    if(transfer&&!confirm('Transferir esta inscrição para o membro selecionado?'))return;
+    const fn=claim?'north_take_candidate':release?'north_release_candidate':'north_transfer_candidate';
+    const args={p_inscricao_id:Number(id)};
+    if(transfer)args.p_novo_responsavel=target;
+    ownerButton.disabled=true;
+    clearMessage('v2StatusMessage');
+    try{
+      const {error}=await supabase.rpc(fn,args);
+      if(error)throw error;
+      await renderRequests();
+      showMessage('v2StatusMessage', action==='assumir'?'Inscrição assumida. Se estava Pendente, agora está Em análise.':action==='liberar'?'Inscrição liberada com sucesso.':'Responsável transferido com sucesso.','success');
+    }catch(error){
+      console.error('Falha ao '+action+' inscrição:',error);
+      showMessage('v2StatusMessage','Não foi possível '+action+' a inscrição: '+(error.message||'erro desconhecido'));
+      ownerButton.disabled=false;
+    }
+    return;
+  }
+  const button=event.target.closest('button[data-save-status]');
+  if(!button||!currentMember)return;
+  const id=button.dataset.saveStatus;
+  const select=[...document.querySelectorAll('[data-candidate-status]')].find(el=>el.dataset.candidateStatus===id);
+  if(!select)return;
+  button.disabled=true;
+  clearMessage('v2StatusMessage');
+  try {
+    const {error}=await supabase.rpc('north_set_candidate_status',{p_inscricao_id:Number(id),p_status:select.value});
+    if(error) throw error;
+    showMessage('v2StatusMessage','Status atualizado com sucesso.','success');
+    await renderRequests();
+  } catch(error) {
+    console.error('Falha ao atualizar status',error);
+    showMessage('v2StatusMessage','Não foi possível salvar o status. Verifique se a migração SQL da etapa 1 foi instalada e se seu cargo está ativo. '+(error.message||''));
+  } finally {button.disabled=false;}
+});
+
 window.copyDiscord = async function(value) {
   try {
     await navigator.clipboard.writeText(value);
-    alert('Discord copiado.');
+    alert('ID do Discord copiado.');
   } catch {
-    alert('Discord: ' + value);
+    alert('ID do Discord: ' + value);
   }
 };
 
@@ -411,7 +614,7 @@ window.exportCSV = function() {
     alert('Não há solicitações para exportar.');
     return;
   }
-  const columns = ['Data', 'Nome completo RP', 'Passaporte RP', 'Telefone RP', 'Dias disponíveis', 'Horários', 'Discord', 'Experiência', 'Sobre'];
+  const columns = ['Data', 'Nome completo RP', 'Passaporte RP', 'Telefone RP', 'Dias disponíveis', 'Horários', 'ID do Discord', 'Experiência', 'Sobre'];
   const quote = value => {
     const raw = String(value ?? '');
     // Impede que células vindas de candidatos sejam interpretadas como fórmulas.
