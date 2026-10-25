@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#080808">
-<title>North Mechanics | Recrutamento</title>
+<title>Detroit Mechanics | Recrutamento</title>
 <style>
 :root{--red:#ff1738;--red2:#ff4058;--bg:#070707;--panel:#111113;--field:#202023;--muted:#a4a4ad;--white:#f5f5f7;--line:#303036}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% 10%,#26070d 0,transparent 36%),var(--bg);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
@@ -14,9 +14,9 @@ button,input,textarea,select{font:inherit}button{cursor:pointer}.shell{width:min
 <body>
 <div class="shell">
 <header class="topbar">
-  <a class="brand" href="#" aria-label="North Mechanics início" onclick="showView('apply');return false">
-    <div class="mark site-logo" aria-hidden="true"><img src="NORTH-MECHANICS.png" alt="" width="76" height="76" decoding="async"></div>
-    <div><div class="brand-name">NORTH <span>MECHANICS</span></div><div class="brand-sub">PERFORMANCE GARAGE</div></div>
+  <a class="brand" href="#" aria-label="Detroit Mechanics início" onclick="showView('apply');return false">
+    <div class="mark site-logo" aria-hidden="true"><img src="DETROIT-MECHANICS.png" alt="" width="76" height="76" decoding="async"></div>
+    <div><div class="brand-name">DETROIT <span>MECHANICS</span></div><div class="brand-sub">PERFORMANCE GARAGE</div></div>
   </a>
   <nav class="nav" aria-label="Navegação">
     <button id="navApply" class="active" onclick="showView('apply')">Recrutamento</button>
@@ -26,7 +26,7 @@ button,input,textarea,select{font:inherit}button{cursor:pointer}.shell{width:min
 
 <main>
 <section id="viewApply">
-  <div class="hero"><div class="eyebrow">Faça parte da equipe</div><h1>Recrutamento <em>North</em></h1><p>Preencha seus dados e informe sua disponibilidade. Nossa equipe analisará sua solicitação.</p></div>
+  <div class="hero"><div class="eyebrow">Faça parte da equipe</div><h1>Recrutamento <em>Detroit</em></h1><p>Preencha seus dados e informe sua disponibilidade. Nossa equipe analisará sua solicitação.</p></div>
   <form class="panel" id="applicationForm">
     <div id="applyMessage" class="message" role="status"></div>
     <h2 class="section-title">Ficha de recrutamento</h2><p class="section-note">Preencha os campos abaixo com seus dados do personagem (RP).</p>
@@ -51,7 +51,7 @@ button,input,textarea,select{font:inherit}button{cursor:pointer}.shell{width:min
     <label class="inline-check"><input type="checkbox" id="confirm" required><span>Confirmo que as informações enviadas são verdadeiras e que estou informando apenas dados do personagem (RP).</span></label>
     <button class="primary" type="submit">Enviar solicitação</button>
   </form>
-  <div class="foot">NORTH MECHANICS · RECRUTAMENTO RP</div>
+  <div class="foot"> MECHANICS · RECRUTAMENTO RP</div>
 </section>
 
 <section id="viewAccess" class="hidden">
@@ -88,7 +88,7 @@ button,input,textarea,select{font:inherit}button{cursor:pointer}.shell{width:min
     <div id="membersSection" class="hidden"><div id="membersMessage" class="message" role="status"></div><h3>Solicitações e membros</h3><p class="section-note">Somente ADM ativo pode aprovar, recusar, mudar cargos ou desativar membros.</p><div id="membersList" class="request-list"></div></div>
     <div class="security-note">As solicitações são armazenadas no banco centralizado. Somente contas autorizadas pela política do banco podem consultá-las ou excluí-las.</div>
   </div>
-  <div class="foot">NORTH MECHANICS · PAINEL ADMINISTRATIVO</div>
+  <div class="foot">DETROIT MECHANICS · PAINEL ADMINISTRATIVO</div>
 </section>
 </main>
 </div>
@@ -276,7 +276,7 @@ $('applicationForm').addEventListener('submit', async event => {
     const { error } = await supabase.from('inscricoes').insert(payload);
     if (error) throw error;
     event.target.reset();
-    showMessage('applyMessage', 'Solicitação enviada com sucesso! A equipe North Mechanics analisará seus dados.', 'success');
+    showMessage('applyMessage', 'Solicitação enviada com sucesso! A equipe Detroit Mechanics analisará seus dados.', 'success');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   } catch (error) {
     console.error('Erro ao enviar inscrição:', error);
@@ -429,7 +429,7 @@ window.exportCSV = function() {
   const url = URL.createObjectURL(blob);
   const anchor = document.createElement('a');
   anchor.href = url;
-  anchor.download = 'north-mechanics-solicitacoes.csv';
+  anchor.download = 'detroit-mechanics-solicitacoes.csv';
   anchor.click();
   URL.revokeObjectURL(url);
 };
