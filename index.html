@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#080808">
-<title>Detroit Mechanics 2.2 | Gestão Integrada</title>
+<title>Detroit Mechanics 2.3 | Acesso Discord</title>
 <style>
 :root{--red:#ff1738;--red2:#ff4058;--bg:#070707;--panel:#111113;--field:#202023;--muted:#a4a4ad;--white:#f5f5f7;--line:#303036}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% 10%,#26070d 0,transparent 36%),var(--bg);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
@@ -144,7 +144,7 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
 </head>
 <body>
 <div class="shell">
-<div class="v2-dev-mark"><span class="pulse-dot"></span> DETROIT MECHANICS 2.0 <span class="sep">/</span> SISTEMA OFICIAL DE RECRUTAMENTO <span class="sep">/</span> INSCRIÇÕES ABERTAS</div>
+<div class="v2-dev-mark"><span class="pulse-dot"></span> DETROIT MECHANICS 2.3 <span class="sep">/</span> SISTEMA OFICIAL DE RECRUTAMENTO <span class="sep">/</span> INSCRIÇÕES ABERTAS</div>
 <header class="topbar">
   <a class="brand" href="#" aria-label="Detroit Mechanics início" onclick="showView('apply');return false">
     <div class="mark site-logo" aria-hidden="true"><img src="DETROIT-MECHANICS.png" alt="" width="76" height="76" decoding="async"></div>
@@ -187,17 +187,23 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
 </section>
 
 <section id="viewAccess" class="hidden">
-  <div class="hero"><div class="eyebrow">Somente equipe autorizada</div><h1>Área <em>restrita</em></h1><p>Entre com seu e-mail e senha cadastrados para acessar as solicitações recebidas.</p></div>
+  <div class="hero"><div class="eyebrow">Somente equipe autorizada</div><h1>Área <em>restrita</em></h1><p>Entre com sua conta Discord cadastrada em Equipe da Mecânica. O painel exibirá apenas os setores autorizados.</p></div>
   <div class="panel login-card" id="authPanel">
     <div id="authMessage" class="message" role="status"></div>
     <div id="loginFormWrap">
-      <h2 class="section-title">Entrar na área administrativa</h2><p class="section-note">Entre com sua conta administrativa autorizada no Supabase.</p>
+      <h2 class="section-title">Acesso à Detroit Mechanics</h2>
+      <p class="section-note">Use sua conta Discord. Você precisa estar ativo na equipe com o ID de Discord correto e os subcargos necessários.</p>
+      <button class="primary" type="button" id="discordLoginButton" style="width:100%;margin:12px 0 10px;display:flex;justify-content:center;align-items:center;gap:10px"><span aria-hidden="true">◈</span> Entrar com Discord</button>
+      <p style="color:#a4a4ad;font-size:12px;line-height:1.6">O login não libera acesso automaticamente a pessoas de fora da equipe. Seu ID e seus subcargos são conferidos no Supabase.</p>
+      <details style="margin:16px 0 8px"><summary style="cursor:pointer;color:#ddd;font-size:13px">Acesso anterior com e-mail e senha (ADM)</summary>
+      <div style="margin-top:16px">
       <form id="loginForm">
         <div class="field"><label for="loginEmail">E-mail *</label><input id="loginEmail" type="email" autocomplete="username" placeholder="admin@exemplo.com" required></div>
         <div class="field"><label for="loginPassword">Senha *</label><input id="loginPassword" type="password" autocomplete="current-password" placeholder="Sua senha" required></div>
         <button class="primary" type="submit">Entrar</button>
       </form>
-      <p style="text-align:center;font-size:12px;margin:18px 0 0"><button type="button" class="small-link" onclick="toggleRegister(true)">Solicitar acesso à equipe</button></p>
+      <p style="text-align:center;font-size:12px;margin:18px 0 0"><button type="button" class="small-link" onclick="toggleRegister(true)">Solicitar acesso à equipe (sistema antigo)</button></p>
+      </div></details>
       
     </div>
     <div id="registerFormWrap" class="hidden">
@@ -214,7 +220,7 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
   </div>
   <div id="adminPanel" class="panel wide hidden premium-app">
     <aside class="app-sidebar" aria-label="Menu do painel">
-      <div class="side-title"><span class="side-monogram">DM</span><span><strong>DETROIT</strong><small>MANAGEMENT V2.2</small></span></div>
+      <div class="side-title"><span class="side-monogram">DM</span><span><strong>DETROIT</strong><small>MANAGEMENT V2.3</small></span></div>
       <div class="side-group-title">WORKSPACE</div>
       <div class="sidebar-nav" id="adminTabs">
         <button type="button" id="tabDashboard" class="active" onclick="switchAdminTab('dashboard')"><span aria-hidden="true">◫</span> Visão geral</button>
@@ -226,7 +232,7 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
         <button type="button" id="tabPR" class="hidden" onclick="switchAdminTab('rp')"><span aria-hidden="true">◎</span> Relações Públicas</button>
         <button type="button" id="tabMembers" class="hidden" onclick="switchAdminTab('members')"><span aria-hidden="true">♧</span> Acessos ao painel</button>
       </div>
-      <div class="side-footer"><span class="pulse-dot"></span> Sistema oficial<small>Detroit Mechanics · 2.2</small></div>
+      <div class="side-footer"><span class="pulse-dot"></span> Sistema oficial<small>Detroit Mechanics · 2.3</small></div>
     </aside>
     <div class="app-main">
     <div class="app-eyebrow">WORKSPACE / <span id="appBreadcrumb">VISÃO GERAL</span></div>
@@ -334,7 +340,7 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
     <div class="security-note">As solicitações são armazenadas no banco centralizado. Somente contas autorizadas pela política do banco podem consultá-las ou excluí-las.</div>
     </div>
   </div>
-  <div class="foot">DETROIT MECHANICS · PREMIUM DARK V2.2 · SETORES INTEGRADOS</div>
+  <div class="foot">DETROIT MECHANICS · PREMIUM DARK V2.3 · LOGIN DISCORD</div>
 </section>
 </main>
 </div>
@@ -407,41 +413,79 @@ async function refreshAccess() {
   const { data: { session } } = await supabase.auth.getSession();
   currentMember = null;
   staffSectorAccess = [];
+  let discordProfile = null;
   if (session) {
-    const { data, error } = await supabase.from('team_members').select('user_id,nome,email,cargo,status,discord_user_id').eq('user_id',session.user.id).maybeSingle();
-    if (!error && data?.status === 'ativo' && ['adm','recrutador'].includes(data.cargo)) currentMember = data;
+    // A RPC confere auth.identities (OAuth assinado pelo Supabase),
+    // nunca o ID de Discord preenchido manualmente no navegador.
+    const {data: profile, error: profileError} = await supabase.rpc('detroit_perfil_discord');
+    if(!profileError && profile?.discord_user_id) {
+      discordProfile = profile;
+      if((profile.subcargos||[]).includes('Recrutadores')) {
+        const {error: grantError} = await supabase.rpc('detroit_ativar_recrutador_discord');
+        if(grantError) console.warn('Acesso de recrutamento Discord nao liberado:',grantError.message);
+      }
+    }
+    const { data, error } = await supabase.from('team_members')
+      .select('user_id,nome,email,cargo,status,discord_user_id')
+      .eq('user_id',session.user.id).maybeSingle();
+    if (!error && data?.status==='ativo' && ['adm','recrutador'].includes(data.cargo)) {
+      currentMember = data;
+    } else if(discordProfile) {
+      // Pode acessar somente seus setores; NUNCA e ADM automaticamente.
+      currentMember = {
+        user_id:session.user.id,
+        nome:discordProfile.nome_rp,
+        cargo:'setor',status:'ativo',
+        discord_user_id:discordProfile.discord_user_id
+      };
+    }
   }
   if (currentMember) {
-    if (currentMember.cargo === 'adm') staffSectorAccess = [...sectorTabs];
-    else if(currentMember.discord_user_id) {
-      const {data} = await supabase.from('detroit_membros').select('subcargos').eq('discord_user_id',currentMember.discord_user_id).eq('situacao','ativo').limit(20);
-      const joined = new Set((data||[]).flatMap(m=>m.subcargos||[]));
-      for (const [sector,subrole] of [['instrutores','Instrutores'],['comite','Comitê'],['rp','Relações Públicas']]) {
-        if(joined.has(subrole)) staffSectorAccess.push(sector);
+    if (currentMember.cargo==='adm') staffSectorAccess=[...sectorTabs];
+    else if (discordProfile) {
+      for(const [tab,subcargo] of [['instrutores','Instrutores'],['comite','Comitê'],['rp','Relações Públicas']]) {
+        if((discordProfile.subcargos||[]).includes(subcargo)) staffSectorAccess.push(tab);
+      }
+    } else if (currentMember.discord_user_id) {
+      // Compativel com logins antigos da equipe, ja vinculados ao Discord.
+      const {data}=await supabase.from('detroit_membros').select('subcargos')
+        .eq('discord_user_id',currentMember.discord_user_id).eq('situacao','ativo').limit(1);
+      const joined=new Set((data||[]).flatMap(m=>m.subcargos||[]));
+      for(const [tab,subcargo] of [['instrutores','Instrutores'],['comite','Comitê'],['rp','Relações Públicas']]) {
+        if(joined.has(subcargo)) staffSectorAccess.push(tab);
       }
     }
   }
-  for(const [tab,id] of [['instrutores','tabInstructors'],['comite','tabEthics'],['rp','tabPR']])
+  const canRecruit = currentMember && ['adm','recrutador'].includes(currentMember.cargo);
+  for(const [tab,id] of [['instrutores','tabInstructors'],['comite','tabEthics'],['rp','tabPR']]) {
     $(id).classList.toggle('hidden',!staffSectorAccess.includes(tab));
-  if (sectorTabs.includes(activeTab) && !staffSectorAccess.includes(activeTab)) activeTab='dashboard';
-  const authorized = !!currentMember;
-  $('authPanel').classList.toggle('hidden', authorized);
-  $('adminPanel').classList.toggle('hidden', !authorized);
-  $('tabMembers').classList.toggle('hidden', currentMember?.cargo !== 'adm');
-  if (currentMember?.cargo !== 'adm' && activeTab === 'members') activeTab = 'dashboard';
-  if (currentMember?.cargo !== 'adm') $('staffFormWrap').classList.add('hidden');
+  }
+  for(const id of ['tabDashboard','tabRecruit','tabStaff']) $(id).classList.toggle('hidden',!canRecruit);
+  $('tabMembers').classList.toggle('hidden',currentMember?.cargo!=='adm');
+  const authorized = Boolean(currentMember && (canRecruit || staffSectorAccess.length));
+  $('authPanel').classList.toggle('hidden',authorized);
+  $('adminPanel').classList.toggle('hidden',!authorized);
+  if (!canRecruit && ['dashboard','recruit','staff','members'].includes(activeTab)) {
+    activeTab=staffSectorAccess[0]||'dashboard';
+  }
+  if (currentMember?.cargo!=='adm') {
+    $('staffFormWrap').classList.add('hidden');
+  }
   if (authorized) {
-    $('adminSummary').textContent = `${currentMember.nome} · ${currentMember.cargo === 'adm' ? 'ADM' : 'Recrutador'}`;
+    $('adminSummary').textContent=`${currentMember.nome} · ${currentMember.cargo==='adm'?'ADM':canRecruit?'Recrutador':'Equipe da Mecânica'}`;
     switchAdminTab(activeTab);
-  } else if (session) {
+  } else if(session) {
     toggleRegister(false);
-    showMessage('authMessage', 'Sua conta está pendente, recusada ou desativada. Apenas membros ativos podem entrar. Se sua conta já foi aprovada, saia e entre novamente.', 'error');
+    showMessage('authMessage','Acesso não autorizado. Confira se seu ID do Discord está cadastrado em Equipe da Mecânica, se você está ativo e se possui ao menos um subcargo autorizado.','error');
     await supabase.auth.signOut();
   }
 }
 
 window.switchAdminTab = function(tab) {
-  if (tab === 'members' && currentMember?.cargo !== 'adm') return;
+  if (!currentMember) return;
+  const canRecruit = ['adm','recrutador'].includes(currentMember.cargo);
+  if (['dashboard','recruit','staff'].includes(tab) && !canRecruit) return;
+  if (tab === 'members' && currentMember.cargo !== 'adm') return;
   if (sectorTabs.includes(tab) && !staffSectorAccess.includes(tab)) return;
   if (!['dashboard','recruit','staff','members',...sectorTabs].includes(tab)) return;
   activeTab = tab;
@@ -567,6 +611,23 @@ $('applicationForm').addEventListener('submit', async event => {
       submitButton.disabled = false;
       submitButton.textContent = 'Enviar solicitação';
     }
+  }
+});
+
+$('discordLoginButton').addEventListener('click', async () => {
+  clearMessage('authMessage');
+  const btn=$('discordLoginButton');
+  btn.disabled=true;btn.textContent='Abrindo Discord...';
+  try {
+    const redirectTo=window.location.origin+window.location.pathname+'?painel=1';
+    const {error}=await supabase.auth.signInWithOAuth({
+      provider:'discord', options:{redirectTo}
+    });
+    if(error)throw error;
+  } catch(e) {
+    console.error('Discord OAuth:',e);
+    showMessage('authMessage','Não foi possível abrir o Discord: '+(e.message||'tente novamente'));
+    btn.disabled=false;btn.textContent='Entrar com Discord';
   }
 });
 
@@ -1027,7 +1088,7 @@ async function renderSector(tab) {
   else $('sectorSecurity').textContent='Parcerias, campanhas, mídias e comunicados são acompanhados por Relações Públicas autorizados e ADM.';
   const [registros,membros] = await Promise.all([
     supabase.from('detroit_setor_registros').select('*').eq('setor',tab).order('criado_em',{ascending:false}).limit(500),
-    supabase.from('detroit_membros').select('id,nome_rp,passaporte_rp,situacao').order('nome_rp',{ascending:true}).limit(1000)
+    supabase.rpc('detroit_lista_membros_setores')
   ]);
   if(activeTab!==tab)return;
   if(registros.error){ $('sectorCards').innerHTML='<div class="empty">Erro ao carregar. Execute o SQL 2.2 no Supabase oficial. '+escapeHTML(registros.error.message)+'</div>';return;}
@@ -1174,7 +1235,8 @@ window.exportSectorCSV=function(){
 supabase.auth.onAuthStateChange(() => {
   setTimeout(() => refreshAccess(), 0);
 });
-refreshAccess();
+if(new URLSearchParams(window.location.search).get('painel')==='1') showView('access');
+else refreshAccess();
 </script>
 </body>
 </html>
