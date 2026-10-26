@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#080808">
-<title>Detroit Mechanics 2.0 | Recrutamento Oficial</title>
+<title>Detroit Mechanics 2.2 | Gestão Integrada</title>
 <style>
 :root{--red:#ff1738;--red2:#ff4058;--bg:#070707;--panel:#111113;--field:#202023;--muted:#a4a4ad;--white:#f5f5f7;--line:#303036}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% 10%,#26070d 0,transparent 36%),var(--bg);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
@@ -80,6 +80,66 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
 @media(max-width:640px){.shell{width:min(100% - 20px,1320px);padding-top:12px}.topbar{padding:11px 13px;gap:12px}.mark.site-logo{width:49px;height:49px;flex-basis:49px}.brand-name{font-size:17px}.brand-sub{font-size:8px}.sep{margin:0 5px}#adminPanel.premium-app{display:block;min-height:0}.app-sidebar{min-height:0;padding:12px;gap:10px}.side-title,.side-footer,.side-group-title{display:none}.sidebar-nav{display:flex;gap:7px;overflow-x:auto}.sidebar-nav button{width:auto;flex:none;font-size:11px;padding:10px 9px}.sidebar-nav button span{font-size:16px}.app-main{padding:17px 13px}.app-eyebrow{font-size:9px}.admin-head{gap:8px}.admin-head h2{font-size:22px}.logout-button{padding:8px 10px;font-size:12px}.premium-hero{margin:22px auto}.hero-pills span{font-size:10px}.request-list{grid-template-columns:1fr}.stat-grid{gap:8px}.stat-box{padding:14px}.v2-filters{grid-template-columns:1fr 1fr;padding:12px}.v2-filters select{font-size:12px}.recent-item .status-pill{font-size:9px;max-width:80px;white-space:normal;text-align:center}}
 @media(max-width:385px){.v2-filters{grid-template-columns:1fr}.stat-grid{grid-template-columns:1fr 1fr}.app-main{padding:15px 10px}}
 
+/* DETROIT MECHANICS 2.1 - Equipe da Mecânica */
+.staff-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:16px 0 20px}
+.staff-stat{padding:16px;border:1px solid #343a45;border-radius:13px;background:#141922}
+.staff-stat small{display:block;color:#a4aab7;font-size:11px;margin-bottom:8px}
+.staff-stat strong{font-size:27px;font-weight:850;color:#fff}
+.staff-toolbar{display:grid;grid-template-columns:minmax(140px,1fr) minmax(110px,145px) minmax(130px,165px) minmax(140px,180px) auto;gap:10px;margin-bottom:12px}
+.staff-toolbar input,.staff-toolbar select{width:100%;min-width:0;padding:11px 12px;background:#20242c;color:#fff;border:1px solid #343a45;border-radius:9px}
+.staff-toolbar button,.staff-card-actions button,.staff-form-buttons button,.staff-history-head button{background:#222834;color:#fff;border:1px solid #424956;border-radius:9px;padding:10px 13px}
+.staff-result{font-size:12px;color:#acb1bc;margin:8px 0 16px}
+.staff-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.staff-card{background:linear-gradient(145deg,#191d26,#12161e);border:1px solid #323745;border-radius:14px;padding:17px;min-width:0}
+.staff-card-top{display:flex;gap:11px;align-items:center;flex-wrap:wrap}
+.staff-avatar{width:42px;height:42px;display:grid;place-items:center;border-radius:12px;background:#501221;color:#ffc5cf;border:1px solid #ff17385b;font-weight:850;font-size:18px;flex:none}
+.staff-card-name{flex:1;min-width:145px}.staff-card-name strong{display:block;font-size:15px;line-height:1.25}.staff-card-name small{font-size:11px;color:#a2a8b3;display:block;line-height:1.6;overflow-wrap:anywhere}
+.staff-status{font-size:11px;padding:5px 9px;border-radius:40px;border:1px solid #555;color:#ddd;white-space:nowrap}
+.staff-status-ativo{border-color:#2b895a;background:#183d2b;color:#a7f2c4}.staff-status-afastado{border-color:#997128;background:#41321a;color:#ffe0a1}.staff-status-desligado{border-color:#8b3645;background:#401920;color:#ffb3c1}
+.staff-role{color:#ff9dae;font-size:13px;font-weight:800;padding:12px 0 8px}
+.staff-subroles{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
+.staff-subroles .staff-tag{border:1px solid #745063;border-radius:7px;background:#301e2b;color:#ffc3d0;font-size:11px;font-weight:700;padding:6px 9px}
+.staff-subroles .staff-empty-tag{color:#9399a5;font-size:11px}
+.staff-subroles-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:8px}
+.staff-subroles-grid label{display:flex;align-items:center;gap:10px;background:#20242d;border:1px solid #45404a;border-radius:9px;padding:11px 12px;color:#e8eaf0;font-size:12px;cursor:pointer}
+.staff-subroles-grid input{accent-color:#ef3559;flex:none;width:16px;height:16px}
+.staff-subroles-help{font-size:11px;color:#aab2c1;margin-top:8px}
+@media(max-width:540px){.staff-subroles-grid{grid-template-columns:1fr}}
+.staff-metadata{display:grid;grid-template-columns:1fr 1fr;gap:10px;border-top:1px solid #323745;padding-top:12px}
+.staff-metadata span{min-width:0}.staff-metadata small{display:block;color:#8f98a9;font-size:10px;margin-bottom:4px}.staff-metadata strong{display:block;font-size:12px;color:#e5e8ee;overflow-wrap:anywhere}
+.staff-note{font-size:12px;color:#afb5c0;overflow-wrap:anywhere;white-space:pre-wrap}
+.staff-card-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:15px;flex-wrap:wrap}
+.staff-card-actions .staff-edit-btn,.staff-add-btn{background:#4e1423!important;border-color:#c5304a!important;color:#ffd6dd!important}
+.staff-form-wrap,.staff-history-wrap{margin:15px 0 22px;padding:20px;border:1px solid #52505a;background:#151a23;border-radius:14px}
+.staff-form-wrap h3,.staff-history-wrap h3{font-size:18px;margin:0 0 6px}
+.staff-form-wrap p{color:#a8afbf;font-size:12px;margin:0 0 16px;line-height:1.5}
+.staff-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.staff-form-grid .field{margin:0}.staff-form-grid .field-wide{grid-column:1/-1}
+.staff-form-wrap .field label{color:#d8deea}
+.staff-form-buttons{display:flex;justify-content:flex-end;gap:9px;margin-top:18px}
+.staff-form-buttons .primary{width:auto;min-width:170px}
+.staff-promo-check{display:flex;align-items:center;gap:10px;padding:10px;background:#201f25;border:1px solid #42333a;border-radius:9px;font-size:12px;color:#f4cbd2;grid-column:1/-1}
+.staff-promo-check input{accent-color:#f73254}
+.staff-history-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:15px}
+.staff-event{padding:12px 0;border-top:1px solid #343a45}.staff-event small{display:block;color:#999fac;font-size:11px;margin-bottom:5px}.staff-event strong{font-size:12px;color:#e9ebf1}
+@media(max-width:840px){.staff-toolbar{grid-template-columns:repeat(2,minmax(0,1fr))}.staff-grid{grid-template-columns:1fr}}
+@media(max-width:540px){.staff-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.staff-toolbar{grid-template-columns:1fr}.staff-form-grid{grid-template-columns:1fr}.staff-form-buttons{flex-direction:column}.staff-form-buttons .primary{width:100%}.staff-card-top{align-items:flex-start}}
+
+/* DEPARTAMENTOS 2.2 */
+.sector-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:15px 0 19px}
+.sector-toolbar{display:grid;grid-template-columns:minmax(155px,1fr) minmax(135px,175px) minmax(145px,185px) auto auto;gap:9px;margin-bottom:14px}
+.sector-toolbar input,.sector-toolbar select,.sector-roster-controls select{width:100%;min-width:0;padding:11px 12px;background:#20242c;color:#fff;border:1px solid #343a45;border-radius:9px}
+.sector-toolbar button,.sector-roster-controls button{border:1px solid #424956;background:#222834;color:#fff;border-radius:9px;padding:10px 13px;white-space:nowrap}
+.sector-card-meta{display:flex;gap:7px;flex-wrap:wrap;margin:9px 0 12px}
+.sector-card-meta span{color:#bcc3d0;border:1px solid #384251;background:#202630;padding:5px 9px;border-radius:8px;font-size:11px}
+.sector-card-desc{color:#bcc3d0;white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;line-height:1.65;margin:9px 0}
+.sector-roster-controls{display:grid;grid-template-columns:1fr 155px auto;gap:8px;margin-bottom:14px}
+.sector-roster-list{display:grid;gap:9px}
+.sector-roster-person{display:flex;justify-content:space-between;gap:9px;align-items:center;flex-wrap:wrap;background:#1b222d;border:1px solid #353d4b;border-radius:9px;padding:11px 12px}
+.sector-roster-person strong{font-size:12px}.sector-roster-person small{color:#b8bec9;font-size:11px}
+.sector-roster-person button{background:#301c27;border:1px solid #713648;border-radius:8px;color:#ffcad4;padding:7px 10px}
+@media(max-width:950px){.sector-toolbar{grid-template-columns:repeat(2,minmax(0,1fr))}.sector-toolbar input{grid-column:1/-1}}
+@media(max-width:630px){.sector-stats{grid-template-columns:1fr 1fr}.sector-toolbar,.sector-roster-controls{grid-template-columns:1fr}.sector-toolbar input{grid-column:auto}}
 </style>
 </head>
 <body>
@@ -154,14 +214,19 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
   </div>
   <div id="adminPanel" class="panel wide hidden premium-app">
     <aside class="app-sidebar" aria-label="Menu do painel">
-      <div class="side-title"><span class="side-monogram">DM</span><span><strong>DETROIT</strong><small>MANAGEMENT V2</small></span></div>
+      <div class="side-title"><span class="side-monogram">DM</span><span><strong>DETROIT</strong><small>MANAGEMENT V2.2</small></span></div>
       <div class="side-group-title">WORKSPACE</div>
       <div class="sidebar-nav" id="adminTabs">
         <button type="button" id="tabDashboard" class="active" onclick="switchAdminTab('dashboard')"><span aria-hidden="true">◫</span> Visão geral</button>
         <button type="button" id="tabRecruit" onclick="switchAdminTab('recruit')"><span aria-hidden="true">▤</span> Inscrições</button>
-        <button type="button" id="tabMembers" class="hidden" onclick="switchAdminTab('members')"><span aria-hidden="true">♧</span> Administradores</button>
+        <button type="button" id="tabStaff" onclick="switchAdminTab('staff')"><span aria-hidden="true">♙</span> Equipe da Mecânica</button>
+        <div class="side-group-title">DEPARTAMENTOS</div>
+        <button type="button" id="tabInstructors" class="hidden" onclick="switchAdminTab('instrutores')"><span aria-hidden="true">◈</span> Instrutores</button>
+        <button type="button" id="tabEthics" class="hidden" onclick="switchAdminTab('comite')"><span aria-hidden="true">⚖</span> Comitê de Ética</button>
+        <button type="button" id="tabPR" class="hidden" onclick="switchAdminTab('rp')"><span aria-hidden="true">◎</span> Relações Públicas</button>
+        <button type="button" id="tabMembers" class="hidden" onclick="switchAdminTab('members')"><span aria-hidden="true">♧</span> Acessos ao painel</button>
       </div>
-      <div class="side-footer"><span class="pulse-dot"></span> Sistema oficial<small>Detroit Mechanics · 2.0</small></div>
+      <div class="side-footer"><span class="pulse-dot"></span> Sistema oficial<small>Detroit Mechanics · 2.2</small></div>
     </aside>
     <div class="app-main">
     <div class="app-eyebrow">WORKSPACE / <span id="appBreadcrumb">VISÃO GERAL</span></div>
@@ -190,11 +255,86 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
     <div id="v2ResultCount" class="v2-result" aria-live="polite"></div>
     <div id="v2StatusMessage" class="message" role="status"></div>
     <div id="requestList" class="request-list"></div></div>
+    <section id="staffSection" class="hidden">
+      <div class="section-banner"><span class="hero-tag">GESTÃO DE PESSOAL / DETROIT MECHANICS</span><h3>Equipe da Mecânica</h3><p>Controle os cargos principais, múltiplos subcargos, ingresso, última promoção, situação e histórico. Candidatos aprovados entram automaticamente.</p></div>
+      <div class="staff-stats">
+        <div class="staff-stat"><small>Total no cadastro</small><strong id="staffTotal">—</strong></div>
+        <div class="staff-stat"><small>Ativos</small><strong id="staffActive">—</strong></div>
+        <div class="staff-stat"><small>Afastados</small><strong id="staffAway">—</strong></div>
+        <div class="staff-stat"><small>Desligados</small><strong id="staffLeft">—</strong></div>
+      </div>
+      <div id="staffMessage" class="message" role="status"></div>
+      <div class="staff-toolbar">
+        <input class="search" id="staffSearch" placeholder="Buscar nome, passaporte, cargo, Discord..." aria-label="Buscar membros da equipe">
+        <select id="staffStatusFilter" aria-label="Filtrar situação"><option value="">Todas as situações</option><option value="ativo">Ativos</option><option value="afastado">Afastados</option><option value="desligado">Desligados</option></select>
+        <select id="staffCargoFilter" aria-label="Filtrar cargo principal"><option value="">Todos os cargos</option></select>
+        <select id="staffSubroleFilter" aria-label="Filtrar subcargo"><option value="">Todos os subcargos</option><option>Instrutores</option><option>Recrutadores</option><option>Comitê</option><option>Relações Públicas</option></select>
+        <button type="button" onclick="exportStaffCSV()">Exportar CSV</button>
+      </div>
+      <div id="staffAdminControls" class="hidden" style="margin:10px 0 16px"><button class="staff-add-btn ghost" type="button" onclick="staffOpenForm()">+ Cadastrar membro</button></div>
+      <div id="staffFormWrap" class="staff-form-wrap hidden">
+        <h3 id="staffFormTitle">Cadastrar membro</h3><p id="staffFormSubtitle">Ficha interna da equipe.</p>
+        <form id="staffForm">
+          <input type="hidden" id="staffFormId">
+          <div class="staff-form-grid">
+            <div class="field"><label for="staffName">Nome RP *</label><input id="staffName" maxlength="120" required></div>
+            <div class="field"><label for="staffPassport">Passaporte RP *</label><input id="staffPassport" maxlength="60" required></div>
+            <div class="field"><label for="staffRole">Cargo principal *</label><select id="staffRole" required><option value="Trainee">Trainee</option><option value="Aux. Mechanic">Aux. Mechanic</option><option value="Mechanic">Mechanic</option><option value="Mechanic Sr">Mechanic Sr</option><option value="Supervisor">Supervisor</option><option value="Chief">Chief</option><option value="Owner">Owner</option></select></div>
+            <div class="field field-wide"><label>Subcargos (pode selecionar vários)</label><div class="staff-subroles-grid" id="staffSubrolesGroup">
+              <label><input type="checkbox" name="staffSubrole" value="Instrutores"> Instrutores</label>
+              <label><input type="checkbox" name="staffSubrole" value="Recrutadores"> Recrutadores</label>
+              <label><input type="checkbox" name="staffSubrole" value="Comitê"> Comitê</label>
+              <label><input type="checkbox" name="staffSubrole" value="Relações Públicas"> Relações Públicas</label>
+            </div><div class="staff-subroles-help">Exemplo: um Mechanic Sr pode ser Instrutores + Recrutadores + Comitê ao mesmo tempo. Esses subcargos não concedem acesso ao painel automaticamente.</div></div>
+            <div class="field"><label for="staffSituation">Situação *</label><select id="staffSituation"><option value="ativo">Ativo</option><option value="afastado">Afastado</option><option value="desligado">Desligado</option></select></div>
+            <div class="field"><label for="staffJoined">Data de ingresso *</label><input id="staffJoined" type="date" required></div>
+            <div class="field"><label for="staffPromoted">Data da última promoção</label><input id="staffPromoted" type="date"></div>
+            <label class="staff-promo-check"><input id="staffRecordPromotion" type="checkbox"> Registrar promoção com a data de hoje ao mudar o cargo</label>
+            <div class="field"><label for="staffPhone">Telefone RP</label><input id="staffPhone" maxlength="80"></div>
+            <div class="field"><label for="staffDiscord">ID do Discord</label><input id="staffDiscord" maxlength="80"></div>
+            <div class="field field-wide"><label for="staffNotes">Observações internas (até 1.500 caracteres)</label><textarea id="staffNotes" maxlength="1500" placeholder="Treinamentos, feedbacks, especialidades ou informações relevantes..."></textarea></div>
+          </div>
+          <div class="staff-form-buttons"><button type="button" onclick="staffCloseForm()">Cancelar</button><button id="staffSaveButton" class="primary" type="submit">Salvar ficha</button></div>
+        </form>
+      </div>
+      <div id="staffHistoryWrap" class="staff-history-wrap hidden"><div class="staff-history-head"><h3 id="staffHistoryTitle">Histórico</h3><button type="button" onclick="document.getElementById('staffHistoryWrap').classList.add('hidden')">Fechar</button></div><div id="staffHistoryList"></div></div>
+      <div id="staffResultCount" class="staff-result" aria-live="polite"></div>
+      <div id="staffList" class="staff-grid"><div class="empty">Abra esta aba para carregar os membros.</div></div>
+      <div class="security-note">Membros da mecânica são diferentes de contas autorizadas a entrar no painel. Apenas ADM ativo pode editar fichas; recrutadores ativos podem consultar.</div>
+    </section>
+    <section id="sectorSection" class="hidden">
+      <div class="section-banner"><span class="hero-tag" id="sectorSubtitle">DEPARTAMENTOS / DETROIT MECHANICS</span><h3 id="sectorHeading">Departamento</h3><p id="sectorDescription">Registros e acompanhamento do setor.</p></div>
+      <div class="sector-stats"><div class="staff-stat"><small>Registros</small><strong id="sectorTotal">—</strong></div><div class="staff-stat"><small>Em andamento / análise</small><strong id="sectorProgress">—</strong></div><div class="staff-stat"><small>Concluídos / aprovados</small><strong id="sectorDone">—</strong></div></div>
+      <div id="sectorMessage" class="message" role="status"></div>
+      <div class="sector-toolbar"><input id="sectorSearch" class="search" placeholder="Pesquisar registros" aria-label="Pesquisar registros"><select id="sectorTypeFilter" aria-label="Filtrar tipo"><option value="">Todos os tipos</option></select><select id="sectorStatusFilter" aria-label="Filtrar situação"><option value="">Todas as situações</option></select><button type="button" onclick="sectorOpenForm()" class="staff-add-btn">+ Novo registro</button><button type="button" onclick="exportSectorCSV()">Exportar CSV</button></div>
+      <div id="sectorFormPanel" class="staff-form-wrap hidden"><h3 id="sectorFormHeading">Novo registro</h3><p id="sectorFormHelp">Preencha as informações.</p>
+        <form id="sectorForm"><input type="hidden" id="sectorEditId">
+          <div class="staff-form-grid">
+            <div class="field"><label for="sectorType">Tipo *</label><select id="sectorType" required></select></div>
+            <div class="field"><label for="sectorStatus">Situação *</label><select id="sectorStatus" required></select></div>
+            <div class="field field-wide"><label for="sectorTitle">Título *</label><input id="sectorTitle" maxlength="140" required placeholder="Ex.: Curso de mecânica avançada"></div>
+            <div class="field"><label for="sectorStarted">Data de início *</label><input type="date" id="sectorStarted" required></div>
+            <div class="field"><label for="sectorDeadline">Data prevista para término (opcional)</label><input type="date" id="sectorDeadline"></div>
+            <div class="field"><label for="sectorRelated">Membro relacionado (opcional)</label><select id="sectorRelated"><option value="">Nenhum</option></select></div>
+            <div class="field"><label for="sectorOwner">Responsável (opcional)</label><select id="sectorOwner"><option value="">Nenhum</option></select></div>
+            <div class="field field-wide"><label for="sectorLink">Link externo (opcional)</label><input type="url" id="sectorLink" maxlength="500" placeholder="https://..."></div>
+            <div class="field field-wide"><label for="sectorDetails">Descrição / encaminhamentos (até 3.000 caracteres)</label><textarea id="sectorDetails" maxlength="3000" rows="4" placeholder="Anotações e próximos passos..."></textarea></div>
+          </div>
+          <div class="staff-form-buttons"><button type="button" onclick="sectorCloseForm()">Cancelar</button><button type="submit" id="sectorSubmit" class="primary">Salvar registro</button></div>
+        </form>
+      </div>
+      <div id="sectorRosterPanel" class="staff-history-wrap hidden"><div class="staff-history-head"><div><h3 id="sectorRosterTitle">Participantes do curso</h3><p class="section-note">Acompanhe inscrições, conclusão e reprovações.</p></div><button type="button" onclick="sectorCloseRoster()">Fechar</button></div>
+        <div class="sector-roster-controls"><select id="sectorRosterMember"><option value="">Selecionar membro ativo</option></select><select id="sectorRosterStatus"><option value="matriculado">Matriculado</option><option value="cursando">Cursando</option><option value="concluido">Concluído</option><option value="reprovado">Reprovado</option></select><button type="button" onclick="sectorSaveRoster()" class="primary">Adicionar / atualizar</button></div>
+        <div id="sectorRosterMessage" class="message" role="status"></div><div id="sectorRosterList" class="sector-roster-list"></div>
+      </div>
+      <div id="sectorResult" class="staff-result"></div><div id="sectorCards" class="staff-grid"><div class="empty">Abra o departamento para consultar.</div></div>
+      <div class="security-note" id="sectorSecurity">O acesso ao departamento é conferido no servidor e depende do subcargo e da conta autorizada. Registros do Comitê são privados.</div>
+    </section>
     <div id="membersSection" class="hidden"><div class="section-banner"><span class="hero-tag">ACESSO DA EQUIPE</span><h3>Gerenciar membros</h3><p>Aprove solicitações e controle os cargos da equipe.</p></div><div id="membersMessage" class="message" role="status"></div><h3>Solicitações e membros</h3><p class="section-note">Somente ADM ativo pode aprovar, recusar, mudar cargos ou desativar membros.</p><div id="membersList" class="request-list"></div></div>
     <div class="security-note">As solicitações são armazenadas no banco centralizado. Somente contas autorizadas pela política do banco podem consultá-las ou excluí-las.</div>
     </div>
   </div>
-  <div class="foot">DETROIT MECHANICS · PREMIUM DARK V2.0</div>
+  <div class="foot">DETROIT MECHANICS · PREMIUM DARK V2.2 · SETORES INTEGRADOS</div>
 </section>
 </main>
 </div>
@@ -210,6 +350,16 @@ let requests = [];
 let activeAssignees = [];
 let currentMember = null;
 let activeTab = "dashboard";
+let staffSectorAccess = [];
+const sectorTabs = ['instrutores','comite','rp'];
+const sectorConfigs = {
+ instrutores:{name:'Instrutores',subtitle:'FORMAÇÃO E TREINAMENTOS', description:'Organize cursos, turmas, avaliações, materiais e a evolução dos participantes.', types:{curso:'Curso',turma:'Turma',material:'Material didático',avaliacao:'Avaliação'}, statuses:{planejado:'Planejado',em_andamento:'Em andamento',concluido:'Concluído',cancelado:'Cancelado'}},
+ comite:{name:'Comitê de Ética e Promoções',subtitle:'ÉTICA E DESENVOLVIMENTO', description:'Registre avaliações de promoção, ocorrências éticas, advertências e reconhecimentos com acesso restrito.', types:{etica:'Ocorrência ética',promocao:'Avaliação de promoção',advertencia:'Advertência',reconhecimento:'Reconhecimento'},statuses:{em_analise:'Em análise',aprovado:'Aprovado',reprovado:'Reprovado',concluido:'Concluído',cancelado:'Cancelado'}},
+ rp:{name:'Relações Públicas',subtitle:'PARCERIAS, MÍDIAS E IMAGEM', description:'Acompanhe parcerias, publicações, campanhas e comunicados da Detroit Mechanics.', types:{parceria:'Parceria',midia:'Mídias e conteúdo',campanha:'Campanha',comunicado:'Comunicado'},statuses:{planejado:'Planejado',em_andamento:'Em andamento',concluido:'Concluído',cancelado:'Cancelado'}}
+};
+let sectorRows = [];
+let sectorMembers = [];
+let activeRosterRecordId = null;
 
 window.showView = function(view) {
   $('viewApply').classList.toggle('hidden', view !== 'apply');
@@ -256,15 +406,30 @@ $('registerForm').addEventListener('submit', async event => {
 async function refreshAccess() {
   const { data: { session } } = await supabase.auth.getSession();
   currentMember = null;
+  staffSectorAccess = [];
   if (session) {
-    const { data, error } = await supabase.from('team_members').select('user_id,nome,email,cargo,status').eq('user_id',session.user.id).maybeSingle();
+    const { data, error } = await supabase.from('team_members').select('user_id,nome,email,cargo,status,discord_user_id').eq('user_id',session.user.id).maybeSingle();
     if (!error && data?.status === 'ativo' && ['adm','recrutador'].includes(data.cargo)) currentMember = data;
   }
+  if (currentMember) {
+    if (currentMember.cargo === 'adm') staffSectorAccess = [...sectorTabs];
+    else if(currentMember.discord_user_id) {
+      const {data} = await supabase.from('detroit_membros').select('subcargos').eq('discord_user_id',currentMember.discord_user_id).eq('situacao','ativo').limit(20);
+      const joined = new Set((data||[]).flatMap(m=>m.subcargos||[]));
+      for (const [sector,subrole] of [['instrutores','Instrutores'],['comite','Comitê'],['rp','Relações Públicas']]) {
+        if(joined.has(subrole)) staffSectorAccess.push(sector);
+      }
+    }
+  }
+  for(const [tab,id] of [['instrutores','tabInstructors'],['comite','tabEthics'],['rp','tabPR']])
+    $(id).classList.toggle('hidden',!staffSectorAccess.includes(tab));
+  if (sectorTabs.includes(activeTab) && !staffSectorAccess.includes(activeTab)) activeTab='dashboard';
   const authorized = !!currentMember;
   $('authPanel').classList.toggle('hidden', authorized);
   $('adminPanel').classList.toggle('hidden', !authorized);
   $('tabMembers').classList.toggle('hidden', currentMember?.cargo !== 'adm');
   if (currentMember?.cargo !== 'adm' && activeTab === 'members') activeTab = 'dashboard';
+  if (currentMember?.cargo !== 'adm') $('staffFormWrap').classList.add('hidden');
   if (authorized) {
     $('adminSummary').textContent = `${currentMember.nome} · ${currentMember.cargo === 'adm' ? 'ADM' : 'Recrutador'}`;
     switchAdminTab(activeTab);
@@ -277,16 +442,21 @@ async function refreshAccess() {
 
 window.switchAdminTab = function(tab) {
   if (tab === 'members' && currentMember?.cargo !== 'adm') return;
-  if (!['dashboard','recruit','members'].includes(tab)) return;
+  if (sectorTabs.includes(tab) && !staffSectorAccess.includes(tab)) return;
+  if (!['dashboard','recruit','staff','members',...sectorTabs].includes(tab)) return;
   activeTab = tab;
-  for (const [name, id, buttonId] of [['dashboard','dashboardSection','tabDashboard'],['recruit','recruitSection','tabRecruit'],['members','membersSection','tabMembers']]) {
+  for (const [name, id, buttonId] of [['dashboard','dashboardSection','tabDashboard'],['recruit','recruitSection','tabRecruit'],['staff','staffSection','tabStaff'],['members','membersSection','tabMembers']]) {
     $(id).classList.toggle('hidden', tab !== name);
     $(buttonId).classList.toggle('active', tab === name);
   }
-  const titles = {dashboard:'Visão geral',recruit:'Inscrições',members:'Administradores'};
+  $('sectorSection').classList.toggle('hidden',!sectorTabs.includes(tab));
+  for (const [name,id] of [['instrutores','tabInstructors'],['comite','tabEthics'],['rp','tabPR']]) $(id).classList.toggle('active',tab===name);
+  const titles = {dashboard:'Visão geral',recruit:'Inscrições',staff:'Equipe da Mecânica',members:'Acessos ao painel',instrutores:'Instrutores',comite:'Comitê de Ética e Promoções',rp:'Relações Públicas'};
   $('appHeading').textContent = titles[tab];
   $('appBreadcrumb').textContent = titles[tab].toUpperCase();
   if (tab === 'members') renderMembers();
+  else if (tab === 'staff') renderStaff();
+  else if (sectorTabs.includes(tab)) renderSector(tab);
   else renderRequests();
 };
 
@@ -340,6 +510,12 @@ $('membersList').addEventListener('click', async event => {
 window.logout = async function() {
   await supabase.auth.signOut();
   requests = [];
+  detroitStaff = [];
+  staffSectorAccess = []; sectorRows=[];sectorMembers=[];
+  $('sectorRosterPanel').classList.add('hidden');
+  $('sectorFormPanel').classList.add('hidden');
+  $('staffHistoryWrap').classList.add('hidden');
+  $('staffFormWrap').classList.add('hidden');
   $('searchRequests').value = '';
   currentMember = null;
   await refreshAccess();
@@ -580,7 +756,7 @@ $('requestList').addEventListener('click',async event=>{
   try {
     const {error}=await supabase.rpc('north_set_candidate_status',{p_inscricao_id:Number(id),p_status:select.value});
     if(error) throw error;
-    showMessage('v2StatusMessage','Status atualizado com sucesso.','success');
+    showMessage('v2StatusMessage',select.value==='aprovado'?'Candidato aprovado! Cadastro incluído automaticamente em Equipe da Mecânica.':'Status atualizado com sucesso.','success');
     await renderRequests();
   } catch(error) {
     console.error('Falha ao atualizar status',error);
@@ -635,6 +811,364 @@ window.exportCSV = function() {
   anchor.download = 'detroit-mechanics-solicitacoes.csv';
   anchor.click();
   URL.revokeObjectURL(url);
+};
+
+// DETROIT MECHANICS 2.1 - QUADRO DE EQUIPE (somente autenticados)
+let detroitStaff = [];
+const staffDateBR = d => d ? new Date(d + 'T12:00:00').toLocaleDateString('pt-BR') : '—';
+const staffToday = () => {
+  const date = new Date();
+  return [date.getFullYear(), String(date.getMonth()+1).padStart(2,'0'), String(date.getDate()).padStart(2,'0')].join('-');
+};
+const staffStatusText = { ativo:'Ativo', afastado:'Afastado', desligado:'Desligado' };
+
+async function renderStaff() {
+  if (!currentMember) return;
+  $('staffAdminControls').classList.toggle('hidden', currentMember.cargo !== 'adm');
+  $('staffList').innerHTML = '<div class="empty">Carregando equipe...</div>';
+  clearMessage('staffMessage');
+  const {data,error} = await supabase.from('detroit_membros').select('*').order('data_ingresso',{ascending:false}).limit(1000);
+  if (error) {
+    $('staffList').innerHTML = '<div class="empty">Não foi possível carregar a equipe. Execute primeiro o SQL Detroit Mechanics 2.1 no Supabase oficial. Detalhes: '+escapeHTML(error.message)+'</div>';
+    return;
+  }
+  detroitStaff = data || [];
+  const cargos = ['Trainee','Aux. Mechanic','Mechanic','Mechanic Sr','Supervisor','Chief','Owner'];
+  const oldFilter = $('staffCargoFilter').value;
+  $('staffCargoFilter').innerHTML = '<option value="">Todos os cargos</option>' + cargos.map(c=>'<option value="'+escapeHTML(c)+'">'+escapeHTML(c)+'</option>').join('');
+  $('staffCargoFilter').value = cargos.includes(oldFilter)?oldFilter:'';
+  $('staffTotal').textContent = String(detroitStaff.length);
+  $('staffActive').textContent = String(detroitStaff.filter(x=>x.situacao==='ativo').length);
+  $('staffAway').textContent = String(detroitStaff.filter(x=>x.situacao==='afastado').length);
+  $('staffLeft').textContent = String(detroitStaff.filter(x=>x.situacao==='desligado').length);
+  filterStaff();
+}
+
+function filterStaff() {
+  if (!currentMember) return;
+  const query = ($('staffSearch').value||'').trim().toLocaleLowerCase('pt-BR');
+  const status = $('staffStatusFilter').value;
+  const role = $('staffCargoFilter').value;
+  const subrole = $('staffSubroleFilter').value;
+  const list = detroitStaff.filter(m=>
+    (!status || m.situacao===status) && (!role || m.cargo===role) && (!subrole || (m.subcargos||[]).includes(subrole)) &&
+    (!query || [m.nome_rp,m.passaporte_rp,m.cargo,m.discord_user_id,m.telefone_rp,...(m.subcargos||[])].some(v=>String(v||'').toLocaleLowerCase('pt-BR').includes(query)))
+  );
+  $('staffResultCount').textContent = `${list.length} de ${detroitStaff.length} membros exibidos. Acesso ao painel é gerenciado separadamente.`;
+  if (!list.length) {
+    $('staffList').innerHTML='<div class="empty">Nenhum membro encontrado. Quando um candidato for aprovado, ele aparecerá automaticamente aqui.</div>';
+    return;
+  }
+  $('staffList').innerHTML=list.map(m=>{
+    const safeId = escapeHTML(String(m.id));
+    const label=staffStatusText[m.situacao]||m.situacao;
+    return `<article class="staff-card">
+      <div class="staff-card-top">
+        <div class="staff-avatar">${escapeHTML((m.nome_rp||'?').trim().charAt(0).toUpperCase())}</div>
+        <div class="staff-card-name"><strong>${escapeHTML(m.nome_rp)}</strong><small>Passaporte #${escapeHTML(m.passaporte_rp)}${m.inscricao_id?' · Inscrição #'+escapeHTML(String(m.inscricao_id)): ' · Cadastro manual'}</small></div>
+        <span class="staff-status staff-status-${escapeHTML(m.situacao)}">${escapeHTML(label)}</span>
+      </div>
+      <div class="staff-role">${escapeHTML(m.cargo)}</div>
+      <div class="staff-subroles">${(m.subcargos||[]).length?(m.subcargos||[]).map(sc=>`<span class="staff-tag">${escapeHTML(sc)}</span>`).join(''):'<span class="staff-empty-tag">Nenhum subcargo atribuído</span>'}</div>
+      <div class="staff-metadata">
+        <span><small>Ingresso</small><strong>${escapeHTML(staffDateBR(m.data_ingresso))}</strong></span>
+        <span><small>Última promoção</small><strong>${escapeHTML(staffDateBR(m.data_ultima_promocao))}</strong></span>
+        <span><small>Contato RP</small><strong>${escapeHTML(m.telefone_rp||'—')}</strong></span>
+        <span><small>ID Discord</small><strong>${escapeHTML(m.discord_user_id||'—')}</strong></span>
+      </div>
+      ${m.observacoes?'<p class="staff-note"><strong>Observações:</strong> '+escapeHTML(m.observacoes)+'</p>':''}
+      <div class="staff-card-actions">
+        <button type="button" data-staff-history="${safeId}">Ver histórico</button>
+        ${currentMember.cargo==='adm'?`<button class="staff-edit-btn" type="button" data-staff-edit="${safeId}">Editar ficha</button>`:''}
+      </div>
+    </article>`;
+  }).join('');
+}
+
+window.staffOpenForm = function(id=null) {
+  if(currentMember?.cargo!=='adm') return;
+  const m = id == null ? null : detroitStaff.find(x=>String(x.id)===String(id));
+  if(id != null && !m) return;
+  $('staffForm').reset();
+  $('staffFormId').value = m?m.id:'';
+  $('staffFormTitle').textContent = m?'Editar ficha de membro':'Cadastrar membro manualmente';
+  $('staffFormSubtitle').textContent=m
+    ? 'Altere os dados, cargo, promoção ou situação. O histórico será preservado.'
+    : 'Use para membros que já estão na mecânica e não passaram pelo formulário de recrutamento.';
+  $('staffName').value = m?.nome_rp||'';
+  $('staffPassport').value = m?.passaporte_rp||'';
+  $('staffPhone').value = m?.telefone_rp||'';
+  $('staffDiscord').value = m?.discord_user_id||'';
+  $('staffRole').value = m?.cargo||'Mechanic';
+  document.querySelectorAll('input[name="staffSubrole"]').forEach(input=>{
+    input.checked = Boolean(m?.subcargos?.includes(input.value));
+  });
+  $('staffJoined').value = m?.data_ingresso||staffToday();
+  $('staffPromoted').value = m?.data_ultima_promocao||'';
+  $('staffSituation').value = m?.situacao||'ativo';
+  $('staffNotes').value = m?.observacoes||'';
+  $('staffRecordPromotion').checked = false;
+  $('staffFormWrap').classList.remove('hidden');
+  $('staffFormWrap').scrollIntoView({behavior:'smooth',block:'start'});
+};
+window.staffCloseForm = function() { $('staffFormWrap').classList.add('hidden'); $('staffForm').reset(); };
+$('staffRecordPromotion').addEventListener('change', () => {
+  if ($('staffRecordPromotion').checked) $('staffPromoted').value = staffToday();
+  else {
+    const old=detroitStaff.find(m=>String(m.id)===$('staffFormId').value);
+    $('staffPromoted').value=old?.data_ultima_promocao||'';
+  }
+});
+$('staffForm').addEventListener('submit', async event=>{
+  event.preventDefault();
+  if(currentMember?.cargo!=='adm') return;
+  clearMessage('staffMessage');
+  const id = $('staffFormId').value;
+  const old = detroitStaff.find(x=>String(x.id)===id);
+  const role = $('staffRole').value.trim();
+  if ($('staffRecordPromotion').checked && old && role===old.cargo) {
+    showMessage('staffMessage','Para registrar uma promoção, informe o novo cargo.');
+    return;
+  }
+  const prom = $('staffRecordPromotion').checked && old && role!==old.cargo ? staffToday() : ($('staffPromoted').value||null);
+  if (prom && prom < $('staffJoined').value) {
+    showMessage('staffMessage','A data da última promoção não pode ser anterior à data de ingresso.');
+    return;
+  }
+  const params = {
+    p_id:id?Number(id):null,
+    p_nome_rp:$('staffName').value.trim(),
+    p_passaporte_rp:$('staffPassport').value.trim(),
+    p_cargo:role,
+    p_subcargos:[...document.querySelectorAll('input[name="staffSubrole"]:checked')].map(input=>input.value),
+    p_data_ingresso:$('staffJoined').value,
+    p_data_ultima_promocao:prom,
+    p_situacao:$('staffSituation').value,
+    p_telefone_rp:$('staffPhone').value.trim()||null,
+    p_discord_user_id:$('staffDiscord').value.trim()||null,
+    p_observacoes:$('staffNotes').value.trim()||null
+  };
+  const button = $('staffSaveButton'); button.disabled=true;
+  try {
+    const {error} = await supabase.rpc('detroit_salvar_membro',params);
+    if(error)throw error;
+    staffCloseForm();
+    await renderStaff();
+    showMessage('staffMessage','Ficha salva com sucesso. Alteração registrada no histórico.','success');
+  } catch(e) {
+    console.error('Erro ao salvar membro Detroit Mechanics',e);
+    showMessage('staffMessage','Não foi possível salvar a ficha: '+(e.message||'Erro desconhecido'));
+  } finally {button.disabled=false;}
+});
+
+$('staffSearch').addEventListener('input',filterStaff);
+$('staffStatusFilter').addEventListener('change',filterStaff);
+$('staffCargoFilter').addEventListener('change',filterStaff);
+$('staffSubroleFilter').addEventListener('change',filterStaff);
+$('staffList').addEventListener('click',async event=>{
+  const edit=event.target.closest('[data-staff-edit]');
+  if(edit){staffOpenForm(edit.dataset.staffEdit);return;}
+  const history=event.target.closest('[data-staff-history]');
+  if(!history)return;
+  const id=Number(history.dataset.staffHistory);
+  const m=detroitStaff.find(x=>x.id===id);
+  if(!m)return;
+  $('staffHistoryTitle').textContent='Histórico de '+m.nome_rp;
+  $('staffHistoryList').innerHTML='<div class="empty">Carregando histórico...</div>';
+  $('staffHistoryWrap').classList.remove('hidden');
+  const {data,error}=await supabase.from('detroit_membros_historico').select('tipo,descricao,cargo_anterior,cargo_novo,situacao_anterior,situacao_nova,criado_em').eq('membro_id',id).order('criado_em',{ascending:false}).limit(100);
+  if(error) $('staffHistoryList').innerHTML='<div class="empty">Erro ao carregar histórico: '+escapeHTML(error.message)+'</div>';
+  else $('staffHistoryList').innerHTML=(data||[]).length?(data||[]).map(h=>`<div class="staff-event"><small>${escapeHTML(new Date(h.criado_em).toLocaleString('pt-BR'))} · ${escapeHTML(h.tipo.toUpperCase())}</small><strong>${escapeHTML(h.descricao)}</strong></div>`).join(''):'<div class="empty">Ainda não existem movimentações registradas.</div>';
+  $('staffHistoryWrap').scrollIntoView({behavior:'smooth',block:'start'});
+});
+
+window.exportStaffCSV = function() {
+  if(!detroitStaff.length){alert('Nenhum membro cadastrado para exportar.');return;}
+  const headers=['Nome RP','Passaporte','Cargo principal','Subcargos','Situação','Ingresso','Última promoção','Telefone RP','Discord ID','Inscrição de origem','Observações'];
+  const quote=v=>{
+    const raw=String(v??'');
+    const safe=/^[\s\u0000-\u001f]*[=+\-@]/.test(raw)?"'"+raw:raw;
+    return '"'+safe.replace(/"/g,'""')+'"';
+  };
+  const rows=detroitStaff.map(m=>[m.nome_rp,m.passaporte_rp,m.cargo,(m.subcargos||[]).join(' | '),staffStatusText[m.situacao]||m.situacao,
+    m.data_ingresso,m.data_ultima_promocao,m.telefone_rp,m.discord_user_id,m.inscricao_id,m.observacoes]);
+  const content=[headers,...rows].map(r=>r.map(quote).join(';')).join('\r\n');
+  const blob=new Blob(['\ufeff'+content],{type:'text/csv;charset=utf-8;'});
+  const url=URL.createObjectURL(blob);
+  const link=document.createElement('a'); link.href=url;link.download='detroit-mechanics-equipe.csv';link.click();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+};
+
+// DETROIT MECHANICS 2.2 - Departamentos (todos os dados vêm do Supabase).
+const sectorDateBR = d => d ? staffDateBR(d) : '—';
+const sectorNameById = id => sectorMembers.find(m => Number(m.id)===Number(id))?.nome_rp || '—';
+const sectorOptionList = (items, initial) => `<option value="">${escapeHTML(initial)}</option>` + items.map(m=>`<option value="${escapeHTML(String(m.id))}">${escapeHTML(m.nome_rp)} · #${escapeHTML(m.passaporte_rp)}</option>`).join('');
+const sectorTypeOptions = (obj, chosen) => Object.entries(obj).map(([key,val])=>`<option value="${escapeHTML(key)}" ${chosen===key?'selected':''}>${escapeHTML(val)}</option>`).join('');
+const sectorConfigNow = () => sectorConfigs[activeTab];
+
+async function renderSector(tab) {
+  if (!staffSectorAccess.includes(tab)) return;
+  const conf = sectorConfigs[tab];
+  $('sectorHeading').textContent = conf.name;
+  $('sectorSubtitle').textContent = conf.subtitle;
+  $('sectorDescription').textContent = conf.description;
+  $('sectorFormPanel').classList.add('hidden');
+  $('sectorRosterPanel').classList.add('hidden');
+  activeRosterRecordId = null;
+  clearMessage('sectorMessage');
+  $('sectorCards').innerHTML = '<div class="empty">Carregando registros do departamento...</div>';
+  $('sectorSearch').value='';
+  $('sectorTypeFilter').innerHTML='<option value="">Todos os tipos</option>'+sectorTypeOptions(conf.types);
+  $('sectorStatusFilter').innerHTML='<option value="">Todas as situações</option>'+sectorTypeOptions(conf.statuses);
+  $('sectorType').innerHTML=sectorTypeOptions(conf.types);
+  $('sectorStatus').innerHTML=sectorTypeOptions(conf.statuses);
+  if(tab==='comite') $('sectorSecurity').textContent='Confidencial: casos de ética e propostas de promoção só são acessíveis ao ADM e aos integrantes autorizados do Comitê. Uma aprovação não muda o cargo automaticamente; o ADM confirma a promoção na ficha da Equipe.';
+  else if(tab==='instrutores') $('sectorSecurity').textContent='Turmas, participantes e resultados são geridos por Instrutores autorizados e ADM. A conta deve estar ativa e vinculada ao subcargo para ter acesso.';
+  else $('sectorSecurity').textContent='Parcerias, campanhas, mídias e comunicados são acompanhados por Relações Públicas autorizados e ADM.';
+  const [registros,membros] = await Promise.all([
+    supabase.from('detroit_setor_registros').select('*').eq('setor',tab).order('criado_em',{ascending:false}).limit(500),
+    supabase.from('detroit_membros').select('id,nome_rp,passaporte_rp,situacao').order('nome_rp',{ascending:true}).limit(1000)
+  ]);
+  if(activeTab!==tab)return;
+  if(registros.error){ $('sectorCards').innerHTML='<div class="empty">Erro ao carregar. Execute o SQL 2.2 no Supabase oficial. '+escapeHTML(registros.error.message)+'</div>';return;}
+  if(membros.error){ $('sectorCards').innerHTML='<div class="empty">Erro ao carregar funcionários: '+escapeHTML(membros.error.message)+'</div>';return; }
+  sectorRows=registros.data||[];
+  sectorMembers=membros.data||[];
+  $('sectorRelated').innerHTML=sectorOptionList(sectorMembers,'Nenhum');
+  $('sectorOwner').innerHTML=sectorOptionList(sectorMembers.filter(m=>m.situacao==='ativo'),'Sem responsável');
+  $('sectorRosterMember').innerHTML=sectorOptionList(sectorMembers.filter(m=>m.situacao==='ativo'),'Selecionar membro ativo');
+  $('sectorTotal').textContent=String(sectorRows.length);
+  $('sectorProgress').textContent=String(sectorRows.filter(r=>['em_andamento','em_analise'].includes(r.status)).length);
+  $('sectorDone').textContent=String(sectorRows.filter(r=>['concluido','aprovado'].includes(r.status)).length);
+  filterSector();
+}
+
+function filterSector(){
+  if(!sectorTabs.includes(activeTab)) return;
+  const conf=sectorConfigNow();
+  const q=String($('sectorSearch').value||'').toLocaleLowerCase('pt-BR').trim();
+  const type=$('sectorTypeFilter').value, status=$('sectorStatusFilter').value;
+  const rows=sectorRows.filter(r=>(!type||r.tipo===type)&&(!status||r.status===status)&&
+    (!q||[r.titulo,r.descricao,r.link,sectorNameById(r.membro_id),sectorNameById(r.responsavel_id)].some(t=>String(t||'').toLocaleLowerCase('pt-BR').includes(q))));
+  $('sectorResult').textContent=`${rows.length} de ${sectorRows.length} registro(s).`;
+  if(!rows.length){$('sectorCards').innerHTML='<div class="empty">Nenhum registro encontrado. Use “+ Novo registro” para começar.</div>';return;}
+  $('sectorCards').innerHTML=rows.map(r=>{
+    const url= r.link && /^https?:\/\//i.test(r.link) ? `<a href="${escapeHTML(r.link)}" target="_blank" rel="noopener noreferrer">Abrir link externo ↗</a>` : '';
+    const canRoster=activeTab==='instrutores'&&['curso','turma','avaliacao'].includes(r.tipo);
+    return `<article class="staff-card">
+      <div class="staff-card-top"><div class="staff-avatar">${activeTab==='instrutores'?'✦':activeTab==='comite'?'⚖':'◎'}</div><div class="staff-card-name"><strong>${escapeHTML(r.titulo)}</strong><small>#${escapeHTML(String(r.id))} · ${escapeHTML(conf.types[r.tipo]||r.tipo)}</small></div><span class="staff-status">${escapeHTML(conf.statuses[r.status]||r.status)}</span></div>
+      <div class="sector-card-meta"><span>Início: ${escapeHTML(sectorDateBR(r.data_inicio))}</span><span>Prazo: ${escapeHTML(sectorDateBR(r.data_prazo))}</span></div>
+      ${r.membro_id?`<div class="sector-card-meta"><span>Membro: ${escapeHTML(sectorNameById(r.membro_id))}</span></div>`:''}
+      ${r.responsavel_id?`<div class="sector-card-meta"><span>Responsável: ${escapeHTML(sectorNameById(r.responsavel_id))}</span></div>`:''}
+      ${r.descricao?`<p class="sector-card-desc">${escapeHTML(r.descricao)}</p>`:''}
+      <div class="staff-card-actions">${url}<button type="button" data-sector-edit="${escapeHTML(String(r.id))}">Editar</button>${canRoster?`<button type="button" data-sector-roster="${escapeHTML(String(r.id))}">Participantes</button>`:''}</div>
+    </article>`;
+  }).join('');
+}
+
+window.sectorOpenForm=function(id=null){
+  if(!staffSectorAccess.includes(activeTab))return;
+  const conf=sectorConfigNow();
+  const r=id==null?null:sectorRows.find(x=>String(x.id)===String(id));
+  if(id!=null&&!r)return;
+  $('sectorForm').reset();
+  $('sectorEditId').value=r?.id||'';
+  $('sectorFormHeading').textContent=r?'Editar registro':'Novo registro — '+conf.name;
+  $('sectorFormHelp').textContent=activeTab==='comite'?'Use descrições objetivas e evite informações pessoais desnecessárias. A aprovação é apenas um parecer até o ADM alterar a ficha.':activeTab==='instrutores'?'Para cursos e turmas, salve primeiro o registro e depois use “Participantes”.':'Registre informações de parcerias, campanhas, publicações e comunicação institucional.';
+  $('sectorType').innerHTML=sectorTypeOptions(conf.types,r?.tipo||'');
+  $('sectorStatus').innerHTML=sectorTypeOptions(conf.statuses,r?.status||'');
+  $('sectorTitle').value=r?.titulo||'';
+  $('sectorDetails').value=r?.descricao||'';
+  $('sectorStarted').value=r?.data_inicio||staffToday();
+  $('sectorDeadline').value=r?.data_prazo||'';
+  $('sectorRelated').value=String(r?.membro_id||'');
+  $('sectorOwner').value=String(r?.responsavel_id||'');
+  $('sectorLink').value=r?.link||'';
+  $('sectorFormPanel').classList.remove('hidden');
+  $('sectorFormPanel').scrollIntoView({behavior:'smooth',block:'start'});
+};
+window.sectorCloseForm=function(){ $('sectorFormPanel').classList.add('hidden');$('sectorForm').reset(); };
+$('sectorForm').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const tab=activeTab;
+  if(!staffSectorAccess.includes(tab)) return;
+  clearMessage('sectorMessage');
+  const started=$('sectorStarted').value, due=$('sectorDeadline').value||null;
+  if(due&&due<started){showMessage('sectorMessage','A data de término não pode ser anterior ao início.');return;}
+  const data={p_id:$('sectorEditId').value?Number($('sectorEditId').value):null,p_setor:tab,p_tipo:$('sectorType').value,p_titulo:$('sectorTitle').value.trim(),p_descricao:$('sectorDetails').value.trim(),p_status:$('sectorStatus').value,p_data_inicio:started,p_data_prazo:due,p_membro_id:$('sectorRelated').value?Number($('sectorRelated').value):null,p_responsavel_id:$('sectorOwner').value?Number($('sectorOwner').value):null,p_link:$('sectorLink').value.trim()||null};
+  const btn=$('sectorSubmit');btn.disabled=true;
+  try {
+    const {error}=await supabase.rpc('detroit_salvar_registro_setor',data);
+    if(error)throw error;
+    sectorCloseForm();await renderSector(tab);
+    showMessage('sectorMessage','Registro salvo com sucesso.','success');
+  }catch(error){console.error('Falha no setor',error);showMessage('sectorMessage','Não foi possível salvar: '+(error.message||'erro desconhecido'));}
+  finally{btn.disabled=false;}
+});
+$('sectorCards').addEventListener('click',e=>{
+  const edit=e.target.closest('[data-sector-edit]');if(edit){sectorOpenForm(edit.dataset.sectorEdit);return;}
+  const roster=e.target.closest('[data-sector-roster]');if(roster)sectorOpenRoster(Number(roster.dataset.sectorRoster));
+});
+$('sectorSearch').addEventListener('input',filterSector);
+$('sectorTypeFilter').addEventListener('change',filterSector);
+$('sectorStatusFilter').addEventListener('change',filterSector);
+
+async function sectorOpenRoster(id){
+  if(activeTab!=='instrutores'||!staffSectorAccess.includes('instrutores'))return;
+  const row=sectorRows.find(r=>r.id===id);
+  if(!row)return;
+  activeRosterRecordId=id;
+  $('sectorRosterTitle').textContent='Participantes — '+row.titulo;
+  $('sectorRosterPanel').classList.remove('hidden');
+  $('sectorRosterMember').value='';$('sectorRosterStatus').value='matriculado';
+  clearMessage('sectorRosterMessage');
+  await sectorLoadRoster();
+  $('sectorRosterPanel').scrollIntoView({behavior:'smooth',block:'start'});
+}
+window.sectorCloseRoster=function(){activeRosterRecordId=null;$('sectorRosterPanel').classList.add('hidden');};
+async function sectorLoadRoster(){
+  if(!activeRosterRecordId)return;
+  const id=activeRosterRecordId;
+  $('sectorRosterList').innerHTML='<div class="empty">Carregando participantes...</div>';
+  const {data,error}=await supabase.from('detroit_curso_participantes').select('registro_id,membro_id,situacao,data_atualizacao').eq('registro_id',id).order('data_atualizacao',{ascending:false}).limit(500);
+  if(id!==activeRosterRecordId)return;
+  if(error){$('sectorRosterList').innerHTML='<div class="empty">Erro ao carregar participantes: '+escapeHTML(error.message)+'</div>';return;}
+  const labels={matriculado:'Matriculado',cursando:'Cursando',concluido:'Concluído',reprovado:'Reprovado'};
+  $('sectorRosterList').innerHTML=(data||[]).length?(data||[]).map(item=>`
+    <div class="sector-roster-person"><div><strong>${escapeHTML(sectorNameById(item.membro_id))}</strong><small> · ${escapeHTML(labels[item.situacao]||item.situacao)} · ${escapeHTML(new Date(item.data_atualizacao).toLocaleDateString('pt-BR'))}</small></div>
+    <div><button type="button" data-roster-update="${escapeHTML(String(item.membro_id))}">Alterar resultado</button> <button type="button" data-roster-remove="${escapeHTML(String(item.membro_id))}">Remover</button></div></div>`).join(''):'<div class="empty">Ainda não existem participantes cadastrados neste curso/turma.</div>';
+}
+window.sectorSaveRoster=async function(){
+  const m=$('sectorRosterMember').value;
+  if(!m||!activeRosterRecordId){showMessage('sectorRosterMessage','Selecione um membro ativo.');return;}
+  try{
+    const {error}=await supabase.rpc('detroit_salvar_participacao_curso',{p_registro_id:activeRosterRecordId,p_membro_id:Number(m),p_situacao:$('sectorRosterStatus').value});
+    if(error)throw error;
+    showMessage('sectorRosterMessage','Participação salva com sucesso.','success');await sectorLoadRoster();
+  }catch(e){showMessage('sectorRosterMessage','Erro: '+(e.message||'falha ao salvar'));}
+};
+$('sectorRosterList').addEventListener('click',async e=>{
+  const update=e.target.closest('[data-roster-update]'), remove=e.target.closest('[data-roster-remove]');
+  if(update){$('sectorRosterMember').value=update.dataset.rosterUpdate;$('sectorRosterStatus').focus();return;}
+  if(remove){
+    const id=Number(remove.dataset.rosterRemove);
+    if(!confirm('Remover este membro da turma?'))return;
+    try{
+      const {error}=await supabase.rpc('detroit_salvar_participacao_curso',{p_registro_id:activeRosterRecordId,p_membro_id:id,p_situacao:'remover'});
+      if(error)throw error;
+      showMessage('sectorRosterMessage','Participante removido.','success');await sectorLoadRoster();
+    }catch(err){showMessage('sectorRosterMessage','Erro: '+(err.message||'falha'));}
+  }
+});
+
+window.exportSectorCSV=function(){
+  if(!sectorTabs.includes(activeTab)||!sectorRows.length){alert('Nenhum registro disponível para exportação.');return;}
+  const quote=x=>{let s=String(x??'');if(/^[\s\u0000-\u001f]*[=+\-@]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"';};
+  const headers=['ID','Setor','Tipo','Título','Situação','Início','Prazo','Membro','Responsável','Descrição','Link'];
+  const rows=sectorRows.map(r=>[r.id,sectorConfigNow().name,r.tipo,r.titulo,r.status,r.data_inicio,r.data_prazo,sectorNameById(r.membro_id),sectorNameById(r.responsavel_id),r.descricao,r.link]);
+  const content=[headers,...rows].map(row=>row.map(quote).join(';')).join('\r\n');
+  const blob=new Blob(['\ufeff'+content],{type:'text/csv;charset=utf-8;'}),url=URL.createObjectURL(blob),link=document.createElement('a');
+  link.href=url;link.download='detroit-'+activeTab+'-registros.csv';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
 };
 
 supabase.auth.onAuthStateChange(() => {
