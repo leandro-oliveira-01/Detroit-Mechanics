@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#080808">
-<title>Detroit Mechanics 2.4 | Hierarquia e Permissões</title>
+<title>Detroit Mechanics 2.5 | Comitê, Ponto e Advertências</title>
 <style>
 :root{--red:#ff1738;--red2:#ff4058;--bg:#070707;--panel:#111113;--field:#202023;--muted:#a4a4ad;--white:#f5f5f7;--line:#303036}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% 10%,#26070d 0,transparent 36%),var(--bg);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
@@ -150,11 +150,38 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
 .legal-footer .legal-divider{color:#51535c}
 .legal-disclosure{color:#adb0b9;font-size:12px;line-height:1.6;margin:9px 0 16px;text-align:left}
 @media(max-width:560px){.legal-footer{gap:6px 12px;padding:18px 8px 4px}.legal-footer .legal-brand{font-size:9px}}
+
+/* Detroit 2.5: interface do Comite e refinamento responsivo */
+.p25-stat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:18px 0}
+.p25-stat-grid .staff-stat{min-width:0}.p25-stat-grid strong{font-size:clamp(18px,2.3vw,26px);overflow-wrap:anywhere}
+.p25-role{font-size:clamp(13px,1.6vw,18px)!important}
+.p25-control-card{background:linear-gradient(140deg,#15191f,#111317);border:1px solid #343842;border-radius:15px;padding:clamp(14px,2.5vw,24px);margin:16px 0;min-width:0}
+.p25-card-head{display:flex;flex-direction:column;gap:6px;margin-bottom:19px}.p25-card-head strong{font-size:16px;color:#fff}.p25-card-head small{font-size:12px;color:#aab0bd;line-height:1.55}
+.p25-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px 13px;align-items:end}.p25-grid .field{min-width:0}.p25-span{grid-column:1/-1}
+.p25-button{display:inline-flex;align-items:center;justify-content:center;gap:6px;width:auto;max-width:100%;background:#20242d;border:1px solid #4a4d58;border-radius:9px;color:#fff;padding:11px 16px;font-weight:750;font-size:13px;min-height:42px}
+.p25-button.primary{border:0;background:linear-gradient(100deg,#d80c2a,#ff1738,#ff4058)}.p25-button:disabled{opacity:.52;cursor:wait}
+.p25-quick-buttons{display:flex;gap:10px;flex-wrap:wrap;margin:3px 0 14px}
+.p25-manual{border-top:1px solid #333842;padding-top:13px;margin-top:10px}
+.p25-manual summary{cursor:pointer;font-size:13px;color:#ff8a9b;font-weight:750}.p25-manual p{margin:10px 0}
+.p25-records,.p25-people{display:grid;gap:9px}
+.p25-record{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap;background:#1a1d23;border:1px solid #323641;border-radius:11px;padding:14px 16px;min-width:0}
+.p25-record-main{min-width:0;flex:1}.p25-record-main strong{display:block;font-size:14px;line-height:1.4;overflow-wrap:anywhere}.p25-record-main small{display:block;font-size:12px;color:#aeb3bf;line-height:1.55;overflow-wrap:anywhere;margin-top:4px}
+.p25-record-main p{font-size:12px;color:#d1d4dc;overflow-wrap:anywhere;line-height:1.55;margin:10px 0 0;white-space:pre-wrap}
+.p25-record-side{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12px;color:#d8d8e2;font-weight:700}.p25-pill{display:inline-block;border:1px solid #bd324d;background:#3b121b;color:#ffabb9;border-radius:99px;padding:5px 10px;font-size:11px;font-weight:760}
+.p25-pill.ok{background:#0e3024;border-color:#277956;color:#aef3d0}.p25-pill.muted{background:#252934;border-color:#444956;color:#c6cbd6}
+/* Corrige titulo DEPARTAMENTOS encoberto pelo primeiro botao */
+.sidebar-nav .side-group-title{display:block;grid-column:1/-1;margin:18px 8px 6px;padding:11px 4px 7px;border-top:1px solid #343846;color:#adb2c0;font-size:10px;letter-spacing:2px;line-height:1.5;font-weight:800}
+.sidebar-nav button{position:relative;z-index:0}
+@media(max-width:640px){.sidebar-nav .side-group-title{display:none}}
+.committee-tools{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px}.committee-tools button{background:#1c2029;border:1px solid #ff405877;border-radius:10px;color:#ffe5e9;padding:11px 14px;font-size:13px;font-weight:750}
+#adminPanel.premium-app,#adminPanel.premium-app *{min-width:0} .staff-card-name,.staff-card-name strong,.staff-metadata strong,.app-main,.request{overflow-wrap:anywhere}
+@media(max-width:940px){.p25-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.p25-grid{grid-template-columns:1fr}.p25-quick-buttons .p25-button,.p25-button.primary{width:100%}.p25-record{padding:12px}.p25-stat-grid{gap:8px}.p25-control-card{padding:14px}}
 </style>
 </head>
 <body>
 <div class="shell">
-<div class="v2-dev-mark"><span class="pulse-dot"></span> DETROIT MECHANICS 2.3 <span class="sep">/</span> SISTEMA OFICIAL DE RECRUTAMENTO <span class="sep">/</span> INSCRIÇÕES ABERTAS</div>
+<div class="v2-dev-mark"><span class="pulse-dot"></span> DETROIT MECHANICS 2.5 <span class="sep">/</span> SISTEMA OFICIAL DE RECRUTAMENTO <span class="sep">/</span> INSCRIÇÕES ABERTAS</div>
 <header class="topbar">
   <a class="brand" href="#" aria-label="Detroit Mechanics início" onclick="showView('apply');return false">
     <div class="mark site-logo" aria-hidden="true"><img src="DETROIT-MECHANICS.png" alt="" width="76" height="76" decoding="async"></div>
@@ -238,7 +265,7 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
   </div>
   <div id="adminPanel" class="panel wide hidden premium-app">
     <aside class="app-sidebar" aria-label="Menu do painel">
-      <div class="side-title"><span class="side-monogram">DM</span><span><strong>DETROIT</strong><small>MANAGEMENT V2.3</small></span></div>
+      <div class="side-title"><span class="side-monogram">DM</span><span><strong>DETROIT</strong><small>MANAGEMENT V2.5</small></span></div>
       <div class="side-group-title">WORKSPACE</div>
       <div class="sidebar-nav" id="adminTabs">
         <button type="button" id="tabDashboard" class="active" onclick="switchAdminTab('dashboard')"><span aria-hidden="true">◫</span> Visão geral</button>
@@ -247,10 +274,12 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
         <div class="side-group-title">DEPARTAMENTOS</div>
         <button type="button" id="tabInstructors" class="hidden" onclick="switchAdminTab('instrutores')"><span aria-hidden="true">◈</span> Instrutores</button>
         <button type="button" id="tabEthics" class="hidden" onclick="switchAdminTab('comite')"><span aria-hidden="true">⚖</span> Comitê de Ética</button>
+        <button type="button" id="tabWorktime" class="hidden" onclick="switchAdminTab('ponto')"><span aria-hidden="true">◷</span> Controle de Ponto</button>
+        <button type="button" id="tabWarnings" class="hidden" onclick="switchAdminTab('advertencias')"><span aria-hidden="true">♜</span> Advertências</button>
         <button type="button" id="tabPR" class="hidden" onclick="switchAdminTab('rp')"><span aria-hidden="true">◎</span> Relações Públicas</button>
         <button type="button" id="tabMembers" class="hidden" onclick="switchAdminTab('members')"><span aria-hidden="true">♧</span> Acessos ao painel</button>
       </div>
-      <div class="side-footer"><span class="pulse-dot"></span> Sistema oficial<small>Detroit Mechanics · 2.4</small></div>
+      <div class="side-footer"><span class="pulse-dot"></span> Sistema oficial<small>Detroit Mechanics · 2.5</small></div>
     </aside>
     <div class="app-main">
     <div class="app-eyebrow">WORKSPACE / <span id="appBreadcrumb">VISÃO GERAL</span></div>
@@ -324,10 +353,11 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
       <div id="staffHistoryWrap" class="staff-history-wrap hidden"><div class="staff-history-head"><h3 id="staffHistoryTitle">Histórico</h3><button type="button" onclick="document.getElementById('staffHistoryWrap').classList.add('hidden')">Fechar</button></div><div id="staffHistoryList"></div></div>
       <div id="staffResultCount" class="staff-result" aria-live="polite"></div>
       <div id="staffList" class="staff-grid"><div class="empty">Abra esta aba para carregar os membros.</div></div>
-      <div class="security-note">Membros da mecânica são diferentes de contas autorizadas a entrar no painel. Apenas ADM ativo pode editar fichas; recrutadores ativos podem consultar.</div>
+      <div class="security-note">O acesso à área restrita exige vínculo ativo com a Equipe da Mecânica. A liderança pode editar apenas fichas de nível inferior ao seu. Há uma conta técnica separada para recuperação administrativa.</div>
     </section>
     <section id="sectorSection" class="hidden">
       <div class="section-banner"><span class="hero-tag" id="sectorSubtitle">DEPARTAMENTOS / DETROIT MECHANICS</span><h3 id="sectorHeading">Departamento</h3><p id="sectorDescription">Registros e acompanhamento do setor.</p></div>
+      <div id="committeeTools" class="committee-tools hidden"><button type="button" onclick="switchAdminTab('ponto')">◷ Controle de Ponto</button><button type="button" onclick="switchAdminTab('advertencias')">⚖ Registrar advertência</button></div>
       <div class="sector-stats"><div class="staff-stat"><small>Registros</small><strong id="sectorTotal">—</strong></div><div class="staff-stat"><small>Em andamento / análise</small><strong id="sectorProgress">—</strong></div><div class="staff-stat"><small>Concluídos / aprovados</small><strong id="sectorDone">—</strong></div></div>
       <div id="sectorMessage" class="message" role="status"></div>
       <div class="sector-toolbar"><input id="sectorSearch" class="search" placeholder="Pesquisar registros" aria-label="Pesquisar registros"><select id="sectorTypeFilter" aria-label="Filtrar tipo"><option value="">Todos os tipos</option></select><select id="sectorStatusFilter" aria-label="Filtrar situação"><option value="">Todas as situações</option></select><button type="button" onclick="sectorOpenForm()" class="staff-add-btn">+ Novo registro</button><button type="button" onclick="exportSectorCSV()">Exportar CSV</button></div>
@@ -354,11 +384,61 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
       <div id="sectorResult" class="staff-result"></div><div id="sectorCards" class="staff-grid"><div class="empty">Abra o departamento para consultar.</div></div>
       <div class="security-note" id="sectorSecurity">O acesso ao departamento é conferido no servidor e depende do subcargo e da conta autorizada. Registros do Comitê são privados.</div>
     </section>
+
+    <section id="worktimeSection" class="hidden" aria-label="Controle de Ponto">
+      <div class="section-banner"><span class="hero-tag">COMITÊ / ROTINAS DE EQUIPE</span><h3>Controle de Ponto</h3><p>Registre entradas e saídas dos funcionários quantas vezes for necessário no mesmo dia. O resumo semanal calcula as horas automaticamente. Todos os horários são exibidos em Brasília (GMT-3).</p></div>
+      <div id="worktimeMessage" class="message" role="status"></div>
+      <div class="p25-stat-grid">
+        <div class="staff-stat"><small>Horas da semana</small><strong id="workHours">—</strong></div>
+        <div class="staff-stat"><small>Turnos encerrados</small><strong id="workClosed">—</strong></div>
+        <div class="staff-stat"><small>Em serviço</small><strong id="workOpen">—</strong></div>
+        <div class="staff-stat"><small>Funcionários</small><strong id="workPeople">—</strong></div>
+      </div>
+      <div class="p25-control-card">
+        <div class="p25-card-head"><strong>Adicionar jornada</strong><small>Um funcionário pode ter vários turnos no mesmo dia. Jornadas não podem se sobrepor.</small></div>
+        <div class="p25-grid">
+          <div class="field"><label for="workMember">Funcionário *</label><select id="workMember"><option value="">Selecione</option></select></div>
+          <div class="field"><label for="workWeek">Semana de referência</label><input id="workWeek" type="date"></div>
+        </div>
+        <div class="p25-quick-buttons"><button type="button" class="p25-button primary" id="workStartNow">◷ Registrar entrada agora</button><button type="button" class="p25-button" id="workRefresh">Atualizar registros</button></div>
+        <details class="p25-manual"><summary>Lançar entrada e saída manualmente</summary>
+          <p class="section-note">Para turnos anteriores. Os horários serão interpretados no fuso do seu dispositivo; use o horário de Brasília.</p>
+          <form id="workManualForm" class="p25-grid">
+            <div class="field"><label for="workManualStart">Entrada *</label><input type="datetime-local" id="workManualStart" required></div>
+            <div class="field"><label for="workManualEnd">Saída *</label><input type="datetime-local" id="workManualEnd" required></div>
+            <button class="p25-button primary p25-span" type="submit" id="workManualSubmit">Salvar turno manual</button>
+          </form>
+        </details>
+      </div>
+      <div class="p25-control-card"><div class="p25-card-head"><strong>Horas por funcionário nesta semana</strong><small>Os turnos abertos aparecem como parciais até o encerramento.</small></div><div id="workSummary" class="p25-people"><div class="empty">Escolha uma semana para consultar.</div></div></div>
+      <div class="p25-control-card"><div class="p25-card-head"><strong>Histórico de entradas e saídas</strong><small>Cada intervalo é salvo individualmente e fica registrado no banco.</small></div><div id="workRows" class="p25-records"><div class="empty">Nenhum turno carregado.</div></div></div>
+      <div class="security-note">Registros de ponto são históricos internos do servidor de roleplay, não um controle trabalhista formal. Não existe exclusão ou alteração livre: a autoria e os horários ficam preservados.</div>
+    </section>
+
+    <section id="warningsSection" class="hidden" aria-label="Registro de advertências">
+      <div class="section-banner"><span class="hero-tag">COMITÊ / CONTROLE DISCIPLINAR</span><h3>Advertências</h3><p>Registre advertências verbais, escritas ou graves com motivo e descrição. Você pode visualizar e registrar apenas advertências de funcionários com cargo principal <strong>inferior ao seu</strong>.</p></div>
+      <div id="warningsMessage" class="message" role="status"></div>
+      <div class="p25-stat-grid"><div class="staff-stat"><small>Registros visíveis</small><strong id="warnCount">—</strong></div><div class="staff-stat"><small>Advertências escritas</small><strong id="warnWritten">—</strong></div><div class="staff-stat"><small>Advertências graves</small><strong id="warnSevere">—</strong></div><div class="staff-stat"><small>Cargo conectado</small><strong id="warnRole" class="p25-role">—</strong></div></div>
+      <div class="p25-control-card"><div class="p25-card-head"><strong>Nova advertência</strong><small>Registro formal interno. Após salvar, não é possível apagar ou reescrever a ocorrência pelo site.</small></div>
+      <form id="warningForm">
+        <div class="p25-grid">
+          <div class="field"><label for="warningMember">Funcionário *</label><select id="warningMember" required><option value="">Selecione um funcionário abaixo do seu cargo</option></select></div>
+          <div class="field"><label for="warningType">Classificação *</label><select id="warningType" required><option value="verbal">Advertência verbal</option><option value="escrita">Advertência escrita</option><option value="grave">Advertência grave</option></select></div>
+          <div class="field p25-span"><label for="warningReason">Motivo resumido *</label><input id="warningReason" minlength="5" maxlength="140" required placeholder="Ex.: Falta de conduta durante o atendimento"></div>
+          <div class="field p25-span"><label for="warningDetails">Descrição e encaminhamento (opcional)</label><textarea id="warningDetails" maxlength="2000" placeholder="Informe os fatos de forma objetiva, sem expor dados pessoais desnecessários."></textarea></div>
+        </div>
+        <button id="warningSubmit" type="submit" class="p25-button primary">Registrar advertência</button>
+      </form></div>
+      <div class="p25-control-card"><div class="p25-card-head"><strong>Histórico de advertências permitido</strong><small>O servidor filtra os registros conforme o nível do cargo principal — inclusive para acessos diretos.</small></div>
+      <div class="p25-grid"><div class="field p25-span"><label for="warningFilter">Filtrar por funcionário</label><select id="warningFilter"><option value="">Todos os funcionários permitidos</option></select></div></div>
+      <div id="warningsRows" class="p25-records"><div class="empty">Nenhum registro carregado.</div></div></div>
+      <div class="security-note">Exemplo: um Supervisor vê advertências de Trainee, Aux. Mechanic, Mechanic e Mechanic Sr. Advertências de Supervisor, Chief e Owner não ficam visíveis. Essa regra é aplicada pelo banco de dados.</div>
+    </section>
     <div id="membersSection" class="hidden"><div class="section-banner"><span class="hero-tag">ACESSO DA EQUIPE</span><h3>Gerenciar membros</h3><p>Aprove solicitações e controle os cargos da equipe.</p></div><div id="membersMessage" class="message" role="status"></div><h3>Solicitações e membros</h3><p class="section-note">Supervisor, Chief e Owner podem gerenciar contas de hierarquia inferior. Contas ADM técnicas exigem autorização do Owner.</p><div id="membersList" class="request-list"></div></div>
     <div class="security-note">As solicitações são armazenadas no banco centralizado. Somente contas autorizadas pela política do banco podem consultá-las ou excluí-las.</div>
     </div>
   </div>
-  <div class="foot">DETROIT MECHANICS · PREMIUM DARK V2.4 · HIERARQUIA RP</div>
+  <div class="foot">DETROIT MECHANICS · PREMIUM DARK V2.5 · CONTROLE DE PONTO E COMITÊ</div>
 </section>
 </main>
 </div>
@@ -383,7 +463,7 @@ const canEditStaffRecord = member => isLeadership() && staffRoleLevel(member.car
 const sectorTabs = ['instrutores','comite','rp'];
 const sectorConfigs = {
  instrutores:{name:'Instrutores',subtitle:'FORMAÇÃO E TREINAMENTOS', description:'Organize cursos, turmas, avaliações, materiais e a evolução dos participantes.', types:{curso:'Curso',turma:'Turma',material:'Material didático',avaliacao:'Avaliação'}, statuses:{planejado:'Planejado',em_andamento:'Em andamento',concluido:'Concluído',cancelado:'Cancelado'}},
- comite:{name:'Comitê de Ética e Promoções',subtitle:'ÉTICA E DESENVOLVIMENTO', description:'Registre avaliações de promoção, ocorrências éticas, advertências e reconhecimentos com acesso restrito.', types:{etica:'Ocorrência ética',promocao:'Avaliação de promoção',advertencia:'Advertência',reconhecimento:'Reconhecimento'},statuses:{em_analise:'Em análise',aprovado:'Aprovado',reprovado:'Reprovado',concluido:'Concluído',cancelado:'Cancelado'}},
+ comite:{name:'Comitê de Ética e Promoções',subtitle:'ÉTICA E DESENVOLVIMENTO', description:'Registre avaliações de promoção, ocorrências éticas e reconhecimentos. Para advertências utilize a área específica com controle hierárquico.', types:{etica:'Ocorrência ética',promocao:'Avaliação de promoção',reconhecimento:'Reconhecimento'},statuses:{em_analise:'Em análise',aprovado:'Aprovado',reprovado:'Reprovado',concluido:'Concluído',cancelado:'Cancelado'}},
  rp:{name:'Relações Públicas',subtitle:'PARCERIAS, MÍDIAS E IMAGEM', description:'Acompanhe parcerias, publicações, campanhas e comunicados da Detroit Mechanics.', types:{parceria:'Parceria',midia:'Mídias e conteúdo',campanha:'Campanha',comunicado:'Comunicado'},statuses:{planejado:'Planejado',em_andamento:'Em andamento',concluido:'Concluído',cancelado:'Cancelado'}}
 };
 let sectorRows = [];
@@ -439,17 +519,21 @@ async function refreshAccess() {
   leadershipLevel = 0;
   let operationalUserId = null;
   let discordProfile = null;
+  let allowedByDatabase = false;
+  let isRecovery = false;
   if (session) {
     const {data: levelResult, error: levelError}=await supabase.rpc('detroit_meu_acesso');
-    if(levelError) console.warn('Hierarquia: execute o SQL 2.4',levelError.message);
+    if(levelError) console.warn('Instale o SQL 2.5 para ativar os controles de acesso:',levelError.message);
     else {
-      leadershipLevel=Number(levelResult?.nivel||0);
-      operationalUserId=levelResult?.usuario_operacional||null;
+      allowedByDatabase=levelResult?.autorizado===true;
+      isRecovery=levelResult?.recuperacao===true;
+      leadershipLevel=allowedByDatabase?Number(levelResult?.nivel||0):0;
+      operationalUserId=allowedByDatabase?levelResult?.usuario_operacional||null:null;
     }
     // A RPC confere auth.identities (OAuth assinado pelo Supabase),
     // nunca o ID de Discord preenchido manualmente no navegador.
     const {data: profile, error: profileError} = await supabase.rpc('detroit_perfil_discord');
-    if(!profileError && profile?.discord_user_id) {
+    if(allowedByDatabase && !profileError && profile?.discord_user_id) {
       discordProfile = profile;
       if((profile.subcargos||[]).includes('Recrutadores') || leadershipLevel >= 5) {
         const {error: grantError} = await supabase.rpc('detroit_ativar_recrutador_discord');
@@ -459,9 +543,9 @@ async function refreshAccess() {
     const { data, error } = await supabase.from('team_members')
       .select('user_id,nome,email,cargo,status,discord_user_id')
       .eq('user_id',session.user.id).maybeSingle();
-    if (!error && data?.status==='ativo' && ['adm','recrutador'].includes(data.cargo) && (data.cargo!=='adm' || leadershipLevel===7)) {
+    if (allowedByDatabase && (Boolean(discordProfile) || isRecovery) && !error && data?.status==='ativo' && ['adm','recrutador'].includes(data.cargo) && (data.cargo!=='adm' || leadershipLevel===7)) {
       currentMember = data;
-    } else if(discordProfile) {
+    } else if(allowedByDatabase && discordProfile) {
       // Pode acessar somente seus setores; NUNCA e ADM automaticamente.
       currentMember = {
         user_id:operationalUserId||session.user.id,
@@ -477,17 +561,12 @@ async function refreshAccess() {
       for(const [tab,subcargo] of [['instrutores','Instrutores'],['comite','Comitê'],['rp','Relações Públicas']]) {
         if((discordProfile.subcargos||[]).includes(subcargo)) staffSectorAccess.push(tab);
       }
-    } else if (currentMember.discord_user_id) {
-      // Compativel com logins antigos da equipe, ja vinculados ao Discord.
-      const {data}=await supabase.from('detroit_membros').select('subcargos')
-        .eq('discord_user_id',currentMember.discord_user_id).eq('situacao','ativo').limit(1);
-      const joined=new Set((data||[]).flatMap(m=>m.subcargos||[]));
-      for(const [tab,subcargo] of [['instrutores','Instrutores'],['comite','Comitê'],['rp','Relações Públicas']]) {
-        if(joined.has(subcargo)) staffSectorAccess.push(tab);
-      }
     }
   }
   const canRecruit = currentMember && (isLeadership() || ['adm','recrutador'].includes(currentMember.cargo));
+  const canComite = Boolean(currentMember && staffSectorAccess.includes('comite'));
+  $('tabWorktime').classList.toggle('hidden',!canComite);
+  $('tabWarnings').classList.toggle('hidden',!canComite);
   for(const [tab,id] of [['instrutores','tabInstructors'],['comite','tabEthics'],['rp','tabPR']]) {
     $(id).classList.toggle('hidden',!staffSectorAccess.includes(tab));
   }
@@ -502,6 +581,7 @@ async function refreshAccess() {
   if (!isLeadership()) {
     $('staffFormWrap').classList.add('hidden');
   }
+  if (!canComite && ['ponto','advertencias'].includes(activeTab)) activeTab=canRecruit?'dashboard':staffSectorAccess[0]||'dashboard';
   if (authorized) {
     $('adminSummary').textContent=`${currentMember.nome} · ${isLeadership()?rankRoles[leadershipLevel-1]+' / Liderança':currentMember.cargo==='adm'?'ADM':canRecruit?'Recrutador':'Equipe da Mecânica'}`;
     switchAdminTab(activeTab);
@@ -518,19 +598,25 @@ window.switchAdminTab = function(tab) {
   if (['dashboard','recruit','staff'].includes(tab) && !canRecruit) return;
   if (tab === 'members' && !isLeadership()) return;
   if (sectorTabs.includes(tab) && !staffSectorAccess.includes(tab)) return;
-  if (!['dashboard','recruit','staff','members',...sectorTabs].includes(tab)) return;
+  if (['ponto','advertencias'].includes(tab) && !staffSectorAccess.includes('comite')) return;
+  if (!['dashboard','recruit','staff','members','ponto','advertencias',...sectorTabs].includes(tab)) return;
   activeTab = tab;
   for (const [name, id, buttonId] of [['dashboard','dashboardSection','tabDashboard'],['recruit','recruitSection','tabRecruit'],['staff','staffSection','tabStaff'],['members','membersSection','tabMembers']]) {
     $(id).classList.toggle('hidden', tab !== name);
     $(buttonId).classList.toggle('active', tab === name);
   }
   $('sectorSection').classList.toggle('hidden',!sectorTabs.includes(tab));
-  for (const [name,id] of [['instrutores','tabInstructors'],['comite','tabEthics'],['rp','tabPR']]) $(id).classList.toggle('active',tab===name);
-  const titles = {dashboard:'Visão geral',recruit:'Inscrições',staff:'Equipe da Mecânica',members:'Acessos ao painel',instrutores:'Instrutores',comite:'Comitê de Ética e Promoções',rp:'Relações Públicas'};
+  $('committeeTools').classList.toggle('hidden',tab!=='comite');
+  $('worktimeSection').classList.toggle('hidden',tab!=='ponto');
+  $('warningsSection').classList.toggle('hidden',tab!=='advertencias');
+  for (const [name,id] of [['instrutores','tabInstructors'],['comite','tabEthics'],['rp','tabPR'],['ponto','tabWorktime'],['advertencias','tabWarnings']]) $(id).classList.toggle('active',tab===name);
+  const titles = {dashboard:'Visão geral',recruit:'Inscrições',staff:'Equipe da Mecânica',members:'Acessos ao painel',instrutores:'Instrutores',comite:'Comitê de Ética e Promoções',rp:'Relações Públicas',ponto:'Controle de Ponto',advertencias:'Advertências'};
   $('appHeading').textContent = titles[tab];
   $('appBreadcrumb').textContent = titles[tab].toUpperCase();
   if (tab === 'members') renderMembers();
   else if (tab === 'staff') renderStaff();
+  else if (tab === 'ponto') renderWorktime();
+  else if (tab === 'advertencias') renderWarnings();
   else if (sectorTabs.includes(tab)) renderSector(tab);
   else renderRequests();
 };
@@ -1170,7 +1256,7 @@ function filterSector(){
       ${r.membro_id?`<div class="sector-card-meta"><span>Membro: ${escapeHTML(sectorNameById(r.membro_id))}</span></div>`:''}
       ${r.responsavel_id?`<div class="sector-card-meta"><span>Responsável: ${escapeHTML(sectorNameById(r.responsavel_id))}</span></div>`:''}
       ${r.descricao?`<p class="sector-card-desc">${escapeHTML(r.descricao)}</p>`:''}
-      <div class="staff-card-actions">${url}<button type="button" data-sector-edit="${escapeHTML(String(r.id))}">Editar</button>${canRoster?`<button type="button" data-sector-roster="${escapeHTML(String(r.id))}">Participantes</button>`:''}</div>
+      <div class="staff-card-actions">${url}${!(activeTab==='comite'&&r.tipo==='advertencia')?`<button type="button" data-sector-edit="${escapeHTML(String(r.id))}">Editar</button>`:'<span class="staff-empty-tag">Histórico protegido</span>'}${canRoster?`<button type="button" data-sector-roster="${escapeHTML(String(r.id))}">Participantes</button>`:''}</div>
     </article>`;
   }).join('');
 }
@@ -1180,6 +1266,7 @@ window.sectorOpenForm=function(id=null){
   const conf=sectorConfigNow();
   const r=id==null?null:sectorRows.find(x=>String(x.id)===String(id));
   if(id!=null&&!r)return;
+  if (activeTab==='comite' && r?.tipo==='advertencia') { showMessage('sectorMessage','Advertências anteriores são protegidas. As novas devem ser cadastradas na aba Advertências.'); return; }
   $('sectorForm').reset();
   $('sectorEditId').value=r?.id||'';
   $('sectorFormHeading').textContent=r?'Editar registro':'Novo registro — '+conf.name;
@@ -1279,6 +1366,180 @@ window.exportSectorCSV=function(){
   const blob=new Blob(['\ufeff'+content],{type:'text/csv;charset=utf-8;'}),url=URL.createObjectURL(blob),link=document.createElement('a');
   link.href=url;link.download='detroit-'+activeTab+'-registros.csv';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
 };
+
+// ---------------------------------------------------------------------
+// Detroit Mechanics 2.5 — Comitê, Controle de Ponto e Advertências
+// Permissões conferidas novamente pelo Supabase (SECURITY DEFINER + RLS).
+// ---------------------------------------------------------------------
+let comiteCrew = [];
+let pointSessions = [];
+let warningsData = [];
+let loadingCrew = null;
+
+function p25Today(){
+  const parts=new Intl.DateTimeFormat('en-CA',{timeZone:'America/Sao_Paulo',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+  const map=Object.fromEntries(parts.map(p=>[p.type,p.value]));
+  return `${map.year}-${map.month}-${map.day}`;
+}
+function p25DateTime(t){
+ if(!t)return 'Em serviço';
+ const d=new Date(t);
+ return Number.isNaN(d.valueOf())?'Data inválida':new Intl.DateTimeFormat('pt-BR',{timeZone:'America/Sao_Paulo',day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit',hour12:false}).format(d);
+}
+function p25FormatHours(number){return (Number(number||0)).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+' h';}
+function p25MemberOption(m){return `<option value="${escapeHTML(String(m.id))}">${escapeHTML(m.nome_rp)} · ${escapeHTML(m.cargo)}</option>`;}
+function p25StaffName(id){return comiteCrew.find(m=>m.id===id)?.nome_rp||'Funcionário';}
+function p25StaffCargo(id){return comiteCrew.find(m=>m.id===id)?.cargo||'';}
+async function p25LoadCrew(){
+ if(loadingCrew)return loadingCrew;
+ loadingCrew=(async()=>{
+  const {data,error}=await supabase.rpc('detroit_comite_equipe');
+  if(error)throw error;
+  comiteCrew=Array.isArray(data)?data:[];
+  return comiteCrew;
+ })();
+ try{return await loadingCrew;}finally{loadingCrew=null;}
+}
+function p25InitializeSelect(selectId, options, first){
+ const element=$(selectId), selected=element.value;
+ element.innerHTML=`<option value="">${escapeHTML(first)}</option>`+options.map(p25MemberOption).join('');
+ if(options.some(m=>String(m.id)===selected))element.value=selected;
+}
+async function renderWorktime(){
+ if(!currentMember||!staffSectorAccess.includes('comite'))return;
+ clearMessage('worktimeMessage');
+ $('workRows').innerHTML='<div class="empty">Carregando turnos...</div>';
+ try{
+  await p25LoadCrew();
+  p25InitializeSelect('workMember',comiteCrew.filter(m=>m.situacao==='ativo'),'Selecione um funcionário ativo');
+  if(!$('workWeek').value)$('workWeek').value=p25Today();
+  const reqWeek=$('workWeek').value;
+  const {data,error}=await supabase.rpc('detroit_ponto_semana',{p_semana:reqWeek});
+  if(error)throw error;
+  if(activeTab!=='ponto'||reqWeek!==$('workWeek').value)return;
+  pointSessions=Array.isArray(data)?data:[];
+  const people=new Map();
+  let total=0, closed=0, opened=0;
+  for(const row of pointSessions){
+    const hours=Number(row.horas||0);
+    total+=hours;
+    if(row.fim)closed++;else opened++;
+    const p=people.get(row.membro_id)||{id:row.membro_id,nome:row.nome_rp,cargo:row.cargo,hours:0,closed:0,opened:0};
+    p.hours+=hours;
+    if(row.fim)p.closed++;else p.opened++;
+    people.set(row.membro_id,p);
+  }
+  $('workHours').textContent=p25FormatHours(total);
+  $('workClosed').textContent=closed;
+  $('workOpen').textContent=opened;
+  $('workPeople').textContent=people.size;
+  $('workSummary').innerHTML=people.size?[...people.values()].sort((a,b)=>b.hours-a.hours).map(m=>`<article class="p25-record"><div class="p25-record-main"><strong>${escapeHTML(m.nome)}</strong><small>${escapeHTML(m.cargo)} · ${m.closed} turno(s) encerrado(s)${m.opened?' · '+m.opened+' aberto(s)':''}</small></div><div class="p25-record-side"><span class="p25-pill ${m.opened?'':'ok'}">${escapeHTML(p25FormatHours(m.hours))}${m.opened?' (parcial)':''}</span></div></article>`).join(''):'<div class="empty">Sem horas registradas nesta semana.</div>';
+  $('workRows').innerHTML=pointSessions.length?pointSessions.map(r=>`<article class="p25-record"><div class="p25-record-main"><strong>${escapeHTML(r.nome_rp)} <span class="p25-pill ${r.fim?'ok':''}">${r.fim?'Encerrado':'Em serviço'}</span></strong><small>${escapeHTML(p25DateTime(r.inicio))} → ${escapeHTML(p25DateTime(r.fim))}</small><small>${escapeHTML(r.cargo)} · Jornada #${escapeHTML(String(r.id))}</small></div><div class="p25-record-side"><span>${escapeHTML(p25FormatHours(r.horas))}</span>${!r.fim?`<button type="button" class="p25-button" data-p25-end="${escapeHTML(String(r.id))}">Registrar saída agora</button>`:''}</div></article>`).join(''):'<div class="empty">Nenhuma entrada ou saída para a semana selecionada.</div>';
+ }catch(e){
+  console.error('Controle de Ponto',e);
+  $('workRows').innerHTML='<div class="empty">Não foi possível carregar: '+escapeHTML(e.message||'erro desconhecido')+'</div>';
+  showMessage('worktimeMessage','Erro ao consultar controle de ponto: '+(e.message||'erro desconhecido'));
+ }
+}
+$('workWeek').addEventListener('change',()=>{if(activeTab==='ponto')renderWorktime()});
+$('workRefresh').addEventListener('click',()=>{if(activeTab==='ponto')renderWorktime()});
+$('workStartNow').addEventListener('click',async()=>{
+ if(activeTab!=='ponto')return;
+ const id=Number($('workMember').value);
+ if(!id){showMessage('worktimeMessage','Selecione o funcionário antes de registrar a entrada.');return;}
+ const button=$('workStartNow'); button.disabled=true;clearMessage('worktimeMessage');
+ try{
+  const {error}=await supabase.rpc('detroit_ponto_registrar',{p_membro_id:id,p_inicio:new Date().toISOString(),p_fim:null});
+  if(error)throw error;
+  await renderWorktime();
+  showMessage('worktimeMessage','Entrada registrada com sucesso. O turno permanece aberto até a saída.','success');
+ }catch(e){showMessage('worktimeMessage','Não foi possível registrar a entrada: '+(e.message||'erro'));}
+ finally{button.disabled=false;}
+});
+$('workManualForm').addEventListener('submit',async event=>{
+ event.preventDefault();
+ if(activeTab!=='ponto')return;
+ const id=Number($('workMember').value);
+ const startRaw=$('workManualStart').value,endRaw=$('workManualEnd').value;
+ if(!id||!startRaw||!endRaw){showMessage('worktimeMessage','Selecione um funcionário e preencha os dois horários.');return;}
+ const start=new Date(startRaw), end=new Date(endRaw);
+ if(!Number.isFinite(start.valueOf())||!Number.isFinite(end.valueOf())||end<=start){showMessage('worktimeMessage','A saída precisa ser posterior à entrada.');return;}
+ if(!confirm('Registrar esta jornada para '+p25StaffName(id)+'?'))return;
+ const btn=$('workManualSubmit');btn.disabled=true;clearMessage('worktimeMessage');
+ try{
+  const {error}=await supabase.rpc('detroit_ponto_registrar',{p_membro_id:id,p_inicio:start.toISOString(),p_fim:end.toISOString()});
+  if(error)throw error;
+  $('workManualForm').reset();
+  await renderWorktime();
+  showMessage('worktimeMessage','Turno manual registrado com sucesso.','success');
+ }catch(e){showMessage('worktimeMessage','Não foi possível salvar o turno: '+(e.message||'erro'));}
+ finally{btn.disabled=false;}
+});
+$('workRows').addEventListener('click',async e=>{
+ const button=e.target.closest('[data-p25-end]');
+ if(!button||activeTab!=='ponto')return;
+ const id=Number(button.dataset.p25End);
+ const row=pointSessions.find(r=>r.id===id);
+ if(!row||row.fim)return;
+ if(!confirm('Registrar saída agora para '+row.nome_rp+'?'))return;
+ button.disabled=true;clearMessage('worktimeMessage');
+ try{
+  const {error}=await supabase.rpc('detroit_ponto_encerrar',{p_id:id,p_fim:new Date().toISOString()});
+  if(error)throw error;
+  await renderWorktime();showMessage('worktimeMessage','Saída registrada e horas atualizadas.','success');
+ }catch(err){showMessage('worktimeMessage','Erro ao registrar saída: '+(err.message||'erro'));}
+ finally{button.disabled=false;}
+});
+
+async function renderWarnings(){
+ if(!currentMember||!staffSectorAccess.includes('comite'))return;
+ clearMessage('warningsMessage');
+ $('warningsRows').innerHTML='<div class="empty">Carregando advertências...</div>';
+ try{
+  await p25LoadCrew();
+  const subordinate=comiteCrew.filter(m=>m.situacao==='ativo'&&staffRoleLevel(m.cargo)<leadershipLevel);
+  p25InitializeSelect('warningMember',subordinate,'Selecione um funcionário abaixo do seu cargo');
+  p25InitializeSelect('warningFilter',comiteCrew.filter(m=>staffRoleLevel(m.cargo)<leadershipLevel),'Todos os funcionários permitidos');
+  $('warnRole').textContent=rankRoles[Math.max(0,leadershipLevel-1)]||'Equipe';
+  const {data,error}=await supabase.rpc('detroit_listar_advertencias');
+  if(error)throw error;
+  if(activeTab!=='advertencias')return;
+  warningsData=Array.isArray(data)?data:[];
+  $('warnCount').textContent=warningsData.length;
+  $('warnWritten').textContent=warningsData.filter(x=>x.tipo==='escrita').length;
+  $('warnSevere').textContent=warningsData.filter(x=>x.tipo==='grave').length;
+  p25FilterWarnings();
+ }catch(e){
+  console.error('Advertencias',e);
+  $('warningsRows').innerHTML='<div class="empty">Erro ao carregar advertências: '+escapeHTML(e.message||'erro desconhecido')+'</div>';
+  showMessage('warningsMessage','Falha ao consultar advertências: '+(e.message||'erro desconhecido'));
+ }
+}
+function p25FilterWarnings(){
+ const selected=Number($('warningFilter').value)||0;
+ const rows=warningsData.filter(x=>!selected||x.membro_id===selected);
+ const classification={verbal:'Advertência verbal',escrita:'Advertência escrita',grave:'Advertência grave'};
+ $('warningsRows').innerHTML=rows.length?rows.map(w=>`<article class="p25-record"><div class="p25-record-main"><strong>${escapeHTML(w.nome_rp)} · ${escapeHTML(w.cargo_atual)}</strong><small>${escapeHTML(p25DateTime(w.criado_em))} · Registrado por ${escapeHTML(w.autor_nome||'Administração')} · #${escapeHTML(String(w.id))}</small><p><strong>${escapeHTML(w.motivo)}</strong>${w.descricao?'\n'+escapeHTML(w.descricao):''}</p>${w.cancelada_em?`<small>Cancelada em ${escapeHTML(p25DateTime(w.cancelada_em))} · ${escapeHTML(w.justificativa_cancelamento)}</small>`:''}</div><div class="p25-record-side"><span class="p25-pill ${w.cancelada_em?'muted':''}">${escapeHTML(classification[w.tipo]||w.tipo)}</span></div></article>`).join(''):'<div class="empty">Nenhuma advertência visível para este filtro. Você só visualiza registros de cargos inferiores ao seu.</div>';
+}
+$('warningFilter').addEventListener('change',p25FilterWarnings);
+$('warningForm').addEventListener('submit',async e=>{
+ e.preventDefault();if(activeTab!=='advertencias')return;
+ const id=Number($('warningMember').value);
+ const name=p25StaffName(id),cargo=p25StaffCargo(id);
+ if(!id||staffRoleLevel(cargo)>=leadershipLevel){showMessage('warningsMessage','Escolha alguém com cargo principal inferior ao seu.');return;}
+ const motivo=$('warningReason').value.trim();
+ if(motivo.length<5){showMessage('warningsMessage','Informe um motivo com pelo menos cinco caracteres.');return;}
+ if(!confirm(`Registrar advertência para ${name} (${cargo})? Este registro será permanente no histórico.`))return;
+ const btn=$('warningSubmit');btn.disabled=true;clearMessage('warningsMessage');
+ try{
+  const {error}=await supabase.rpc('detroit_registrar_advertencia',{p_membro_id:id,p_tipo:$('warningType').value,p_motivo:motivo,p_descricao:$('warningDetails').value.trim()});
+  if(error)throw error;
+  $('warningForm').reset();
+  await renderWarnings();showMessage('warningsMessage','Advertência registrada com sucesso e protegida pela hierarquia.','success');
+ }catch(err){console.error('Registrar advertencia',err);showMessage('warningsMessage','Não foi possível registrar: '+(err.message||'erro'));}
+ finally{btn.disabled=false;}
+});
+
 
 supabase.auth.onAuthStateChange(() => {
   setTimeout(() => refreshAccess(), 0);
