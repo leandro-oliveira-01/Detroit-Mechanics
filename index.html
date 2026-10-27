@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#080808">
-<title>Detroit Mechanics 2.3 | Acesso Discord</title>
+<title>Detroit Mechanics 2.4 | Hierarquia e Permissões</title>
 <style>
 :root{--red:#ff1738;--red2:#ff4058;--bg:#070707;--panel:#111113;--field:#202023;--muted:#a4a4ad;--white:#f5f5f7;--line:#303036}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% 10%,#26070d 0,transparent 36%),var(--bg);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
@@ -250,7 +250,7 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
         <button type="button" id="tabPR" class="hidden" onclick="switchAdminTab('rp')"><span aria-hidden="true">◎</span> Relações Públicas</button>
         <button type="button" id="tabMembers" class="hidden" onclick="switchAdminTab('members')"><span aria-hidden="true">♧</span> Acessos ao painel</button>
       </div>
-      <div class="side-footer"><span class="pulse-dot"></span> Sistema oficial<small>Detroit Mechanics · 2.3</small></div>
+      <div class="side-footer"><span class="pulse-dot"></span> Sistema oficial<small>Detroit Mechanics · 2.4</small></div>
     </aside>
     <div class="app-main">
     <div class="app-eyebrow">WORKSPACE / <span id="appBreadcrumb">VISÃO GERAL</span></div>
@@ -309,7 +309,7 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
               <label><input type="checkbox" name="staffSubrole" value="Recrutadores"> Recrutadores</label>
               <label><input type="checkbox" name="staffSubrole" value="Comitê"> Comitê</label>
               <label><input type="checkbox" name="staffSubrole" value="Relações Públicas"> Relações Públicas</label>
-            </div><div class="staff-subroles-help">Exemplo: um Mechanic Sr pode ser Instrutores + Recrutadores + Comitê ao mesmo tempo. Esses subcargos não concedem acesso ao painel automaticamente.</div></div>
+            </div><div class="staff-subroles-help">Subcargos são acumuláveis. Supervisor, Chief e Owner acessam todos os setores; alterações hierárquicas são verificadas pelo Supabase.</div></div>
             <div class="field"><label for="staffSituation">Situação *</label><select id="staffSituation"><option value="ativo">Ativo</option><option value="afastado">Afastado</option><option value="desligado">Desligado</option></select></div>
             <div class="field"><label for="staffJoined">Data de ingresso *</label><input id="staffJoined" type="date" required></div>
             <div class="field"><label for="staffPromoted">Data da última promoção</label><input id="staffPromoted" type="date"></div>
@@ -354,11 +354,11 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
       <div id="sectorResult" class="staff-result"></div><div id="sectorCards" class="staff-grid"><div class="empty">Abra o departamento para consultar.</div></div>
       <div class="security-note" id="sectorSecurity">O acesso ao departamento é conferido no servidor e depende do subcargo e da conta autorizada. Registros do Comitê são privados.</div>
     </section>
-    <div id="membersSection" class="hidden"><div class="section-banner"><span class="hero-tag">ACESSO DA EQUIPE</span><h3>Gerenciar membros</h3><p>Aprove solicitações e controle os cargos da equipe.</p></div><div id="membersMessage" class="message" role="status"></div><h3>Solicitações e membros</h3><p class="section-note">Somente ADM ativo pode aprovar, recusar, mudar cargos ou desativar membros.</p><div id="membersList" class="request-list"></div></div>
+    <div id="membersSection" class="hidden"><div class="section-banner"><span class="hero-tag">ACESSO DA EQUIPE</span><h3>Gerenciar membros</h3><p>Aprove solicitações e controle os cargos da equipe.</p></div><div id="membersMessage" class="message" role="status"></div><h3>Solicitações e membros</h3><p class="section-note">Supervisor, Chief e Owner podem gerenciar contas de hierarquia inferior. Contas ADM técnicas exigem autorização do Owner.</p><div id="membersList" class="request-list"></div></div>
     <div class="security-note">As solicitações são armazenadas no banco centralizado. Somente contas autorizadas pela política do banco podem consultá-las ou excluí-las.</div>
     </div>
   </div>
-  <div class="foot">DETROIT MECHANICS · PREMIUM DARK V2.3 · LOGIN DISCORD</div>
+  <div class="foot">DETROIT MECHANICS · PREMIUM DARK V2.4 · HIERARQUIA RP</div>
 </section>
 </main>
 </div>
@@ -375,6 +375,11 @@ let activeAssignees = [];
 let currentMember = null;
 let activeTab = "dashboard";
 let staffSectorAccess = [];
+let leadershipLevel = 0;
+const rankRoles = ['Trainee','Aux. Mechanic','Mechanic','Mechanic Sr','Supervisor','Chief','Owner'];
+const staffRoleLevel = role => Math.max(0, rankRoles.indexOf(role)+1);
+const isLeadership = () => leadershipLevel >= 5;
+const canEditStaffRecord = member => isLeadership() && staffRoleLevel(member.cargo) < leadershipLevel;
 const sectorTabs = ['instrutores','comite','rp'];
 const sectorConfigs = {
  instrutores:{name:'Instrutores',subtitle:'FORMAÇÃO E TREINAMENTOS', description:'Organize cursos, turmas, avaliações, materiais e a evolução dos participantes.', types:{curso:'Curso',turma:'Turma',material:'Material didático',avaliacao:'Avaliação'}, statuses:{planejado:'Planejado',em_andamento:'Em andamento',concluido:'Concluído',cancelado:'Cancelado'}},
@@ -431,14 +436,22 @@ async function refreshAccess() {
   const { data: { session } } = await supabase.auth.getSession();
   currentMember = null;
   staffSectorAccess = [];
+  leadershipLevel = 0;
+  let operationalUserId = null;
   let discordProfile = null;
   if (session) {
+    const {data: levelResult, error: levelError}=await supabase.rpc('detroit_meu_acesso');
+    if(levelError) console.warn('Hierarquia: execute o SQL 2.4',levelError.message);
+    else {
+      leadershipLevel=Number(levelResult?.nivel||0);
+      operationalUserId=levelResult?.usuario_operacional||null;
+    }
     // A RPC confere auth.identities (OAuth assinado pelo Supabase),
     // nunca o ID de Discord preenchido manualmente no navegador.
     const {data: profile, error: profileError} = await supabase.rpc('detroit_perfil_discord');
     if(!profileError && profile?.discord_user_id) {
       discordProfile = profile;
-      if((profile.subcargos||[]).includes('Recrutadores')) {
+      if((profile.subcargos||[]).includes('Recrutadores') || leadershipLevel >= 5) {
         const {error: grantError} = await supabase.rpc('detroit_ativar_recrutador_discord');
         if(grantError) console.warn('Acesso de recrutamento Discord nao liberado:',grantError.message);
       }
@@ -446,20 +459,20 @@ async function refreshAccess() {
     const { data, error } = await supabase.from('team_members')
       .select('user_id,nome,email,cargo,status,discord_user_id')
       .eq('user_id',session.user.id).maybeSingle();
-    if (!error && data?.status==='ativo' && ['adm','recrutador'].includes(data.cargo)) {
+    if (!error && data?.status==='ativo' && ['adm','recrutador'].includes(data.cargo) && (data.cargo!=='adm' || leadershipLevel===7)) {
       currentMember = data;
     } else if(discordProfile) {
       // Pode acessar somente seus setores; NUNCA e ADM automaticamente.
       currentMember = {
-        user_id:session.user.id,
+        user_id:operationalUserId||session.user.id,
         nome:discordProfile.nome_rp,
-        cargo:'setor',status:'ativo',
+        cargo:leadershipLevel>=5?'lider':'setor',status:'ativo',
         discord_user_id:discordProfile.discord_user_id
       };
     }
   }
   if (currentMember) {
-    if (currentMember.cargo==='adm') staffSectorAccess=[...sectorTabs];
+    if (isLeadership() || currentMember.cargo==='adm') staffSectorAccess=[...sectorTabs];
     else if (discordProfile) {
       for(const [tab,subcargo] of [['instrutores','Instrutores'],['comite','Comitê'],['rp','Relações Públicas']]) {
         if((discordProfile.subcargos||[]).includes(subcargo)) staffSectorAccess.push(tab);
@@ -474,23 +487,23 @@ async function refreshAccess() {
       }
     }
   }
-  const canRecruit = currentMember && ['adm','recrutador'].includes(currentMember.cargo);
+  const canRecruit = currentMember && (isLeadership() || ['adm','recrutador'].includes(currentMember.cargo));
   for(const [tab,id] of [['instrutores','tabInstructors'],['comite','tabEthics'],['rp','tabPR']]) {
     $(id).classList.toggle('hidden',!staffSectorAccess.includes(tab));
   }
   for(const id of ['tabDashboard','tabRecruit','tabStaff']) $(id).classList.toggle('hidden',!canRecruit);
-  $('tabMembers').classList.toggle('hidden',currentMember?.cargo!=='adm');
+  $('tabMembers').classList.toggle('hidden',!isLeadership());
   const authorized = Boolean(currentMember && (canRecruit || staffSectorAccess.length));
   $('authPanel').classList.toggle('hidden',authorized);
   $('adminPanel').classList.toggle('hidden',!authorized);
   if (!canRecruit && ['dashboard','recruit','staff','members'].includes(activeTab)) {
     activeTab=staffSectorAccess[0]||'dashboard';
   }
-  if (currentMember?.cargo!=='adm') {
+  if (!isLeadership()) {
     $('staffFormWrap').classList.add('hidden');
   }
   if (authorized) {
-    $('adminSummary').textContent=`${currentMember.nome} · ${currentMember.cargo==='adm'?'ADM':canRecruit?'Recrutador':'Equipe da Mecânica'}`;
+    $('adminSummary').textContent=`${currentMember.nome} · ${isLeadership()?rankRoles[leadershipLevel-1]+' / Liderança':currentMember.cargo==='adm'?'ADM':canRecruit?'Recrutador':'Equipe da Mecânica'}`;
     switchAdminTab(activeTab);
   } else if(session) {
     toggleRegister(false);
@@ -501,9 +514,9 @@ async function refreshAccess() {
 
 window.switchAdminTab = function(tab) {
   if (!currentMember) return;
-  const canRecruit = ['adm','recrutador'].includes(currentMember.cargo);
+  const canRecruit = isLeadership() || ['adm','recrutador'].includes(currentMember.cargo);
   if (['dashboard','recruit','staff'].includes(tab) && !canRecruit) return;
-  if (tab === 'members' && currentMember.cargo !== 'adm') return;
+  if (tab === 'members' && !isLeadership()) return;
   if (sectorTabs.includes(tab) && !staffSectorAccess.includes(tab)) return;
   if (!['dashboard','recruit','staff','members',...sectorTabs].includes(tab)) return;
   activeTab = tab;
@@ -536,19 +549,28 @@ function refreshDashboard(items) {
 }
 
 async function renderMembers() {
-  if (currentMember?.cargo !== 'adm') return;
+  if (!isLeadership()) return;
   const list = $('membersList'); list.innerHTML = '<div class="empty">Carregando membros...</div>';
-  const { data, error } = await supabase.from('team_members').select('user_id,nome,email,cargo,status,created_at').order('created_at', {ascending:false});
+  const [accounts, rpMembers] = await Promise.all([
+    supabase.from('team_members').select('user_id,nome,email,cargo,status,discord_user_id,created_at').order('created_at', {ascending:false}),
+    supabase.from('detroit_membros').select('discord_user_id,cargo').limit(2000)
+  ]);
+  const {data,error}=accounts;
+  if(rpMembers.error){list.innerHTML='<div class="empty">Falha ao conferir hierarquia. '+escapeHTML(rpMembers.error.message)+'</div>';return;}
+  const rpByDiscord = new Map((rpMembers.data||[]).filter(m=>m.discord_user_id).map(m=>[m.discord_user_id,staffRoleLevel(m.cargo)]));
   if (error) { list.innerHTML = '<div class="empty">Não foi possível consultar os membros: '+escapeHTML(error.message)+'</div>'; return; }
   if (!data?.length) { list.innerHTML = '<div class="empty">Nenhum membro cadastrado.</div>'; return; }
   list.innerHTML = data.map(m => {
     const self = m.user_id === currentMember.user_id;
     const pending = m.status === 'pendente';
+    const targetRank = rpByDiscord.get(m.discord_user_id) ?? (m.cargo==='adm'?7:0);
+    const allowed = !self && targetRank < leadershipLevel;
+    const allowTechnicalAdm = leadershipLevel === 7 && targetRank > 0 && targetRank < 7;
     return `<article class="request"><div class="request-top"><div><h3>${escapeHTML(m.nome)}</h3><small>${escapeHTML(m.email)}</small></div><span class="badge">${escapeHTML(m.status.toUpperCase())}</span></div>
       <p>Cargo atual: <strong>${escapeHTML(m.cargo || 'Ainda não definido')}</strong></p>
-      ${self ? '<p>Esta é a sua conta. Você não pode alterar o próprio acesso.</p>' : `<div class="member-actions">
+      ${!allowed ? '<p>Conta protegida: própria, de mesmo nível ou de nível superior.</p>' : `<div class="member-actions">
         <label class="state" for="role-${escapeHTML(m.user_id)}">Cargo:</label>
-        <select class="member-role" id="role-${escapeHTML(m.user_id)}"><option value="recrutador" ${m.cargo==='recrutador'?'selected':''}>Recrutador</option><option value="adm" ${m.cargo==='adm'?'selected':''}>ADM</option></select>
+        <select class="member-role" id="role-${escapeHTML(m.user_id)}"><option value="recrutador" ${m.cargo==='recrutador'?'selected':''}>Recrutador</option>${allowTechnicalAdm?`<option value="adm" ${m.cargo==='adm'?'selected':''}>ADM</option>`:''}</select>
         ${pending ? `<button class="approve" data-action="aprovar" data-id="${escapeHTML(m.user_id)}">Aprovar</button><button class="danger" data-action="recusar" data-id="${escapeHTML(m.user_id)}">Recusar</button>` : ''}
         ${m.status==='ativo' ? `<button data-action="cargo" data-id="${escapeHTML(m.user_id)}">Salvar cargo</button><button class="danger" data-action="desativar" data-id="${escapeHTML(m.user_id)}">Desativar</button>` : ''}
         ${m.status==='inativo' ? `<button class="approve" data-action="reativar" data-id="${escapeHTML(m.user_id)}">Reativar</button>` : ''}
@@ -558,7 +580,7 @@ async function renderMembers() {
 }
 
 $('membersList').addEventListener('click', async event => {
-  const btn = event.target.closest('button[data-action]'); if (!btn || currentMember?.cargo !== 'adm') return;
+  const btn = event.target.closest('button[data-action]'); if (!btn || !isLeadership()) return;
   const id = btn.dataset.id, action = btn.dataset.action;
   const role = document.getElementById('role-'+id)?.value || 'recrutador';
   if (!confirm(`Confirmar ação: ${action} (${role})?`)) return;
@@ -771,7 +793,7 @@ function paintRequests() {
     const ownerId=item.responsavel_id||null;
     const ownerName=ownerId ? (activeAssignees.find(m=>m.user_id===ownerId)?.nome||'Membro inativo ou indisponível') : 'Ninguém assumiu esta inscrição';
     const isMine=ownerId===currentMember.user_id;
-    const isAdmin=currentMember.cargo==='adm';
+    const isAdmin=isLeadership() || currentMember.cargo==='adm';
     const canEditStatus=isAdmin||isMine;
     const closed=['aprovado','reprovado'].includes(currentStatus);
     const claimButton=!ownerId&&!closed?'<button type="button" class="v2-claim" data-v2-claim="'+escapeHTML(String(item.id))+'">Assumir inscrição</button>':'';
@@ -787,7 +809,7 @@ function paintRequests() {
       ${ownerMarkup}
       <div class="v2-recruit-actions">${claimButton}${releaseButton}${transferTools}</div>
       ${canEditStatus?`<div class="v2-actions"><label for="v2-status-${escapeHTML(String(item.id))}">Status:</label><select id="v2-status-${escapeHTML(String(item.id))}" data-candidate-status="${escapeHTML(String(item.id))}">${options}</select><button data-save-status="${escapeHTML(String(item.id))}">Salvar status</button></div>`:'<p class="v2-tip">Para alterar o status, assuma esta inscrição. Se ela já tiver responsável, peça a transferência a um ADM.</p>'}
-      <div class="request-actions"><button type="button" data-copy-discord="${escapeHTML(String(item.discord_id||''))}">Copiar ID do Discord</button>${currentMember?.cargo==='adm'?`<button type="button" class="danger" data-delete-request="${escapeHTML(String(item.id))}">Excluir solicitação</button>`:''}</div>
+      <div class="request-actions"><button type="button" data-copy-discord="${escapeHTML(String(item.discord_id||''))}">Copiar ID do Discord</button>${(currentMember?.cargo==='adm'||leadershipLevel===7)?`<button type="button" class="danger" data-delete-request="${escapeHTML(String(item.id))}">Excluir solicitação</button>`:''}</div>
     </article>`;
   }).join('');
 }
@@ -853,7 +875,7 @@ window.copyDiscord = async function(value) {
 };
 
 window.deleteRequest = async function(id) {
-  if (currentMember?.cargo !== 'adm') return;
+  if (currentMember?.cargo !== 'adm' && leadershipLevel!==7) return;
   if (!confirm('Deseja excluir esta solicitação? Esta ação não pode ser desfeita.')) return;
   const { error } = await supabase.from('inscricoes').delete().eq('id', id);
   if (error) {
@@ -903,7 +925,7 @@ const staffStatusText = { ativo:'Ativo', afastado:'Afastado', desligado:'Desliga
 
 async function renderStaff() {
   if (!currentMember) return;
-  $('staffAdminControls').classList.toggle('hidden', currentMember.cargo !== 'adm');
+  $('staffAdminControls').classList.toggle('hidden', !isLeadership());
   $('staffList').innerHTML = '<div class="empty">Carregando equipe...</div>';
   clearMessage('staffMessage');
   const {data,error} = await supabase.from('detroit_membros').select('*').order('data_ingresso',{ascending:false}).limit(1000);
@@ -933,7 +955,7 @@ function filterStaff() {
     (!status || m.situacao===status) && (!role || m.cargo===role) && (!subrole || (m.subcargos||[]).includes(subrole)) &&
     (!query || [m.nome_rp,m.passaporte_rp,m.cargo,m.discord_user_id,m.telefone_rp,...(m.subcargos||[])].some(v=>String(v||'').toLocaleLowerCase('pt-BR').includes(query)))
   );
-  $('staffResultCount').textContent = `${list.length} de ${detroitStaff.length} membros exibidos. Acesso ao painel é gerenciado separadamente.`;
+  $('staffResultCount').textContent = `${list.length} de ${detroitStaff.length} membros exibidos. Acesso ao painel respeita a hierarquia RP.`;
   if (!list.length) {
     $('staffList').innerHTML='<div class="empty">Nenhum membro encontrado. Quando um candidato for aprovado, ele aparecerá automaticamente aqui.</div>';
     return;
@@ -958,16 +980,20 @@ function filterStaff() {
       ${m.observacoes?'<p class="staff-note"><strong>Observações:</strong> '+escapeHTML(m.observacoes)+'</p>':''}
       <div class="staff-card-actions">
         <button type="button" data-staff-history="${safeId}">Ver histórico</button>
-        ${currentMember.cargo==='adm'?`<button class="staff-edit-btn" type="button" data-staff-edit="${safeId}">Editar ficha</button>`:''}
+        ${canEditStaffRecord(m)?`<button class="staff-edit-btn" type="button" data-staff-edit="${safeId}">Editar ficha</button>`:''}
       </div>
     </article>`;
   }).join('');
 }
 
 window.staffOpenForm = function(id=null) {
-  if(currentMember?.cargo!=='adm') return;
+  if(!isLeadership()) return;
   const m = id == null ? null : detroitStaff.find(x=>String(x.id)===String(id));
-  if(id != null && !m) return;
+  if(id != null && (!m || !canEditStaffRecord(m))) return;
+  // Mesmo editando por ferramentas de desenvolvedor, o banco valida novamente.
+  document.querySelectorAll('#staffRole option').forEach(option=>{
+    option.disabled=staffRoleLevel(option.value)>leadershipLevel;
+  });
   $('staffForm').reset();
   $('staffFormId').value = m?m.id:'';
   $('staffFormTitle').textContent = m?'Editar ficha de membro':'Cadastrar membro manualmente';
@@ -1000,11 +1026,15 @@ $('staffRecordPromotion').addEventListener('change', () => {
 });
 $('staffForm').addEventListener('submit', async event=>{
   event.preventDefault();
-  if(currentMember?.cargo!=='adm') return;
+  if(!isLeadership()) return;
   clearMessage('staffMessage');
   const id = $('staffFormId').value;
   const old = detroitStaff.find(x=>String(x.id)===id);
   const role = $('staffRole').value.trim();
+  if (staffRoleLevel(role) > leadershipLevel || (old && !canEditStaffRecord(old))) {
+    showMessage('staffMessage','Você não pode alterar um cargo igual ou superior ao seu, nem atribuir cargo acima do seu.');
+    return;
+  }
   if ($('staffRecordPromotion').checked && old && role===old.cargo) {
     showMessage('staffMessage','Para registrar uma promoção, informe o novo cargo.');
     return;
