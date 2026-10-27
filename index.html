@@ -140,6 +140,16 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
 .sector-roster-person button{background:#301c27;border:1px solid #713648;border-radius:8px;color:#ffcad4;padding:7px 10px}
 @media(max-width:950px){.sector-toolbar{grid-template-columns:repeat(2,minmax(0,1fr))}.sector-toolbar input{grid-column:1/-1}}
 @media(max-width:630px){.sector-stats{grid-template-columns:1fr 1fr}.sector-toolbar,.sector-roster-controls{grid-template-columns:1fr}.sector-toolbar input{grid-column:auto}}
+
+/* DETROIT MECHANICS | Documentos legais publicos */
+.legal-footer{border-top:1px solid rgba(255,255,255,.12);margin:36px auto 10px;padding:23px 12px 8px;display:flex;justify-content:center;align-items:center;gap:8px 20px;flex-wrap:wrap;text-align:center;color:#a4a4ad;font-size:12px;line-height:1.7}
+.legal-footer .legal-brand{color:#888b93;letter-spacing:.08em;font-size:10px;text-transform:uppercase;font-weight:700;flex-basis:100%}
+.legal-footer a,.legal-disclosure a{color:#ff9ead;text-decoration:underline;text-underline-offset:3px;text-decoration-color:#ff9ead75}
+.legal-footer a:hover,.legal-disclosure a:hover{color:#ffd9e0}
+.legal-footer a:focus-visible,.legal-disclosure a:focus-visible{outline:2px solid #ff7d93;outline-offset:4px;border-radius:2px}
+.legal-footer .legal-divider{color:#51535c}
+.legal-disclosure{color:#adb0b9;font-size:12px;line-height:1.6;margin:9px 0 16px;text-align:left}
+@media(max-width:560px){.legal-footer{gap:6px 12px;padding:18px 8px 4px}.legal-footer .legal-brand{font-size:9px}}
 </style>
 </head>
 <body>
@@ -181,9 +191,17 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
     <div class="field"><label for="experience">Já trabalhou como mecânico? *</label><select id="experience" required><option value="">Selecione uma opção</option><option>Sim, tenho experiência</option><option>Não, será minha primeira experiência</option></select></div>
     <div class="field"><label for="about">Conte um pouco sobre você (opcional)</label><textarea id="about" maxlength="800" placeholder="Experiência, interesse na vaga ou outras informações..."></textarea></div>
     <label class="inline-check"><input type="checkbox" id="confirm" required><span>Confirmo que as informações enviadas são verdadeiras e que estou informando apenas dados do personagem (RP).</span></label>
+    <p class="legal-disclosure">Antes de enviar, conheça nossos <a href="termos.html">Termos de Serviço</a> e saiba como usamos os dados na <a href="privacidade.html">Política de Privacidade</a>.</p>
     <button class="primary" type="submit">Enviar solicitação</button>
   </form>
-  <div class="foot">DETROIT MECHANICS · RECRUTAMENTO</div>
+  <footer class="legal-footer" aria-label="Informações e documentos oficiais">
+    <span class="legal-brand">DETROIT MECHANICS · RECRUTAMENTO RP</span>
+    <a href="termos.html">Termos de Serviço</a>
+    <span class="legal-divider" aria-hidden="true">·</span>
+    <a href="privacidade.html">Política de Privacidade</a>
+    <span class="legal-divider" aria-hidden="true">·</span>
+    <span>© 2026 Detroit Mechanics</span>
+  </footer>
 </section>
 
 <section id="viewAccess" class="hidden">
