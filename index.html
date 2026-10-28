@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#080808">
-<title>Detroit Mechanics 2.5 | Comitê, Ponto e Advertências</title>
+<title>Detroit Mechanics 2.6 | Controle de Ponto Manual</title>
 <style>
 :root{--red:#ff1738;--red2:#ff4058;--bg:#070707;--panel:#111113;--field:#202023;--muted:#a4a4ad;--white:#f5f5f7;--line:#303036}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% 10%,#26070d 0,transparent 36%),var(--bg);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
@@ -175,13 +175,25 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
 @media(max-width:640px){.sidebar-nav .side-group-title{display:none}}
 .committee-tools{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px}.committee-tools button{background:#1c2029;border:1px solid #ff405877;border-radius:10px;color:#ffe5e9;padding:11px 14px;font-size:13px;font-weight:750}
 #adminPanel.premium-app,#adminPanel.premium-app *{min-width:0} .staff-card-name,.staff-card-name strong,.staff-metadata strong,.app-main,.request{overflow-wrap:anywhere}
+/* Detroit 2.6: lancamento manual, edicao e exclusao auditada */
+.p26-stat-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.p26-entry-card{border-color:#7e3543;background:linear-gradient(140deg,#1b1b23,#11151d)}
+.p26-duration{background:#192e29;border:1px solid #386758;border-radius:9px;padding:11px 14px;color:#c5eedb;font-size:13px;font-weight:750;line-height:1.5}
+.p26-duration.invalid{background:#3b1d25;border-color:#794454;color:#ffd1d8}
+.p26-hint{font-size:12px;color:#abb3bf;line-height:1.6;margin:0}
+.p26-actions{display:flex;flex-wrap:wrap;gap:10px}.p26-actions .p25-button{flex:1 1 180px}
+.p26-record-buttons{display:flex;gap:7px;flex-wrap:wrap}.p26-record-buttons .p25-button{min-height:36px;padding:7px 12px;font-size:12px}
+.p26-record-buttons .p26-danger{color:#ffb4c1;border-color:#874052;background:#311923}
+.p26-summary-title{margin-top:20px;margin-bottom:12px}
+.p26-filters{margin-bottom:8px}
+@media(max-width:560px){.p26-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.p26-actions{display:grid;grid-template-columns:1fr}.p26-actions .p25-button,.p26-record-buttons .p25-button{width:100%}.p26-record-buttons{width:100%}}
 @media(max-width:940px){.p25-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.p25-grid{grid-template-columns:1fr}.p25-quick-buttons .p25-button,.p25-button.primary{width:100%}.p25-record{padding:12px}.p25-stat-grid{gap:8px}.p25-control-card{padding:14px}}
 </style>
 </head>
 <body>
 <div class="shell">
-<div class="v2-dev-mark"><span class="pulse-dot"></span> DETROIT MECHANICS 2.5 <span class="sep">/</span> SISTEMA OFICIAL DE RECRUTAMENTO <span class="sep">/</span> INSCRIÇÕES ABERTAS</div>
+<div class="v2-dev-mark"><span class="pulse-dot"></span> DETROIT MECHANICS 2.6 <span class="sep">/</span> SISTEMA OFICIAL DE RECRUTAMENTO <span class="sep">/</span> INSCRIÇÕES ABERTAS</div>
 <header class="topbar">
   <a class="brand" href="#" aria-label="Detroit Mechanics início" onclick="showView('apply');return false">
     <div class="mark site-logo" aria-hidden="true"><img src="DETROIT-MECHANICS.png" alt="" width="76" height="76" decoding="async"></div>
@@ -265,7 +277,7 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
   </div>
   <div id="adminPanel" class="panel wide hidden premium-app">
     <aside class="app-sidebar" aria-label="Menu do painel">
-      <div class="side-title"><span class="side-monogram">DM</span><span><strong>DETROIT</strong><small>MANAGEMENT V2.5</small></span></div>
+      <div class="side-title"><span class="side-monogram">DM</span><span><strong>DETROIT</strong><small>MANAGEMENT V2.6</small></span></div>
       <div class="side-group-title">WORKSPACE</div>
       <div class="sidebar-nav" id="adminTabs">
         <button type="button" id="tabDashboard" class="active" onclick="switchAdminTab('dashboard')"><span aria-hidden="true">◫</span> Visão geral</button>
@@ -279,7 +291,7 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
         <button type="button" id="tabPR" class="hidden" onclick="switchAdminTab('rp')"><span aria-hidden="true">◎</span> Relações Públicas</button>
         <button type="button" id="tabMembers" class="hidden" onclick="switchAdminTab('members')"><span aria-hidden="true">♧</span> Acessos ao painel</button>
       </div>
-      <div class="side-footer"><span class="pulse-dot"></span> Sistema oficial<small>Detroit Mechanics · 2.5</small></div>
+      <div class="side-footer"><span class="pulse-dot"></span> Sistema oficial<small>Detroit Mechanics · 2.6</small></div>
     </aside>
     <div class="app-main">
     <div class="app-eyebrow">WORKSPACE / <span id="appBreadcrumb">VISÃO GERAL</span></div>
@@ -386,33 +398,41 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
     </section>
 
     <section id="worktimeSection" class="hidden" aria-label="Controle de Ponto">
-      <div class="section-banner"><span class="hero-tag">COMITÊ / ROTINAS DE EQUIPE</span><h3>Controle de Ponto</h3><p>Registre entradas e saídas dos funcionários quantas vezes for necessário no mesmo dia. O resumo semanal calcula as horas automaticamente. Todos os horários são exibidos em Brasília (GMT-3).</p></div>
+      <div class="section-banner"><span class="hero-tag">COMITÊ / CONTROLE DE HORAS</span><h3>Controle de Ponto</h3><p>Lance cada jornada manualmente. Se alguém trabalhar duas ou mais vezes no mesmo dia, basta salvar cada período separadamente. Você pode corrigir ou excluir lançamentos equivocados.</p></div>
       <div id="worktimeMessage" class="message" role="status"></div>
-      <div class="p25-stat-grid">
+      <div class="p25-control-card p26-entry-card" id="workEntryCard">
+        <div class="p25-card-head"><strong id="workEntryHeading">Lançar horas trabalhadas</strong><small>Preencha apenas o funcionário, a data e os horários. O sistema calcula a duração automaticamente.</small></div>
+        <form id="workManualForm" class="p25-grid">
+          <div class="field p25-span"><label for="workMember">Funcionário *</label><select id="workMember" required><option value="">Selecione o funcionário</option></select></div>
+          <div class="field"><label for="workManualDate">Data do serviço *</label><input type="date" id="workManualDate" required></div>
+          <div class="field"><label for="workManualStart">Hora da entrada *</label><input type="time" id="workManualStart" required step="60"></div>
+          <div class="field"><label for="workManualEnd">Hora da saída *</label><input type="time" id="workManualEnd" required step="60"></div>
+          <div class="p26-duration p25-span" id="workDurationPreview" aria-live="polite">Escolha a entrada e a saída para calcular o período.</div>
+          <p class="p26-hint p25-span">Se a saída for mais cedo que a entrada, será considerada no dia seguinte. Horários no fuso de Brasília (GMT−3). A duração máxima por jornada é de 24 horas.</p>
+          <div id="workEditReasonWrap" class="field p25-span hidden"><label for="workEditReason">Por que está corrigindo? *</label><input id="workEditReason" type="text" minlength="5" maxlength="250" placeholder="Ex.: Corrigi a hora de saída digitada incorretamente"></div>
+          <div class="p26-actions p25-span">
+            <button class="p25-button primary" type="submit" id="workManualSubmit">+ Salvar jornada</button>
+            <button class="p25-button hidden" type="button" id="workCancelEdit">Cancelar edição</button>
+          </div>
+        </form>
+      </div>
+      <div class="p25-stat-grid p26-stat-grid">
         <div class="staff-stat"><small>Horas da semana</small><strong id="workHours">—</strong></div>
-        <div class="staff-stat"><small>Turnos encerrados</small><strong id="workClosed">—</strong></div>
-        <div class="staff-stat"><small>Em serviço</small><strong id="workOpen">—</strong></div>
-        <div class="staff-stat"><small>Funcionários</small><strong id="workPeople">—</strong></div>
+        <div class="staff-stat"><small>Jornadas registradas</small><strong id="workClosed">—</strong></div>
+        <div class="staff-stat"><small>Funcionários com ponto</small><strong id="workPeople">—</strong></div>
       </div>
       <div class="p25-control-card">
-        <div class="p25-card-head"><strong>Adicionar jornada</strong><small>Um funcionário pode ter vários turnos no mesmo dia. Jornadas não podem se sobrepor.</small></div>
-        <div class="p25-grid">
-          <div class="field"><label for="workMember">Funcionário *</label><select id="workMember"><option value="">Selecione</option></select></div>
+        <div class="p25-card-head"><strong>Horas e lançamentos da semana</strong><small>Selecione qualquer dia da semana desejada. Os totais são atualizados após salvar, editar ou excluir.</small></div>
+        <div class="p25-grid p26-filters">
           <div class="field"><label for="workWeek">Semana de referência</label><input id="workWeek" type="date"></div>
+          <div class="field"><label for="workFilterMember">Mostrar registros de</label><select id="workFilterMember"><option value="">Toda a equipe</option></select></div>
+          <button type="button" class="p25-button p25-span" id="workRefresh">Atualizar registros</button>
         </div>
-        <div class="p25-quick-buttons"><button type="button" class="p25-button primary" id="workStartNow">◷ Registrar entrada agora</button><button type="button" class="p25-button" id="workRefresh">Atualizar registros</button></div>
-        <details class="p25-manual"><summary>Lançar entrada e saída manualmente</summary>
-          <p class="section-note">Para turnos anteriores. Os horários serão interpretados no fuso do seu dispositivo; use o horário de Brasília.</p>
-          <form id="workManualForm" class="p25-grid">
-            <div class="field"><label for="workManualStart">Entrada *</label><input type="datetime-local" id="workManualStart" required></div>
-            <div class="field"><label for="workManualEnd">Saída *</label><input type="datetime-local" id="workManualEnd" required></div>
-            <button class="p25-button primary p25-span" type="submit" id="workManualSubmit">Salvar turno manual</button>
-          </form>
-        </details>
+        <div class="p25-card-head p26-summary-title"><strong>Resumo semanal por funcionário</strong></div>
+        <div id="workSummary" class="p25-people"><div class="empty">Escolha uma semana para consultar.</div></div>
       </div>
-      <div class="p25-control-card"><div class="p25-card-head"><strong>Horas por funcionário nesta semana</strong><small>Os turnos abertos aparecem como parciais até o encerramento.</small></div><div id="workSummary" class="p25-people"><div class="empty">Escolha uma semana para consultar.</div></div></div>
-      <div class="p25-control-card"><div class="p25-card-head"><strong>Histórico de entradas e saídas</strong><small>Cada intervalo é salvo individualmente e fica registrado no banco.</small></div><div id="workRows" class="p25-records"><div class="empty">Nenhum turno carregado.</div></div></div>
-      <div class="security-note">Registros de ponto são históricos internos do servidor de roleplay, não um controle trabalhista formal. Não existe exclusão ou alteração livre: a autoria e os horários ficam preservados.</div>
+      <div class="p25-control-card"><div class="p25-card-head"><strong>Jornadas registradas</strong><small>Use <strong>Editar</strong> para ajustar os horários ou <strong>Excluir</strong> para retirar um lançamento incorreto dos totais. As correções ficam registradas na auditoria do sistema.</small></div><div id="workRows" class="p25-records"><div class="empty">Nenhum registro carregado.</div></div></div>
+      <div class="security-note">Este controle é destinado à organização interna do servidor de roleplay e não substitui um sistema de ponto trabalhista formal. Exclusões são lógicas: saem das contagens, mas ficam documentadas junto das alterações realizadas.</div>
     </section>
 
     <section id="warningsSection" class="hidden" aria-label="Registro de advertências">
@@ -438,7 +458,7 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
     <div class="security-note">As solicitações são armazenadas no banco centralizado. Somente contas autorizadas pela política do banco podem consultá-las ou excluí-las.</div>
     </div>
   </div>
-  <div class="foot">DETROIT MECHANICS · PREMIUM DARK V2.5 · CONTROLE DE PONTO E COMITÊ</div>
+  <div class="foot">DETROIT MECHANICS · PREMIUM DARK V2.6 · CONTROLE DE PONTO MANUAL</div>
 </section>
 </main>
 </div>
@@ -1405,90 +1425,192 @@ function p25InitializeSelect(selectId, options, first){
  element.innerHTML=`<option value="">${escapeHTML(first)}</option>`+options.map(p25MemberOption).join('');
  if(options.some(m=>String(m.id)===selected))element.value=selected;
 }
+let p26EditingId = null;
+let p26EditingMemberId = null;
+const p26TimeZone = 'America/Sao_Paulo';
+
+function p26BrazilParts(iso) {
+  if(!iso) return null;
+  const parts = new Intl.DateTimeFormat('en-GB', {
+    timeZone:p26TimeZone,year:'numeric',month:'2-digit',day:'2-digit',
+    hour:'2-digit',minute:'2-digit',hourCycle:'h23'
+  }).formatToParts(new Date(iso));
+  const map = Object.fromEntries(parts.map(p=>[p.type,p.value]));
+  return {day:`${map.year}-${map.month}-${map.day}`,hour:`${map.hour}:${map.minute}`};
+}
+function p26Tomorrow(dateText) {
+  const d=new Date(dateText+'T12:00:00Z');
+  d.setUTCDate(d.getUTCDate()+1);
+  return d.toISOString().slice(0,10);
+}
+function p26GetInterval() {
+  const day=$('workManualDate').value;
+  const begin=$('workManualStart').value;
+  const finish=$('workManualEnd').value;
+  if(!day||!begin||!finish) return null;
+  const endDay=finish<=begin?p26Tomorrow(day):day;
+  const start=new Date(`${day}T${begin}:00-03:00`);
+  const end=new Date(`${endDay}T${finish}:00-03:00`);
+  const minutes=Math.round((end.getTime()-start.getTime())/60000);
+  return {start,end,minutes,nextDay:endDay!==day};
+}
+function p26Preview() {
+  const box=$('workDurationPreview');
+  const v=p26GetInterval();
+  if(!v) {box.classList.remove('invalid');box.textContent='Preencha os horários para visualizar o total de horas.';return;}
+  const invalid=!Number.isFinite(v.minutes)||v.minutes<=0||v.minutes>1440;
+  box.classList.toggle('invalid',invalid);
+  box.textContent=invalid?'Confira a entrada e a saída: o período deve ter no máximo 24 horas.':
+    `Duração: ${Math.floor(v.minutes/60)}h ${String(v.minutes%60).padStart(2,'0')}min${v.nextDay?' · saída no dia seguinte':''}`;
+}
+function p26ResetForm({preserveMember=true}={}) {
+  p26EditingId=null;p26EditingMemberId=null;
+  const keep=preserveMember?$('workMember').value:'';
+  $('workManualForm').reset();
+  $('workMember').disabled=false;
+  $('workMember').value=keep;
+  $('workManualDate').value=p25Today();
+  $('workEditReasonWrap').classList.add('hidden');
+  $('workEditReason').required=false;
+  $('workEntryHeading').textContent='Lançar horas trabalhadas';
+  $('workManualSubmit').textContent='+ Salvar jornada';
+  $('workCancelEdit').classList.add('hidden');
+  p26Preview();
+}
+function p26FilterRecords(){
+  const chosen=$('workFilterMember').value;
+  const rows=chosen?pointSessions.filter(r=>String(r.membro_id)===chosen):pointSessions;
+  $('workRows').innerHTML=rows.length?rows.map(r=>{
+    const open=!r.fim;
+    return `<article class="p25-record"><div class="p25-record-main">
+      <strong>${escapeHTML(r.nome_rp)} <span class="p25-pill ${open?'muted':'ok'}">${open?'Incompleto (antigo)':'Registrado'}</span></strong>
+      <small>${escapeHTML(p25DateTime(r.inicio))} → ${escapeHTML(p25DateTime(r.fim))}</small>
+      <small>${escapeHTML(r.cargo)} · Lançamento #${escapeHTML(String(r.id))}</small>
+    </div><div class="p25-record-side"><span>${escapeHTML(p25FormatHours(r.horas))}</span>
+      <div class="p26-record-buttons"><button type="button" class="p25-button" data-p26-edit="${escapeHTML(String(r.id))}">✎ Editar</button>
+        <button type="button" class="p25-button p26-danger" data-p26-delete="${escapeHTML(String(r.id))}">Excluir</button></div>
+    </div></article>`;
+  }).join(''):'<div class="empty">Nenhuma jornada encontrada para este filtro.</div>';
+}
 async function renderWorktime(){
  if(!currentMember||!staffSectorAccess.includes('comite'))return;
  clearMessage('worktimeMessage');
- $('workRows').innerHTML='<div class="empty">Carregando turnos...</div>';
+ $('workRows').innerHTML='<div class="empty">Carregando jornadas...</div>';
  try{
   await p25LoadCrew();
-  p25InitializeSelect('workMember',comiteCrew.filter(m=>m.situacao==='ativo'),'Selecione um funcionário ativo');
+  const currentSelection=$('workMember').value;
+  p25InitializeSelect('workMember',comiteCrew.filter(m=>m.situacao==='ativo'),'Selecione um funcionário');
+  if(!p26EditingId && currentSelection)$('workMember').value=currentSelection;
+  if(!$('workManualDate').value)$('workManualDate').value=p25Today();
   if(!$('workWeek').value)$('workWeek').value=p25Today();
-  const reqWeek=$('workWeek').value;
-  const {data,error}=await supabase.rpc('detroit_ponto_semana',{p_semana:reqWeek});
+  const week=$('workWeek').value;
+  const {data,error}=await supabase.rpc('detroit_ponto_semana',{p_semana:week});
   if(error)throw error;
-  if(activeTab!=='ponto'||reqWeek!==$('workWeek').value)return;
+  if(activeTab!=='ponto'||week!==$('workWeek').value)return;
   pointSessions=Array.isArray(data)?data:[];
+  const filter=$('workFilterMember'),priorFilter=filter.value;
+  const options=new Map(comiteCrew.map(m=>[String(m.id),m]));
+  filter.innerHTML='<option value="">Toda a equipe</option>'+[...options].map(([id,m])=>`<option value="${escapeHTML(id)}">${escapeHTML(m.nome_rp)}</option>`).join('');
+  if(options.has(priorFilter))filter.value=priorFilter;
+  let total=0,closed=0,opened=0;
   const people=new Map();
-  let total=0, closed=0, opened=0;
-  for(const row of pointSessions){
-    const hours=Number(row.horas||0);
-    total+=hours;
-    if(row.fim)closed++;else opened++;
-    const p=people.get(row.membro_id)||{id:row.membro_id,nome:row.nome_rp,cargo:row.cargo,hours:0,closed:0,opened:0};
-    p.hours+=hours;
-    if(row.fim)p.closed++;else p.opened++;
-    people.set(row.membro_id,p);
+  for(const r of pointSessions){
+    const hours=Number(r.horas||0);total+=hours;
+    if(r.fim)closed++;else opened++;
+    const p=people.get(r.membro_id)||{id:r.membro_id,nome:r.nome_rp,cargo:r.cargo,hours:0,closed:0,opened:0};
+    p.hours+=hours;if(r.fim)p.closed++;else p.opened++;
+    people.set(r.membro_id,p);
   }
   $('workHours').textContent=p25FormatHours(total);
   $('workClosed').textContent=closed;
-  $('workOpen').textContent=opened;
   $('workPeople').textContent=people.size;
-  $('workSummary').innerHTML=people.size?[...people.values()].sort((a,b)=>b.hours-a.hours).map(m=>`<article class="p25-record"><div class="p25-record-main"><strong>${escapeHTML(m.nome)}</strong><small>${escapeHTML(m.cargo)} · ${m.closed} turno(s) encerrado(s)${m.opened?' · '+m.opened+' aberto(s)':''}</small></div><div class="p25-record-side"><span class="p25-pill ${m.opened?'':'ok'}">${escapeHTML(p25FormatHours(m.hours))}${m.opened?' (parcial)':''}</span></div></article>`).join(''):'<div class="empty">Sem horas registradas nesta semana.</div>';
-  $('workRows').innerHTML=pointSessions.length?pointSessions.map(r=>`<article class="p25-record"><div class="p25-record-main"><strong>${escapeHTML(r.nome_rp)} <span class="p25-pill ${r.fim?'ok':''}">${r.fim?'Encerrado':'Em serviço'}</span></strong><small>${escapeHTML(p25DateTime(r.inicio))} → ${escapeHTML(p25DateTime(r.fim))}</small><small>${escapeHTML(r.cargo)} · Jornada #${escapeHTML(String(r.id))}</small></div><div class="p25-record-side"><span>${escapeHTML(p25FormatHours(r.horas))}</span>${!r.fim?`<button type="button" class="p25-button" data-p25-end="${escapeHTML(String(r.id))}">Registrar saída agora</button>`:''}</div></article>`).join(''):'<div class="empty">Nenhuma entrada ou saída para a semana selecionada.</div>';
+  $('workSummary').innerHTML=people.size?[...people.values()].sort((a,b)=>b.hours-a.hours).map(p=>
+    `<article class="p25-record"><div class="p25-record-main"><strong>${escapeHTML(p.nome)}</strong><small>${escapeHTML(p.cargo)} · ${p.closed} jornada(s)${p.opened?' · '+p.opened+' registro(s) antigo(s) incompleto(s)':''}</small></div><div class="p25-record-side"><span class="p25-pill ok">${escapeHTML(p25FormatHours(p.hours))}</span></div></article>`).join(''):
+    '<div class="empty">Nenhum lançamento nesta semana.</div>';
+  p26FilterRecords();
  }catch(e){
   console.error('Controle de Ponto',e);
   $('workRows').innerHTML='<div class="empty">Não foi possível carregar: '+escapeHTML(e.message||'erro desconhecido')+'</div>';
-  showMessage('worktimeMessage','Erro ao consultar controle de ponto: '+(e.message||'erro desconhecido'));
+  showMessage('worktimeMessage','Erro ao consultar os pontos: '+(e.message||'erro desconhecido'));
  }
 }
+for(const name of ['workManualDate','workManualStart','workManualEnd'])$(name).addEventListener('input',p26Preview);
 $('workWeek').addEventListener('change',()=>{if(activeTab==='ponto')renderWorktime()});
 $('workRefresh').addEventListener('click',()=>{if(activeTab==='ponto')renderWorktime()});
-$('workStartNow').addEventListener('click',async()=>{
- if(activeTab!=='ponto')return;
- const id=Number($('workMember').value);
- if(!id){showMessage('worktimeMessage','Selecione o funcionário antes de registrar a entrada.');return;}
- const button=$('workStartNow'); button.disabled=true;clearMessage('worktimeMessage');
- try{
-  const {error}=await supabase.rpc('detroit_ponto_registrar',{p_membro_id:id,p_inicio:new Date().toISOString(),p_fim:null});
-  if(error)throw error;
-  await renderWorktime();
-  showMessage('worktimeMessage','Entrada registrada com sucesso. O turno permanece aberto até a saída.','success');
- }catch(e){showMessage('worktimeMessage','Não foi possível registrar a entrada: '+(e.message||'erro'));}
- finally{button.disabled=false;}
-});
+$('workFilterMember').addEventListener('change',p26FilterRecords);
+$('workCancelEdit').addEventListener('click',()=>{p26ResetForm();clearMessage('worktimeMessage');});
 $('workManualForm').addEventListener('submit',async event=>{
  event.preventDefault();
  if(activeTab!=='ponto')return;
- const id=Number($('workMember').value);
- const startRaw=$('workManualStart').value,endRaw=$('workManualEnd').value;
- if(!id||!startRaw||!endRaw){showMessage('worktimeMessage','Selecione um funcionário e preencha os dois horários.');return;}
- const start=new Date(startRaw), end=new Date(endRaw);
- if(!Number.isFinite(start.valueOf())||!Number.isFinite(end.valueOf())||end<=start){showMessage('worktimeMessage','A saída precisa ser posterior à entrada.');return;}
- if(!confirm('Registrar esta jornada para '+p25StaffName(id)+'?'))return;
+ const id=Number($('workMember').value),time=p26GetInterval();
+ if(!id||!time||time.minutes<=0||time.minutes>1440){showMessage('worktimeMessage','Selecione funcionário, data e horários válidos (até 24h).');return;}
+ if(time.end.getTime()>Date.now()+5*60000){showMessage('worktimeMessage','Não é possível lançar horas futuras.');return;}
+ const isEditing=p26EditingId!==null;
+ const reason=$('workEditReason').value.trim();
+ if(isEditing && reason.length<5){showMessage('worktimeMessage','Informe o motivo da correção com pelo menos 5 caracteres.');return;}
+ const msg=isEditing?'Salvar correção desta jornada?':`Registrar jornada de ${p25StaffName(id)}?`;
+ if(!confirm(msg))return;
  const btn=$('workManualSubmit');btn.disabled=true;clearMessage('worktimeMessage');
  try{
-  const {error}=await supabase.rpc('detroit_ponto_registrar',{p_membro_id:id,p_inicio:start.toISOString(),p_fim:end.toISOString()});
-  if(error)throw error;
-  $('workManualForm').reset();
+  let result;
+  if(isEditing)result=await supabase.rpc('detroit_ponto_corrigir',{
+    p_id:p26EditingId,p_inicio:time.start.toISOString(),p_fim:time.end.toISOString(),p_motivo:reason
+  });
+  else result=await supabase.rpc('detroit_ponto_registrar',{
+    p_membro_id:id,p_inicio:time.start.toISOString(),p_fim:time.end.toISOString()
+  });
+  if(result.error)throw result.error;
+  p26ResetForm();
+  $('workWeek').value=p26BrazilParts(time.start.toISOString()).day;
   await renderWorktime();
-  showMessage('worktimeMessage','Turno manual registrado com sucesso.','success');
- }catch(e){showMessage('worktimeMessage','Não foi possível salvar o turno: '+(e.message||'erro'));}
+  showMessage('worktimeMessage',isEditing?'Jornada corrigida. A versão anterior ficou registrada na auditoria.':'Jornada salva com sucesso.','success');
+ }catch(e){showMessage('worktimeMessage','Não foi possível salvar: '+(e.message||'erro desconhecido'));}
  finally{btn.disabled=false;}
 });
-$('workRows').addEventListener('click',async e=>{
- const button=e.target.closest('[data-p25-end]');
- if(!button||activeTab!=='ponto')return;
- const id=Number(button.dataset.p25End);
- const row=pointSessions.find(r=>r.id===id);
- if(!row||row.fim)return;
- if(!confirm('Registrar saída agora para '+row.nome_rp+'?'))return;
- button.disabled=true;clearMessage('worktimeMessage');
+$('workRows').addEventListener('click',async event=>{
+ const btn=event.target.closest('[data-p26-edit],[data-p26-delete]');
+ if(!btn||activeTab!=='ponto')return;
+ const isEdit=btn.hasAttribute('data-p26-edit');
+ const id=Number(isEdit?btn.dataset.p26Edit:btn.dataset.p26Delete);
+ const row=pointSessions.find(r=>Number(r.id)===id);
+ if(!row)return;
+ if(isEdit){
+   const st=p26BrazilParts(row.inicio),en=p26BrazilParts(row.fim);
+   if(!st){showMessage('worktimeMessage','Este registro não tem início válido.');return;}
+   p26EditingId=id;p26EditingMemberId=Number(row.membro_id);
+   const select=$('workMember');
+   if(![...select.options].some(o=>o.value===String(row.membro_id))){
+     select.add(new Option(`${row.nome_rp} · ${row.cargo} (histórico)`,String(row.membro_id)));
+   }
+   select.value=String(row.membro_id);select.disabled=true;
+   $('workManualDate').value=st.day;
+   $('workManualStart').value=st.hour;
+   $('workManualEnd').value=en?.hour||'';
+   $('workEditReason').value='';
+   $('workEditReason').required=true;
+   $('workEditReasonWrap').classList.remove('hidden');
+   $('workEntryHeading').textContent=`Corrigir lançamento #${id} — ${row.nome_rp}`;
+   $('workManualSubmit').textContent='Salvar correção';
+   $('workCancelEdit').classList.remove('hidden');
+   p26Preview();
+   clearMessage('worktimeMessage');
+   $('workEntryCard').scrollIntoView({behavior:'smooth',block:'start'});
+   return;
+ }
+ const explanation=prompt(`Informe o motivo para excluir o lançamento #${id} de ${row.nome_rp}:`);
+ if(explanation===null)return;
+ const reason=explanation.trim();
+ if(reason.length<5){showMessage('worktimeMessage','Para excluir, informe um motivo com pelo menos 5 caracteres.');return;}
+ if(!confirm(`Confirma a exclusão do lançamento #${id}? Ele será retirado das horas semanais, mas permanecerá na auditoria.`))return;
+ btn.disabled=true;clearMessage('worktimeMessage');
  try{
-  const {error}=await supabase.rpc('detroit_ponto_encerrar',{p_id:id,p_fim:new Date().toISOString()});
-  if(error)throw error;
-  await renderWorktime();showMessage('worktimeMessage','Saída registrada e horas atualizadas.','success');
- }catch(err){showMessage('worktimeMessage','Erro ao registrar saída: '+(err.message||'erro'));}
- finally{button.disabled=false;}
+   const {error}=await supabase.rpc('detroit_ponto_excluir',{p_id:id,p_motivo:reason});
+   if(error)throw error;
+   if(p26EditingId===id)p26ResetForm();
+   await renderWorktime();
+   showMessage('worktimeMessage','Lançamento excluído dos totais. A exclusão ficou registrada na auditoria.','success');
+ }catch(e){showMessage('worktimeMessage','Não foi possível excluir: '+(e.message||'erro desconhecido'));}
+ finally{btn.disabled=false;}
 });
 
 async function renderWarnings(){
