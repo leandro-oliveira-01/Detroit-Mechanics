@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#080808">
-<title>Detroit Mechanics</title>
+<title>Detroit Mechanics 2.8 | Recrutamento e Mensagens Discord</title>
 <style>
 :root{--red:#ff1738;--red2:#ff4058;--bg:#070707;--panel:#111113;--field:#202023;--muted:#a4a4ad;--white:#f5f5f7;--line:#303036}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% 10%,#26070d 0,transparent 36%),var(--bg);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
@@ -189,11 +189,20 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
 @media(max-width:560px){.p26-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.p26-actions{display:grid;grid-template-columns:1fr}.p26-actions .p25-button,.p26-record-buttons .p25-button{width:100%}.p26-record-buttons{width:100%}}
 @media(max-width:940px){.p25-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.p25-grid{grid-template-columns:1fr}.p25-quick-buttons .p25-button,.p25-button.primary{width:100%}.p25-record{padding:12px}.p25-stat-grid{gap:8px}.p25-control-card{padding:14px}}
+
+/* Detroit Mechanics 2.8: Central de Logs e DM */
+.d28-protocol{display:inline-flex;align-items:center;gap:6px;color:#f4a7b5;background:#361923;border:1px solid #713849;border-radius:8px;padding:6px 9px;font-weight:800;letter-spacing:.3px;font-size:11px;margin-top:7px}
+.d28-filters{display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:12px;margin:14px 0}.d28-filters label{display:grid;gap:8px;font-size:11px;color:#aab0bd;font-weight:700}.d28-filters select,.d28-filters input{width:100%;background:#20242c;color:#f5f5f7;border:1px solid #393d4a;border-radius:9px;min-height:44px;padding:8px 11px}
+.d28-filter-actions{display:flex;justify-content:space-between;align-items:center;margin:12px 0 18px}.d28-filter-actions button,.d28-modal-foot button{padding:10px 15px;background:#252932;border:1px solid #414756;color:#fff;border-radius:9px;font-weight:700;cursor:pointer}.d28-filter-actions small{color:#a4aab8}
+.d28-audit-list{display:grid;gap:11px}.d28-audit-card{border:1px solid #333a48;background:#191d26;border-radius:12px;padding:14px 16px;min-width:0}.d28-audit-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap}.d28-audit-card strong{color:#f4f5f8;font-size:13px}.d28-audit-card p{white-space:pre-wrap;overflow-wrap:anywhere;margin:9px 0 0;color:#adb6c5;font-size:12px;line-height:1.6}.d28-audit-meta{font-size:11px;color:#929cab;margin-top:7px}.d28-audit-pill{padding:5px 9px;border-radius:7px;background:#314138;color:#a3ebba;font-size:10px;font-weight:800}.d28-audit-pill.alterado{background:#41351e;color:#f2ca79}.d28-audit-pill.excluido{background:#48252d;color:#ffc0cb}
+.d28-request-actions{display:flex;flex-wrap:wrap;gap:9px;margin:10px 0}.d28-request-actions button{border-radius:9px;padding:10px 13px;background:#2e2739;border:1px solid #76546c;color:#ffe1e9;font-weight:750;cursor:pointer}.d28-request-actions button:disabled{opacity:.45;cursor:not-allowed}.d28-discord-note{margin:7px 0;color:#9aa4b6;font-size:11px}
+.d28-modal{position:fixed;inset:0;z-index:9999;background:#000b;display:flex;align-items:center;justify-content:center;padding:16px;overflow:auto}.d28-modal.hidden{display:none}.d28-modal-card{width:min(630px,100%);max-height:95vh;overflow:auto;background:#171b24;color:#fff;border:1px solid #525262;border-radius:15px;padding:23px;box-shadow:0 30px 100px #000a}.d28-modal-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.d28-modal-head h3{margin:0;font-size:19px}.d28-modal-head button{border:0;background:#333743;color:#fff;border-radius:8px;padding:9px 12px;cursor:pointer}.d28-modal-tip{color:#a6adbc;font-size:12px;line-height:1.6}.d28-modal-card .field{margin:13px 0}.d28-modal-card textarea{width:100%;line-height:1.55;min-height:240px;white-space:pre-wrap;resize:vertical}.d28-modal-foot{display:flex;gap:10px;flex-wrap:wrap}.d28-modal-foot button{flex:1;min-height:42px}.d28-modal-foot button.primary{background:linear-gradient(125deg,#dc2147,#fb486a)}
+@media(max-width:640px){.d28-filters{grid-template-columns:1fr}.d28-modal-card{padding:14px}.d28-modal-card textarea{min-height:300px}}
 </style>
 </head>
 <body>
 <div class="shell">
-<div class="v2-dev-mark"><span class="pulse-dot"></span> DETROIT MECHANICS 2.6 <span class="sep">/</span> SISTEMA OFICIAL DE RECRUTAMENTO <span class="sep">/</span> INSCRIÇÕES ABERTAS</div>
+<div class="v2-dev-mark"><span class="pulse-dot"></span> DETROIT MECHANICS 2.8 <span class="sep">/</span> SISTEMA OFICIAL DE RECRUTAMENTO <span class="sep">/</span> INSCRIÇÕES ABERTAS</div>
 <header class="topbar">
   <a class="brand" href="#" aria-label="Detroit Mechanics início" onclick="showView('apply');return false">
     <div class="mark site-logo" aria-hidden="true"><img src="DETROIT-MECHANICS.png" alt="" width="76" height="76" decoding="async"></div>
@@ -229,6 +238,7 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
     <div class="field"><label for="discord">ID do Discord *</label><input id="discord" type="text" inputmode="numeric" autocomplete="off" minlength="17" maxlength="20" pattern="[0-9]{17,20}" title="Informe somente o ID numérico do usuário no Discord (17 a 20 dígitos)" placeholder="Ex.: 123456789012345678" aria-describedby="discord-help" required><div id="discord-help" style="font-size:12px;line-height:1.5;color:#a4a4ad;margin-top:7px">Somente números, sem @ ou nome de usuário. No Discord: ative o Modo Desenvolvedor nas configurações e escolha <strong>Copiar ID do usuário</strong> no perfil.</div></div>
     <div class="field"><label for="experience">Já trabalhou como mecânico? *</label><select id="experience" required><option value="">Selecione uma opção</option><option>Sim, tenho experiência</option><option>Não, será minha primeira experiência</option></select></div>
     <div class="field"><label for="about">Conte um pouco sobre você (opcional)</label><textarea id="about" maxlength="800" placeholder="Experiência, interesse na vaga ou outras informações..."></textarea></div>
+    <label class="inline-check"><input type="checkbox" id="dmConsent"><span>Autorizo receber por mensagem privada do bot da Detroit Mechanics a confirmação da inscrição e contatos sobre o recrutamento no Discord informado. Posso não autorizar e ainda enviar a inscrição.</span></label>
     <label class="inline-check"><input type="checkbox" id="confirm" required><span>Confirmo que as informações enviadas são verdadeiras e que estou informando apenas dados do personagem (RP).</span></label>
     <p class="legal-disclosure">Antes de enviar, conheça nossos <a href="termos.html">Termos de Serviço</a> e saiba como usamos os dados na <a href="privacidade.html">Política de Privacidade</a>.</p>
     <button class="primary" type="submit">Enviar solicitação</button>
@@ -277,7 +287,7 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
   </div>
   <div id="adminPanel" class="panel wide hidden premium-app">
     <aside class="app-sidebar" aria-label="Menu do painel">
-      <div class="side-title"><span class="side-monogram">DM</span><span><strong>DETROIT</strong><small>MANAGEMENT V2.6</small></span></div>
+      <div class="side-title"><span class="side-monogram">DM</span><span><strong>DETROIT</strong><small>MANAGEMENT V2.8</small></span></div>
       <div class="side-group-title">WORKSPACE</div>
       <div class="sidebar-nav" id="adminTabs">
         <button type="button" id="tabDashboard" class="active" onclick="switchAdminTab('dashboard')"><span aria-hidden="true">◫</span> Visão geral</button>
@@ -290,8 +300,9 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
         <button type="button" id="tabWarnings" class="hidden" onclick="switchAdminTab('advertencias')"><span aria-hidden="true">♜</span> Advertências</button>
         <button type="button" id="tabPR" class="hidden" onclick="switchAdminTab('rp')"><span aria-hidden="true">◎</span> Relações Públicas</button>
         <button type="button" id="tabMembers" class="hidden" onclick="switchAdminTab('members')"><span aria-hidden="true">♧</span> Acessos ao painel</button>
+        <button type="button" id="tabAudit" class="hidden" onclick="switchAdminTab('auditoria')"><span aria-hidden="true">▤</span> Central de Logs</button>
       </div>
-      <div class="side-footer"><span class="pulse-dot"></span> Sistema oficial<small>Detroit Mechanics · 2.7</small></div>
+      <div class="side-footer"><span class="pulse-dot"></span> Sistema oficial<small>Detroit Mechanics · 2.8</small></div>
     </aside>
     <div class="app-main">
     <div class="app-eyebrow">WORKSPACE / <span id="appBreadcrumb">VISÃO GERAL</span></div>
@@ -319,7 +330,19 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
     </div>
     <div id="v2ResultCount" class="v2-result" aria-live="polite"></div>
     <div id="v2StatusMessage" class="message" role="status"></div>
-    <div id="requestList" class="request-list"></div></div>
+    <div id="requestList" class="request-list"></div>
+    </div>
+    <section id="auditSection" class="hidden" aria-label="Central de Logs">
+      <div class="section-banner"><span class="hero-tag">GESTÃO / AUDITORIA</span><h3>Central de Logs</h3><p>Histórico das inclusões, alterações e exclusões, com responsável e data. Visibilidade limitada pela hierarquia.</p></div>
+      <div class="d28-filters">
+        <label>Tipo de ação<select id="auditType"><option value="">Todas as ações</option><option value="incluido">Inclusões</option><option value="alterado">Alterações</option><option value="excluido">Exclusões</option></select></label>
+        <label>Módulo<select id="auditModule"><option value="">Todos os módulos</option><option>Recrutamento</option><option>Equipe da Mecanica</option><option>Controle de Ponto</option><option>Advertencias</option><option>Departamentos</option><option>Acessos ao painel</option><option>Comunicação Discord</option></select></label>
+        <label>Buscar no histórico<input id="auditQuery" type="search" placeholder="Nome, responsável, registro..."></label>
+      </div>
+      <div class="d28-filter-actions"><button type="button" id="auditReload">Atualizar histórico</button><small id="auditCount">—</small></div>
+      <div id="auditMessage" class="message" role="status"></div>
+      <div id="auditRows" class="d28-audit-list"><div class="empty">Entre com uma conta Chief ou Owner.</div></div>
+    </section>
     <section id="staffSection" class="hidden">
       <div class="section-banner"><span class="hero-tag">GESTÃO DE PESSOAL / DETROIT MECHANICS</span><h3>Equipe da Mecânica</h3><p>Controle os cargos principais, múltiplos subcargos, ingresso, última promoção, situação e histórico. Candidatos aprovados entram automaticamente.</p></div>
       <div class="staff-stats">
@@ -432,7 +455,7 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
         <div id="workSummary" class="p25-people"><div class="empty">Escolha uma semana para consultar.</div></div>
       </div>
       <div class="p25-control-card"><div class="p25-card-head"><strong>Jornadas registradas</strong><small>Use <strong>Editar</strong> para ajustar os horários ou <strong>Excluir</strong> para retirar um lançamento incorreto dos totais. As correções ficam registradas na auditoria do sistema.</small></div><div id="workRows" class="p25-records"><div class="empty">Nenhum registro carregado.</div></div></div>
-      <div class="security-note">Este controle é destinado à organização interna do servidor de roleplay e não substitui um sistema de ponto trabalhista formal. Totais exibidos em horas e minutos. Exclusões são lógicas e correções ficam na auditoria. Quando a integração da versão 2.7 estiver configurada, inclusões, edições e exclusões também serão notificadas nos canais administrativos do Discord.</div>
+      <div class="security-note">Este controle é destinado à organização interna do servidor de roleplay e não substitui um sistema de ponto trabalhista formal. Totais exibidos em horas e minutos. Exclusões são lógicas e correções ficam na auditoria. Com a auditoria 2.7 configurada, inclusões, edições e exclusões são notificadas nos canais administrativos do Discord.</div>
     </section>
 
     <section id="warningsSection" class="hidden" aria-label="Registro de advertências">
@@ -458,9 +481,20 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
     <div class="security-note">As solicitações são armazenadas no banco centralizado. Somente contas autorizadas pela política do banco podem consultá-las ou excluí-las.</div>
     </div>
   </div>
-  <div class="foot">DETROIT MECHANICS · PREMIUM DARK V2.6 · CONTROLE DE PONTO MANUAL</div>
+  <div class="foot">DETROIT MECHANICS · PREMIUM DARK V2.8 · CONTROLE DE PONTO MANUAL</div>
 </section>
 </main>
+</div>
+<div id="dmModal" class="d28-modal hidden" role="dialog" aria-modal="true" aria-labelledby="dmTitle">
+  <div class="d28-modal-card">
+    <div class="d28-modal-head"><h3 id="dmTitle">Enviar mensagem no Discord</h3><button type="button" id="dmClose" aria-label="Fechar">✕</button></div>
+    <p class="d28-modal-tip" id="dmRecipient">Selecione um candidato.</p>
+    <div class="field"><label for="dmGenero">Assinatura do recrutamento</label><select id="dmGenero"><option value="recrutador">Recrutador</option><option value="recrutadora">Recrutadora</option></select></div>
+    <div class="field"><label for="dmPreview">Prévia da mensagem padrão</label><textarea id="dmPreview" readonly rows="12"></textarea></div>
+    <div class="d28-modal-foot"><button type="button" id="dmCopy">Copiar mensagem</button><button type="button" class="primary" id="dmSend">Enviar pelo bot</button></div>
+    <div id="dmMessage" class="message" role="status"></div>
+    <p class="d28-modal-tip">A mensagem sai pelo bot, assinada pelo recrutador. Respostas do candidato não aparecem automaticamente neste painel. O Discord pode impedir a entrega por privacidade ou ausência de servidor em comum.</p>
+  </div>
 </div>
 <script type="module">
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
@@ -472,6 +506,9 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = id => document.getElementById(id);
 let requests = [];
 let activeAssignees = [];
+let allAssignees = [];
+let selectedDMRequest = null;
+let auditRecords = [];
 let currentMember = null;
 let activeTab = "dashboard";
 let staffSectorAccess = [];
@@ -592,6 +629,7 @@ async function refreshAccess() {
   }
   for(const id of ['tabDashboard','tabRecruit','tabStaff']) $(id).classList.toggle('hidden',!canRecruit);
   $('tabMembers').classList.toggle('hidden',!isLeadership());
+  $('tabAudit').classList.toggle('hidden',leadershipLevel<6);
   const authorized = Boolean(currentMember && (canRecruit || staffSectorAccess.length));
   $('authPanel').classList.toggle('hidden',authorized);
   $('adminPanel').classList.toggle('hidden',!authorized);
@@ -602,6 +640,7 @@ async function refreshAccess() {
     $('staffFormWrap').classList.add('hidden');
   }
   if (!canComite && ['ponto','advertencias'].includes(activeTab)) activeTab=canRecruit?'dashboard':staffSectorAccess[0]||'dashboard';
+  if (leadershipLevel<6 && activeTab==='auditoria') activeTab='dashboard';
   if (authorized) {
     $('adminSummary').textContent=`${currentMember.nome} · ${isLeadership()?rankRoles[leadershipLevel-1]+' / Liderança':currentMember.cargo==='adm'?'ADM':canRecruit?'Recrutador':'Equipe da Mecânica'}`;
     switchAdminTab(activeTab);
@@ -617,9 +656,10 @@ window.switchAdminTab = function(tab) {
   const canRecruit = isLeadership() || ['adm','recrutador'].includes(currentMember.cargo);
   if (['dashboard','recruit','staff'].includes(tab) && !canRecruit) return;
   if (tab === 'members' && !isLeadership()) return;
+  if (tab === 'auditoria' && leadershipLevel<6) return;
   if (sectorTabs.includes(tab) && !staffSectorAccess.includes(tab)) return;
   if (['ponto','advertencias'].includes(tab) && !staffSectorAccess.includes('comite')) return;
-  if (!['dashboard','recruit','staff','members','ponto','advertencias',...sectorTabs].includes(tab)) return;
+  if (!['dashboard','recruit','staff','members','ponto','advertencias','auditoria',...sectorTabs].includes(tab)) return;
   activeTab = tab;
   for (const [name, id, buttonId] of [['dashboard','dashboardSection','tabDashboard'],['recruit','recruitSection','tabRecruit'],['staff','staffSection','tabStaff'],['members','membersSection','tabMembers']]) {
     $(id).classList.toggle('hidden', tab !== name);
@@ -629,12 +669,14 @@ window.switchAdminTab = function(tab) {
   $('committeeTools').classList.toggle('hidden',tab!=='comite');
   $('worktimeSection').classList.toggle('hidden',tab!=='ponto');
   $('warningsSection').classList.toggle('hidden',tab!=='advertencias');
+  $('auditSection').classList.toggle('hidden',tab!=='auditoria');
   for (const [name,id] of [['instrutores','tabInstructors'],['comite','tabEthics'],['rp','tabPR'],['ponto','tabWorktime'],['advertencias','tabWarnings']]) $(id).classList.toggle('active',tab===name);
-  const titles = {dashboard:'Visão geral',recruit:'Inscrições',staff:'Equipe da Mecânica',members:'Acessos ao painel',instrutores:'Instrutores',comite:'Comitê de Ética e Promoções',rp:'Relações Públicas',ponto:'Controle de Ponto',advertencias:'Advertências'};
+  const titles = {dashboard:'Visão geral',recruit:'Inscrições',staff:'Equipe da Mecânica',members:'Acessos ao painel',instrutores:'Instrutores',comite:'Comitê de Ética e Promoções',rp:'Relações Públicas',ponto:'Controle de Ponto',advertencias:'Advertências',auditoria:'Central de Logs'};
   $('appHeading').textContent = titles[tab];
   $('appBreadcrumb').textContent = titles[tab].toUpperCase();
   if (tab === 'members') renderMembers();
   else if (tab === 'staff') renderStaff();
+  else if (tab === 'auditoria') renderAudit();
   else if (tab === 'ponto') renderWorktime();
   else if (tab === 'advertencias') renderWarnings();
   else if (sectorTabs.includes(tab)) renderSector(tab);
@@ -651,7 +693,7 @@ function refreshDashboard(items) {
   for (const item of items) if([item.passaporte,item.discord_id].some(val => val && freq.get(String(val).trim().toLowerCase()) > 1)) personDup.add(item.id);
   const byStatus = (k) => items.filter(item => (item.status_candidato||'pendente')===k).length;
   for (const [id,count] of [['dashTotal',items.length],['dashPending',byStatus('pendente')],['dashAnalysis',byStatus('em_analise')],['dashInterview',byStatus('entrevista')],['dashApproved',byStatus('aprovado')],['dashDuplicate',personDup.size]]) $(id).textContent = count.toLocaleString('pt-BR');
-  $('dashboardRecent').innerHTML = items.length ? items.slice(0,5).map(item => `<div class="recent-item"><div class="recent-avatar">${escapeHTML(String(item.nome_completo||'?').trim().charAt(0).toUpperCase())}</div><div><strong>${escapeHTML(item.nome_completo)}</strong><small>Passaporte #${escapeHTML(item.passaporte)} · ${escapeHTML(new Date(item.created_at).toLocaleDateString('pt-BR'))}</small></div><span class="status-pill status-${escapeHTML(item.status_candidato||'pendente')}">${escapeHTML(({pendente:'Pendente',em_analise:'Em análise',entrevista:'Entrevista',aprovado:'Aprovado',reprovado:'Reprovado'})[item.status_candidato||'pendente']||'Pendente')}</span></div>`).join('') : '<div class="empty">Nenhuma inscrição recebida ainda.</div>';
+  $('dashboardRecent').innerHTML = items.length ? items.slice(0,5).map(item => `<div class="recent-item"><div class="recent-avatar">${escapeHTML(String(item.nome_completo||'?').trim().charAt(0).toUpperCase())}</div><div><strong>${escapeHTML(item.nome_completo)}</strong><small>Protocolo #${escapeHTML(item.numero_protocolo||String(item.id))} · Passaporte #${escapeHTML(item.passaporte)} · ${escapeHTML(new Date(item.created_at).toLocaleDateString('pt-BR'))}</small></div><span class="status-pill status-${escapeHTML(item.status_candidato||'pendente')}">${escapeHTML(({pendente:'Pendente',em_analise:'Em análise',entrevista:'Entrevista',aprovado:'Aprovado',reprovado:'Reprovado'})[item.status_candidato||'pendente']||'Pendente')}</span></div>`).join('') : '<div class="empty">Nenhuma inscrição recebida ainda.</div>';
 }
 
 async function renderMembers() {
@@ -744,10 +786,17 @@ $('applicationForm').addEventListener('submit', async event => {
   };
 
   try {
-    const { error } = await supabase.from('inscricoes').insert(payload);
+    const { data: protocolo, error } = await supabase.rpc('detroit_28_inscrever', {
+      p_nome_completo:payload.nome_completo,p_passaporte:payload.passaporte,
+      p_telefone:payload.telefone,p_dias_disponiveis:payload.dias_disponiveis,
+      p_horario_disponivel:payload.horario_disponivel,p_discord_id:payload.discord_id,
+      p_experiencia:payload.experiencia,p_sobre:payload.sobre,
+      p_aceita_dm_discord:$('dmConsent').checked
+    });
     if (error) throw error;
+    const wantsDM=$('dmConsent').checked;
     event.target.reset();
-    showMessage('applyMessage', 'Solicitação enviada com sucesso! A equipe Detroit Mechanics analisará seus dados e entrará em contato.', 'success');
+    showMessage('applyMessage', 'Inscrição enviada com sucesso! Protocolo #'+protocolo+'. '+(wantsDM?'Solicitamos uma confirmação por DM no Discord informado (a entrega depende das configurações do Discord).':'Você optou por não receber DM; acompanhe o recrutamento pelos canais oficiais.'), 'success');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   } catch (error) {
     console.error('Erro ao enviar inscrição:', error);
@@ -836,12 +885,17 @@ async function renderRequests() {
   }
   requests = data || [];
   refreshDashboard(requests);
-  const { data: colleagues, error: colleagueError } = await supabase.rpc('north_active_recruiters');
+  const { data: colleagues, error: colleagueError } = await supabase.rpc('detroit_28_responsaveis');
   if (colleagueError) {
     console.error('Falha ao consultar responsaveis', colleagueError);
     showMessage('v2StatusMessage', 'A lista de responsáveis não pôde ser carregada. Confira a migração SQL da etapa 1. ' + (colleagueError.message || ''));
-    activeAssignees = [];
-  } else activeAssignees = colleagues || [];
+    activeAssignees = []; allAssignees=[];
+  } else {
+    allAssignees=colleagues || [];
+    const myself=allAssignees.find(m=>m.user_id===currentMember?.user_id);
+    if(myself){myself.nome=currentMember.nome||myself.nome;myself.status='ativo';}
+    activeAssignees=allAssignees.filter(m=>m.status==='ativo');
+  }
   paintRequests();
 }
 
@@ -897,7 +951,8 @@ function paintRequests() {
     const badge=possibleDuplicates.length?`<div class="v2-warning">⚠ Possível inscrição duplicada por ${escapeHTML(possibleDuplicates.join(' e '))}. Confira antes de decidir.</div>`:'';
     const currentStatus=v2Status(item);
     const ownerId=item.responsavel_id||null;
-    const ownerName=ownerId ? (activeAssignees.find(m=>m.user_id===ownerId)?.nome||'Membro inativo ou indisponível') : 'Ninguém assumiu esta inscrição';
+    const foundOwner=allAssignees.find(m=>m.user_id===ownerId);
+    const ownerName=ownerId ? (foundOwner?(foundOwner.nome+(foundOwner.status!=='ativo'?' (inativo)':'')):'Conta anterior sem vínculo ativo na equipe') : 'Ninguém assumiu esta inscrição';
     const isMine=ownerId===currentMember.user_id;
     const isAdmin=isLeadership() || currentMember.cargo==='adm';
     const canEditStatus=isAdmin||isMine;
@@ -909,10 +964,12 @@ function paintRequests() {
     const ownerMarkup='<div class="v2-owner '+(!ownerId?'free':'')+'"><span class="owner-dot" aria-hidden="true"></span><div><strong>Responsável: '+escapeHTML(ownerName)+'</strong>'+(item.assumida_em ? '<div class="v2-assumed">Assumida em '+escapeHTML(new Date(item.assumida_em).toLocaleString('pt-BR'))+'</div>' : '')+'</div></div>';
     const options=Object.entries(V2_STATUS_LABELS).map(([value,label])=>`<option value="${value}" ${currentStatus===value?'selected':''}>${label}</option>`).join('');
     return `<article class="request">
-      <div class="request-top"><div><h3>${escapeHTML(item.nome_completo)}</h3><small>Recebida em ${escapeHTML(created)}</small></div><span class="badge">PASSAPORTE ${escapeHTML(item.passaporte)}</span></div>
+      <div class="request-top"><div><h3>${escapeHTML(item.nome_completo)}</h3><small>Recebida em ${escapeHTML(created)}</small><div class="d28-protocol">PROTOCOLO #${escapeHTML(item.numero_protocolo||String(item.id)+' (legado)')}</div></div><span class="badge">PASSAPORTE ${escapeHTML(item.passaporte)}</span></div>
       <p><strong>Telefone:</strong> ${escapeHTML(item.telefone)}<br><strong>ID do Discord:</strong> ${escapeHTML(item.discord_id)}<br><strong>Dias:</strong> ${days}<br><strong>Horários:</strong> ${escapeHTML(item.horario_disponivel)}<br><strong>Experiência:</strong> ${escapeHTML(item.experiencia||'Não informado')}${item.sobre?'<br><strong>Sobre:</strong> '+escapeHTML(item.sobre):''}</p>
       ${badge}
       ${ownerMarkup}
+      <div class="d28-request-actions"><button type="button" data-open-dm="${escapeHTML(String(item.id))}">✉ Enviar mensagem no Discord</button></div>
+      <div class="d28-discord-note">${item.aceita_dm_discord?'Candidato autorizou contato via Discord.':'Candidato não autorizou mensagens privadas pelo formulário; disponível apenas cópia do texto.'}</div>
       <div class="v2-recruit-actions">${claimButton}${releaseButton}${transferTools}</div>
       ${canEditStatus?`<div class="v2-actions"><label for="v2-status-${escapeHTML(String(item.id))}">Status:</label><select id="v2-status-${escapeHTML(String(item.id))}" data-candidate-status="${escapeHTML(String(item.id))}">${options}</select><button data-save-status="${escapeHTML(String(item.id))}">Salvar status</button></div>`:'<p class="v2-tip">Para alterar o status, assuma esta inscrição. Se ela já tiver responsável, peça a transferência a um ADM.</p>'}
       <div class="request-actions"><button type="button" data-copy-discord="${escapeHTML(String(item.discord_id||''))}">Copiar ID do Discord</button>${(currentMember?.cargo==='adm'||leadershipLevel===7)?`<button type="button" class="danger" data-delete-request="${escapeHTML(String(item.id))}">Excluir solicitação</button>`:''}</div>
@@ -921,6 +978,8 @@ function paintRequests() {
 }
 
 $('requestList').addEventListener('click',async event=>{
+  const dmButton=event.target.closest('button[data-open-dm]');
+  if(dmButton){ openDMModal(dmButton.dataset.openDm); return; }
   const copyButton=event.target.closest('button[data-copy-discord]');
   if(copyButton){await window.copyDiscord(copyButton.dataset.copyDiscord||'');return;}
   const deleteButton=event.target.closest('button[data-delete-request]');
@@ -997,7 +1056,7 @@ window.exportCSV = function() {
     alert('Não há solicitações para exportar.');
     return;
   }
-  const columns = ['Data', 'Nome completo RP', 'Passaporte RP', 'Telefone RP', 'Dias disponíveis', 'Horários', 'ID do Discord', 'Experiência', 'Sobre'];
+  const columns = ['Protocolo', 'Data', 'Nome completo RP', 'Passaporte RP', 'Telefone RP', 'Dias disponíveis', 'Horários', 'ID do Discord', 'Experiência', 'Sobre'];
   const quote = value => {
     const raw = String(value ?? '');
     // Impede que células vindas de candidatos sejam interpretadas como fórmulas.
@@ -1005,6 +1064,7 @@ window.exportCSV = function() {
     return '"' + safe.replace(/"/g, '""') + '"';
   };
   const csv = [columns, ...requests.map(item => [
+    item.numero_protocolo||String(item.id),
     item.created_at ? new Date(item.created_at).toLocaleString('pt-BR') : '',
     item.nome_completo, item.passaporte, item.telefone,
     (item.dias_disponiveis || []).join('; '), item.horario_disponivel,
@@ -1667,6 +1727,94 @@ $('warningForm').addEventListener('submit',async e=>{
  finally{btn.disabled=false;}
 });
 
+
+
+// DETROIT 2.8 - Mensagem padrao de recrutamento e consulta aos logs.
+function recruitmentMessage(request, gender){
+  const recruiterName=(currentMember?.nome||'Recrutamento Detroit Mechanics').trim();
+  const word=gender==='recrutadora'?'recrutadora':'recrutador';
+  return `Olá, ${request.nome_completo}! Tudo bem?\n\nMeu nome é ${recruiterName} e sou ${word} da **Detroit Mechanics**, na Metrópole.\n\nIdentificamos que você realizou uma inscrição para fazer parte da nossa equipe e gostaríamos de confirmar se ainda possui interesse em integrar a Detroit Mechanics.\n\nCaso tenha interesse, ficaremos à disposição para dar continuidade ao seu processo de recrutamento e orientá-lo sobre as próximas etapas.\n\n**Aguardamos seu retorno!**\n\nAtenciosamente,  \n**${recruiterName}**\nEquipe de Recrutamento | Detroit Mechanics`;
+}
+function openDMModal(requestId){
+  selectedDMRequest=requests.find(r=>String(r.id)===String(requestId));
+  if(!selectedDMRequest)return;
+  $('dmRecipient').textContent=`Para: ${selectedDMRequest.nome_completo} · Discord ${selectedDMRequest.discord_id} · Protocolo #${selectedDMRequest.numero_protocolo||selectedDMRequest.id}`;
+  $('dmGenero').value='recrutador';
+  $('dmPreview').value=recruitmentMessage(selectedDMRequest,$('dmGenero').value);
+  $('dmModal').classList.remove('hidden');
+  clearMessage('dmMessage');
+  $('dmSend').disabled=!selectedDMRequest.aceita_dm_discord;
+  if(!selectedDMRequest.aceita_dm_discord){
+    showMessage('dmMessage','Este candidato não autorizou receber DMs pelo formulário. Você pode copiar a mensagem e usar um canal oficial após obter autorização.');
+  }
+}
+function closeDMModal(){ $('dmModal').classList.add('hidden'); selectedDMRequest=null; }
+$('dmClose').addEventListener('click',closeDMModal);
+$('dmModal').addEventListener('click',e=>{if(e.target===$('dmModal'))closeDMModal();});
+$('dmGenero').addEventListener('change',()=>{
+ if(selectedDMRequest)$('dmPreview').value=recruitmentMessage(selectedDMRequest,$('dmGenero').value);
+});
+$('dmCopy').addEventListener('click',async()=>{
+ try{await navigator.clipboard.writeText($('dmPreview').value);showMessage('dmMessage','Mensagem copiada para a área de transferência.','success');}
+ catch(e){showMessage('dmMessage','Não foi possível copiar automaticamente. Selecione o texto acima.');}
+});
+$('dmSend').addEventListener('click',async()=>{
+ const item=selectedDMRequest;if(!item)return;
+ if(!item.aceita_dm_discord){showMessage('dmMessage','O candidato não autorizou DMs.');return;}
+ if(!confirm('Enviar a mensagem-padrão para '+item.nome_completo+' pelo bot da Detroit Mechanics?'))return;
+ const btn=$('dmSend'); btn.disabled=true;
+ try{
+  const {data,error}=await supabase.rpc('detroit_28_enviar_contato',{
+   p_inscricao_id:Number(item.id),p_genero:$('dmGenero').value
+  });
+  if(error)throw error;
+  showMessage('dmMessage','Mensagem incluída na fila (#'+data+'). Verificando se o Discord aceitou a entrega...','success');
+  for(let i=0;i<3;i++){
+   await new Promise(resolve=>setTimeout(resolve,2200));
+   const response=await supabase.rpc('detroit_28_status_mensagem',{p_inscricao_id:Number(item.id)});
+   if(response.error)break;
+   const state=response.data?.status;
+   if(state==='enviado'){
+    showMessage('dmMessage','A API do Discord confirmou o envio da mensagem para o destinatário.','success');return;
+   }
+   if(state==='falhou'){
+    showMessage('dmMessage','O Discord não entregou esta DM. Verifique se o candidato compartilha um servidor com o bot e permite mensagens privadas.');return;
+   }
+  }
+  showMessage('dmMessage','Mensagem ainda em processamento. Confira a Edge Function e o status da fila no Supabase.','success');
+ }catch(e){showMessage('dmMessage','Falha ao solicitar envio: '+(e.message||'erro desconhecido'));}
+ finally{btn.disabled=false;}
+});
+
+async function renderAudit(){
+ if(leadershipLevel<6)return;
+ $('auditRows').innerHTML='<div class="empty">Carregando histórico...</div>';
+ clearMessage('auditMessage');
+ const action=$('auditType').value||null;
+ const module=$('auditModule').value||null;
+ const {data,error}=await supabase.rpc('detroit_28_consultar_logs',{
+   p_limite:200,p_acao:action,p_modulo:module
+ });
+ if(error){
+  $('auditRows').innerHTML='<div class="empty">Falha ao consultar histórico.</div>';
+  showMessage('auditMessage','Não foi possível carregar os logs: '+error.message);return;
+ }
+ auditRecords=data||[];
+ paintAudit();
+}
+function paintAudit(){
+ const query=($('auditQuery').value||'').toLocaleLowerCase('pt-BR').trim();
+ const filtered=auditRecords.filter(e=>!query||[e.titulo,e.detalhes,e.autor_nome,e.registro_id,e.modulo].join(' ').toLocaleLowerCase('pt-BR').includes(query));
+ $('auditCount').textContent=filtered.length+' eventos exibidos';
+ $('auditRows').innerHTML=filtered.length?filtered.map(e=>`<article class="d28-audit-card">
+  <div class="d28-audit-top"><div><strong>${escapeHTML(e.titulo)}</strong><div class="d28-audit-meta">${escapeHTML(e.modulo)} · Registro ${escapeHTML(e.registro_id)} · ${escapeHTML(e.autor_nome||'Sistema')} · ${escapeHTML(new Date(e.criado_em).toLocaleString('pt-BR'))}</div></div><span class="d28-audit-pill ${escapeHTML(e.acao)}">${escapeHTML(({incluido:'INCLUÍDO',alterado:'ALTERADO',excluido:'EXCLUÍDO'})[e.acao]||e.acao)}</span></div>
+  <p>${escapeHTML(e.detalhes||'Sem detalhes adicionais.')}</p>
+ </article>`).join(''):'<div class="empty">Nenhum registro corresponde aos filtros.</div>';
+}
+$('auditReload').addEventListener('click',renderAudit);
+$('auditQuery').addEventListener('input',paintAudit);
+$('auditType').addEventListener('change',renderAudit);
+$('auditModule').addEventListener('change',renderAudit);
 
 supabase.auth.onAuthStateChange(() => {
   setTimeout(() => refreshAccess(), 0);
