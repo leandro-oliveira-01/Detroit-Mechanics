@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#080808">
-<title>Detroit Mechanics 2.8 | Recrutamento e Mensagens Discord</title>
+<title>Detroit Mechanics 2.9 | Management Hub</title>
+<link rel="icon" type="image/png" href="detroit-icon-512.png">
+<link rel="apple-touch-icon" href="detroit-icon-512.png">
 <style>
 :root{--red:#ff1738;--red2:#ff4058;--bg:#070707;--panel:#111113;--field:#202023;--muted:#a4a4ad;--white:#f5f5f7;--line:#303036}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% 10%,#26070d 0,transparent 36%),var(--bg);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
@@ -190,6 +192,11 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
 @media(max-width:940px){.p25-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.p25-grid{grid-template-columns:1fr}.p25-quick-buttons .p25-button,.p25-button.primary{width:100%}.p25-record{padding:12px}.p25-stat-grid{gap:8px}.p25-control-card{padding:14px}}
 
+/* Detroit Mechanics 2.9: identidade visual */
+.gear-mark{background:linear-gradient(145deg,#41121e,#1b202b);color:#f4d5dc;box-shadow:inset 0 0 0 1px #81364a,0 4px 18px #0008;overflow:hidden}
+.gear-mark svg{width:28px;height:28px;animation:detroit-gear-spin 18s linear infinite;transform-origin:50% 50%}
+@keyframes detroit-gear-spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.gear-mark svg{animation:none}}
 /* Detroit Mechanics 2.8: Central de Logs e DM */
 .d28-protocol{display:inline-flex;align-items:center;gap:6px;color:#f4a7b5;background:#361923;border:1px solid #713849;border-radius:8px;padding:6px 9px;font-weight:800;letter-spacing:.3px;font-size:11px;margin-top:7px}
 .d28-filters{display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:12px;margin:14px 0}.d28-filters label{display:grid;gap:8px;font-size:11px;color:#aab0bd;font-weight:700}.d28-filters select,.d28-filters input{width:100%;background:#20242c;color:#f5f5f7;border:1px solid #393d4a;border-radius:9px;min-height:44px;padding:8px 11px}
@@ -202,7 +209,7 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
 </head>
 <body>
 <div class="shell">
-<div class="v2-dev-mark"><span class="pulse-dot"></span> DETROIT MECHANICS 2.8 <span class="sep">/</span> SISTEMA OFICIAL DE RECRUTAMENTO <span class="sep">/</span> INSCRIÇÕES ABERTAS</div>
+<div class="v2-dev-mark"><span class="pulse-dot"></span> DETROIT MECHANICS 2.9 <span class="sep">/</span> SISTEMA OFICIAL DE RECRUTAMENTO <span class="sep">/</span> INSCRIÇÕES ABERTAS</div>
 <header class="topbar">
   <a class="brand" href="#" aria-label="Detroit Mechanics início" onclick="showView('apply');return false">
     <div class="mark site-logo" aria-hidden="true"><img src="DETROIT-MECHANICS.png" alt="" width="76" height="76" decoding="async"></div>
@@ -287,7 +294,7 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
   </div>
   <div id="adminPanel" class="panel wide hidden premium-app">
     <aside class="app-sidebar" aria-label="Menu do painel">
-      <div class="side-title"><span class="side-monogram">DM</span><span><strong>DETROIT</strong><small>MANAGEMENT V2.8</small></span></div>
+      <div class="side-title"><span class="side-monogram gear-mark" aria-label="Engrenagem Detroit Mechanics"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.9 2.7h4.2l.7 2.5 1.8.8 2.3-1.2 3 3-1.2 2.3.8 1.8 2.5.7v4.2l-2.5.7-.8 1.8 1.2 2.3-3 3-2.3-1.2-1.8.8-.7 2.5H9.9l-.7-2.5-1.8-.8-2.3 1.2-3-3 1.2-2.3-.8-1.8L0 16.2V12l2.5-.7.8-1.8-1.2-2.3 3-3 2.3 1.2 1.8-.8.7-2.5Z" transform="translate(2.5 1.7) scale(.79)" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></span><span><strong>DETROIT</strong><small>MANAGEMENT HUB V2.9</small></span></div>
       <div class="side-group-title">WORKSPACE</div>
       <div class="sidebar-nav" id="adminTabs">
         <button type="button" id="tabDashboard" class="active" onclick="switchAdminTab('dashboard')"><span aria-hidden="true">◫</span> Visão geral</button>
@@ -892,8 +899,9 @@ async function renderRequests() {
     activeAssignees = []; allAssignees=[];
   } else {
     allAssignees=colleagues || [];
+    // O nome RP vem da RPC do banco; nunca substituir pelo apelido da conta Discord.
     const myself=allAssignees.find(m=>m.user_id===currentMember?.user_id);
-    if(myself){myself.nome=currentMember.nome||myself.nome;myself.status='ativo';}
+    if(myself){myself.status='ativo';}
     activeAssignees=allAssignees.filter(m=>m.status==='ativo');
   }
   paintRequests();
