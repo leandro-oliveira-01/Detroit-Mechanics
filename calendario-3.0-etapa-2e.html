@@ -30,6 +30,31 @@ body.embed .working-note { margin-bottom:5px }
 .manage-actions .danger-action{border-color:#a4384a;color:#ffb2bd;background:#30171e}
 .manage-label{border:1px solid #344452;border-radius:20px;padding:5px 8px;color:#aab9c6;font-size:10px;white-space:nowrap}
 @media(max-width:600px){.manage-row{flex-wrap:wrap}.manage-actions{width:100%}.manage-actions button{flex:1}.manage-section{padding:11px}}
+
+/* Detroit 3.0 — Correcao de layout da agenda integrada (2E.1)
+   No iframe, nao colocar os tres cartoes dentro de uma coluna de 270px.
+   Eles ficam ABAIXO do calendario, em colunas fluidas, sem texto esmagado. */
+body.embed .grid-body {
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 14px;
+}
+body.embed .right-rail {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)) !important;
+  gap: 12px;
+  min-width: 0;
+}
+body.embed .right-rail > * {
+  min-width: 0;
+  max-width: 100%;
+}
+body.embed .rail-card {overflow-wrap: anywhere;}
+body.embed .keyline strong {overflow-wrap: anywhere;}
+body.embed .calendar-toolbar, body.embed .topline {min-width:0;}
+@media (max-width: 640px) {
+  body.embed main { padding: 10px 4px; }
+  body.embed .right-rail {grid-template-columns: 1fr !important;}
+}
 </style>
   
 </head>
