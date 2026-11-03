@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#080808">
-<title>Detroit Mechanics 2.9 | Management Hub</title>
+<title>Detroit Mechanics 3.0 | Homologação do painel</title>
 <link rel="icon" type="image/png" href="detroit-icon-512.png">
 <link rel="apple-touch-icon" href="detroit-icon-512.png">
 <style>
@@ -205,6 +205,15 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
 .d28-request-actions{display:flex;flex-wrap:wrap;gap:9px;margin:10px 0}.d28-request-actions button{border-radius:9px;padding:10px 13px;background:#2e2739;border:1px solid #76546c;color:#ffe1e9;font-weight:750;cursor:pointer}.d28-request-actions button:disabled{opacity:.45;cursor:not-allowed}.d28-discord-note{margin:7px 0;color:#9aa4b6;font-size:11px}
 .d28-modal{position:fixed;inset:0;z-index:9999;background:#000b;display:flex;align-items:center;justify-content:center;padding:16px;overflow:auto}.d28-modal.hidden{display:none}.d28-modal-card{width:min(630px,100%);max-height:95vh;overflow:auto;background:#171b24;color:#fff;border:1px solid #525262;border-radius:15px;padding:23px;box-shadow:0 30px 100px #000a}.d28-modal-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.d28-modal-head h3{margin:0;font-size:19px}.d28-modal-head button{border:0;background:#333743;color:#fff;border-radius:8px;padding:9px 12px;cursor:pointer}.d28-modal-tip{color:#a6adbc;font-size:12px;line-height:1.6}.d28-modal-card .field{margin:13px 0}.d28-modal-card textarea{width:100%;line-height:1.55;min-height:240px;white-space:pre-wrap;resize:vertical}.d28-modal-foot{display:flex;gap:10px;flex-wrap:wrap}.d28-modal-foot button{flex:1;min-height:42px}.d28-modal-foot button.primary{background:linear-gradient(125deg,#dc2147,#fb486a)}
 @media(max-width:640px){.d28-filters{grid-template-columns:1fr}.d28-modal-card{padding:14px}.d28-modal-card textarea{min-height:300px}}
+
+/* Detroit Mechanics 3.0 - ETAPA 2C (somente preview na branch develop/3.0) */
+#calendarSection {min-width:0;width:100%}
+#calendarSection .d30-preview-note {display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin:0 0 12px;padding:12px 14px;border:1px solid #814850;border-radius:10px;background:#29131a;color:#ffd7da;font-size:12px}
+#calendarSection .d30-preview-note strong {color:#fff}
+#calendarSection iframe {display:block;width:100%;height:min(90vh,1020px);min-height:680px;border:1px solid #323945;border-radius:12px;background:#080b10}
+#tabCalendar {color:#f3c3cb;}
+#tabCalendar.active {border-color:#a93246!important;background:linear-gradient(100deg,#40121d,#27111b)!important;color:#fff!important}
+@media(max-width:740px){#calendarSection iframe{height:920px;min-height:620px}}
 </style>
 </head>
 <body>
@@ -294,10 +303,11 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
   </div>
   <div id="adminPanel" class="panel wide hidden premium-app">
     <aside class="app-sidebar" aria-label="Menu do painel">
-      <div class="side-title"><span class="side-monogram gear-mark" aria-label="Engrenagem Detroit Mechanics"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.9 2.7h4.2l.7 2.5 1.8.8 2.3-1.2 3 3-1.2 2.3.8 1.8 2.5.7v4.2l-2.5.7-.8 1.8 1.2 2.3-3 3-2.3-1.2-1.8.8-.7 2.5H9.9l-.7-2.5-1.8-.8-2.3 1.2-3-3 1.2-2.3-.8-1.8L0 16.2V12l2.5-.7.8-1.8-1.2-2.3 3-3 2.3 1.2 1.8-.8.7-2.5Z" transform="translate(2.5 1.7) scale(.79)" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></span><span><strong>DETROIT</strong><small>MANAGEMENT HUB V2.9</small></span></div>
-      <div class="side-group-title">WORKSPACE</div>
+      <div class="side-title"><span class="side-monogram gear-mark" aria-label="Engrenagem Detroit Mechanics"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 13.9 3l1 2.5 2 .8 2.4-1.1 1.3 2.3-2 1.8.3 2.1 2.4 1v2.6l-2.5.9-.7 2 1.2 2.3-2 1.5-2-1.9-2.2.3L13 21.5h-2.5l-.9-2.6-2-.8-2.5 1.1-1.3-2.2 2-1.9-.3-2.1L3 12V9.5l2.5-.9.7-2-1.2-2.3 2-1.5 2 1.9 2.2-.3Z"/><circle cx="12" cy="12" r="3.5"/></svg></span><span><strong>DETROIT</strong><small>MANAGEMENT HUB 3.0 · PRÉVIA</small></span></div>
+      <div class="side-group-title">WORKSPACE · HOMOLOGAÇÃO 3.0</div>
       <div class="sidebar-nav" id="adminTabs">
         <button type="button" id="tabDashboard" class="active" onclick="switchAdminTab('dashboard')"><span aria-hidden="true">◫</span> Visão geral</button>
+        <button type="button" id="tabCalendar" onclick="switchAdminTab('calendario')"><span aria-hidden="true">▦</span> Calendário 3.0</button>
         <button type="button" id="tabRecruit" onclick="switchAdminTab('recruit')"><span aria-hidden="true">▤</span> Inscrições</button>
         <button type="button" id="tabStaff" onclick="switchAdminTab('staff')"><span aria-hidden="true">♙</span> Equipe da Mecânica</button>
         <div class="side-group-title">DEPARTAMENTOS</div>
@@ -309,11 +319,15 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
         <button type="button" id="tabMembers" class="hidden" onclick="switchAdminTab('members')"><span aria-hidden="true">♧</span> Acessos ao painel</button>
         <button type="button" id="tabAudit" class="hidden" onclick="switchAdminTab('auditoria')"><span aria-hidden="true">▤</span> Central de Logs</button>
       </div>
-      <div class="side-footer"><span class="pulse-dot"></span> Sistema oficial<small>Detroit Mechanics · 2.8</small></div>
+      <div class="side-footer"><span class="pulse-dot"></span> Homologação 3.0<small>Detroit Mechanics · sem publicações Discord</small></div>
     </aside>
     <div class="app-main">
     <div class="app-eyebrow">WORKSPACE / <span id="appBreadcrumb">VISÃO GERAL</span></div>
     <div class="admin-head"><div><span class="badge">● ACESSO AUTORIZADO</span><h2 id="appHeading" style="margin-top:12px">Visão geral</h2><p id="adminSummary">Acompanhe o recrutamento em tempo real.</p></div><button class="ghost logout-button" onclick="logout()">↪ Sair da conta</button></div>
+    <section id="calendarSection" class="hidden" aria-label="Calendário integrado 3.0">
+      <div class="d30-preview-note"><div><strong>Calendário 3.0 — Homologação</strong><div>Área em testes. Agendamentos são gravados no Supabase real; não use candidatos ou reuniões reais para testar.</div></div><span>Discord desativado nesta etapa</span></div>
+      <iframe id="calendarFrame" title="Calendário, reuniões e cursos — Detroit Mechanics 3.0" loading="lazy" allow="clipboard-read; clipboard-write"></iframe>
+    </section>
     <section id="dashboardSection" class="dashboard-section">
       <div class="dash-welcome"><span class="hero-tag">DETROIT MECHANICS / RECRUTAMENTO</span><h3>Bem-vindo ao painel.</h3><p>Acompanhe as inscrições e organize o trabalho da equipe em um único lugar.</p></div>
       <div class="stat-grid" id="dashboardStats" aria-live="polite">
@@ -637,17 +651,17 @@ async function refreshAccess() {
   for(const id of ['tabDashboard','tabRecruit','tabStaff']) $(id).classList.toggle('hidden',!canRecruit);
   $('tabMembers').classList.toggle('hidden',!isLeadership());
   $('tabAudit').classList.toggle('hidden',leadershipLevel<6);
-  const authorized = Boolean(currentMember && (canRecruit || staffSectorAccess.length));
+  const authorized = Boolean(currentMember); // Membro validado pelo Supabase: calendário visível a toda equipe ativa.
   $('authPanel').classList.toggle('hidden',authorized);
   $('adminPanel').classList.toggle('hidden',!authorized);
   if (!canRecruit && ['dashboard','recruit','staff','members'].includes(activeTab)) {
-    activeTab=staffSectorAccess[0]||'dashboard';
+    activeTab=staffSectorAccess[0]||'calendario';
   }
   if (!isLeadership()) {
     $('staffFormWrap').classList.add('hidden');
   }
-  if (!canComite && ['ponto','advertencias'].includes(activeTab)) activeTab=canRecruit?'dashboard':staffSectorAccess[0]||'dashboard';
-  if (leadershipLevel<6 && activeTab==='auditoria') activeTab='dashboard';
+  if (!canComite && ['ponto','advertencias'].includes(activeTab)) activeTab=canRecruit?'dashboard':staffSectorAccess[0]||'calendario';
+  if (leadershipLevel<6 && activeTab==='auditoria') activeTab='calendario';
   if (authorized) {
     $('adminSummary').textContent=`${currentMember.nome} · ${isLeadership()?rankRoles[leadershipLevel-1]+' / Liderança':currentMember.cargo==='adm'?'ADM':canRecruit?'Recrutador':'Equipe da Mecânica'}`;
     switchAdminTab(activeTab);
@@ -666,21 +680,25 @@ window.switchAdminTab = function(tab) {
   if (tab === 'auditoria' && leadershipLevel<6) return;
   if (sectorTabs.includes(tab) && !staffSectorAccess.includes(tab)) return;
   if (['ponto','advertencias'].includes(tab) && !staffSectorAccess.includes('comite')) return;
-  if (!['dashboard','recruit','staff','members','ponto','advertencias','auditoria',...sectorTabs].includes(tab)) return;
+  if (!['dashboard','calendario','recruit','staff','members','ponto','advertencias','auditoria',...sectorTabs].includes(tab)) return;
   activeTab = tab;
   for (const [name, id, buttonId] of [['dashboard','dashboardSection','tabDashboard'],['recruit','recruitSection','tabRecruit'],['staff','staffSection','tabStaff'],['members','membersSection','tabMembers']]) {
     $(id).classList.toggle('hidden', tab !== name);
     $(buttonId).classList.toggle('active', tab === name);
   }
+  $('calendarSection').classList.toggle('hidden',tab!=='calendario');
+  $('tabCalendar').classList.toggle('active',tab==='calendario');
+  if(tab==='calendario' && !$('calendarFrame').getAttribute('src')) $('calendarFrame').src='./calendario-3.0-etapa-2c.html?embed=1';
   $('sectorSection').classList.toggle('hidden',!sectorTabs.includes(tab));
   $('committeeTools').classList.toggle('hidden',tab!=='comite');
   $('worktimeSection').classList.toggle('hidden',tab!=='ponto');
   $('warningsSection').classList.toggle('hidden',tab!=='advertencias');
   $('auditSection').classList.toggle('hidden',tab!=='auditoria');
   for (const [name,id] of [['instrutores','tabInstructors'],['comite','tabEthics'],['rp','tabPR'],['ponto','tabWorktime'],['advertencias','tabWarnings']]) $(id).classList.toggle('active',tab===name);
-  const titles = {dashboard:'Visão geral',recruit:'Inscrições',staff:'Equipe da Mecânica',members:'Acessos ao painel',instrutores:'Instrutores',comite:'Comitê de Ética e Promoções',rp:'Relações Públicas',ponto:'Controle de Ponto',advertencias:'Advertências',auditoria:'Central de Logs'};
+  const titles = {calendario:'Calendário 3.0 · Homologação',dashboard:'Visão geral',recruit:'Inscrições',staff:'Equipe da Mecânica',members:'Acessos ao painel',instrutores:'Instrutores',comite:'Comitê de Ética e Promoções',rp:'Relações Públicas',ponto:'Controle de Ponto',advertencias:'Advertências',auditoria:'Central de Logs'};
   $('appHeading').textContent = titles[tab];
   $('appBreadcrumb').textContent = titles[tab].toUpperCase();
+  if (tab === 'calendario') return; // Conteúdo encapsulado com autorização própria do Supabase.
   if (tab === 'members') renderMembers();
   else if (tab === 'staff') renderStaff();
   else if (tab === 'auditoria') renderAudit();
