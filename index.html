@@ -239,9 +239,76 @@ html{background:#05080d}body{background:radial-gradient(ellipse at 48% -12%,#431
 @media(max-width:700px){.shell{width:min(calc(100% - 16px),1800px)}.topbar{min-height:95px;padding:12px 15px}.mark.site-logo{width:50px;height:50px;flex-basis:50px}.brand-name{font-size:19px!important}.brand-sub{letter-spacing:1.6px;font-size:8px!important}#adminPanel.premium-app{display:block}.app-sidebar{padding:10px;min-height:0;gap:8px}.side-title,.side-footer,.side-group-title{display:none}.sidebar-nav{display:flex;gap:6px;overflow-x:auto;flex-wrap:nowrap}.sidebar-nav button{white-space:nowrap;flex:0 0 auto;width:auto;padding:10px}.app-main{padding:16px 11px}.admin-head{flex-wrap:wrap}.stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.dash-welcome{padding:22px;min-height:150px}#calendarSection iframe{min-height:840px;height:92vh}}
 @media(max-width:410px){.stat-grid{grid-template-columns:1fr 1fr}.stat-box{padding:13px}.stat-box strong{font-size:25px}.topbar{align-items:flex-start;gap:8px;flex-wrap:wrap}.nav{width:100%}.nav button{flex:1}.v2-dev-mark{letter-spacing:1px;font-size:9px}}
 
+
+/* DETROIT MANAGEMENT HUB 3.0 — layout aprovado: substitui a composição anterior no painel autenticado */
+body:has(#adminPanel:not(.hidden)){background:#070b10}
+body:has(#adminPanel:not(.hidden)) .shell{width:100%!important;max-width:none!important;padding:0!important;margin:0!important}
+body:has(#adminPanel:not(.hidden)) .shell>.topbar,body:has(#adminPanel:not(.hidden)) .v2-dev-mark,body:has(#adminPanel:not(.hidden)) #viewAccess>.hero,body:has(#adminPanel:not(.hidden)) #viewAccess>.foot{display:none!important}
+body:has(#adminPanel:not(.hidden)) .shell>main{padding:0!important;margin:0!important;max-width:none;width:100%}
+body:has(#adminPanel:not(.hidden)) #viewAccess{padding:0!important;margin:0}
+#adminPanel.premium-app:not(.hidden){display:grid!important;grid-template-columns:224px minmax(0,1fr)!important;grid-template-rows:126px minmax(0,1fr);gap:0!important;margin:0!important;padding:0!important;max-width:none!important;width:100%!important;min-height:100vh;border:0!important;border-radius:0!important;background:#090e13!important;box-shadow:none!important;overflow:visible!important}
+#adminPanel .d3-icon{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round;flex:none}
+#adminPanel .d3-masthead{grid-row:1;grid-column:1/-1;min-height:126px;position:relative;isolation:isolate;display:flex;align-items:center;gap:24px;padding:0 30px;color:#fff;border-bottom:1px solid #6b1a2a;background:linear-gradient(90deg,#05080cef 0%,#080b0dcc 22%,#05070b59 47%,#060a0d87 70%,#080b10 100%),url('detroit-industrial-banner.webp') center /cover no-repeat,#080b10;box-shadow:inset 0 -5px 14px #8e17221e}
+#adminPanel .d3-masthead:after{position:absolute;content:'';inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,transparent 0%,#ff24420a 50%,transparent 100%);border-left:2px solid #c41b2c;border-right:2px solid #c41b2c}
+.d3-brandmark{display:flex;align-items:center;gap:19px;min-width:366px;z-index:1}.d3-gear-frame{width:80px;height:80px;border:2px solid #fa3a4d;display:grid;place-items:center;flex:none;color:#e9f1f7;border-radius:20px;background:#260d14d9;box-shadow:0 0 23px #f431485e,inset 0 0 18px #f431481a}.d3-gear-frame .d3-icon{width:46px!important;height:46px!important;stroke-width:1.4!important}.d3-logo-text strong{font-size:clamp(25px,3vw,40px);font-weight:950;line-height:1;letter-spacing:1.5px;display:block}.d3-logo-text small{font-size:16px;line-height:1.2;letter-spacing:3px;display:block;color:#d0d6df;margin-top:8px;white-space:nowrap}.d3-logo-text small b{color:#ff4b61}
+.d3-tagline{display:grid;gap:5px;color:#c0aab0;font-size:10px;letter-spacing:2.3px;line-height:1.1;z-index:1;border-left:1px solid #63242d;padding-left:28px}.d3-mast-spacer{flex:1}.d3-header-tools{display:flex;align-items:center;gap:13px;z-index:1}.d3-search{display:flex;align-items:center;gap:9px;width:225px;height:40px;background:#080d13db;border:1px solid #35414c;border-radius:11px;padding:0 12px;color:#b6bdc8;font-size:11px}.d3-search .d3-icon{width:18px;height:18px;color:#fa3a53}.d3-notification{position:relative;background:transparent;color:#fff;border:none;padding:8px}.d3-notification:after{content:'';position:absolute;right:7px;top:5px;width:7px;height:7px;background:#ff3650;border-radius:50%}.d3-profile{display:flex;align-items:center;gap:11px;padding:0 7px;min-width:160px}.d3-profile .d3-avatar{width:39px;height:39px;border-radius:50%;background:#392730;display:grid;place-items:center;font-size:12px}.d3-profile strong{font-size:12px;font-weight:650;display:block;white-space:nowrap}.d3-profile small{display:block;color:#adb4be;font-size:10px;margin-top:5px}
+#adminPanel.premium-app .app-sidebar{grid-row:2;grid-column:1;min-height:calc(100vh - 126px);height:auto;align-self:stretch;position:relative;background:#080d12;border-right:1px solid #26323e;padding:14px 13px 18px;gap:15px;display:flex;flex-direction:column}
+#adminPanel.premium-app .app-sidebar .side-title{display:none!important}#adminPanel .side-group-title{margin:14px 10px 1px;font-size:9px;letter-spacing:1.7px;font-weight:800;color:#677786}
+#adminPanel .sidebar-nav{display:flex;flex-direction:column;gap:2px}
+#adminPanel .sidebar-nav button{display:flex;align-items:center;gap:12px;font-size:12px;color:#c2cad4;border:1px solid transparent;border-radius:8px;padding:10px 12px;min-height:47px;width:100%;text-align:left;background:transparent;box-shadow:none;white-space:normal}
+#adminPanel .sidebar-nav button .d3-icon{width:19px;height:19px;color:#a7b3bf}
+#adminPanel .sidebar-nav button>span{font-size:12px;line-height:1.2;font-weight:700}
+#adminPanel .sidebar-nav button small{display:block;font-size:10px;font-weight:400;color:#7f8d9c;margin-top:4px}
+#adminPanel .sidebar-nav button:hover{background:#172028;color:#fff}
+#adminPanel .sidebar-nav button.active{background:linear-gradient(90deg,#3e151c,#261015);color:#ff697c;border-color:#b32b3d;box-shadow:inset 3px 0 0 #ff3e56,0 0 22px #a8213520}
+#adminPanel .sidebar-nav button.active .d3-icon{color:#ff5366}
+#adminPanel .d3-side-promo{margin-top:auto;display:flex;flex-direction:column;min-height:148px;border:1px solid #26313a;border-radius:10px;padding:19px 15px;justify-content:center;background:radial-gradient(circle at 92% 100%,#751f3033,transparent 60%),repeating-linear-gradient(130deg,#0000 0 23px,#ffffff05 24px 25px),#101820;position:relative;overflow:hidden}
+.d3-side-promo:after{content:'⚙';font-size:190px;color:#b8bec00e;position:absolute;right:-56px;bottom:-85px}.d3-side-promo strong{font-size:12px;color:#ecf0f3;line-height:1.55;letter-spacing:1px;z-index:1}.d3-side-promo span{width:29px;height:4px;background:#ff3b52;border-radius:2px;margin-top:15px;z-index:1}#adminPanel .side-footer{font-size:10px;letter-spacing:1px;color:#8b98a7;margin-top:0}
+#adminPanel.premium-app .app-main{grid-row:2;grid-column:2;padding:14px 15px 30px!important;min-width:0;background:#080d12}
+#adminPanel:has(#dashboardSection:not(.hidden)) .admin-head,#adminPanel:has(#dashboardSection:not(.hidden)) .app-eyebrow{display:none!important}
+#adminPanel .app-eyebrow{font-size:10px;letter-spacing:1.8px;margin-bottom:12px}
+#adminPanel .admin-head{margin-bottom:18px}
+#adminPanel .d3-dashboard{display:flex;flex-direction:column;gap:14px}
+.d3-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.d3-kpi{min-height:97px;display:flex;align-items:center;gap:13px;padding:13px;border:1px solid #26313a;border-radius:12px;background:linear-gradient(145deg,#101921,#0b1218);position:relative;overflow:hidden;box-shadow:0 12px 25px #0002;color:#ecf1f5}
+.d3-kpi:first-child{border-bottom:2px solid #f43a50}
+.d3-kpi .d3-kpi-icon{width:52px;height:52px;display:grid;place-items:center;border-radius:12px;flex:none}.d3-kpi .d3-kpi-icon .d3-icon{width:27px;height:27px}.d3-kpi-icon.d3-red{background:#3d1b23;color:#ff5269}.d3-kpi-icon.d3-blue{background:#152a38;color:#76b9ff}.d3-kpi-icon.d3-green{background:#16342e;color:#45e7a3}
+.d3-kpi span{display:block;font-size:10px;letter-spacing:.35px;font-weight:750;color:#d6dfe8;white-space:nowrap}.d3-kpi strong{display:block;font-size:27px;line-height:1.1;margin:6px 0 3px}.d3-kpi small{display:block;color:#8ca0b1;font-size:9px}.d3-kpi>.d3-icon{position:absolute;right:11px;top:20px;color:#718292;opacity:.45}
+.d3-central-calendar{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:13px;align-items:stretch}.d3-calendar-board,.d3-side-card,.d3-lower-card{background:linear-gradient(145deg,#0d161d,#090f15);border:1px solid #283641;border-radius:12px;overflow:hidden;min-width:0;box-shadow:0 10px 25px #0002}
+.d3-board-head{display:flex;align-items:center;gap:12px;padding:13px 16px 12px;border-bottom:1px solid #293641;min-height:71px}.d3-title-icon{color:#fa3b52}.d3-title-icon .d3-icon{height:29px!important;width:29px!important}.d3-board-head h3{font-size:21px;margin:0 0 5px;color:#f5f6f8}.d3-board-head p{margin:0;font-size:11px;color:#8798a6}.d3-small-action{margin-left:auto;background:#101b24;color:#e5eaf2;border:1px solid #3d4957;border-radius:7px;padding:8px 10px;font-size:10px;white-space:nowrap}.d3-small-action:hover{border-color:#ff4a63}
+#adminPanel #d3DashboardCalendar{display:block;border:0;background:#080e14;width:100%;height:508px;min-height:0;max-height:none;border-radius:0;overflow:auto}
+.d3-right-panels{display:flex;flex-direction:column;gap:13px;min-width:0}.d3-side-card{padding:17px 16px}.d3-card-header{display:flex;gap:10px;align-items:center;font-size:13px;color:#f5f7f9}.d3-card-header>.d3-icon{width:26px;height:26px;color:#fc4b61}.d3-card-header strong{font-size:14px}.d3-status-dot{margin-left:auto;width:24px;height:13px;border-radius:99px;background:#393f47;box-shadow:inset 0 0 0 1px #78818a}.d3-side-card>p{font-size:11px;color:#9baab5;line-height:1.55;margin:9px 0 13px}
+.d3-setting-row{display:flex;align-items:center;gap:12px;background:#0b1219;border:1px solid #273640;border-radius:10px;margin:8px 0;padding:11px 12px;min-height:60px}.d3-setting-row>.d3-icon{color:#b4c1ce;width:25px;height:25px}.d3-discord-symbol{width:32px;height:32px;display:grid;place-items:center;border-radius:9px;background:#182945;color:#93a8ff;font-size:25px}.d3-setting-row>div{min-width:0;flex:1}.d3-setting-row small{display:block;font-size:10px;color:#a8b6c0;margin-bottom:6px}.d3-setting-row strong{display:block;font-size:12px;overflow-wrap:anywhere}.d3-setting-row button{border:1px solid #3b434d;background:#111a23;color:#c7d0d8;border-radius:6px;padding:7px}.d3-highlight{color:#ff6074}.d3-sync{padding:10px 11px;color:#c4d3e3;border:1px solid #344552;border-radius:8px;background:#121e27;font-size:11px}.d3-sync.success{background:#113425;border-color:#1e6748;color:#76e6ac}.d3-sync.warn{background:#35251b;border-color:#80562c;color:#ffc17c}.d3-disclaimer{font-size:10px!important;color:#8192a1!important;margin-bottom:0!important}
+.d3-perm-row{display:flex;justify-content:space-between;gap:10px;align-items:center;font-size:11px;border-bottom:1px solid #26323a;padding:9px 0;color:#ecf1f5}.d3-perm-row:last-child{border:0}.d3-perm-row b{font-size:9px;color:#65e4a7;background:#102d22;border:1px solid #1a5239;border-radius:14px;padding:5px 9px;white-space:nowrap}
+.d3-lower-panels{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.d3-lower-card{min-height:192px;padding:13px 14px}.d3-lower-heading{display:flex;gap:7px;justify-content:space-between;align-items:center;padding:0 0 12px;border-bottom:1px solid #26343f}.d3-lower-heading h3{font-size:12px;margin:0;color:#f3f6f8}.d3-lower-heading button{white-space:nowrap;border:0;background:transparent;color:#ff5d72;font-size:10px}.d3-line{padding:10px 2px;display:flex;gap:8px;border-bottom:1px solid #1d2d36;align-items:flex-start;min-width:0}.d3-line:last-child{border:0}.d3-day-chip{border-radius:6px;background:#311923;min-width:39px;padding:5px 4px;text-align:center;font-size:15px;color:#ff7180;font-weight:850}.d3-day-chip small{display:block;font-size:8px;font-weight:500}.d3-line-main{min-width:0}.d3-line-main strong{display:block;font-size:11px;color:#f1f4f7;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.d3-line-main small{display:block;font-size:10px;color:#8e9da9;margin-top:4px}.d3-noitems{font-size:11px;color:#7c8d9d;padding:18px 2px}.d3-dashboard-actions{display:flex;gap:10px}.d3-dashboard-actions button{display:inline-flex;gap:7px;align-items:center;padding:10px 14px;font-size:11px;background:#351520;border:1px solid #9a2b42;border-radius:9px;color:#fff}.d3-dashboard-actions button+button{background:#111c25;border-color:#34434c}
+.d3-legacy-insights{border:1px solid #33404b;border-radius:12px;margin-top:6px;overflow:hidden}.d3-legacy-insights summary{font-weight:700;font-size:12px;padding:15px;color:#aebdcb;cursor:pointer;background:#101a22}.d3-legacy-wrap{display:grid;gap:16px;padding:16px}.d3-legacy-wrap .dash-welcome{min-height:0}
+#adminPanel:not(:has(#dashboardSection:not(.hidden))) .d3-dashboard{display:none}
+#adminPanel .sidebar-nav button:focus-visible,.d3-small-action:focus-visible{outline:2px solid #f25569;outline-offset:2px}
+@media(max-width:1600px){.d3-tagline{display:none}.d3-central-calendar{grid-template-columns:minmax(0,1fr) 310px}.d3-board-head h3{font-size:19px}}
+@media(max-width:1250px){#adminPanel.premium-app:not(.hidden){grid-template-columns:200px minmax(0,1fr)!important}.d3-central-calendar{grid-template-columns:minmax(0,1fr)}.d3-right-panels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.d3-lower-panels{grid-template-columns:repeat(2,minmax(0,1fr))}.d3-search{width:170px}.d3-brandmark{min-width:315px}.d3-logo-text small{font-size:12px}}
+@media(max-width:900px){#adminPanel.premium-app:not(.hidden){display:block!important;grid-template-columns:none!important;grid-template-rows:none!important}.d3-masthead{min-height:105px!important;padding:9px 18px!important}.d3-brandmark{min-width:0}.d3-gear-frame{width:56px;height:56px;border-radius:13px}.d3-gear-frame .d3-icon{width:32px!important;height:32px!important}.d3-logo-text strong{font-size:26px}.d3-logo-text small{font-size:10px;letter-spacing:1.3px}.d3-header-tools .d3-search{display:none}.d3-profile{min-width:auto}.d3-profile strong,.d3-profile small{display:none}.d3-right-panels{display:grid;grid-template-columns:1fr 1fr}#adminPanel.premium-app .app-sidebar{min-height:auto;height:auto;display:block;padding:8px 10px 8px;border-right:0;border-bottom:1px solid #33404b}.sidebar-nav{display:flex!important;flex-direction:row!important;gap:7px!important;overflow-x:auto!important;white-space:nowrap}.sidebar-nav button{flex:0 0 auto!important;min-height:40px!important;width:auto!important;white-space:nowrap!important;padding:9px 12px!important}.sidebar-nav button small{display:none!important}.sidebar-nav .side-group-title,.d3-side-promo,#adminPanel .side-footer{display:none!important}#adminPanel.premium-app .app-main{padding:14px!important}.d3-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.d3-masthead{min-height:83px!important}.d3-logo-text strong{font-size:22px}.d3-logo-text small{font-size:9px}.d3-gear-frame{width:49px;height:49px}.d3-header-tools{gap:4px}.d3-profile{padding:0}.d3-profile .d3-avatar{width:30px;height:30px}.d3-kpis{gap:8px}.d3-kpi{padding:11px 9px;gap:7px;min-height:75px}.d3-kpi .d3-kpi-icon{width:37px;height:37px}.d3-kpi .d3-kpi-icon .d3-icon{width:21px;height:21px}.d3-kpi strong{font-size:22px}.d3-kpi span{font-size:8px;white-space:normal}.d3-kpi small{font-size:8px}.d3-central-calendar{display:block}.d3-right-panels{display:grid;grid-template-columns:1fr;margin-top:10px}#adminPanel #d3DashboardCalendar{height:445px}.d3-board-head{flex-wrap:wrap;padding:12px}.d3-board-head h3{font-size:18px}.d3-board-head p{font-size:9px}.d3-board-head .d3-small-action{width:100%;margin-left:0}.d3-lower-panels{grid-template-columns:1fr}.d3-dashboard-actions{flex-wrap:wrap}}
+
+
+#adminPanel:has(#dashboardSection:not(.hidden)) .app-main > .security-note{display:none!important}
+@media(max-width:640px){#adminPanel .d3-masthead{background:linear-gradient(100deg,#1d1018,#070c12)!important}}
 </style>
 </head>
 <body>
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"><symbol id="d3-gear" viewBox="0 0 24 24"><path d="M10 2h4l.65 2.65c.52.18 1.01.39 1.46.65l2.42-1.34 2.83 2.83L20 9.2c.26.45.47.94.65 1.46L23.3 11v4l-2.65.65c-.18.52-.39 1.01-.65 1.46l1.36 2.42-2.83 2.83-2.42-1.36c-.45.26-.94.47-1.46.65L14 23.3h-4l-.65-2.65c-.52-.18-1.01-.39-1.46-.65l-2.42 1.36-2.83-2.83L4 17.11c-.26-.45-.47-.94-.65-1.46L.7 15v-4l2.65-.65c.18-.52.39-1.01.65-1.46L2.64 6.47l2.83-2.83L7.89 5c.45-.26.94-.47 1.46-.65L10 2Z" transform="translate(0 -1) scale(.96)"/><circle cx="12" cy="12" r="3.6"/></symbol>
+<symbol id="d3-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></symbol>
+<symbol id="d3-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6v7l4 2"/></symbol>
+<symbol id="d3-mega" viewBox="0 0 24 24"><path d="m3 10 11-5v14L3 14zM14 9l5-3v12l-5-3M6 15l2 5h3l-2-5"/></symbol>
+<symbol id="d3-gift" viewBox="0 0 24 24"><rect x="3" y="10" width="18" height="11" rx="1"/><path d="M2 10V7h20v3M12 7v14M12 7c-8 0-8-6-4-6 3 0 4 6 4 6Zm0 0c8 0 8-6 4-6-3 0-4 6-4 6Z"/></symbol>
+<symbol id="d3-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM10 21h4"/></symbol>
+<symbol id="d3-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 21v-2a6 6 0 0 1 12 0v2ZM17 6a3 3 0 0 1 0 6M17 15a5 5 0 0 1 4 5v1"/></symbol>
+<symbol id="d3-shield" viewBox="0 0 24 24"><path d="M12 2 21 6v6c0 6-4 9-9 11-5-2-9-5-9-11V6Z"/><path d="m8.5 12 2.5 2.5 5-5"/></symbol>
+<symbol id="d3-report" viewBox="0 0 24 24"><path d="M4 3h12l4 4v14H4Z"/><path d="M16 3v5h4M8 12h8M8 16h8"/></symbol>
+<symbol id="d3-graduate" viewBox="0 0 24 24"><path d="m2 9 10-5 10 5-10 5ZM6 11v6c4 3 8 3 12 0v-6M22 9v8"/></symbol>
+<symbol id="d3-send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></symbol>
+<symbol id="d3-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="7.5"/><path d="m16 16 5 5"/></symbol>
+<symbol id="d3-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.5"/><path d="M10 2h4l.65 2.6 2 .8 2.3-1.4 2.6 2.6-1.3 2.4.8 2L23 11v3l-2.6.7-.8 2 1.3 2.3-2.6 2.6-2.4-1.3-2 .8L14 23h-4l-.7-2.6-2-.8-2.3 1.3-2.6-2.6 1.3-2.4-.8-2L1 14v-3l2.6-.7.8-2-1.3-2.3L5.7 3.4l2.3 1.3 2-.8Z"/></symbol>
+</svg>
 <div class="shell">
 <div class="v2-dev-mark"><span class="pulse-dot"></span> DETROIT MECHANICS 3.0 <span class="sep">/</span> MANAGEMENT HUB <span class="sep">/</span> PRÉVIA DE HOMOLOGAÇÃO</div>
 <header class="topbar">
@@ -327,21 +394,37 @@ html{background:#05080d}body{background:radial-gradient(ellipse at 48% -12%,#431
 <div class="security-note"><strong>Importante:</strong> A autenticação é feita pelo Supabase. A leitura e a exclusão das solicitações dependem das permissões configuradas no banco de dados.</div>
   </div>
   <div id="adminPanel" class="panel wide hidden premium-app">
+<div class="d3-masthead">
+  <div class="d3-brandmark"><span class="d3-gear-frame"><svg class="d3-icon" aria-hidden="true"><use href="#d3-gear"></use></svg></span><span class="d3-logo-text"><strong>DETROIT</strong><small>MANAGEMENT HUB <b>3.0</b></small></span></div>
+  <div class="d3-tagline"><span>ORGANIZAÇÃO</span><span>PLANEJAMENTO</span><span>RESULTADOS</span></div>
+  <div class="d3-mast-spacer" aria-hidden="true"></div>
+  <div class="d3-header-tools"><button class="d3-search" type="button" onclick="dm3FocusSearch()"><svg class="d3-icon" aria-hidden="true"><use href="#d3-search"></use></svg><span>Buscar eventos, reuniões...</span></button>
+  <button class="d3-notification" type="button" onclick="dm3OpenCalendar('all')" title="Abrir calendário"><svg class="d3-icon" aria-hidden="true"><use href="#d3-bell"></use></svg></button>
+  <div class="d3-profile"><span class="d3-avatar">DM</span><span><strong id="d3ProfileName">Detroit Mechanics</strong><small>Portal Interno</small></span></div></div>
+</div>
     <aside class="app-sidebar" aria-label="Menu do painel">
       <div class="side-title"><span class="side-monogram gear-mark" aria-label="Engrenagem Detroit Mechanics"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 13.9 3l1 2.5 2 .8 2.4-1.1 1.3 2.3-2 1.8.3 2.1 2.4 1v2.6l-2.5.9-.7 2 1.2 2.3-2 1.5-2-1.9-2.2.3L13 21.5h-2.5l-.9-2.6-2-.8-2.5 1.1-1.3-2.2 2-1.9-.3-2.1L3 12V9.5l2.5-.9.7-2-1.2-2.3 2-1.5 2 1.9 2.2-.3Z"/><circle cx="12" cy="12" r="3.5"/></svg></span><span><strong>DETROIT</strong><small>MANAGEMENT HUB 3.0</small></span></div>
-      <div class="side-group-title">GESTÃO INTERNA · DETROIT 3.0</div>
+      <div class="side-group-title">CENTRAL DE OPERAÇÕES</div>
       <div class="sidebar-nav" id="adminTabs">
-        <button type="button" id="tabDashboard" class="active" onclick="switchAdminTab('dashboard')"><span aria-hidden="true">◫</span> Visão geral</button>
-        <button type="button" id="tabCalendar" onclick="switchAdminTab('calendario')"><span aria-hidden="true">▦</span> Calendário 3.0</button>
-        <button type="button" id="tabRecruit" onclick="switchAdminTab('recruit')"><span aria-hidden="true">▤</span> Inscrições</button>
-        <button type="button" id="tabStaff" onclick="switchAdminTab('staff')"><span aria-hidden="true">♙</span> Equipe da Mecânica</button>
+        <button type="button" id="tabDashboard" class="active" onclick="switchAdminTab('dashboard')"><svg class="d3-icon" aria-hidden="true"><use href="#d3-calendar"></use></svg><span>Dashboard<small>Visão geral</small></span></button>
+        <button type="button" id="tabCalendar" onclick="switchAdminTab('calendario')"><svg class="d3-icon" aria-hidden="true"><use href="#d3-calendar"></use></svg><span>Calendário<small>Eventos e reuniões</small></span></button>
+        <button type="button" onclick="dm3OpenCalendar('event')"><svg class="d3-icon" aria-hidden="true"><use href="#d3-mega"></use></svg><span>Eventos<small>Organização interna</small></span></button>
+        <button type="button" onclick="dm3OpenCalendar('campaign')"><svg class="d3-icon" aria-hidden="true"><use href="#d3-mega"></use></svg><span>Campanhas<small>Conscientização</small></span></button>
+        <button type="button" onclick="dm3OpenCalendar('date')"><svg class="d3-icon" aria-hidden="true"><use href="#d3-gift"></use></svg><span>Datas comemorativas<small>Calendário institucional</small></span></button>
+        <button type="button" onclick="dm3OpenCalendar('all')"><svg class="d3-icon" aria-hidden="true"><use href="#d3-bell"></use></svg><span>Notificações<small>Discord e alertas</small></span></button>
+        <button type="button" id="tabMembers" class="hidden" onclick="switchAdminTab('members')"><svg class="d3-icon" aria-hidden="true"><use href="#d3-shield"></use></svg><span>Permissões<small>Gestão de cargos</small></span></button>
+        <button type="button" onclick="dm3ShowRecruitSummary()"><svg class="d3-icon" aria-hidden="true"><use href="#d3-report"></use></svg><span>Relatórios<small>Métricas e histórico</small></span></button>
+        <button type="button" onclick="dm3OpenSettings()"><svg class="d3-icon" aria-hidden="true"><use href="#d3-settings"></use></svg><span>Configurações<small>Preferências</small></span></button>
+        <div class="side-group-title">GESTÃO DE PESSOAS</div>
+        <button type="button" id="tabRecruit" onclick="switchAdminTab('recruit')"><svg class="d3-icon" aria-hidden="true"><use href="#d3-users"></use></svg><span>Inscrições<small>Recrutamento</small></span></button>
+        <button type="button" id="tabStaff" onclick="switchAdminTab('staff')"><svg class="d3-icon" aria-hidden="true"><use href="#d3-users"></use></svg><span>Equipe da Mecânica<small>Corpo de funcionários</small></span></button>
         <div class="side-group-title">DEPARTAMENTOS</div>
         <button type="button" id="tabInstructors" class="hidden" onclick="switchAdminTab('instrutores')"><span aria-hidden="true">◈</span> Instrutores</button>
         <button type="button" id="tabEthics" class="hidden" onclick="switchAdminTab('comite')"><span aria-hidden="true">⚖</span> Comitê de Ética</button>
         <button type="button" id="tabWorktime" class="hidden" onclick="switchAdminTab('ponto')"><span aria-hidden="true">◷</span> Controle de Ponto</button>
         <button type="button" id="tabWarnings" class="hidden" onclick="switchAdminTab('advertencias')"><span aria-hidden="true">♜</span> Advertências</button>
         <button type="button" id="tabPR" class="hidden" onclick="switchAdminTab('rp')"><span aria-hidden="true">◎</span> Relações Públicas</button>
-        <button type="button" id="tabMembers" class="hidden" onclick="switchAdminTab('members')"><span aria-hidden="true">♧</span> Acessos ao painel</button>
+        
         <button type="button" id="tabAudit" class="hidden" onclick="switchAdminTab('auditoria')"><span aria-hidden="true">▤</span> Central de Logs</button>
       </div>
       <div class="side-footer"><span class="pulse-dot"></span> Detroit Mechanics 3.0<small>Gestão integrada e organização</small></div>
@@ -354,6 +437,39 @@ html{background:#05080d}body{background:radial-gradient(ellipse at 48% -12%,#431
       <iframe id="calendarFrame" title="Calendário, reuniões e cursos — Detroit Mechanics 3.0" loading="lazy" allow="clipboard-read; clipboard-write"></iframe>
     </section>
     <section id="dashboardSection" class="dashboard-section">
+<div class="d3-dashboard" id="d3Dashboard">
+  <div class="d3-kpis">
+    <article class="d3-kpi"><div class="d3-kpi-icon d3-red"><svg class="d3-icon" aria-hidden="true"><use href="#d3-users"></use></svg></div><div><span>EVENTOS DO MÊS</span><strong id="d3StatEvents">—</strong><small>Programação geral</small></div><svg class="d3-icon" aria-hidden="true"><use href="#d3-calendar"></use></svg></article>
+    <article class="d3-kpi"><div class="d3-kpi-icon d3-blue"><svg class="d3-icon" aria-hidden="true"><use href="#d3-clock"></use></svg></div><div><span>REUNIÕES</span><strong id="d3StatMeetings">—</strong><small>Agenda da equipe</small></div></article>
+    <article class="d3-kpi"><div class="d3-kpi-icon d3-green"><svg class="d3-icon" aria-hidden="true"><use href="#d3-mega"></use></svg></div><div><span>CAMPANHAS ATIVAS</span><strong id="d3StatCampaigns">—</strong><small>Conscientização</small></div></article>
+    <article class="d3-kpi"><div class="d3-kpi-icon d3-red"><svg class="d3-icon" aria-hidden="true"><use href="#d3-gift"></use></svg></div><div><span>DATAS COMEMORATIVAS</span><strong id="d3StatDates">—</strong><small>Neste mês</small></div></article>
+  </div>
+  <section class="d3-central-calendar" aria-label="Calendário e painéis">
+    <div class="d3-calendar-board">
+       <div class="d3-board-head"><div class="d3-title-icon"><svg class="d3-icon" aria-hidden="true"><use href="#d3-calendar"></use></svg></div><div><h3>Calendário</h3><p>Visualize e gerencie os eventos da Detroit Mechanics</p></div><button class="d3-small-action" type="button" onclick="dm3OpenCalendar('all')">Abrir agenda completa</button></div>
+       <iframe id="d3DashboardCalendar" title="Calendário Detroit Mechanics" loading="lazy" src="./calendario-3.0-etapa-2e.html?embed=1&amp;compact=1" tabindex="0"></iframe>
+    </div>
+    <aside class="d3-right-panels">
+     <section class="d3-side-card"><div class="d3-card-header"><svg class="d3-icon" aria-hidden="true"><use href="#d3-send"></use></svg><strong>Envio automático para Discord</strong><span class="d3-status-dot" title="Configuração depende do Supabase"></span></div><p>Eventos, reuniões e comunicados podem ser enviados ao canal de avisos.</p>
+        <div class="d3-setting-row"><span class="d3-discord-symbol">◉</span><div><small>Canal do Discord</small><strong>1120785992694104255</strong></div><button title="Copiar ID do canal" onclick="navigator.clipboard.writeText('1120785992694104255')">⧉</button></div>
+        <div class="d3-setting-row"><svg class="d3-icon" aria-hidden="true"><use href="#d3-users"></use></svg><div><small>Mencionar cargo</small><strong class="d3-highlight">@detroit</strong></div><button title="Copiar ID do cargo" onclick="navigator.clipboard.writeText('845703548653928489')">⧉</button></div>
+        <div class="d3-sync" id="d3SyncStatus">Integração configurada • aguardando verificação</div>
+        <p class="d3-disclaimer">As menções são enviadas conforme as permissões e a configuração de cada comunicado.</p>
+     </section>
+     <section class="d3-side-card"><div class="d3-card-header"><svg class="d3-icon" aria-hidden="true"><use href="#d3-shield"></use></svg><strong>Permissões de gestão</strong><button class="d3-small-action" type="button" onclick="switchAdminTab('members')" id="d3ManagePermissions" hidden>Gerenciar</button></div><p>Cargos autorizados a criar, editar e gerenciar eventos.</p>
+       <div class="d3-perm-row"><span>Relações Públicas</span><b>Calendário / RP</b></div><div class="d3-perm-row"><span>Owner</span><b>Gestão geral</b></div><div class="d3-perm-row"><span>Chief</span><b>Gestão geral</b></div><div class="d3-perm-row"><span>Supervisor</span><b>Gestão geral</b></div><div class="d3-perm-row"><span>Instrutores</span><b>Seus cursos</b></div>
+     </section>
+    </aside>
+  </section>
+  <section class="d3-lower-panels" aria-label="Próximas atividades">
+    <article class="d3-lower-card"><div class="d3-lower-heading"><h3>✦ Próximos Eventos</h3><button type="button" onclick="dm3OpenCalendar('event')">Ver todos ›</button></div><div id="d3UpcomingEvents" class="d3-list"></div></article>
+    <article class="d3-lower-card"><div class="d3-lower-heading"><h3>◷ Próximas Reuniões</h3><button type="button" onclick="dm3OpenCalendar('meeting')">Ver todas ›</button></div><div id="d3UpcomingMeetings" class="d3-list"></div></article>
+    <article class="d3-lower-card"><div class="d3-lower-heading"><h3>✦ Campanhas de Conscientização</h3><button type="button" onclick="dm3OpenCalendar('campaign')">Ver todas ›</button></div><div id="d3UpcomingCampaigns" class="d3-list"></div></article>
+    <article class="d3-lower-card"><div class="d3-lower-heading"><h3>♙ Datas Comemorativas</h3><button type="button" onclick="dm3OpenCalendar('date')">Ver todas ›</button></div><div id="d3UpcomingDates" class="d3-list"></div></article>
+  </section>
+  <div class="d3-dashboard-actions"><button type="button" onclick="dm3OpenCalendar('all','new')">+ Novo agendamento</button><button type="button" onclick="dm3OpenCalendar('course')"><svg class="d3-icon" aria-hidden="true"><use href="#d3-graduate"></use></svg> Cursos e treinamentos</button></div>
+</div>
+<details id="dm3LegacyInsights" class="d3-legacy-insights"><summary>Exibir indicadores de recrutamento e inscrições</summary><div class="d3-legacy-wrap">
       <div class="dash-welcome"><span class="hero-tag">ORGANIZAÇÃO • PLANEJAMENTO • RESULTADOS</span><h3>Gestão que acompanha seu ritmo.</h3><p>Organize a equipe, acompanhe o recrutamento e acesse reuniões, cursos e eventos em um único lugar.</p></div>
       <div class="stat-grid" id="dashboardStats" aria-live="polite">
         <div class="stat-box"><small>Inscrições totais</small><strong id="dashTotal">—</strong><span>Recebidas no sistema</span></div>
@@ -365,6 +481,7 @@ html{background:#05080d}body{background:radial-gradient(ellipse at 48% -12%,#431
       </div>
       <div class="dash-bottom"><div class="dash-feed"><div class="dash-head"><strong>Inscrições recentes</strong><button type="button" onclick="switchAdminTab('recruit')">Ver todas →</button></div><div id="dashboardRecent" class="recent-list"><div class="empty">Carregando dados...</div></div></div>
       <div class="dash-guidance"><span class="hero-tag">FLUXO DE TRABALHO</span><h3>Organize sua equipe</h3><p>Assuma uma inscrição para movê-la automaticamente de Pendente para Em análise. O sistema registra o responsável e evita conflitos.</p><button class="primary" type="button" onclick="switchAdminTab('recruit')">Ir para inscrições →</button></div></div>
+      </div></details>
     </section>
 
     <div id="recruitSection" class="hidden"><div class="section-banner"><span class="hero-tag">GESTÃO DE CANDIDATOS</span><h3>Inscrições recebidas</h3><p>Pesquise, filtre e acompanhe cada etapa do recrutamento.</p></div><div class="toolbar"><input class="search" id="searchRequests" placeholder="Buscar por nome, passaporte ou ID do Discord..."><button onclick="exportCSV()">Exportar CSV</button></div>
@@ -673,13 +790,17 @@ async function refreshAccess() {
   for(const [tab,id] of [['instrutores','tabInstructors'],['comite','tabEthics'],['rp','tabPR']]) {
     $(id).classList.toggle('hidden',!staffSectorAccess.includes(tab));
   }
-  for(const id of ['tabDashboard','tabRecruit','tabStaff']) $(id).classList.toggle('hidden',!canRecruit);
+  for(const id of ['tabRecruit','tabStaff']) $(id).classList.toggle('hidden',!canRecruit);
+  $('tabDashboard').classList.remove('hidden');
+  $('dm3LegacyInsights').classList.toggle('hidden',!canRecruit);
+  $('d3ManagePermissions').hidden=!isLeadership();
+  $('d3ProfileName').textContent=currentMember?.nome||'Detroit Mechanics';
   $('tabMembers').classList.toggle('hidden',!isLeadership());
   $('tabAudit').classList.toggle('hidden',leadershipLevel<6);
   const authorized = Boolean(currentMember); // Membro validado pelo Supabase: calendário visível a toda equipe ativa.
   $('authPanel').classList.toggle('hidden',authorized);
   $('adminPanel').classList.toggle('hidden',!authorized);
-  if (!canRecruit && ['dashboard','recruit','staff','members'].includes(activeTab)) {
+  if (!canRecruit && ['recruit','staff','members'].includes(activeTab)) {
     activeTab=staffSectorAccess[0]||'calendario';
   }
   if (!isLeadership()) {
@@ -700,7 +821,7 @@ async function refreshAccess() {
 window.switchAdminTab = function(tab) {
   if (!currentMember) return;
   const canRecruit = isLeadership() || ['adm','recrutador'].includes(currentMember.cargo);
-  if (['dashboard','recruit','staff'].includes(tab) && !canRecruit) return;
+  if (['recruit','staff'].includes(tab) && !canRecruit) return;
   if (tab === 'members' && !isLeadership()) return;
   if (tab === 'auditoria' && leadershipLevel<6) return;
   if (sectorTabs.includes(tab) && !staffSectorAccess.includes(tab)) return;
@@ -723,6 +844,7 @@ window.switchAdminTab = function(tab) {
   const titles = {calendario:'Calendário e agenda',dashboard:'Visão geral',recruit:'Inscrições',staff:'Equipe da Mecânica',members:'Acessos ao painel',instrutores:'Instrutores',comite:'Comitê de Ética e Promoções',rp:'Relações Públicas',ponto:'Controle de Ponto',advertencias:'Advertências',auditoria:'Central de Logs'};
   $('appHeading').textContent = titles[tab];
   $('appBreadcrumb').textContent = titles[tab].toUpperCase();
+  if(tab==='dashboard') { dm3RefreshDashboard(); if(!canRecruit) return; }
   if (tab === 'calendario') return; // Conteúdo encapsulado com autorização própria do Supabase.
   if (tab === 'members') renderMembers();
   else if (tab === 'staff') renderStaff();
@@ -1872,6 +1994,71 @@ supabase.auth.onAuthStateChange(() => {
 });
 if(new URLSearchParams(window.location.search).get('painel')==='1') showView('access');
 else refreshAccess();
+
+/* DETROIT 3.0 -- native management dashboard fed by existing Supabase and RLS policies */
+let dm3Loading=false, dm3LastLoaded=0;
+const d3El=id=>document.getElementById(id);
+const d3TZ='America/Sao_Paulo';
+function d3FmtDate(date){return new Intl.DateTimeFormat('pt-BR',{day:'2-digit',month:'short',timeZone:d3TZ}).format(date)}
+function d3Escape(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function d3ItemDate(iso){let d=new Date(iso);return Number.isNaN(d.getTime())?null:d}
+function d3SetList(id,items){let el=d3El(id);if(!el)return;el.innerHTML=items.length?items.slice(0,3).map(x=>{
+ const d=d3ItemDate(x.inicio);if(!d)return '';
+ const day=new Intl.DateTimeFormat('pt-BR',{day:'2-digit',timeZone:d3TZ}).format(d);
+ const mo=new Intl.DateTimeFormat('pt-BR',{month:'short',timeZone:d3TZ}).format(d).replace('.','').toUpperCase();
+ const time=new Intl.DateTimeFormat('pt-BR',{hour:'2-digit',minute:'2-digit',timeZone:d3TZ}).format(d);
+ return '<div class="d3-line"><span class="d3-day-chip">'+day+'<small>'+mo+'</small></span><div class="d3-line-main"><strong>'+d3Escape(x.titulo)+'</strong><small>'+time+(x.local_texto?' · '+d3Escape(x.local_texto):'')+'</small></div></div>';
+ }).join(''):'<p class="d3-noitems">Nenhuma atividade cadastrada para este mês.</p>';}
+async function dm3RefreshDashboard(){
+ if(!currentMember||dm3Loading || (Date.now()-dm3LastLoaded<12000))return;
+ dm3Loading=true;
+ try {
+  const now=new Date(),fmt=(d)=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+  const start=new Date(now.getFullYear(),now.getMonth(),1),end=new Date(now.getFullYear(),now.getMonth()+1,1);
+  const startIso=fmt(start)+'T00:00:00-03:00',endIso=fmt(end)+'T00:00:00-03:00';
+  const [ag,ts,cs,auto]=await Promise.all([
+    supabase.from('detroit_30_agenda').select('id,tipo,titulo,inicio,fim,local_texto,situacao').gte('fim',startIso).lt('inicio',endIso).limit(500),
+    supabase.from('detroit_30_turmas').select('id,curso_id,inicio,fim,situacao').gte('fim',startIso).lt('inicio',endIso).in('situacao',['agendada','confirmada']).limit(500),
+    supabase.from('detroit_30_cursos').select('id,titulo').limit(500),
+    supabase.from('detroit_30_datas_automaticas').select('codigo,titulo,mes,dia,categoria').eq('ativo',true).limit(150)
+  ]);
+  for(const r of [ag,ts,cs,auto])if(r.error)throw r.error;
+  const scheduled=(ag.data||[]).filter(v=>v.situacao!=='cancelado');
+  const [m,y]=[now.getMonth()+1,now.getFullYear()];
+  const rules=(auto.data||[]).filter(a=>Number(a.mes)===m);
+  const titleMap=new Map((cs.data||[]).map(c=>[c.id,c.titulo]));
+  const listTurmas=(ts.data||[]).map(t=>({...t,titulo:titleMap.get(t.curso_id)||'Curso da equipe'}));
+  d3El('d3StatEvents').textContent=scheduled.filter(v=>v.tipo==='evento').length;
+  d3El('d3StatMeetings').textContent=scheduled.filter(v=>v.tipo==='reuniao').length;
+  d3El('d3StatCampaigns').textContent=scheduled.filter(v=>v.tipo==='campanha').length+rules.filter(v=>v.categoria==='conscientizacao').length;
+  d3El('d3StatDates').textContent=rules.filter(v=>v.categoria!=='conscientizacao').length;
+  const byDate=items=>items.sort((a,b)=>String(a.inicio).localeCompare(String(b.inicio)));
+  d3SetList('d3UpcomingEvents',byDate(scheduled.filter(v=>v.tipo==='evento')));
+  d3SetList('d3UpcomingMeetings',byDate(scheduled.filter(v=>v.tipo==='reuniao')));
+  const automatically=rules.map(a=>({titulo:a.titulo,inicio:`${y}-${String(m).padStart(2,'0')}-${String(a.dia||1).padStart(2,'0')}T12:00:00-03:00`}));
+  d3SetList('d3UpcomingCampaigns',byDate([...scheduled.filter(v=>v.tipo==='campanha'),...rules.filter(v=>v.categoria==='conscientizacao').map(a=>({titulo:a.titulo,inicio:`${y}-${String(m).padStart(2,'0')}-${String(a.dia||1).padStart(2,'0')}T12:00:00-03:00`}))]));
+  d3SetList('d3UpcomingDates',byDate(rules.filter(v=>v.categoria!=='conscientizacao').map(a=>({titulo:a.titulo,inicio:`${y}-${String(m).padStart(2,'0')}-${String(a.dia||1).padStart(2,'0')}T12:00:00-03:00`}))));
+  const st=d3El('d3SyncStatus');if(st){st.textContent='Agenda conectada ao Supabase · bot Discord configurado';st.classList.add('success');}
+  dm3LastLoaded=Date.now();
+ }catch(error){ console.error('Detroit Dashboard 3.0',error);const st=d3El('d3SyncStatus');if(st){st.textContent='Não foi possível consultar a agenda: '+(error.message||'erro desconhecido');st.classList.add('warn');}}
+ finally {dm3Loading=false;}
+}
+window.dm3OpenCalendar = function(filter='all',action){
+ if(!currentMember) return;
+ window.switchAdminTab('calendario');
+ const iframe=d3El('calendarFrame');
+ const send=()=>iframe?.contentWindow?.postMessage({source:'detroit-parent',type:'dm3-filter',filter,action},window.location.origin);
+ if(iframe?.contentWindow)send();
+ iframe?.addEventListener('load',send,{once:true});
+};
+window.dm3ShowRecruitSummary = function(){
+ if(!currentMember)return;
+ if(!isLeadership() && !['adm','recrutador'].includes(currentMember.cargo)){window.dm3OpenCalendar('all');return;}
+ window.switchAdminTab('dashboard'); const details=d3El('dm3LegacyInsights');if(details){details.open=true;details.scrollIntoView({behavior:'smooth',block:'start'});}
+};
+window.dm3OpenSettings=function(){window.dm3OpenCalendar('all');};
+window.dm3FocusSearch=function(){window.dm3OpenCalendar('all');const f=d3El('calendarFrame');f?.addEventListener('load',()=>f.contentWindow?.postMessage({source:'detroit-parent',type:'dm3-search'},window.location.origin),{once:true});};
+
 </script>
 </body>
 </html>

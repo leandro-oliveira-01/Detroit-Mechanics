@@ -55,6 +55,22 @@ body.embed .calendar-toolbar, body.embed .topline {min-width:0;}
   body.embed main { padding: 10px 4px; }
   body.embed .right-rail {grid-template-columns: 1fr !important;}
 }
+
+/* dashboard compacto, somente calendario, com controle de dados real */
+body.compact .side,body.compact .masthead,body.compact .demo-ribbon,body.compact .topline,body.compact .stats,body.compact .right-rail,body.compact .bottom-cards,body.compact .manage-section,body.compact .working-note,body.compact #rpCommsSection,body.compact #authStatus,body.compact .legend{display:none!important}
+body.compact .app-shell{display:block;min-height:0!important}
+body.compact main{padding:0!important;max-width:none!important}
+body.compact .grid-body{display:block!important;grid-template-columns:1fr!important}
+body.compact .calendar-panel.surface{border:0!important;border-radius:0!important;background:#091119!important;box-shadow:none!important}
+body.compact .calendar-panel .surface-title{display:none!important}
+body.compact .calendar-toolbar{padding:12px 12px!important}
+body.compact .month-grid{margin:0 6px 5px!important;border-radius:0!important;overflow:hidden}
+body.compact .day-cell{min-height:65px!important;padding:7px 5px!important}
+body.compact .week-day{font-size:10px!important;padding:8px 0!important}
+body.compact .event-pill{padding:4px 5px!important;font-size:9px!important}
+body.compact .event-pill small{font-size:8px!important}
+body.compact .working-note{display:none!important}
+@media (max-width:700px){body.compact .chips{display:none!important}body.compact .month-grid{margin:0 2px 5px!important}.day-cell{min-height:62px!important}}
 </style>
   
 </head>
@@ -159,7 +175,7 @@ body.embed .calendar-toolbar, body.embed .topline {min-width:0;}
     </form>
   </dialog>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script>if(new URLSearchParams(location.search).get("embed")==="1") document.body.classList.add("embed");</script>
+<script>const q = new URLSearchParams(location.search);if(q.get("embed")==="1") document.body.classList.add("embed");if(q.get("compact")==="1") document.body.classList.add("compact");</script>
 <script type="module">
 import {createClient} from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 /* Detroit Mechanics 3.0 - Etapa 2E, gerenciamento de agenda e cursos, sem envios Discord. */
@@ -444,6 +460,18 @@ renderCalendar();connect();
 supabase.auth.onAuthStateChange((event)=>{if(event==='SIGNED_IN'||event==='SIGNED_OUT')setTimeout(connect,0)});
 
 
+
+// Only same-origin parent can adjust the embedded calendar view.
+window.addEventListener('message', e=>{
+ if(e.origin!==location.origin || !e.data || e.data.source!=='detroit-parent')return;
+ const {type,filter:requested,action}=e.data;
+ if(type==='dm3-search'){$('globalSearch')?.focus();return;}
+ if(type!=='dm3-filter')return;
+ const allowed=['all','event','meeting','campaign','date','course'];
+ if(allowed.includes(requested))filter=requested;
+ view='month';renderCalendar();
+ if(action==='new'&&canAgenda)openCreate('event');
+});
 </script>
 </body>
 </html>
