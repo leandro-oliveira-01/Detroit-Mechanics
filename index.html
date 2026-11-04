@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#080808">
-<title>Detroit Mechanics 3.0 | Homologação 2E</title>
+<title>Detroit Mechanics 3.0 | Management Hub</title>
 <link rel="icon" type="image/png" href="detroit-icon-512.png">
 <link rel="apple-touch-icon" href="detroit-icon-512.png">
 <style>
@@ -214,11 +214,36 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
 #tabCalendar {color:#f3c3cb;}
 #tabCalendar.active {border-color:#a93246!important;background:linear-gradient(100deg,#40121d,#27111b)!important;color:#fff!important}
 @media(max-width:740px){#calendarSection iframe{height:920px;min-height:620px}}
+
+/* DETROIT MANAGEMENT HUB 3.0 — VISUAL DEFINITIVO, branch de homologação */
+:root {--red:#fa2d44;--red2:#ff6476;--bg:#05080d;--panel:#0d141b;--field:#141d27;--muted:#9cabbc;--white:#f1f5fa;--line:#29323e}
+html{background:#05080d}body{background:radial-gradient(ellipse at 48% -12%,#43101d 0,transparent 42%),#05080d;color:#eef3fb}
+.shell{width:min(calc(100% - 32px),1800px);padding:0 0 35px;max-width:none}
+.v2-dev-mark{display:flex;align-items:center;gap:5px;font-size:10px;letter-spacing:2.2px;background:#111015;border:1px solid #52232f;border-top:0;border-radius:0 0 12px 12px;padding:9px 18px;color:#f6a5b2;width:100%;box-sizing:border-box}
+.topbar{margin:0 0 14px;padding:23px 27px;min-height:134px;border:1px solid #542532;border-top:0;border-radius:0 0 17px 17px;background:linear-gradient(95deg,rgba(5,8,13,.96),rgba(10,12,18,.84) 35%,rgba(8,10,14,.44) 69%,rgba(7,9,14,.96)),url('detroit-hub-backdrop-3.svg') center/cover;box-shadow:0 14px 35px #0006,inset 0 -2px #e62b42aa}
+.topbar .brand{gap:19px;text-shadow:0 4px 18px #000}.brand-name{font-size:clamp(23px,3vw,36px)!important;letter-spacing:1.4px}.brand-sub{font-size:10px!important;letter-spacing:4px;color:#cdd6e2}.mark.site-logo{width:76px;height:76px;flex-basis:76px;border:2px solid #f73b51;background:#250c15;border-radius:18px;box-shadow:0 0 28px #f52f434b;padding:8px}.mark.site-logo img{width:100%;height:100%;object-fit:contain}
+.nav button{background:#0b1018e8;border-color:#38414e;color:#d4dce7}.nav button.active,.nav button:hover{background:#4d1726;border-color:#f24057}
+#adminPanel.premium-app{border-radius:15px;background:#081018;border-color:#343e49;grid-template-columns:238px minmax(0,1fr);box-shadow:0 18px 75px #0009;min-height:760px}
+.app-sidebar{background:linear-gradient(180deg,#0c121a,#090e15);border-right-color:#28333f;padding:26px 13px;gap:24px}
+.side-title{border-bottom:1px solid #333541;padding:0 9px 25px;gap:12px}.side-title strong{font-size:20px;letter-spacing:2px}.side-title small{color:#a7b3c3;letter-spacing:1.4px;font-size:9px}
+.side-monogram{width:57px;height:57px;border:2px solid #fb3853;border-radius:16px;background:radial-gradient(circle at 50% 20%,#44202d,#130c14);box-shadow:0 0 24px #f72c434a;flex:0 0 57px}.side-monogram svg{width:35px;height:35px}.side-monogram.gear-mark{color:#f6f0f0}
+.side-group-title{color:#8492a3;letter-spacing:2.2px}.sidebar-nav{gap:6px}.sidebar-nav button{border-radius:9px;min-height:45px;padding:12px 13px;color:#adb9c7;font-weight:650;font-size:12px}.sidebar-nav button:hover{background:#18212a}.sidebar-nav button.active{background:linear-gradient(95deg,#501821,#22141c 86%);border-color:#943242;box-shadow:inset 3px 0 0 #ff415a,0 0 15px #ff334015;color:#fff}.sidebar-nav button span{font-size:19px;color:#e3e8ef}
+.app-main{padding:25px clamp(15px,2.3vw,34px);background:radial-gradient(circle at 80% 3%,#1e111b 0,transparent 35%),#090f16}
+.app-eyebrow{font-size:10px;letter-spacing:2.3px;color:#8695a8}.admin-head{padding:0 0 17px;margin-bottom:19px;border-bottom:1px solid #2b343e}.admin-head h2{letter-spacing:-.5px;font-size:clamp(25px,3vw,36px);color:#f5f6fb}.admin-head p{color:#9eaabb}.logout-button{background:#111a24;border-color:#3e4650}
+.dashboard-section{gap:16px}.dash-welcome{min-height:165px;padding:30px;border-color:#6c293b;background:linear-gradient(105deg,#361421d9,#181018e0 45%,#0b131bef),url('detroit-hub-backdrop-3.svg') center/cover;box-shadow:0 12px 35px #0005}.dash-welcome:after{content:'⚙';font-size:155px;right:32px;top:-20px;color:#ff304414}.dash-welcome h3{font-size:clamp(22px,2.5vw,32px);max-width:680px}.dash-welcome p{color:#ccd1db;max-width:660px}.hero-tag{background:#3d121c;color:#ff9fae;border-color:#b53449}
+.stat-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.stat-box{background:linear-gradient(145deg,#121c25,#0b1219);border-color:#2a3743;padding:19px;border-radius:13px;box-shadow:inset 0 1px #ffffff08}.stat-box small{color:#b8c8d9;font-size:10px;text-transform:uppercase;letter-spacing:.7px}.stat-box strong{font-size:32px}.stat-box:nth-child(2) strong,.stat-box:nth-child(6) strong{color:#ff6177}.stat-box span{color:#8395a8}
+.dash-feed,.dash-guidance,.section-banner,.request,.staff-stat{background:linear-gradient(140deg,#111b25,#0b131b);border-color:#2b3946}.dash-guidance{background:linear-gradient(140deg,#281521,#121820)}.section-banner{border-left:3px solid #fa324a}.panel{background:#0d141b;border-color:#343e4d}.request,.staff-card{box-shadow:0 10px 28px #0003}
+#calendarSection .d30-preview-note{background:#25171c;border-color:#6f3944;color:#e7bec5;border-radius:12px}#calendarSection iframe{height:max(920px,96vh);min-height:900px;border-color:#34414e;border-radius:12px;background:#071018}
+#viewAccess .hero{margin-top:25px}#adminPanel.premium-app:not(.hidden){margin:0 auto}
+@media(max-width:1050px){#adminPanel.premium-app{grid-template-columns:200px minmax(0,1fr)}.app-sidebar{padding:17px 9px}.stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.shell{width:min(calc(100% - 16px),1800px)}.topbar{min-height:95px;padding:12px 15px}.mark.site-logo{width:50px;height:50px;flex-basis:50px}.brand-name{font-size:19px!important}.brand-sub{letter-spacing:1.6px;font-size:8px!important}#adminPanel.premium-app{display:block}.app-sidebar{padding:10px;min-height:0;gap:8px}.side-title,.side-footer,.side-group-title{display:none}.sidebar-nav{display:flex;gap:6px;overflow-x:auto;flex-wrap:nowrap}.sidebar-nav button{white-space:nowrap;flex:0 0 auto;width:auto;padding:10px}.app-main{padding:16px 11px}.admin-head{flex-wrap:wrap}.stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.dash-welcome{padding:22px;min-height:150px}#calendarSection iframe{min-height:840px;height:92vh}}
+@media(max-width:410px){.stat-grid{grid-template-columns:1fr 1fr}.stat-box{padding:13px}.stat-box strong{font-size:25px}.topbar{align-items:flex-start;gap:8px;flex-wrap:wrap}.nav{width:100%}.nav button{flex:1}.v2-dev-mark{letter-spacing:1px;font-size:9px}}
+
 </style>
 </head>
 <body>
 <div class="shell">
-<div class="v2-dev-mark"><span class="pulse-dot"></span> DETROIT MECHANICS 2.9 <span class="sep">/</span> SISTEMA OFICIAL DE RECRUTAMENTO <span class="sep">/</span> INSCRIÇÕES ABERTAS</div>
+<div class="v2-dev-mark"><span class="pulse-dot"></span> DETROIT MECHANICS 3.0 <span class="sep">/</span> MANAGEMENT HUB <span class="sep">/</span> PRÉVIA DE HOMOLOGAÇÃO</div>
 <header class="topbar">
   <a class="brand" href="#" aria-label="Detroit Mechanics início" onclick="showView('apply');return false">
     <div class="mark site-logo" aria-hidden="true"><img src="DETROIT-MECHANICS.png" alt="" width="76" height="76" decoding="async"></div>
@@ -303,8 +328,8 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
   </div>
   <div id="adminPanel" class="panel wide hidden premium-app">
     <aside class="app-sidebar" aria-label="Menu do painel">
-      <div class="side-title"><span class="side-monogram gear-mark" aria-label="Engrenagem Detroit Mechanics"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 13.9 3l1 2.5 2 .8 2.4-1.1 1.3 2.3-2 1.8.3 2.1 2.4 1v2.6l-2.5.9-.7 2 1.2 2.3-2 1.5-2-1.9-2.2.3L13 21.5h-2.5l-.9-2.6-2-.8-2.5 1.1-1.3-2.2 2-1.9-.3-2.1L3 12V9.5l2.5-.9.7-2-1.2-2.3 2-1.5 2 1.9 2.2-.3Z"/><circle cx="12" cy="12" r="3.5"/></svg></span><span><strong>DETROIT</strong><small>MANAGEMENT HUB 3.0 · PRÉVIA</small></span></div>
-      <div class="side-group-title">WORKSPACE · HOMOLOGAÇÃO 3.0</div>
+      <div class="side-title"><span class="side-monogram gear-mark" aria-label="Engrenagem Detroit Mechanics"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 13.9 3l1 2.5 2 .8 2.4-1.1 1.3 2.3-2 1.8.3 2.1 2.4 1v2.6l-2.5.9-.7 2 1.2 2.3-2 1.5-2-1.9-2.2.3L13 21.5h-2.5l-.9-2.6-2-.8-2.5 1.1-1.3-2.2 2-1.9-.3-2.1L3 12V9.5l2.5-.9.7-2-1.2-2.3 2-1.5 2 1.9 2.2-.3Z"/><circle cx="12" cy="12" r="3.5"/></svg></span><span><strong>DETROIT</strong><small>MANAGEMENT HUB 3.0</small></span></div>
+      <div class="side-group-title">GESTÃO INTERNA · DETROIT 3.0</div>
       <div class="sidebar-nav" id="adminTabs">
         <button type="button" id="tabDashboard" class="active" onclick="switchAdminTab('dashboard')"><span aria-hidden="true">◫</span> Visão geral</button>
         <button type="button" id="tabCalendar" onclick="switchAdminTab('calendario')"><span aria-hidden="true">▦</span> Calendário 3.0</button>
@@ -319,17 +344,17 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
         <button type="button" id="tabMembers" class="hidden" onclick="switchAdminTab('members')"><span aria-hidden="true">♧</span> Acessos ao painel</button>
         <button type="button" id="tabAudit" class="hidden" onclick="switchAdminTab('auditoria')"><span aria-hidden="true">▤</span> Central de Logs</button>
       </div>
-      <div class="side-footer"><span class="pulse-dot"></span> Homologação 3.0<small>Detroit Mechanics · sem publicações Discord</small></div>
+      <div class="side-footer"><span class="pulse-dot"></span> Detroit Mechanics 3.0<small>Gestão integrada e organização</small></div>
     </aside>
     <div class="app-main">
     <div class="app-eyebrow">WORKSPACE / <span id="appBreadcrumb">VISÃO GERAL</span></div>
     <div class="admin-head"><div><span class="badge">● ACESSO AUTORIZADO</span><h2 id="appHeading" style="margin-top:12px">Visão geral</h2><p id="adminSummary">Acompanhe o recrutamento em tempo real.</p></div><button class="ghost logout-button" onclick="logout()">↪ Sair da conta</button></div>
     <section id="calendarSection" class="hidden" aria-label="Calendário integrado 3.0">
-      <div class="d30-preview-note"><div><strong>Calendário 3.0 — Homologação</strong><div>Área em testes. Agendamentos são gravados no Supabase real; não use candidatos ou reuniões reais para testar.</div></div><span>Discord desativado nesta etapa</span></div>
+      <div class="d30-preview-note"><div><strong>Calendário 3.0 — Gestão integrada</strong><div>Ambiente de testes conectado ao Supabase real. Evite movimentações de dados de produção.</div></div><span>Mensagens gerenciadas pelo bot 3.0</span></div>
       <iframe id="calendarFrame" title="Calendário, reuniões e cursos — Detroit Mechanics 3.0" loading="lazy" allow="clipboard-read; clipboard-write"></iframe>
     </section>
     <section id="dashboardSection" class="dashboard-section">
-      <div class="dash-welcome"><span class="hero-tag">DETROIT MECHANICS / RECRUTAMENTO</span><h3>Bem-vindo ao painel.</h3><p>Acompanhe as inscrições e organize o trabalho da equipe em um único lugar.</p></div>
+      <div class="dash-welcome"><span class="hero-tag">ORGANIZAÇÃO • PLANEJAMENTO • RESULTADOS</span><h3>Gestão que acompanha seu ritmo.</h3><p>Organize a equipe, acompanhe o recrutamento e acesse reuniões, cursos e eventos em um único lugar.</p></div>
       <div class="stat-grid" id="dashboardStats" aria-live="polite">
         <div class="stat-box"><small>Inscrições totais</small><strong id="dashTotal">—</strong><span>Recebidas no sistema</span></div>
         <div class="stat-box"><small>Pendentes</small><strong id="dashPending">—</strong><span>Aguardando recrutador</span></div>
@@ -695,7 +720,7 @@ window.switchAdminTab = function(tab) {
   $('warningsSection').classList.toggle('hidden',tab!=='advertencias');
   $('auditSection').classList.toggle('hidden',tab!=='auditoria');
   for (const [name,id] of [['instrutores','tabInstructors'],['comite','tabEthics'],['rp','tabPR'],['ponto','tabWorktime'],['advertencias','tabWarnings']]) $(id).classList.toggle('active',tab===name);
-  const titles = {calendario:'Calendário 3.0 · Homologação',dashboard:'Visão geral',recruit:'Inscrições',staff:'Equipe da Mecânica',members:'Acessos ao painel',instrutores:'Instrutores',comite:'Comitê de Ética e Promoções',rp:'Relações Públicas',ponto:'Controle de Ponto',advertencias:'Advertências',auditoria:'Central de Logs'};
+  const titles = {calendario:'Calendário e agenda',dashboard:'Visão geral',recruit:'Inscrições',staff:'Equipe da Mecânica',members:'Acessos ao painel',instrutores:'Instrutores',comite:'Comitê de Ética e Promoções',rp:'Relações Públicas',ponto:'Controle de Ponto',advertencias:'Advertências',auditoria:'Central de Logs'};
   $('appHeading').textContent = titles[tab];
   $('appBreadcrumb').textContent = titles[tab].toUpperCase();
   if (tab === 'calendario') return; // Conteúdo encapsulado com autorização própria do Supabase.
