@@ -206,7 +206,7 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
 .d28-modal{position:fixed;inset:0;z-index:9999;background:#000b;display:flex;align-items:center;justify-content:center;padding:16px;overflow:auto}.d28-modal.hidden{display:none}.d28-modal-card{width:min(630px,100%);max-height:95vh;overflow:auto;background:#171b24;color:#fff;border:1px solid #525262;border-radius:15px;padding:23px;box-shadow:0 30px 100px #000a}.d28-modal-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.d28-modal-head h3{margin:0;font-size:19px}.d28-modal-head button{border:0;background:#333743;color:#fff;border-radius:8px;padding:9px 12px;cursor:pointer}.d28-modal-tip{color:#a6adbc;font-size:12px;line-height:1.6}.d28-modal-card .field{margin:13px 0}.d28-modal-card textarea{width:100%;line-height:1.55;min-height:240px;white-space:pre-wrap;resize:vertical}.d28-modal-foot{display:flex;gap:10px;flex-wrap:wrap}.d28-modal-foot button{flex:1;min-height:42px}.d28-modal-foot button.primary{background:linear-gradient(125deg,#dc2147,#fb486a)}
 @media(max-width:640px){.d28-filters{grid-template-columns:1fr}.d28-modal-card{padding:14px}.d28-modal-card textarea{min-height:300px}}
 
-/* Detroit Mechanics 3.0 - ETAPA 2C (somente preview na branch develop/3.0) */
+/* Detroit Mechanics 3.0 — Integração de calendário */
 #calendarSection {min-width:0;width:100%}
 #calendarSection .d30-preview-note {display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin:0 0 12px;padding:12px 14px;border:1px solid #814850;border-radius:10px;background:#29131a;color:#ffd7da;font-size:12px}
 #calendarSection .d30-preview-note strong {color:#fff}
@@ -215,7 +215,7 @@ body{background:radial-gradient(ellipse 65% 470px at 46% 0%,#31121c 0%,transpare
 #tabCalendar.active {border-color:#a93246!important;background:linear-gradient(100deg,#40121d,#27111b)!important;color:#fff!important}
 @media(max-width:740px){#calendarSection iframe{height:920px;min-height:620px}}
 
-/* DETROIT MANAGEMENT HUB 3.0 — VISUAL DEFINITIVO, branch de homologação */
+/* DETROIT MANAGEMENT HUB 3.0 — Visual oficial */
 :root {--red:#fa2d44;--red2:#ff6476;--bg:#05080d;--panel:#0d141b;--field:#141d27;--muted:#9cabbc;--white:#f1f5fa;--line:#29323e}
 html{background:#05080d}body{background:radial-gradient(ellipse at 48% -12%,#43101d 0,transparent 42%),#05080d;color:#eef3fb}
 .shell{width:min(calc(100% - 32px),1800px);padding:0 0 35px;max-width:none}
@@ -321,6 +321,30 @@ body:has(#adminPanel:not(.hidden)) #viewAccess{padding:0!important;margin:0}
 #adminPanel .d3-dashboard-actions button{font-size:13px}
 @media(max-width:640px){#adminPanel .sidebar-nav button>span{font-size:13px}#adminPanel .d3-kpi span{font-size:11px}}
 
+
+/* Detroit Mechanics 3.0 — Menu simplificado e acessível */
+#adminPanel .sidebar-nav>button{min-height:44px;padding:11px 13px}
+#adminPanel .sidebar-nav>button>span{font-size:14px;font-weight:700}
+#adminPanel .d3-nav-more{border-top:1px solid #202d39;margin-top:5px;padding-top:6px;min-width:0;width:100%}
+#adminPanel .d3-nav-more>summary{display:flex;align-items:center;gap:12px;list-style:none;cursor:pointer;min-height:44px;padding:10px 13px;border:1px solid transparent;border-radius:9px;color:#c2cad4;font-size:14px;font-weight:700;user-select:none}
+#adminPanel .d3-nav-more>summary::-webkit-details-marker{display:none}
+#adminPanel .d3-nav-more>summary:hover{background:#172028;color:#fff}
+#adminPanel .d3-nav-more>summary:focus-visible{outline:2px solid #f25569;outline-offset:2px}
+#adminPanel .d3-nav-more>summary>.d3-icon{width:19px;height:19px;color:#a7b3bf}
+#adminPanel .d3-nav-more .d3-chevron{font-size:17px;margin-left:auto;color:#b0c0ce;transition:transform .16s ease}
+#adminPanel .d3-nav-more[open] .d3-chevron{transform:rotate(180deg)}
+#adminPanel .d3-nav-more .d3-subnav{display:grid;gap:3px;margin:4px 0 6px 22px;padding:2px 0 2px 10px;border-left:1px solid #34414f}
+#adminPanel .d3-nav-more .d3-subnav button{min-height:37px;padding:9px 11px;font-size:13px;font-weight:600;border-radius:7px;line-height:1.3}
+#adminPanel .d3-nav-more .d3-subnav button.active{background:#37151d;color:#ff788b}
+@media(max-width:900px){
+ #adminPanel .sidebar-nav{flex-wrap:wrap!important;overflow:visible!important;white-space:normal!important}
+ #adminPanel .sidebar-nav>button{width:auto!important;flex:1 1 auto!important;min-height:41px!important}
+ #adminPanel .d3-nav-more{flex:1 1 170px;width:auto;border-top:0;margin-top:0;padding-top:0}
+ #adminPanel .d3-nav-more>summary{border:1px solid #293743;min-height:41px;white-space:nowrap;padding:9px 10px}
+ #adminPanel .d3-nav-more .d3-subnav{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 0;padding:0;border-left:0}
+ #adminPanel .d3-nav-more .d3-subnav button{width:auto!important;flex:1 1 auto!important;font-size:12px}
+}
+
 </style>
 </head>
 <body>
@@ -339,7 +363,7 @@ body:has(#adminPanel:not(.hidden)) #viewAccess{padding:0!important;margin:0}
 <symbol id="d3-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.5"/><path d="M10 2h4l.65 2.6 2 .8 2.3-1.4 2.6 2.6-1.3 2.4.8 2L23 11v3l-2.6.7-.8 2 1.3 2.3-2.6 2.6-2.4-1.3-2 .8L14 23h-4l-.7-2.6-2-.8-2.3 1.3-2.6-2.6 1.3-2.4-.8-2L1 14v-3l2.6-.7.8-2-1.3-2.3L5.7 3.4l2.3 1.3 2-.8Z"/></symbol>
 </svg>
 <div class="shell">
-<div class="v2-dev-mark"><span class="pulse-dot"></span> DETROIT MECHANICS 3.0 <span class="sep">/</span> MANAGEMENT HUB <span class="sep">/</span> PRÉVIA DE HOMOLOGAÇÃO</div>
+<div class="v2-dev-mark"><span class="pulse-dot"></span> DETROIT MECHANICS 3.0 <span class="sep">/</span> MANAGEMENT HUB <span class="sep">/</span> SISTEMA OFICIAL</div>
 <header class="topbar">
   <a class="brand" href="#" aria-label="Detroit Mechanics início" onclick="showView('apply');return false">
     <div class="mark site-logo" aria-hidden="true"><img src="DETROIT-MECHANICS.png" alt="" width="76" height="76" decoding="async"></div>
@@ -433,28 +457,35 @@ body:has(#adminPanel:not(.hidden)) #viewAccess{padding:0!important;margin:0}
 </div>
     <aside class="app-sidebar" aria-label="Menu do painel">
       <div class="side-title"><span class="side-monogram gear-mark" aria-label="Engrenagem Detroit Mechanics"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 13.9 3l1 2.5 2 .8 2.4-1.1 1.3 2.3-2 1.8.3 2.1 2.4 1v2.6l-2.5.9-.7 2 1.2 2.3-2 1.5-2-1.9-2.2.3L13 21.5h-2.5l-.9-2.6-2-.8-2.5 1.1-1.3-2.2 2-1.9-.3-2.1L3 12V9.5l2.5-.9.7-2-1.2-2.3 2-1.5 2 1.9 2.2-.3Z"/><circle cx="12" cy="12" r="3.5"/></svg></span><span><strong>DETROIT</strong><small>MANAGEMENT HUB 3.0</small></span></div>
-      <div class="side-group-title">CENTRAL DE OPERAÇÕES</div>
+      <div class="side-group-title">MENU PRINCIPAL</div>
       <div class="sidebar-nav" id="adminTabs">
-        <button type="button" id="tabDashboard" class="active" onclick="switchAdminTab('dashboard')"><svg class="d3-icon" aria-hidden="true"><use href="#d3-calendar"></use></svg><span>Dashboard<small>Visão geral</small></span></button>
-        <button type="button" id="tabCalendar" onclick="switchAdminTab('calendario')"><svg class="d3-icon" aria-hidden="true"><use href="#d3-calendar"></use></svg><span>Calendário<small>Eventos e reuniões</small></span></button>
-        <button type="button" onclick="dm3OpenCalendar('event')"><svg class="d3-icon" aria-hidden="true"><use href="#d3-mega"></use></svg><span>Eventos<small>Organização interna</small></span></button>
-        <button type="button" onclick="dm3OpenCalendar('campaign')"><svg class="d3-icon" aria-hidden="true"><use href="#d3-mega"></use></svg><span>Campanhas<small>Conscientização</small></span></button>
-        <button type="button" onclick="dm3OpenCalendar('date')"><svg class="d3-icon" aria-hidden="true"><use href="#d3-gift"></use></svg><span>Datas comemorativas<small>Calendário institucional</small></span></button>
-        <button type="button" onclick="dm3OpenCalendar('all')"><svg class="d3-icon" aria-hidden="true"><use href="#d3-bell"></use></svg><span>Notificações<small>Discord e alertas</small></span></button>
-        <button type="button" id="tabMembers" class="hidden" onclick="switchAdminTab('members')"><svg class="d3-icon" aria-hidden="true"><use href="#d3-shield"></use></svg><span>Permissões<small>Gestão de cargos</small></span></button>
-        <button type="button" onclick="dm3ShowRecruitSummary()"><svg class="d3-icon" aria-hidden="true"><use href="#d3-report"></use></svg><span>Relatórios<small>Métricas e histórico</small></span></button>
-        <button type="button" onclick="dm3OpenSettings()"><svg class="d3-icon" aria-hidden="true"><use href="#d3-settings"></use></svg><span>Configurações<small>Preferências</small></span></button>
-        <div class="side-group-title">GESTÃO DE PESSOAS</div>
-        <button type="button" id="tabRecruit" onclick="switchAdminTab('recruit')"><svg class="d3-icon" aria-hidden="true"><use href="#d3-users"></use></svg><span>Inscrições<small>Recrutamento</small></span></button>
-        <button type="button" id="tabStaff" onclick="switchAdminTab('staff')"><svg class="d3-icon" aria-hidden="true"><use href="#d3-users"></use></svg><span>Equipe da Mecânica<small>Corpo de funcionários</small></span></button>
-        <div class="side-group-title">DEPARTAMENTOS</div>
-        <button type="button" id="tabInstructors" class="hidden" onclick="switchAdminTab('instrutores')"><span aria-hidden="true">◈</span> Instrutores</button>
-        <button type="button" id="tabEthics" class="hidden" onclick="switchAdminTab('comite')"><span aria-hidden="true">⚖</span> Comitê de Ética</button>
-        <button type="button" id="tabWorktime" class="hidden" onclick="switchAdminTab('ponto')"><span aria-hidden="true">◷</span> Controle de Ponto</button>
-        <button type="button" id="tabWarnings" class="hidden" onclick="switchAdminTab('advertencias')"><span aria-hidden="true">♜</span> Advertências</button>
-        <button type="button" id="tabPR" class="hidden" onclick="switchAdminTab('rp')"><span aria-hidden="true">◎</span> Relações Públicas</button>
-        
-        <button type="button" id="tabAudit" class="hidden" onclick="switchAdminTab('auditoria')"><span aria-hidden="true">▤</span> Central de Logs</button>
+        <button type="button" id="tabDashboard" class="active" onclick="switchAdminTab('dashboard')"><svg class="d3-icon" aria-hidden="true"><use href="#d3-calendar"></use></svg><span>Dashboard</span></button>
+        <button type="button" id="tabCalendar" onclick="switchAdminTab('calendario')"><svg class="d3-icon" aria-hidden="true"><use href="#d3-calendar"></use></svg><span>Calendário</span></button>
+        <button type="button" id="tabRecruit" onclick="switchAdminTab('recruit')"><svg class="d3-icon" aria-hidden="true"><use href="#d3-users"></use></svg><span>Inscrições</span></button>
+        <button type="button" id="tabStaff" onclick="switchAdminTab('staff')"><svg class="d3-icon" aria-hidden="true"><use href="#d3-users"></use></svg><span>Equipe</span></button>
+        <details class="d3-nav-more" id="d3ToolsMenu">
+          <summary><svg class="d3-icon" aria-hidden="true"><use href="#d3-settings"></use></svg><span>Ferramentas</span><span class="d3-chevron" aria-hidden="true">⌄</span></summary>
+          <div class="d3-subnav">
+            <button type="button" onclick="dm3OpenCalendar('event')">Eventos</button>
+            <button type="button" onclick="dm3OpenCalendar('campaign')">Campanhas</button>
+            <button type="button" onclick="dm3OpenCalendar('date')">Datas comemorativas</button>
+            <button type="button" onclick="dm3OpenCalendar('all')">Avisos e notificações</button>
+            <button type="button" id="tabMembers" class="hidden" onclick="switchAdminTab('members')">Permissões</button>
+            <button type="button" onclick="dm3ShowRecruitSummary()">Relatórios</button>
+            <button type="button" onclick="dm3OpenSettings()">Configurações</button>
+          </div>
+        </details>
+        <details class="d3-nav-more" id="d3DeptMenu">
+          <summary><svg class="d3-icon" aria-hidden="true"><use href="#d3-users"></use></svg><span>Departamentos</span><span class="d3-chevron" aria-hidden="true">⌄</span></summary>
+          <div class="d3-subnav">
+            <button type="button" id="tabInstructors" class="hidden" onclick="switchAdminTab('instrutores')">Instrutores</button>
+            <button type="button" id="tabEthics" class="hidden" onclick="switchAdminTab('comite')">Comitê de Ética</button>
+            <button type="button" id="tabWorktime" class="hidden" onclick="switchAdminTab('ponto')">Controle de Ponto</button>
+            <button type="button" id="tabWarnings" class="hidden" onclick="switchAdminTab('advertencias')">Advertências</button>
+            <button type="button" id="tabPR" class="hidden" onclick="switchAdminTab('rp')">Relações Públicas</button>
+            <button type="button" id="tabAudit" class="hidden" onclick="switchAdminTab('auditoria')">Central de Logs</button>
+          </div>
+        </details>
       </div>
       <div class="side-footer"><span class="pulse-dot"></span> Detroit Mechanics 3.0<small>Gestão integrada e organização</small></div>
     </aside>
@@ -462,7 +493,7 @@ body:has(#adminPanel:not(.hidden)) #viewAccess{padding:0!important;margin:0}
     <div class="app-eyebrow">WORKSPACE / <span id="appBreadcrumb">VISÃO GERAL</span></div>
     <div class="admin-head"><div><span class="badge">● ACESSO AUTORIZADO</span><h2 id="appHeading" style="margin-top:12px">Visão geral</h2><p id="adminSummary">Acompanhe o recrutamento em tempo real.</p></div><button class="ghost logout-button" onclick="logout()">↪ Sair da conta</button></div>
     <section id="calendarSection" class="hidden" aria-label="Calendário integrado 3.0">
-      <div class="d30-preview-note"><div><strong>Calendário 3.0 — Gestão integrada</strong><div>Ambiente de testes conectado ao Supabase real. Evite movimentações de dados de produção.</div></div><span>Mensagens gerenciadas pelo bot 3.0</span></div>
+      <div class="d30-preview-note"><div><strong>Calendário 3.0 — Gestão integrada</strong><div>Agenda oficial de eventos, reuniões, cursos e comunicados da equipe.</div></div><span>Mensagens gerenciadas pelo bot 3.0</span></div>
       <iframe id="calendarFrame" title="Calendário, reuniões e cursos — Detroit Mechanics 3.0" loading="lazy" allow="clipboard-read; clipboard-write"></iframe>
     </section>
     <section id="dashboardSection" class="dashboard-section">
@@ -826,6 +857,8 @@ async function refreshAccess() {
   $('d3ProfileName').textContent=currentMember?.nome||'Detroit Mechanics';
   $('tabMembers').classList.toggle('hidden',!isLeadership());
   $('tabAudit').classList.toggle('hidden',leadershipLevel<6);
+  const deptMenu=$('d3DeptMenu');
+  if(deptMenu) deptMenu.classList.toggle('hidden', ![...deptMenu.querySelectorAll('button')].some(b=>!b.classList.contains('hidden')));
   const authorized = Boolean(currentMember); // Membro validado pelo Supabase: calendário visível a toda equipe ativa.
   $('authPanel').classList.toggle('hidden',authorized);
   $('adminPanel').classList.toggle('hidden',!authorized);
@@ -857,6 +890,8 @@ window.switchAdminTab = function(tab) {
   if (['ponto','advertencias'].includes(tab) && !staffSectorAccess.includes('comite')) return;
   if (!['dashboard','calendario','recruit','staff','members','ponto','advertencias','auditoria',...sectorTabs].includes(tab)) return;
   activeTab = tab;
+  if(tab==='members') $('d3ToolsMenu').open=true;
+  if(['instrutores','comite','ponto','advertencias','rp','auditoria'].includes(tab)) $('d3DeptMenu').open=true;
   for (const [name, id, buttonId] of [['dashboard','dashboardSection','tabDashboard'],['recruit','recruitSection','tabRecruit'],['staff','staffSection','tabStaff'],['members','membersSection','tabMembers']]) {
     $(id).classList.toggle('hidden', tab !== name);
     $(buttonId).classList.toggle('active', tab === name);
