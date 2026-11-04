@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#080b10">
+  <meta name="description" content="Detroit Mechanics 3.0: calendário, cursos, reuniões e integração Discord controlada.">
+  <title>Detroit Mechanics 3.0 • Agenda e Discord / Homologação</title>
+  <style>
+:root{color-scheme:dark;--bg:#06090d;--panel:#0d141b;--panel-2:#121a23;--line:#25303a;--line2:#34414c;--text:#eef3f7;--muted:#85929f;--red:#fb3046;--red-soft:#451822;--blue:#599eff;--green:#40cf93;--orange:#ffad4a;--purple:#bf77f7;--yellow:#f2c55f}*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;background:var(--bg);color:var(--text)}body{background:linear-gradient(125deg,#06090d,#0b0d11 55%,#090b10)}button,input,textarea,select{font:inherit}button{cursor:pointer}a{color:inherit}.skip{position:absolute;left:-9999px;top:5px;z-index:99;background:#fff;color:#000;padding:12px}.skip:focus{left:10px}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #ff7c8a;outline-offset:2px}.app-shell{display:grid;grid-template-columns:238px minmax(0,1fr);min-height:100vh}.side{background:linear-gradient(180deg,#0e141b,#080d13);border-right:1px solid #27303a;padding:28px 13px 20px;display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow:auto}.brand{display:flex;align-items:center;gap:12px;padding:0 7px 24px;border-bottom:1px solid #202832}.brand strong{display:block;font-size:26px;letter-spacing:1px;line-height:1.1}.brand span{display:block;letter-spacing:2.7px;font-size:9px;margin-top:7px;white-space:nowrap;color:#c1cbd4}.brand b{color:var(--red)}.gear-badge{width:62px;height:62px;flex:0 0 62px;display:grid;place-items:center;color:#fff0f1;border:2px solid var(--red);border-radius:18px;background:linear-gradient(140deg,#46141b,#13141d);box-shadow:inset 0 0 18px #eb284327,0 0 24px #e82e3638}.gear{width:36px;height:36px;display:block}.nav{display:grid;gap:5px;padding-top:10px}.nav-section{margin:19px 12px 5px;font-size:9px;font-weight:800;letter-spacing:1.9px;color:#727d8a}.nav-item{display:flex;align-items:center;gap:12px;text-align:left;min-height:39px;padding:7px 12px;border-radius:10px;border:1px solid transparent;background:transparent;color:#aeb9c5;font-size:12px}.nav-icon{font-size:21px;line-height:1;width:24px;text-align:center}.nav-item:hover{color:#fff;background:#202630}.nav-item.active{border-color:#96333e;background:linear-gradient(90deg,#4c161f,#21121b);box-shadow:inset 3px 0 0 var(--red),0 0 22px #e22a331a;color:#fff}.side-promo{position:relative;margin-top:auto;min-height:174px;border:1px solid #31343b;border-radius:12px;padding:18px 13px;background:radial-gradient(ellipse at right bottom,#3b0d19 0,transparent 55%),repeating-linear-gradient(145deg,transparent 0 26px,#ffffff04 27px 28px),#10151d;overflow:hidden}.side-promo:after{content:'⚙';position:absolute;right:-29px;bottom:-64px;font-size:170px;color:#f4314619}.side-promo strong{position:relative;z-index:1;font-size:15px;line-height:1.36;letter-spacing:1.3px}.side-promo small{display:block;position:relative;z-index:1;margin-top:27px;font-size:8px;letter-spacing:1.6px;color:#9eabb9}.promo-line{height:3px;width:28px;background:var(--red);margin-bottom:14px}.app-body{min-width:0}.demo-ribbon{padding:7px 22px;background:#1b1511;border-bottom:1px solid #6c4530;color:#d5bd9f;font-size:10px;letter-spacing:.3px}.demo-ribbon span{color:#ffcc7b;font-weight:850;margin-right:9px;letter-spacing:1px}.masthead{min-height:140px;padding:18px 29px;display:flex;justify-content:space-between;align-items:center;gap:14px;border-bottom:1px solid #44252e;background:radial-gradient(ellipse at 67% 25%,#69131d8c 0,transparent 40%),repeating-linear-gradient(90deg,#120c1100 0 35px,#f5233308 36px 37px),linear-gradient(110deg,#0d1118,#1b0b10 55%,#07090c);position:relative;overflow:hidden}.masthead:after{content:'';position:absolute;right:5%;top:0;bottom:0;width:2px;background:#f9234130;box-shadow:-200px 0 60px #ed224526,-470px 0 80px #ed224516;transform:skew(-25deg);pointer-events:none}.mast-words{position:relative;z-index:1}.mast-words b{display:block;font-size:clamp(30px,4vw,53px);line-height:.95;letter-spacing:4px;text-shadow:0 0 23px #dd244959;font-weight:900}.mast-words span{font-size:14px;letter-spacing:8px;color:#df5162;display:block;font-weight:850;margin:6px 0}.mast-words small{font-size:9px;letter-spacing:2.5px;color:#a1a6ad}.mast-action{display:flex;gap:10px;align-items:center;z-index:2}.searchbox{display:flex;align-items:center;gap:8px;padding:0 12px;border:1px solid #343943;border-radius:12px;background:#080c11de;min-height:41px}.searchbox span{font-size:26px;color:var(--red)}.searchbox input{background:transparent;color:#eee;border:0;width:170px;outline:0;font-size:12px}.icon-btn{position:relative;border:1px solid #35404a;background:#0e141d;color:#dce2ec;border-radius:10px;width:43px;height:43px;font-size:23px}.icon-btn i{position:absolute;right:6px;top:6px;width:7px;height:7px;border-radius:50%;background:#fd304b}.profile{display:flex;align-items:center;gap:9px;padding:6px 10px;border:1px solid #34404a;background:#0e131be6;border-radius:12px;font-size:11px;min-width:158px}.profile small{display:block;font-size:9px;color:#969dab;margin-top:5px}.avatar{display:grid;place-items:center;background:#3d3037;width:34px;height:34px;border-radius:50%;font-size:10px}main{padding:25px;max-width:1770px;margin:auto}.topline{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:20px}.eyebrow{color:var(--red);font-size:10px;font-weight:900;letter-spacing:1.6px}.topline h1{font-size:24px;line-height:1.1;margin:7px 0}.topline p{color:var(--muted);font-size:12px;margin:0}.top-actions{display:flex;gap:8px}.btn{border-radius:10px;padding:11px 16px;border:1px solid #35404c;background:#131b25;color:#e9f0f6;font-size:12px;font-weight:750}.btn-outline:hover{border-color:#f44d64}.btn-primary{background:linear-gradient(120deg,#d31d31,#ff344d);border-color:#ec4058;color:white;box-shadow:0 8px 22px #ef224125}.full{width:100%}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:17px 0}.metric{display:flex;align-items:center;gap:15px;border:1px solid #26313c;border-radius:12px;padding:17px;background:linear-gradient(150deg,#111920,#0b1016);min-width:0;box-shadow:inset 0 1px #ffffff06}.metric-icon{border-radius:11px;min-width:48px;height:48px;display:grid;place-items:center;font-size:25px}.metric-icon.red{background:#471b24;color:#ff6879}.metric-icon.blue{background:#16324b;color:#72b6ff}.metric-icon.green{background:#0f3b32;color:#5ce7ad}.metric-icon.purple{background:#382445;color:#dcb1ff}.metric small{color:#9eafbb;display:block;font-size:9px;font-weight:750;letter-spacing:1.1px}.metric strong{display:block;font-size:26px;margin:1px 0}.metric span:last-child{color:#82909f;font-size:10px}.grid-body{display:grid;grid-template-columns:minmax(0,1fr) 285px;gap:12px}.surface{border:1px solid #26333d;background:linear-gradient(155deg,#101820,#0a1016 80%);border-radius:13px;box-shadow:0 10px 30px #0002;min-width:0}.surface-title{display:flex;gap:14px;justify-content:space-between;align-items:center;padding:16px;border-bottom:1px solid #263039}.head-label{display:flex;align-items:center;gap:12px}.head-icon{color:#ff5066;font-size:29px}.surface-title h2{margin:0;font-size:18px}.surface-title p{margin:4px 0 0;font-size:11px;color:#8797a6}.view-switch{display:flex;gap:5px}.view{font-size:11px;border:1px solid #313b47;background:#131a23;color:#bec7d1;border-radius:8px;padding:8px 10px}.view.active{background:#4b141f;border-color:#ff3b4f;color:white}.calendar-toolbar{padding:15px 13px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.month-control{display:flex;align-items:center;gap:8px}.month-control strong{min-width:138px;text-align:center;font-size:13px}.month-control button{width:29px;height:30px;border-radius:7px;border:1px solid #33404a;background:#111a22;color:#fff;font-size:23px}.chips{display:flex;gap:5px;flex-wrap:wrap}.chip{border:1px solid #2f3a45;border-radius:30px;color:#a9b6c2;background:#111821;padding:6px 10px;font-size:10px}.chip.active{color:#fff;border-color:#bb334c;background:#4e1624}.month-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border-top:1px solid #29323a;border-left:1px solid #29323a;margin:0 12px 12px;overflow:hidden;border-radius:8px}.week-day{text-align:center;font-size:10px;font-weight:850;letter-spacing:.3px;color:#9daebd;padding:9px 0;background:#101720;border-bottom:1px solid #29323a;border-right:1px solid #29323a}.day-cell{position:relative;border-right:1px solid #29323a;border-bottom:1px solid #29323a;min-height:81px;padding:9px 5px;background:#0d141b;overflow:hidden}.day-cell.other{background:#0a1016}.day-cell.other .day-number{color:#4c5b68}.day-cell.today{box-shadow:inset 0 0 0 1px #fd4253}.day-number{display:block;margin-bottom:8px;font-size:11px;color:#d8e3eb}.event-pill{display:block;width:100%;margin:2px 0;padding:5px 5px;border:1px solid transparent;border-radius:5px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;text-align:left;font-size:9px;color:white}.event-pill small{display:block;font-size:8px;color:#bec8d2}.event-pill.event{border-color:#7e2733;background:#491b24}.event-pill.meeting{border-color:#284b7a;background:#182d47}.event-pill.course{border-color:#866034;background:#47321e}.event-pill.campaign{border-color:#6d386d;background:#3c1d43}.event-pill.date{border-color:#735e2e;background:#3a311c}.legend{display:flex;gap:14px;flex-wrap:wrap;padding:8px 15px 15px;color:#a5b0bb;font-size:10px}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}.dot.blue{background:var(--blue)}.dot.orange{background:var(--orange)}.dot.red{background:var(--red)}.dot.purple{background:var(--purple)}.dot.yellow{background:var(--yellow)}.right-rail{display:grid;gap:12px;align-content:start}.rail-card{padding:16px}.rail-head{display:flex;align-items:center;gap:9px}.rail-head span{color:#ff5066;font-size:24px}.rail-head h3{font-size:14px;margin:0}.rail-card p{font-size:11px;color:#9baab9;line-height:1.7}.keyline{padding:11px;border:1px solid #33404a;border-radius:9px;background:#0c141d;margin:8px 0;display:grid;gap:4px}.keyline span{color:#97a6b5;font-size:10px}.keyline strong{font-size:11px;overflow-wrap:anywhere}.keyline em{font-style:normal;color:#e5bd78;font-size:10px;margin-left:5px}.info-chip{padding:9px 11px;background:#12362c;border:1px solid #246247;color:#7beaaf;font-size:10px;border-radius:9px;margin:12px 0}.rail-card small{font-size:10px;line-height:1.5;color:#7e8c9b}.perm-line{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid #26313b;font-size:10px}.perm-line b{color:#6fdaab;font-size:9px}.rail-course{background:linear-gradient(145deg,#1a1718,#111a22)}.bottom-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:13px 0}.list-card{padding:15px;min-height:213px}.list-head{display:flex;justify-content:space-between;gap:5px;align-items:center;border-bottom:1px solid #26313b;padding-bottom:12px}.list-head h3{margin:0;font-size:12px}.list-head button{border:0;background:transparent;color:#ff576a;font-size:10px;white-space:nowrap}.agenda-line{display:flex;gap:10px;align-items:start;padding:12px 0;border-bottom:1px solid #202a34}.agenda-line:last-child{border:0}.datechip{min-width:37px;border:1px solid #4b242e;border-radius:8px;background:#2a141b;text-align:center;padding:4px 1px;color:#ff7e8f;font-weight:900}.datechip small{display:block;font-size:8px;font-weight:500;color:#eaa1ae}.agenda-line strong{display:block;font-size:11px}.agenda-line small{display:block;font-size:9px;color:#94a3b1;margin-top:4px}.empty{color:#8998a9;font-size:11px;padding:15px}.working-note{padding:12px 15px;color:#a1afbc;font-size:10px;line-height:1.6;margin-bottom:20px}.working-note strong{color:#ffd0a3}.week-list,.list-view{display:grid;gap:6px;margin:8px 12px 14px}.agenda-row{padding:12px 13px;display:flex;justify-content:space-between;align-items:center;gap:10px;background:#111922;border:1px solid #2b3945;border-radius:9px}.agenda-row b{font-size:12px}.agenda-row small{display:block;font-size:10px;color:#8697a7;margin-top:4px}.kind{font-size:10px;padding:5px 8px;border-radius:20px;border:1px solid #394551;color:#bac8d4}.kind.meeting{color:#90bcff}.kind.course{color:#ffd28b}.kind.event{color:#ff8f9a}.kind.campaign{color:#d6a9f6}.kind.date{color:#f5d37d}dialog{border:1px solid #4f3640;border-radius:18px;max-width:min(580px,calc(100vw - 22px));width:100%;color:#eee;background:linear-gradient(140deg,#171c25,#0d1219);box-shadow:0 25px 110px #000a;padding:0}dialog::backdrop{background:#04070ac9;backdrop-filter:blur(4px)}#eventForm{padding:22px;display:grid;gap:13px}#eventForm label{font-size:11px;color:#d2dce5;font-weight:750;display:grid;gap:7px}#eventForm input,#eventForm select,#eventForm textarea{width:100%;padding:11px;border:1px solid #36434e;border-radius:9px;background:#101923;color:#fff;outline:0}#eventForm textarea{resize:vertical}.modal-head{display:flex;justify-content:space-between}.modal-head h2{margin:7px 0;font-size:22px}.modal-head p{font-size:11px;color:#9faab6}.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.close{align-self:flex-start;border:0;background:#26303a;color:#fff;border-radius:8px;font-size:24px;width:35px;height:35px}.check-row{display:flex;align-items:center;gap:8px;font-size:10px}.check-row input{width:auto!important}.check-row label{display:inline!important;font-weight:500!important}.modal-foot{display:flex;justify-content:flex-end;gap:8px}.form-error{padding:11px;background:#40161d;border:1px solid #a13347;color:#ffadb5;border-radius:9px;font-size:11px}.toast{position:fixed;bottom:24px;right:25px;background:#173c2b;border:1px solid #327b55;color:#c2f5d7;border-radius:11px;padding:12px 16px;max-width:320px;font-size:12px;box-shadow:0 10px 30px #000a;opacity:0;transform:translateY(10px);pointer-events:none;transition:.2s;z-index:10}.toast.show{opacity:1;transform:translateY(0)}@media(max-width:1360px){.grid-body{grid-template-columns:minmax(0,1fr) 255px}.bottom-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.mast-words small{letter-spacing:1.4px}}@media(max-width:1120px){.app-shell{grid-template-columns:190px minmax(0,1fr)}.brand strong{font-size:18px}.brand span{font-size:8px;letter-spacing:1.5px}.gear-badge{width:49px;height:49px;flex-basis:49px}.gear{width:30px}.grid-body{grid-template-columns:1fr}.right-rail{grid-template-columns:repeat(3,minmax(0,1fr))}.searchbox input{width:100px}.mast-words b{font-size:32px}}@media(max-width:800px){.app-shell{display:block}.side{height:auto;position:static;padding:12px}.brand{padding-bottom:12px}.nav{display:flex;overflow-x:auto;gap:7px}.nav-section,.side-promo{display:none}.nav-item{flex:0 0 auto;min-height:37px;padding:6px 10px;font-size:11px}.nav-item .nav-icon{font-size:14px;width:auto}.masthead{min-height:111px}.mast-words span{letter-spacing:4px}.mast-action .searchbox{display:none}.profile{min-width:auto}.demo-ribbon{font-size:9px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.right-rail{grid-template-columns:1fr 1fr}.rail-course{grid-column:1/-1}}@media(max-width:590px){main{padding:14px}.masthead{padding:17px;min-height:100px}.mast-words b{font-size:25px;letter-spacing:2px}.mast-words span{font-size:10px}.mast-words small{display:none}.profile span:last-child{display:none}.topline{align-items:start;flex-direction:column}.topline h1{font-size:20px}.top-actions{width:100%}.top-actions button{flex:1}.stats{gap:7px}.metric{padding:12px;gap:10px}.metric-icon{min-width:40px;height:40px}.metric strong{font-size:22px}.surface-title{align-items:start;flex-wrap:wrap}.view-switch{width:100%}.view-switch button{flex:1}.calendar-toolbar{align-items:start}.month-grid{margin:0 4px 8px}.day-cell{min-height:69px;padding:5px 2px}.day-number{font-size:9px}.week-day{font-size:9px}.event-pill{font-size:0;padding:6px 2px;min-height:14px;margin:2px 0}.event-pill:before{content:'•';font-size:15px}.event-pill small{display:none}.legend{gap:8px}.right-rail,.bottom-cards{grid-template-columns:1fr}.modal-grid{grid-template-columns:1fr}.demo-ribbon span{display:block;margin-bottom:3px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+
+/* 3.0 2C: modo integrado dentro do painel autenticado (sem segunda barra lateral) */
+body.embed .app-shell { display:block;min-height:0 }
+body.embed .side, body.embed .masthead, body.embed .demo-ribbon { display:none!important }
+body.embed main { max-width:none;padding:12px 9px }
+body.embed .grid-body { grid-template-columns:minmax(0,1fr) 270px }
+body.embed .topline h1 { font-size:22px }
+body.embed .topline { margin-bottom:12px }
+body.embed .working-note { margin-bottom:5px }
+@media(max-width:1000px){body.embed .grid-body{grid-template-columns:1fr}}
+@media(max-width:580px){body.embed main{padding:8px 2px}}
+
+/* Etapa 2E - gestão acessível na homologação */
+.manage-section{margin-top:14px;padding:15px}.manage-section .list-head{margin-bottom:12px}
+.manage-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.manage-row{display:flex;gap:14px;align-items:center;justify-content:space-between;padding:13px 12px;border:1px solid #283742;background:#0c151e;border-radius:10px;margin-bottom:8px}
+.manage-row .manage-text{min-width:0}.manage-row strong{font-size:12px;display:block;overflow-wrap:anywhere}.manage-row small{color:#96a9ba;display:block;font-size:10px;margin-top:6px;line-height:1.5}
+.manage-actions{display:flex;gap:6px;flex:0 0 auto}.manage-actions button{padding:8px 10px;font-size:11px}
+.manage-actions .danger-action{border-color:#a4384a;color:#ffb2bd;background:#30171e}
+.manage-label{border:1px solid #344452;border-radius:20px;padding:5px 8px;color:#aab9c6;font-size:10px;white-space:nowrap}
+@media(max-width:600px){.manage-row{flex-wrap:wrap}.manage-actions{width:100%}.manage-actions button{flex:1}.manage-section{padding:11px}}
+
+/* Detroit 3.0 — Correcao de layout da agenda integrada (2E.1)
+   No iframe, nao colocar os tres cartoes dentro de uma coluna de 270px.
+   Eles ficam ABAIXO do calendario, em colunas fluidas, sem texto esmagado. */
+body.embed .grid-body {
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 14px;
+}
+body.embed .right-rail {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)) !important;
+  gap: 12px;
+  min-width: 0;
+}
+body.embed .right-rail > * {
+  min-width: 0;
+  max-width: 100%;
+}
+body.embed .rail-card {overflow-wrap: anywhere;}
+body.embed .keyline strong {overflow-wrap: anywhere;}
+body.embed .calendar-toolbar, body.embed .topline {min-width:0;}
+@media (max-width: 640px) {
+  body.embed main { padding: 10px 4px; }
+  body.embed .right-rail {grid-template-columns: 1fr !important;}
+}
+
+/* dashboard compacto, somente calendario, com controle de dados real */
+body.compact .side,body.compact .masthead,body.compact .demo-ribbon,body.compact .topline,body.compact .stats,body.compact .right-rail,body.compact .bottom-cards,body.compact .manage-section,body.compact .working-note,body.compact #rpCommsSection,body.compact #authStatus,body.compact .legend{display:none!important}
+body.compact .app-shell{display:block;min-height:0!important}
+body.compact main{padding:0!important;max-width:none!important}
+body.compact .grid-body{display:block!important;grid-template-columns:1fr!important}
+body.compact .calendar-panel.surface{border:0!important;border-radius:0!important;background:#091119!important;box-shadow:none!important}
+body.compact .calendar-panel .surface-title{display:none!important}
+body.compact .calendar-toolbar{padding:12px 12px!important}
+body.compact .month-grid{margin:0 6px 5px!important;border-radius:0!important;overflow:hidden}
+body.compact .day-cell{min-height:65px!important;padding:7px 5px!important}
+body.compact .week-day{font-size:10px!important;padding:8px 0!important}
+body.compact .event-pill{padding:4px 5px!important;font-size:9px!important}
+body.compact .event-pill small{font-size:8px!important}
+body.compact .working-note{display:none!important}
+@media (max-width:700px){body.compact .chips{display:none!important}body.compact .month-grid{margin:0 2px 5px!important}.day-cell{min-height:62px!important}}
+
+/* Detroit 3.0 — legibilidade ampliada no calendario completo */
+body.embed .topline p,body.embed .surface-title p{font-size:13px}
+body.embed .month-control strong{font-size:15px}
+body.embed .week-day{font-size:12px}
+body.embed .day-number{font-size:13px}
+body.embed .event-pill{font-size:11px;padding:6px 5px}
+body.embed .event-pill small{font-size:10px}
+body.embed .chip{font-size:12px}
+body.embed .view{font-size:12px}
+body.embed .legend{font-size:12px}
+body.embed .rail-card p{font-size:13px}
+body.embed .perm-line{font-size:12px}
+body.embed .perm-line b{font-size:11px}
+body.embed .list-head h3{font-size:14px}
+body.embed .list-head button{font-size:12px}
+body.embed .agenda-line strong{font-size:13px}
+body.embed .agenda-line small{font-size:11px}
+body.embed .manage-row strong{font-size:14px}
+body.embed .manage-row small{font-size:12px}
+body.embed .btn,body.embed .manage-actions button{font-size:13px}
+body.embed #eventForm label{font-size:13px}
+@media(max-width:580px){body.embed .week-day{font-size:10px}body.embed .event-pill{font-size:10px}}
+
+</style>
+  
+</head>
+<body>
+  <a class="skip" href="#app-main">Pular para conteúdo</a>
+  <div class="app-shell">
+    <aside class="side" id="side">
+      <div class="brand">
+        <div class="gear-badge" aria-label="Ícone vetorial de engrenagem Detroit Mechanics">
+          <svg class="gear" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <path d="M27 5h10l2 7.2c2.1.7 4.1 1.5 5.8 2.5l6.7-3.7 7 7-3.7 6.7c1 1.7 1.8 3.7 2.5 5.8L64 32l-6.7 2.5c-.7 2.1-1.5 4.1-2.5 5.8l3.7 6.7-7 7-6.7-3.7c-1.7 1-3.7 1.8-5.8 2.5L37 59H27l-2-7.2a21 21 0 0 1-5.8-2.5L12.5 53l-7-7 3.7-6.7a21 21 0 0 1-2.5-5.8L0 32l6.7-2.5a21 21 0 0 1 2.5-5.8L5.5 17l7-7 6.7 3.7a21 21 0 0 1 5.8-2.5L27 5Z" transform="translate(5 4) scale(.84)" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/>
+            <circle cx="32" cy="32" r="10" stroke="currentColor" stroke-width="4"/>
+          </svg>
+        </div>
+        <div><strong>DETROIT</strong><span>MANAGEMENT HUB <b>3.0</b></span></div>
+      </div>
+      <nav class="nav" aria-label="Menu principal">
+        <div class="nav-section">VISÃO GERAL</div>
+        <button class="nav-item active" data-screen="dashboard"><span class="nav-icon">▦</span><span>Dashboard</span></button>
+        <button class="nav-item" data-screen="calendar"><span class="nav-icon">▣</span><span>Calendário</span></button>
+        <button class="nav-item" data-screen="events"><span class="nav-icon">✧</span><span>Eventos e Campanhas</span></button>
+        <button class="nav-item" data-screen="meetings"><span class="nav-icon">◷</span><span>Reuniões</span></button>
+        <button class="nav-item" data-screen="courses"><span class="nav-icon">▤</span><span>Cursos e Instrutores</span></button>
+        <div class="nav-section">PESSOAS</div>
+        <button class="nav-item" data-screen="personal"><span class="nav-icon">◉</span><span>Minha Central</span></button>
+        <button class="nav-item" data-screen="legacy"><span class="nav-icon">♙</span><span>Membros e RH</span></button>
+        <button class="nav-item" data-screen="legacy"><span class="nav-icon">≋</span><span>Horas e Advertências</span></button>
+        <div class="nav-section">COMUNICAÇÃO E CONTROLE</div>
+        <button class="nav-item" data-screen="rp"><span class="nav-icon">⌁</span><span>Relações Públicas</span></button>
+        <button class="nav-item" data-screen="discord"><span class="nav-icon">↗</span><span>Integração Discord</span></button>
+        <button class="nav-item" data-screen="legacy"><span class="nav-icon">◈</span><span>Recrutamento</span></button>
+        <button class="nav-item" data-screen="legacy"><span class="nav-icon">⚙</span><span>Auditoria e Permissões</span></button>
+      </nav>
+      <div class="side-promo"><div class="promo-line"></div><strong>MECÂNICOS<br>FORTES MANTÊM<br>CIDADES EM<br>MOVIMENTO.</strong><small>DETROIT MECHANICS<br>GESTÃO INTEGRADA</small></div>
+    </aside>
+    <div class="app-body">
+      <div class="demo-ribbon"><span>HOMOLOGAÇÃO 3.0 — SUPABASE</span> Somente membros autenticados • Eventos reais do Supabase • Discord ainda desligado • Não substitui o site 2.9</div>
+      <header class="masthead">
+        <div class="mast-words"><b>DETROIT</b><span>MECHANICS</span><small>ORGANIZAÇÃO · PLANEJAMENTO · RESULTADOS</small></div>
+        <div class="mast-action"><label class="searchbox"><span aria-hidden="true">⌕</span><input id="globalSearch" placeholder="Buscar na agenda..." aria-label="Buscar na agenda"></label><button class="icon-btn" aria-label="Avisos do painel" title="Avisos demonstrativos">♧<i></i></button><div class="profile"><span class="avatar">DM</span><span>Detroit Mechanics<small>Prévia interna</small></span></div></div>
+      </header>
+      <main id="app-main">
+        <section class="topline"><div><div class="eyebrow">DETROIT MECHANICS • GESTÃO 3.0</div><h1 id="pageTitle">Visão geral da mecânica</h1><p id="pageDescription">Eventos, reuniões, cursos e comunicação — tudo em um só lugar.</p></div><div class="top-actions"><button class="btn btn-outline" id="todayBtn">Ir para hoje</button><button class="btn btn-primary" id="openCreate">＋ Novo agendamento</button></div></section>
+        <section class="stats" aria-label="Indicadores do calendário">
+          <article class="metric"><span class="metric-icon red">♧</span><div><small>EVENTOS DO MÊS</small><strong id="statEvents">0</strong><span>Programação geral</span></div></article>
+          <article class="metric"><span class="metric-icon blue">◷</span><div><small>REUNIÕES</small><strong id="statMeetings">0</strong><span>Confirmar presença</span></div></article>
+          <article class="metric"><span class="metric-icon green">▤</span><div><small>CURSOS</small><strong id="statCourses">0</strong><span>Sem conflito de horários</span></div></article>
+          <article class="metric"><span class="metric-icon purple">✿</span><div><small>CAMPANHAS</small><strong id="statCampaigns">0</strong><span>Conscientização</span></div></article>
+        </section>
+        <div class="grid-body">
+          <section class="calendar-panel surface" id="calendarPanel">
+            <div class="surface-title"><div class="head-label"><span class="head-icon">▣</span><div><h2>Calendário</h2><p>Eventos, reuniões, cursos, campanhas e datas importantes</p></div></div><div class="view-switch" role="group" aria-label="Visualização de calendário"><button class="view active" data-view="month">Mês</button><button class="view" data-view="week">Semana</button><button class="view" data-view="list">Lista</button></div></div>
+            <div class="calendar-toolbar"><div class="month-control"><button id="prevMonth" aria-label="Período anterior">‹</button><strong id="monthLabel">Novembro de 2026</strong><button id="nextMonth" aria-label="Próximo período">›</button></div><div class="chips" role="group" aria-label="Filtrar itens"><button data-filter="all" class="chip active">Todos</button><button data-filter="meeting" class="chip">Reuniões</button><button data-filter="course" class="chip">Cursos</button><button data-filter="event" class="chip">Eventos</button><button data-filter="campaign" class="chip">Campanhas</button></div></div>
+            <div id="calendarContent" aria-live="polite"></div>
+            <div class="legend"><span><i class="dot blue"></i>Reunião</span><span><i class="dot orange"></i>Curso</span><span><i class="dot red"></i>Evento</span><span><i class="dot purple"></i>Campanha</span><span><i class="dot yellow"></i>Data automática</span></div>
+          </section>
+          <aside class="right-rail">
+            <section class="surface rail-card"><div class="rail-head"><span>↗</span><h3>Integração Discord</h3></div><p>Canal preparado para a próxima etapa. As mensagens só serão enviadas quando o administrador ativar a integração.</p><div class="keyline"><span>Canal configurado</span><strong>1120785992694104255</strong></div><div class="keyline"><span>Cargo a mencionar</span><strong>@detroit <em>ID pendente</em></strong></div><div class="info-chip">◉ Planejada para integração 3.0</div><small>Esta prévia não publica mensagens reais.</small></section>
+            <section class="surface rail-card"><div class="rail-head"><span>♜</span><h3>Permissões de gestão</h3></div><div class="perm-line"><span>Relações Públicas</span><b>Calendário / RP</b></div><div class="perm-line"><span>Supervisor</span><b>Gestão geral</b></div><div class="perm-line"><span>Chief / Owner</span><b>Controle total</b></div><div class="perm-line"><span>Instrutores</span><b>Seus cursos</b></div><small>As permissões reais serão validadas no servidor e no banco.</small></section>
+            <section class="surface rail-card rail-course"><div class="rail-head"><span>▤</span><h3>Cursos sem conflitos</h3></div><p>Dois cursos não poderão ocorrer simultaneamente, mesmo quando ministrados por instrutores diferentes.</p><button class="btn btn-outline full" id="scheduleCourse">Agendar curso</button></section>
+          </aside>
+        </div>
+        <section class="bottom-cards">
+          <article class="surface list-card"><div class="list-head"><h3>✦ Próximos eventos</h3><button data-open-screen="events">Ver todos ›</button></div><div id="upcomingEvents"></div></article>
+          <article class="surface list-card"><div class="list-head"><h3>◷ Próximas reuniões</h3><button data-open-screen="meetings">Ver todas ›</button></div><div id="upcomingMeetings"></div></article>
+          <article class="surface list-card"><div class="list-head"><h3>▤ Cursos e treinamentos</h3><button data-open-screen="courses">Ver cursos ›</button></div><div id="upcomingCourses"></div></article>
+          <article class="surface list-card"><div class="list-head"><h3>✿ Campanhas e datas</h3><button data-open-screen="rp">Ver campanhas ›</button></div><div id="upcomingCampaigns"></div></article>
+        </section>
+        <section class="surface manage-section" aria-labelledby="manageHeading">
+          <div class="manage-toolbar"><div><h2 id="manageHeading" style="font-size:17px;margin:0 0 6px">Gerenciar agendamentos</h2><p style="font-size:11px;color:#9eacba;margin:0">Edição e cancelamento com permissões do Supabase. Cursos possuem bloqueio de conflitos diretamente no banco.</p></div><button class="btn btn-outline" id="reloadManage" type="button">Atualizar lista</button></div>
+          <div id="managementList" aria-live="polite"><p class="empty">Conecte sua conta para consultar os compromissos.</p></div>
+        </section>
+        <section class="surface manage-section" id="rpCommsSection" hidden>
+          <div class="list-head"><h3>📣 Comunicados de Relações Públicas</h3></div>
+          <p style="font-size:12px;color:#a7b4c1">Prepare mensagens para o canal de comunicados. Até a integração ser ativada, nada é enviado.</p>
+          <form id="commForm" style="display:grid;gap:10px">
+            <div class="modal-grid"><label>Título<input name="titulo" maxlength="140" required placeholder="Comunicado Detroit Mechanics"></label><label>Programar envio (opcional)<input type="datetime-local" name="programado"></label></div>
+            <label>Mensagem<textarea name="mensagem" maxlength="1900" rows="3" required placeholder="Escreva o comunicado..." style="width:100%;padding:11px;border:1px solid #36434e;border-radius:9px;background:#101923;color:#fff"></textarea></label>
+            <div class="check-row"><input id="commMention" type="checkbox" name="marcar"><label for="commMention">Mencionar cargo @detroit quando enviar</label></div>
+            <div style="display:flex;gap:8px;justify-content:flex-end"><button id="commSaveDraft" class="btn btn-outline" type="button">Salvar rascunho</button><button class="btn btn-primary" type="submit">Programar / Publicar</button></div>
+            <div id="commMessage" role="status" style="font-size:11px;color:#b4c2ce"></div>
+          </form>
+        </section>
+        <section class="surface working-note"><strong>Visão técnica:</strong> Esta etapa está integrada ao Supabase para membros autenticados. Os registros criados ficam no banco oficial e aparecem para usuários autorizados. Notificações Discord permanecem DESATIVADAS até a ativação administrativa. Os módulos legados ainda permanecem na versão 2.9. Integração Supabase, mensagens Discord ou concessão de permissões nesta etapa.</section>
+      <div id="authStatus" role="status" aria-live="polite" style="position:fixed;bottom:16px;right:16px;z-index:90;max-width:440px;background:#161e27;border:1px solid #465361;border-radius:11px;padding:12px 16px;font-size:13px;box-shadow:0 10px 30px #0009">Verificando acesso ao Supabase...</div>
+      </main>
+    </div>
+  </div>
+  <dialog id="createDialog" aria-labelledby="dialogTitle">
+    <form id="eventForm" method="dialog" novalidate>
+      <div class="modal-head"><div><div class="eyebrow">GESTÃO DETROIT 3.0</div><h2 id="dialogTitle">Novo agendamento</h2><p>Cadastro real no Supabase; permissões e bloqueios validados pelo banco</p></div><button type="button" id="closeDialog" class="close" aria-label="Fechar">×</button></div>
+      <div class="modal-grid"><label>Tipo<select name="type" id="newType"><option value="event">Evento</option><option value="meeting">Reunião</option><option value="course">Curso</option><option value="campaign">Campanha</option></select></label><label>Local / referência<input name="owner" maxlength="100" value="Detroit Mechanics"></label></div>
+      <label>Título<input name="title" id="newTitle" placeholder="Nome do compromisso" maxlength="90" required></label>
+      <div class="modal-grid"><label>Início<input type="datetime-local" id="newStart" name="start" required></label><label>Término<input type="datetime-local" id="newEnd" name="end" required></label></div>
+      <label id="audienceWrap">Público-alvo<select id="audience" name="audience"><option value="equipe">Toda a equipe</option><option value="lideranca">Somente liderança</option><option value="instrutores">Somente instrutores</option><option value="rp">Somente Relações Públicas</option></select></label>
+      <label class="course-vagas" id="courseVagas" style="display:none">Vagas do curso<input type="number" name="vagas" min="1" max="1000" value="10"></label>
+      <label>Descrição<textarea name="description" maxlength="400" rows="3" placeholder="Informações para a agenda..."></textarea></label>
+      <div class="check-row" id="discordOption"><input type="checkbox" id="previewDiscord" name="notifyDiscord"><label for="previewDiscord">Publicar também no Discord (somente compromissos destinados a toda a equipe)</label></div>
+      <p style="margin:0;color:#9eacba;font-size:11px">Cursos novos poderão ser publicados automaticamente quando a integração for ativada. Reuniões e eventos são publicados apenas se você marcar esta opção.</p>
+      <div id="formError" class="form-error" role="alert" hidden></div>
+      <div class="modal-foot"><button type="button" class="btn btn-outline" id="cancelDialog">Cancelar</button><button type="submit" class="btn btn-primary" id="saveSubmit">Salvar no Supabase</button></div>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>const q = new URLSearchParams(location.search);if(q.get("embed")==="1") document.body.classList.add("embed");if(q.get("compact")==="1") document.body.classList.add("compact");</script>
+<script type="module">
+import {createClient} from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+/* Detroit Mechanics 3.0 - Etapa 2E, gerenciamento de agenda e cursos, sem envios Discord. */
+'use strict';
+const $ = id => document.getElementById(id);
+const initialEvents = [];
+let campaigns = [];
+const kindNames={meeting:'Reunião',course:'Curso',event:'Evento',campaign:'Campanha',date:'Data automática'};
+const supabase=createClient('https://xgkvufuawoenbgfrcpfc.supabase.co', 'sb_publishable_UqEmUACvcUcqeqkDHGjqQg_Dmairqoo');
+let session=null, canAgenda=false,canInstrutor=false, isLeader=false, memberId=null, loadGeneration=0, editContext=null;
+let events=[...initialEvents];
+let view='month', filter='all', screen='dashboard', search='', cursor=new Date(new Date().getFullYear(),new Date().getMonth(),1), nextId=7, toastTimeout;
+const toParts=iso=>iso.split('T')[0].split('-').map(Number);
+const justDate=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+const parseLocal=s=>new Date(s);
+const sameDay=(a,b)=>justDate(a)===justDate(b);
+const niceDate=s=>new Intl.DateTimeFormat('pt-BR',{day:'2-digit',month:'short'}).format(parseLocal(s));
+const niceTime=s=>s.slice(11,16);
+const monthLabel=d=>new Intl.DateTimeFormat('pt-BR',{month:'long',year:'numeric'}).format(d);
+const htmlEscape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function allEntries(){
+ const result=[...events];
+ for (const rule of campaigns) {
+   const yr=cursor.getFullYear(),m=Number(rule.mes)-1,mm=String(m+1).padStart(2,'0'),dd=rule.dia||1;
+   if(!Number.isInteger(m)||m<0||m>11||dd>new Date(yr,m+1,0).getDate())continue;
+   const day=String(dd).padStart(2,'0');
+   result.push({id:'auto-'+rule.codigo+'-'+yr,type:rule.categoria==='conscientizacao'?'campaign':'date',title:rule.titulo,
+     start:`${yr}-${mm}-${day}T00:00`,end:`${yr}-${mm}-${day}T23:59`,owner:'Calendário institucional',description:rule.descricao,automatic:true});
+ }
+ return result;
+}
+function filteredEntries(){return allEntries().filter(e=>(filter==='all'||filter===e.type)&&(e.title+' '+e.owner+' '+e.description).toLocaleLowerCase('pt-BR').includes(search)).sort((a,b)=>a.start.localeCompare(b.start));}
+function thisMonth(e){const d=parseLocal(e.start);return d.getFullYear()===cursor.getFullYear()&&d.getMonth()===cursor.getMonth()}
+function fmtDay(date){return new Intl.DateTimeFormat('pt-BR',{weekday:'short',day:'2-digit',month:'short'}).format(date)}
+function renderCalendar(){
+  $('monthLabel').textContent=monthLabel(cursor);
+  document.querySelectorAll('.view').forEach(b=>b.classList.toggle('active',b.dataset.view===view));
+  document.querySelectorAll('.chip').forEach(b=>b.classList.toggle('active',b.dataset.filter===filter));
+  if(view==='month')renderMonth(); else if(view==='week')renderWeek(); else renderList();
+  renderDashboard();
+  renderManagementList();
+}
+function renderMonth(){
+  const y=cursor.getFullYear(),m=cursor.getMonth(),first=new Date(y,m,1),start=new Date(y,m,1-first.getDay());
+  const nDays=new Date(y,m+1,0).getDate();const cells=Math.ceil((first.getDay()+nDays)/7)*7;
+  const entries=filteredEntries();
+  let h='<div class="month-grid">'+['DOM','SEG','TER','QUA','QUI','SEX','SÁB'].map(d=>`<div class="week-day">${d}</div>`).join('');
+  for(let i=0;i<cells;i++){
+    const d=new Date(start.getFullYear(),start.getMonth(),start.getDate()+i);const date=justDate(d),items=entries.filter(e=>e.start.slice(0,10)===date);let className='day-cell'+(d.getMonth()!==m?' other':'')+(sameDay(d,new Date())?' today':'');
+    h+=`<div class="${className}" data-date="${date}"><span class="day-number">${d.getDate()}</span>`+items.slice(0,3).map(e=>`<span class="event-pill ${e.type}" title="${htmlEscape(e.title+' • '+(e.automatic?'Data automática':niceTime(e.start)))}">${htmlEscape(e.title)}${e.automatic?'':`<small>${niceTime(e.start)}</small>`}</span>`).join('')+(items.length>3?`<span class="kind">+${items.length-3}</span>`:'')+'</div>';
+  }
+  $('calendarContent').innerHTML=h+'</div>';
+}
+function renderWeek(){
+  const date=new Date(cursor);const day=date.getDay();const start=new Date(date.getFullYear(),date.getMonth(),date.getDate()-day);const entries=filteredEntries();let h='<div class="week-list">';
+  for(let i=0;i<7;i++){const d=new Date(start.getFullYear(),start.getMonth(),start.getDate()+i),items=entries.filter(e=>e.start.slice(0,10)===justDate(d));h+=`<div class="agenda-row"><div><b>${fmtDay(d)}</b><small>${items.length?items.map(e=>htmlEscape(e.title)).join(' • '):'Sem compromissos'}</small></div><span class="kind">${items.length} item(ns)</span></div>`} $('calendarContent').innerHTML=h+'</div>';
+}
+function renderList(){
+ const items=filteredEntries().filter(thisMonth);
+ $('calendarContent').innerHTML='<div class="list-view">'+(items.length?items.map(e=>`<div class="agenda-row"><div><b>${htmlEscape(e.title)}</b><small>${niceDate(e.start)}${e.automatic?'':' • '+niceTime(e.start)} • ${htmlEscape(e.owner)}</small></div><span class="kind ${e.type}">${kindNames[e.type]}</span></div>`).join(''):'<div class="empty">Nenhum item encontrado com esse filtro.</div>')+'</div>';
+}
+function rowsInto(id,type){const items=allEntries().filter(e=>e.type===type&&thisMonth(e)&&(!search||e.title.toLocaleLowerCase('pt-BR').includes(search))).sort((a,b)=>a.start.localeCompare(b.start)).slice(0,3);$(id).innerHTML=items.length?items.map(e=>`<div class="agenda-line"><div class="datechip">${e.start.slice(8,10)}<small>${new Intl.DateTimeFormat('pt-BR',{month:'short'}).format(parseLocal(e.start)).toUpperCase()}</small></div><div><strong>${htmlEscape(e.title)}</strong><small>${e.automatic?'Data automática anual':niceTime(e.start)+' • '+htmlEscape(e.owner)}</small></div></div>`).join(''):'<div class="empty">Nada cadastrado para este mês.</div>'}
+function renderDashboard(){
+  $('statEvents').textContent=events.filter(e=>e.type==='event'&&thisMonth(e)).length;
+  $('statMeetings').textContent=events.filter(e=>e.type==='meeting'&&thisMonth(e)).length;
+  $('statCourses').textContent=events.filter(e=>e.type==='course'&&thisMonth(e)).length;
+  $('statCampaigns').textContent=allEntries().filter(e=>e.type==='campaign'&&thisMonth(e)).length;
+  rowsInto('upcomingEvents','event');rowsInto('upcomingMeetings','meeting');rowsInto('upcomingCourses','course');rowsInto('upcomingCampaigns','campaign');
+}
+const screenData={
+ dashboard:['Visão geral da mecânica','Eventos, reuniões, cursos e comunicação — tudo em um só lugar.','all'],
+ calendar:['Calendário de atividades','Agenda unificada com filtros, modos de visualização e validação de horário.','all'],
+ events:['Eventos e campanhas','Acompanhe as ações e comunicados de Relações Públicas.','event'],
+ meetings:['Reuniões da equipe','Agendamento, confirmação de presença e histórico planejados.','meeting'],
+ courses:['Central de cursos e instrutores','Agende turmas sem conflitos de horário e gerencie inscrições.','course'],
+ personal:['Minha Central','Suas atividades, presenças, cursos e pendências serão reunidos aqui.','all'],
+ rp:['Relações Públicas','Campanhas, comunicados, publicações agendadas e datas automáticas.','campaign'],
+ discord:['Integração com Discord','Canal definido, com fila confiável e menções controladas previstas para 3.0.','all'],
+ legacy:['Módulos existentes preservados','Recrutamento, membros, horas, advertências e auditoria continuam na versão 2.9 até a integração final.','all']
+};
+function chooseScreen(name){
+ screen=name;const data=screenData[name]||screenData.dashboard; $('pageTitle').textContent=data[0];$('pageDescription').textContent=data[1];filter=data[2];
+ document.querySelectorAll('.nav-item').forEach(el=>el.classList.toggle('active',el.dataset.screen===name));
+ $('calendarPanel').scrollIntoView({behavior:'smooth',block:'nearest'});renderCalendar();
+ if(name==='legacy')notify('Acesse os módulos legados pelo site 2.9; esta tela de homologação não os modifica.');
+}
+function notify(message){const n=$('toast');n.textContent=message;n.classList.add('show');clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>n.classList.remove('show'),3800)}
+function dateLocalInput(d){const pad=x=>String(x).padStart(2,'0');return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`}
+function setStatus(message,ok=false){const el=$('authStatus');el.textContent=message;el.style.borderColor=ok?'#398a69':'#a95454';}
+function spFromIso(iso){return new Intl.DateTimeFormat('sv-SE',{timeZone:'America/Sao_Paulo',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).format(new Date(iso)).replace(' ','T')}
+function spISOString(local){return `${local}:00-03:00`;}
+function monthBounds(){const y=cursor.getFullYear(),m=cursor.getMonth();return {start:spISOString(`${justDate(new Date(y,m-1,1))}T00:00`),end:spISOString(`${justDate(new Date(y,m+2,1))}T00:00`)}}
+function errorInfo(err){return err?.message||'Erro desconhecido';}
+function canManageEntry(item){
+ if(!session||!item||item.automatic||item.status==='cancelado'||item.status==='cancelada'||item.status==='concluida')return false;
+ if(item.type==='course')return Boolean(canInstrutor && (isLeader || Number(item.instructorId)===Number(memberId)));
+ return Boolean(canAgenda && item.origin==='manual');
+}
+function renderManagementList(){
+ const target=$('managementList');if(!target)return;
+ if(!session){target.innerHTML='<p class="empty">Entre no painel para consultar os agendamentos.</p>';return;}
+ const data=events.filter(e=>thisMonth(e)).sort((a,b)=>a.start.localeCompare(b.start));
+ if(!data.length){target.innerHTML='<p class="empty">Não há eventos, reuniões ou cursos neste mês.</p>';return;}
+ target.innerHTML=data.map(e=>{
+  const manage=canManageEntry(e);
+  const label=kindNames[e.type]||'Agenda';
+  const id=htmlEscape(e.id);
+  return `<div class="manage-row"><div class="manage-text"><strong>${htmlEscape(e.title)}</strong><small>${htmlEscape(label)} • ${niceDate(e.start)} às ${niceTime(e.start)}–${niceTime(e.end)} • ${htmlEscape(e.owner)}${e.audience&&e.type!=='course'?' • '+htmlEscape(e.audience):''}</small></div>`+
+  (manage?`<div class="manage-actions"><button type="button" class="btn btn-outline" data-manage="edit" data-entry="${id}">Editar</button><button type="button" class="btn danger-action" data-manage="cancel" data-entry="${id}">Cancelar</button></div>`:`<span class="manage-label">Consulta</span>`)+`</div>`;
+ }).join('');
+}
+function resetEdit(){editContext=null;$('dialogTitle').textContent='Novo agendamento';$('saveSubmit').textContent='Salvar no Supabase';$('newType').disabled=false;}
+function openEdit(id){
+ const item=events.find(e=>e.id===id);
+ if(!canManageEntry(item)){notify('Você não possui permissão para editar este registro.');return;}
+ editContext={id:item.id,type:item.type};
+ $('eventForm').reset();$('formError').hidden=true;
+ $('dialogTitle').textContent='Editar '+(kindNames[item.type]||'agendamento').toLowerCase();
+ $('saveSubmit').textContent='Salvar alterações';
+ $('newType').value=item.type;$('newType').disabled=true;
+ $('newTitle').value=item.title;
+ $('newStart').value=item.start;$('newEnd').value=item.end;
+ $('eventForm').elements.owner.value=item.owner;
+ $('eventForm').elements.description.value=item.description;
+ $('eventForm').elements.vagas.value=item.vagas||10;
+ $('audience').value=item.audience||'equipe';$('previewDiscord').checked=Boolean(item.notifyDiscord);
+ toggleCourseVagas();$('createDialog').showModal();
+}
+async function cancelEntry(id){
+ const item=events.find(e=>e.id===id);
+ if(!canManageEntry(item)){notify('Acesso negado para cancelar este registro.');return;}
+ if(!window.confirm(`Cancelar ${kindNames[item.type]||'agendamento'} “${item.title}”? Essa ação não exclui o histórico e NÃO envia aviso ao Discord.`))return;
+ try{
+  if(item.type==='course'){
+   const {data,error}=await supabase.rpc('detroit_30_cancelar_turma',{p_turma_id:Number(id.slice(1))});
+   if(error)throw error;if(data!==true)throw Error('Não foi possível cancelar esta turma.');
+  }else{
+   const {data,error}=await supabase.from('detroit_30_agenda')
+    .update({situacao:'cancelado',notificar_discord:false,atualizado_em:new Date().toISOString()})
+    .eq('id',Number(id.slice(1))).neq('situacao','cancelado').select('id');
+   if(error)throw error;if(!data?.length)throw Error('Registro não encontrado ou permissão insuficiente.');
+  }
+  notify('Agendamento cancelado. Se já havia anúncio, o bot atualizará após a ativação.');
+  await loadData();
+ }catch(err){notify('Não foi possível cancelar: '+errorInfo(err));console.error('Detroit 3.0 cancelamento:',err)}
+}
+async function connect(){
+ try{
+  const {data,error}=await supabase.auth.getSession();if(error)throw error;
+  session=data?.session;
+  if(!session){canAgenda=false;canInstrutor=false;isLeader=false;memberId=null;events=[];renderCalendar();setStatus('Sessão não encontrada. Entre no painel oficial pelo Discord nesta mesma origem para acessar a agenda.');$('openCreate').disabled=true;$('scheduleCourse').disabled=true;renderCalendar();return;}
+  const [a,c,l,m]=await Promise.all([
+    supabase.rpc('detroit_30_pode_agenda'),supabase.rpc('detroit_30_pode_instrutor'),
+    supabase.rpc('detroit_30_e_lider'),supabase.rpc('detroit_30_meu_membro_id')]);
+  if(a.error||c.error||l.error||m.error)throw (a.error||c.error||l.error||m.error);
+  canAgenda=a.data===true;canInstrutor=c.data===true;isLeader=l.data===true;memberId=m.data;
+  if(!canAgenda)for(const op of [...$('newType').options])if(op.value!=='course')op.disabled=true;
+  if(!canInstrutor)for(const op of [...$('newType').options])if(op.value==='course')op.disabled=true;
+  $('rpCommsSection').hidden=!canAgenda;
+  $('openCreate').disabled=!(canAgenda||canInstrutor);
+  $('scheduleCourse').disabled=!canInstrutor;
+  setStatus('Supabase conectado • Integração Discord depende de ativação pelo administrador',true);
+  await loadData();
+ }catch(err){setStatus('Erro de autenticação/acesso: '+errorInfo(err));console.error('Detroit 3.0 conexão:',err)}
+}
+async function loadData(){
+ if(!session)return;
+ const generation=++loadGeneration;
+ const {start,end}=monthBounds();
+ try{
+  const [ag,tu,cu,dt]=await Promise.all([
+   supabase.from('detroit_30_agenda').select('id,tipo,titulo,descricao,inicio,fim,local_texto,situacao,origem,publico,criado_por,notificar_discord').gte('fim',start).lt('inicio',end).order('inicio').limit(500),
+   supabase.from('detroit_30_turmas').select('id,curso_id,inicio,fim,situacao,vagas,local_texto,instrutor_membro_id,criado_por').gte('fim',start).lt('inicio',end).in('situacao',['agendada','confirmada','concluida']).limit(500),
+   supabase.from('detroit_30_cursos').select('id,titulo,ementa,situacao').limit(1000),
+   supabase.from('detroit_30_datas_automaticas').select('codigo,titulo,descricao,mes,dia,categoria').eq('ativo',true).limit(100)
+  ]);
+  for(const response of [ag,tu,cu,dt])if(response.error)throw response.error;
+  if(generation!==loadGeneration)return;
+  const names=new Map((cu.data||[]).map(c=>[c.id,c]));
+  events=[...(ag.data||[]).filter(r=>r.situacao!=='cancelado').map(r=>({
+    id:'a'+r.id,type:({'reuniao':'meeting','evento':'event','campanha':'campaign','conscientizacao':'campaign','comemorativa':'date','aviso':'event'}[r.tipo]||'event'),
+    title:r.titulo,start:spFromIso(r.inicio),end:spFromIso(r.fim),description:r.descricao||'',owner:r.local_texto||'Detroit Mechanics',
+    status:r.situacao,origin:r.origem,audience:r.publico,createdBy:r.criado_por,notifyDiscord:r.notificar_discord
+  })),...(tu.data||[]).map(r=>({id:'t'+r.id,type:'course',title:names.get(r.curso_id)?.titulo||'Curso da equipe',start:spFromIso(r.inicio),end:spFromIso(r.fim),description:names.get(r.curso_id)?.ementa||'',owner:r.local_texto||'Detroit Mechanics',
+     status:r.situacao,instructorId:r.instrutor_membro_id,createdBy:r.criado_por,vagas:r.vagas,courseId:r.curso_id}))];
+  campaigns=dt.data||[];renderCalendar();
+  setStatus(`Supabase conectado • ${events.length} agendamentos consultados • Envio Discord controlado`,true);
+ }catch(err){setStatus('Erro ao consultar agenda: '+errorInfo(err));console.error('Detroit 3.0 carregamento:',err)}
+}
+function toggleCourseVagas(){const course=$('newType').value==='course';$('courseVagas').style.display=course?'block':'none';$('audienceWrap').style.display=course?'none':'grid';$('discordOption').style.display=(course||$('audience').value!=='equipe')?'none':'flex';if(course||$('audience').value!=='equipe')$('previewDiscord').checked=false;}
+function openCreate(type='event'){
+ if(!session){notify('Faça login no painel oficial primeiro.');return;}
+ if(type==='course'&&!canInstrutor){notify('Sua conta não tem permissão para agendar cursos.');return;}
+ if(type!=='course'&&!canAgenda){notify('Sua conta não tem permissão para agendar eventos ou reuniões.');return;}
+ resetEdit();$('eventForm').reset();$('newType').value=(canAgenda?type:'course');$('previewDiscord').checked=false;$('formError').hidden=true;toggleCourseVagas();
+ const d=new Date(),now=spFromIso(d.toISOString());
+ const begin=new Date(d.getTime()+3600000);begin.setMinutes(0,0,0);
+ $('newStart').value=spFromIso(begin.toISOString());$('newEnd').value=spFromIso(new Date(begin.getTime()+3600000).toISOString());
+ $('createDialog').showModal();
+}
+async function saveLive(e){
+ e.preventDefault();if(!session)return;
+ const form=$('eventForm'),v=Object.fromEntries(new FormData(form).entries()),err=$('formError');err.hidden=true;
+ v.type=editContext?.type||v.type; // Select desabilitado durante edicao nao participa do FormData.
+ const start=Date.parse(spISOString(v.start)),end=Date.parse(spISOString(v.end));
+ if(!v.title?.trim()||!Number.isFinite(start)||!Number.isFinite(end)||end<=start){err.textContent='Informe título e horários válidos.';err.hidden=false;return;}
+ const submit=form.querySelector('button[type=submit]');submit.disabled=true;
+ try{
+  if(v.type==='course'){
+   if(!canInstrutor)throw Error('Seu cargo não pode gerenciar cursos.');
+   if(end-start<15*60000 || end-start>24*3600000)throw Error('Cursos devem durar entre 15 minutos e 24 horas.');
+   // Feedback visual; a restrição do PostgreSQL é a autoridade definitiva.
+   const collision=events.find(x=>x.type==='course'&&x.id!==editContext?.id&&start<Date.parse(spISOString(x.end))&&end>Date.parse(spISOString(x.start)));
+   if(collision)throw Error(`Conflito com curso existente: ${collision.title}`);
+   const params={p_titulo:v.title.trim(),p_ementa:v.description||'',p_inicio:spISOString(v.start),p_fim:spISOString(v.end),
+      p_vagas:Number(v.vagas||10),p_local_texto:v.owner||null};
+   const {data,error}=editContext
+     ?await supabase.rpc('detroit_30_editar_turma',{p_turma_id:Number(editContext.id.slice(1)),...params})
+     :await supabase.rpc('detroit_30_criar_curso_agendado',params);
+   if(error)throw error;
+   if(editContext&&data!==true)throw Error('Turma não foi alterada.');
+  }else{
+   if(!canAgenda)throw Error('Seu cargo não pode gerenciar eventos ou reuniões.');
+   const tipo=({event:'evento',meeting:'reuniao',campaign:'campanha'})[v.type];if(!tipo)throw Error('Tipo de evento inválido');
+   if(!['equipe','lideranca','instrutores','rp'].includes(v.audience))throw Error('Público inválido');
+   const record={titulo:v.title.trim(),descricao:v.description||'',inicio:spISOString(v.start),fim:spISOString(v.end),
+    local_texto:v.owner||null,publico:v.audience,notificar_discord:Boolean(v.notifyDiscord==='on' && v.audience==='equipe'),atualizado_em:new Date().toISOString()};
+   if(editContext){
+    const {data,error}=await supabase.from('detroit_30_agenda').update(record)
+       .eq('id',Number(editContext.id.slice(1))).eq('origem','manual').neq('situacao','cancelado').select('id');
+    if(error)throw error;if(!data?.length)throw Error('Agenda não alterada: verifique permissão e situação.');
+   }else{
+    const {error}=await supabase.from('detroit_30_agenda').insert({...record,tipo,situacao:'publicado',origem:'manual',dia_inteiro:false,criado_por:session.user.id});
+    if(error)throw error;
+   }
+  }
+  cursor=new Date(v.start+'-03:00');filter='all';search='';$('globalSearch').value='';view='month';form.closest('dialog').close();
+  notify((editContext?'Alterações salvas':'Agendamento criado')+' no Supabase. O aviso Discord depende da ativação e das opções do registro.');resetEdit();await loadData();
+ }catch(ex){err.textContent=ex.code==='23P01'?'Já existe um curso agendado neste intervalo. Escolha outro horário.':errorInfo(ex);err.hidden=false;console.error('Detroit 3.0 cadastro:',ex)}
+ finally{submit.disabled=false}
+}
+document.querySelectorAll('.nav-item').forEach(b=>b.addEventListener('click',()=>chooseScreen(b.dataset.screen)));
+document.querySelectorAll('[data-open-screen]').forEach(b=>b.addEventListener('click',()=>chooseScreen(b.dataset.openScreen)));
+document.querySelectorAll('.view').forEach(b=>b.addEventListener('click',()=>{view=b.dataset.view;renderCalendar()}));
+document.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{filter=b.dataset.filter;renderCalendar()}));
+$('prevMonth').addEventListener('click',()=>{cursor=view==='week'?new Date(cursor.getFullYear(),cursor.getMonth(),cursor.getDate()-7):new Date(cursor.getFullYear(),cursor.getMonth()-1,1);renderCalendar();loadData()});
+$('nextMonth').addEventListener('click',()=>{cursor=view==='week'?new Date(cursor.getFullYear(),cursor.getMonth(),cursor.getDate()+7):new Date(cursor.getFullYear(),cursor.getMonth()+1,1);renderCalendar();loadData()});
+$('todayBtn').addEventListener('click',()=>{cursor=new Date();renderCalendar();loadData()});
+$('globalSearch').addEventListener('input',e=>{search=e.target.value.trim().toLocaleLowerCase('pt-BR');renderCalendar()});
+$('openCreate').addEventListener('click',()=>openCreate());$('scheduleCourse').addEventListener('click',()=>openCreate('course'));
+$('closeDialog').addEventListener('click',()=>$('createDialog').close());$('cancelDialog').addEventListener('click',()=>$('createDialog').close());
+$('newType').addEventListener('change',toggleCourseVagas);$('audience').addEventListener('change',toggleCourseVagas);
+$('eventForm').addEventListener('submit',saveLive);
+$('reloadManage').addEventListener('click',loadData);
+$('managementList').addEventListener('click',async e=>{
+ const control=e.target.closest('button[data-manage]');if(!control)return;
+ const id=control.dataset.entry;if(!/^[at]\d+$/.test(id))return;
+ if(control.dataset.manage==='edit')openEdit(id);
+ if(control.dataset.manage==='cancel')await cancelEntry(id);
+});
+async function saveComunicado(asDraft=false){
+ if(!session||!canAgenda)return;
+ const form=$('commForm'),input=new FormData(form);
+ const title=String(input.get('titulo')||'').trim(),message=String(input.get('mensagem')||'').trim();
+ const target=$('commMessage');
+ if(title.length<3||message.length<3){target.textContent='Informe título e mensagem.';return;}
+ const scheduled=String(input.get('programado')||'');
+ const future=scheduled&&Date.parse(spISOString(scheduled))>Date.now()?spISOString(scheduled):null;
+ const situation=asDraft?'rascunho':future?'agendado':'aprovado';
+ const submit=form.querySelector('button[type=submit]');submit.disabled=true;
+ try{
+  const {error}=await supabase.from('detroit_30_comunicados').insert({titulo:title,mensagem:message,
+   situacao:situation,programado_para:future,marcar_detroit:input.get('marcar')==='on',criado_por:session.user.id});
+  if(error)throw error;
+  target.textContent=asDraft?'Rascunho salvo.':'Comunicado salvo. Publicação condicionada à ativação do bot.';
+  form.reset();
+ }catch(err){target.textContent='Erro: '+errorInfo(err)}finally{submit.disabled=false;}
+}
+$('commForm').addEventListener('submit',e=>{e.preventDefault();saveComunicado(false)});
+$('commSaveDraft').addEventListener('click',()=>saveComunicado(true));
+renderCalendar();connect();
+supabase.auth.onAuthStateChange((event)=>{if(event==='SIGNED_IN'||event==='SIGNED_OUT')setTimeout(connect,0)});
+
+
+
+// Only same-origin parent can adjust the embedded calendar view.
+window.addEventListener('message', e=>{
+ if(e.origin!==location.origin || !e.data || e.data.source!=='detroit-parent')return;
+ const {type,filter:requested,action}=e.data;
+ if(type==='dm3-search'){$('globalSearch')?.focus();return;}
+ if(type!=='dm3-filter')return;
+ const allowed=['all','event','meeting','campaign','date','course'];
+ if(allowed.includes(requested))filter=requested;
+ view='month';renderCalendar();
+ if(action==='new'&&canAgenda)openCreate('event');
+});
+</script>
+</body>
+</html>
