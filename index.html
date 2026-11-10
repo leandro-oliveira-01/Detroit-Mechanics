@@ -345,6 +345,15 @@ body:has(#adminPanel:not(.hidden)) #viewAccess{padding:0!important;margin:0}
  #adminPanel .d3-nav-more .d3-subnav button{width:auto!important;flex:1 1 auto!important;font-size:12px}
 }
 
+
+/* Detroit Mechanics 3.0 — consulta flexível de horas por intervalo de datas */
+#worktimeSection .p30-date-filters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-items:end;margin:8px 0 10px}
+#worktimeSection .p30-date-filters .field{min-width:0}
+#worktimeSection .p30-date-filters input,#worktimeSection .p30-date-filters select{width:100%;min-width:0}
+#worktimeSection .p30-date-filters #workRefresh{grid-column:1/-1;justify-self:start;min-width:170px}
+#worktimeSection .p30-range-feedback{font-size:12px;color:#aab3c1;line-height:1.6;margin:2px 0 12px}
+@media(max-width:780px){#worktimeSection .p30-date-filters{grid-template-columns:repeat(2,minmax(0,1fr))}#worktimeSection .p30-date-filters .p30-employee{grid-column:1/-1}}
+@media(max-width:540px){#worktimeSection .p30-date-filters{grid-template-columns:1fr}#worktimeSection .p30-date-filters .p30-employee{grid-column:auto}#worktimeSection .p30-date-filters #workRefresh{width:100%;justify-self:stretch}}
 </style>
 </head>
 <body>
@@ -663,19 +672,21 @@ body:has(#adminPanel:not(.hidden)) #viewAccess{padding:0!important;margin:0}
         </form>
       </div>
       <div class="p25-stat-grid p26-stat-grid">
-        <div class="staff-stat"><small>Horas da semana</small><strong id="workHours">—</strong></div>
+        <div class="staff-stat"><small>Horas do período</small><strong id="workHours">—</strong></div>
         <div class="staff-stat"><small>Jornadas registradas</small><strong id="workClosed">—</strong></div>
         <div class="staff-stat"><small>Funcionários com ponto</small><strong id="workPeople">—</strong></div>
       </div>
       <div class="p25-control-card">
-        <div class="p25-card-head"><strong>Horas e lançamentos da semana</strong><small>Selecione qualquer dia da semana desejada. Os totais são atualizados após salvar, editar ou excluir.</small></div>
-        <div class="p25-grid p26-filters">
-          <div class="field"><label for="workWeek">Semana de referência</label><input id="workWeek" type="date"></div>
-          <div class="field"><label for="workFilterMember">Mostrar registros de</label><select id="workFilterMember"><option value="">Toda a equipe</option></select></div>
-          <button type="button" class="p25-button p25-span" id="workRefresh">Atualizar registros</button>
+        <div class="p25-card-head"><strong>Apropriação de horas dos colaboradores</strong><small>Escolha a data inicial e a data final. A consulta considera a data da entrada e inclui a duração integral do turno, mesmo quando a saída ocorre no dia seguinte.</small></div>
+        <div class="p30-date-filters">
+          <div class="field"><label for="workDateStart">Data inicial</label><input id="workDateStart" type="date" aria-label="Data inicial da consulta"></div>
+          <div class="field"><label for="workDateEnd">Data final</label><input id="workDateEnd" type="date" aria-label="Data final da consulta"></div>
+          <div class="field p30-employee"><label for="workFilterMember">Colaborador</label><select id="workFilterMember"><option value="">Todos os funcionários</option></select></div>
+          <button type="button" class="p25-button primary" id="workRefresh">Consultar período</button>
         </div>
-        <div class="p25-card-head p26-summary-title"><strong>Resumo semanal por funcionário</strong></div>
-        <div id="workSummary" class="p25-people"><div class="empty">Escolha uma semana para consultar.</div></div>
+        <div id="workRangeFeedback" class="p30-range-feedback" role="status" aria-live="polite">Selecione as datas e clique em Consultar período.</div>
+        <div class="p25-card-head p26-summary-title"><strong>Resumo por funcionário no período</strong></div>
+        <div id="workSummary" class="p25-people"><div class="empty">Escolha um período para consultar.</div></div>
       </div>
       <div class="p25-control-card"><div class="p25-card-head"><strong>Jornadas registradas</strong><small>Use <strong>Editar</strong> para ajustar os horários ou <strong>Excluir</strong> para retirar um lançamento incorreto dos totais. As correções ficam registradas na auditoria do sistema.</small></div><div id="workRows" class="p25-records"><div class="empty">Nenhum registro carregado.</div></div></div>
       <div class="security-note">Este controle é destinado à organização interna do servidor de roleplay e não substitui um sistema de ponto trabalhista formal. Totais exibidos em horas e minutos. Exclusões são lógicas e correções ficam na auditoria. Com a auditoria 2.7 configurada, inclusões, edições e exclusões são notificadas nos canais administrativos do Discord.</div>
@@ -1779,65 +1790,130 @@ function p26ResetForm({preserveMember=true}={}) {
   $('workCancelEdit').classList.add('hidden');
   p26Preview();
 }
+// Dados já são protegidos pela RPC oficial, inclusive nas consultas históricas.
+// Cada semana é consultada separadamente; os IDs são deduplicados entre semanas.
+let p30PontoConsultaId=0;
+function p30DataBR(data){
+ const parts=String(data||'').split('-');
+ return parts.length===3?`${parts[2]}/${parts[1]}/${parts[0]}`:String(data||'');
+}
+function p30SemanasNoPeriodo(inicio,fim){
+ const cursor=new Date(`${inicio}T12:00:00Z`),ultimo=new Date(`${fim}T12:00:00Z`);
+ cursor.setUTCDate(cursor.getUTCDate()-((cursor.getUTCDay()+6)%7));
+ const semanas=[];
+ for(;cursor<=ultimo;cursor.setUTCDate(cursor.getUTCDate()+7))semanas.push(cursor.toISOString().slice(0,10));
+ return semanas;
+}
+function p30MinutosDaJornada(row){
+ if(!row.inicio||!row.fim)return 0; // Ponto aberto: não presumir jornada trabalhada.
+ const inicio=Date.parse(row.inicio),fim=Date.parse(row.fim);
+ return Number.isFinite(inicio)&&Number.isFinite(fim)?Math.max(0,Math.round((fim-inicio)/60000)):0;
+}
 function p26FilterRecords(){
-  const chosen=$('workFilterMember').value;
-  const rows=chosen?pointSessions.filter(r=>String(r.membro_id)===chosen):pointSessions;
-  $('workRows').innerHTML=rows.length?rows.map(r=>{
-    const open=!r.fim;
-    return `<article class="p25-record"><div class="p25-record-main">
-      <strong>${escapeHTML(r.nome_rp)} <span class="p25-pill ${open?'muted':'ok'}">${open?'Incompleto (antigo)':'Registrado'}</span></strong>
-      <small>${escapeHTML(p25DateTime(r.inicio))} → ${escapeHTML(p25DateTime(r.fim))}</small>
-      <small>${escapeHTML(r.cargo)} · Lançamento #${escapeHTML(String(r.id))}</small>
-    </div><div class="p25-record-side"><span>${escapeHTML(p25FormatHours(r.horas))}</span>
-      <div class="p26-record-buttons"><button type="button" class="p25-button" data-p26-edit="${escapeHTML(String(r.id))}">✎ Editar</button>
-        <button type="button" class="p25-button p26-danger" data-p26-delete="${escapeHTML(String(r.id))}">Excluir</button></div>
-    </div></article>`;
-  }).join(''):'<div class="empty">Nenhuma jornada encontrada para este filtro.</div>';
+ const chosen=$('workFilterMember').value;
+ const rows=chosen?pointSessions.filter(r=>String(r.membro_id)===chosen):pointSessions;
+ let minutos=0,closed=0,opened=0;
+ const people=new Map();
+ for(const r of rows){
+   const m=Number(r.dm_minutos||0);minutos+=m;
+   if(r.fim)closed++;else opened++;
+   const key=String(r.membro_id);
+   const p=people.get(key)||{nome:r.nome_rp,cargo:r.cargo,minutos:0,closed:0,opened:0};
+   p.minutos+=m;
+   if(r.fim)p.closed++;else p.opened++;
+   people.set(key,p);
+ }
+ $('workHours').textContent=p25FormatHours(minutos/60);
+ $('workClosed').textContent=closed;
+ $('workPeople').textContent=people.size;
+ $('workSummary').innerHTML=people.size?[...people.values()].sort((a,b)=>b.minutos-a.minutos).map(p=>
+   `<article class="p25-record"><div class="p25-record-main"><strong>${escapeHTML(p.nome)}</strong><small>${escapeHTML(p.cargo)} · ${p.closed} jornada(s)${p.opened?' · '+p.opened+' registro(s) incompleto(s)':''}</small></div><div class="p25-record-side"><span class="p25-pill ok">${escapeHTML(p25FormatHours(p.minutos/60))}</span></div></article>`).join(''):
+   '<div class="empty">Nenhuma jornada encontrada para este período e filtro.</div>';
+ $('workRows').innerHTML=rows.length?rows.map(r=>{
+   const open=!r.fim;
+   return `<article class="p25-record"><div class="p25-record-main">
+     <strong>${escapeHTML(r.nome_rp)} <span class="p25-pill ${open?'muted':'ok'}">${open?'Incompleto (antigo)':'Registrado'}</span></strong>
+     <small>${escapeHTML(p25DateTime(r.inicio))} → ${escapeHTML(p25DateTime(r.fim))}</small>
+     <small>${escapeHTML(r.cargo)} · Lançamento #${escapeHTML(String(r.id))}</small>
+   </div><div class="p25-record-side"><span>${escapeHTML(p25FormatHours(Number(r.dm_minutos||0)/60))}</span>
+     <div class="p26-record-buttons"><button type="button" class="p25-button" data-p26-edit="${escapeHTML(String(r.id))}">✎ Editar</button>
+       <button type="button" class="p25-button p26-danger" data-p26-delete="${escapeHTML(String(r.id))}">Excluir</button></div>
+   </div></article>`;
+ }).join(''):'<div class="empty">Nenhuma jornada encontrada para este filtro.</div>';
 }
 async function renderWorktime(){
  if(!currentMember||!staffSectorAccess.includes('comite'))return;
+ const consultaId=++p30PontoConsultaId;
+ const hoje=p25Today();
+ if(!$('workDateStart').value)$('workDateStart').value=hoje.slice(0,8)+'01';
+ if(!$('workDateEnd').value)$('workDateEnd').value=hoje;
+ const inicio=$('workDateStart').value,fim=$('workDateEnd').value;
  clearMessage('worktimeMessage');
- $('workRows').innerHTML='<div class="empty">Carregando jornadas...</div>';
- try{
-  await p25LoadCrew();
-  const currentSelection=$('workMember').value;
-  p25InitializeSelect('workMember',comiteCrew.filter(m=>m.situacao==='ativo'),'Selecione um funcionário');
-  if(!p26EditingId && currentSelection)$('workMember').value=currentSelection;
-  if(!$('workManualDate').value)$('workManualDate').value=p25Today();
-  if(!$('workWeek').value)$('workWeek').value=p25Today();
-  const week=$('workWeek').value;
-  const {data,error}=await supabase.rpc('detroit_ponto_semana',{p_semana:week});
-  if(error)throw error;
-  if(activeTab!=='ponto'||week!==$('workWeek').value)return;
-  pointSessions=Array.isArray(data)?data:[];
-  const filter=$('workFilterMember'),priorFilter=filter.value;
-  const options=new Map(comiteCrew.map(m=>[String(m.id),m]));
-  filter.innerHTML='<option value="">Toda a equipe</option>'+[...options].map(([id,m])=>`<option value="${escapeHTML(id)}">${escapeHTML(m.nome_rp)}</option>`).join('');
-  if(options.has(priorFilter))filter.value=priorFilter;
-  let total=0,closed=0,opened=0;
-  const people=new Map();
-  for(const r of pointSessions){
-    const hours=Number(r.horas||0);total+=hours;
-    if(r.fim)closed++;else opened++;
-    const p=people.get(r.membro_id)||{id:r.membro_id,nome:r.nome_rp,cargo:r.cargo,hours:0,closed:0,opened:0};
-    p.hours+=hours;if(r.fim)p.closed++;else p.opened++;
-    people.set(r.membro_id,p);
-  }
-  $('workHours').textContent=p25FormatHours(total);
-  $('workClosed').textContent=closed;
-  $('workPeople').textContent=people.size;
-  $('workSummary').innerHTML=people.size?[...people.values()].sort((a,b)=>b.hours-a.hours).map(p=>
-    `<article class="p25-record"><div class="p25-record-main"><strong>${escapeHTML(p.nome)}</strong><small>${escapeHTML(p.cargo)} · ${p.closed} jornada(s)${p.opened?' · '+p.opened+' registro(s) antigo(s) incompleto(s)':''}</small></div><div class="p25-record-side"><span class="p25-pill ok">${escapeHTML(p25FormatHours(p.hours))}</span></div></article>`).join(''):
-    '<div class="empty">Nenhum lançamento nesta semana.</div>';
-  p26FilterRecords();
- }catch(e){
-  console.error('Controle de Ponto',e);
-  $('workRows').innerHTML='<div class="empty">Não foi possível carregar: '+escapeHTML(e.message||'erro desconhecido')+'</div>';
-  showMessage('worktimeMessage','Erro ao consultar os pontos: '+(e.message||'erro desconhecido'));
+ if(!inicio||!fim||inicio>fim){
+   $('workRangeFeedback').textContent='Verifique as datas: a data inicial não pode ser posterior à data final.';
+   showMessage('worktimeMessage','Informe um período válido (data inicial até data final).');
+   return;
  }
+ const semanas=p30SemanasNoPeriodo(inicio,fim);
+ const botao=$('workRefresh');
+ botao.disabled=true;
+ $('workRangeFeedback').textContent=`Consultando ${p30DataBR(inicio)} a ${p30DataBR(fim)}...`;
+ $('workRows').innerHTML='<div class="empty">Buscando jornadas no período...</div>';
+ try{
+   await p25LoadCrew();
+   if(consultaId!==p30PontoConsultaId||activeTab!=='ponto')return;
+   const selecao=$('workMember').value;
+   p25InitializeSelect('workMember',comiteCrew.filter(m=>m.situacao==='ativo'),'Selecione um funcionário');
+   if(!p26EditingId&&selecao)$('workMember').value=selecao;
+   if(!$('workManualDate').value)$('workManualDate').value=hoje;
+   const filtragem=$('workFilterMember'),escolha=filtragem.value;
+   const membros=new Map(comiteCrew.map(m=>[String(m.id),m]));
+   filtragem.innerHTML='<option value="">Todos os funcionários</option>'+[...membros].map(([id,m])=>`<option value="${escapeHTML(id)}">${escapeHTML(m.nome_rp)}</option>`).join('');
+   if(membros.has(escolha))filtragem.value=escolha;
+   const map=new Map();
+   // Blocos de até 5 requisições preservam desempenho em períodos extensos.
+   for(let i=0;i<semanas.length;i+=5){
+     const lote=semanas.slice(i,i+5);
+     const resultados=await Promise.all(lote.map(p_semana=>supabase.rpc('detroit_ponto_semana',{p_semana})));
+     if(consultaId!==p30PontoConsultaId||activeTab!=='ponto')return;
+     resultados.forEach((r,j)=>{
+       if(r.error)throw r.error;
+       const dados=Array.isArray(r.data)?r.data:[];
+       if(dados.length>=5000)throw Error(`A semana de ${p30DataBR(lote[j])} atingiu o limite de 5000 registros. Consulte um período menor para evitar informações incompletas.`);
+       for(const registro of dados)map.set(String(registro.id),registro);
+     });
+     $('workRangeFeedback').textContent=`Consultando ${p30DataBR(inicio)} a ${p30DataBR(fim)} · ${Math.min(i+5,semanas.length)}/${semanas.length} semanas...`;
+   }
+   if(consultaId!==p30PontoConsultaId||activeTab!=='ponto')return;
+   // Datas referem-se ao dia local da ENTRADA. Turnos noturnos ficam completos no dia de início.
+   pointSessions=[...map.values()].filter(r=>{
+     const dia=p26BrazilParts(r.inicio)?.day;
+     return dia&&dia>=inicio&&dia<=fim;
+   }).map(r=>({...r,dm_minutos:p30MinutosDaJornada(r)}))
+     .sort((a,b)=>Date.parse(b.inicio)-Date.parse(a.inicio)||Number(b.id)-Number(a.id));
+   $('workRangeFeedback').textContent=`Período: ${p30DataBR(inicio)} a ${p30DataBR(fim)} · ${pointSessions.length} jornada(s) · ${semanas.length} semana(s) consultada(s).`;
+   p26FilterRecords();
+ }catch(e){
+   if(consultaId!==p30PontoConsultaId)return;
+   console.error('Consulta de ponto por período',e);
+   pointSessions=[];
+   $('workRows').innerHTML='<div class="empty">Não foi possível consultar o período.</div>';
+   $('workSummary').innerHTML='<div class="empty">Consulta não concluída.</div>';
+   $('workRangeFeedback').textContent='A consulta falhou. Os totais anteriores foram limpos para evitar informação incorreta.';
+   $('workHours').textContent='—';$('workClosed').textContent='—';$('workPeople').textContent='—';
+   showMessage('worktimeMessage','Erro ao consultar os pontos: '+(e.message||'erro desconhecido'));
+ }finally{if(consultaId===p30PontoConsultaId)botao.disabled=false;}
 }
 for(const name of ['workManualDate','workManualStart','workManualEnd'])$(name).addEventListener('input',p26Preview);
-$('workWeek').addEventListener('change',()=>{if(activeTab==='ponto')renderWorktime()});
+for(const name of ['workDateStart','workDateEnd'])$(name).addEventListener('change',()=>{
+  ++p30PontoConsultaId;
+  $('workRefresh').disabled=false;
+  pointSessions=[];
+  $('workRangeFeedback').textContent='Datas alteradas. Clique em Consultar período para atualizar os resultados.';
+  $('workHours').textContent='—';$('workClosed').textContent='—';$('workPeople').textContent='—';
+  $('workSummary').innerHTML='<div class="empty">Clique em Consultar período.</div>';
+  $('workRows').innerHTML='<div class="empty">Clique em Consultar período.</div>';
+});
 $('workRefresh').addEventListener('click',()=>{if(activeTab==='ponto')renderWorktime()});
 $('workFilterMember').addEventListener('change',p26FilterRecords);
 $('workCancelEdit').addEventListener('click',()=>{p26ResetForm();clearMessage('worktimeMessage');});
@@ -1863,7 +1939,11 @@ $('workManualForm').addEventListener('submit',async event=>{
   });
   if(result.error)throw result.error;
   p26ResetForm();
-  $('workWeek').value=p26BrazilParts(time.start.toISOString()).day;
+  const diaSalvo=p26BrazilParts(time.start.toISOString()).day;
+  if(diaSalvo<$('workDateStart').value||diaSalvo>$('workDateEnd').value){
+    $('workDateStart').value=diaSalvo;
+    $('workDateEnd').value=diaSalvo;
+  }
   await renderWorktime();
   showMessage('worktimeMessage',isEditing?'Jornada corrigida. A versão anterior ficou registrada na auditoria.':'Jornada salva com sucesso.','success');
  }catch(e){showMessage('worktimeMessage','Não foi possível salvar: '+(e.message||'erro desconhecido'));}
