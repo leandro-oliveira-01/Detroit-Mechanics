@@ -742,6 +742,7 @@ body:has(#adminPanel:not(.hidden)) #viewAccess{padding:0!important;margin:0}
             <div class="field"><label for="staffPhone">Telefone RP</label><input id="staffPhone" maxlength="80"></div>
             <div class="field"><label for="staffDiscord">ID do Discord</label><input id="staffDiscord" maxlength="80"></div>
             <div class="field field-wide"><label for="staffNotes">Observações internas (até 1.500 caracteres)</label><textarea id="staffNotes" maxlength="1500" placeholder="Treinamentos, feedbacks, especialidades ou informações relevantes..."></textarea></div>
+            <div class="field field-wide" id="dm3ReasonWrap"><label for="dm3StaffChangeReason">Motivo da alteração * (10 a 300 caracteres)</label><textarea id="dm3StaffChangeReason" maxlength="300" minlength="10" rows="2" placeholder="Ex.: Promoção validada pela liderança em reunião de equipe."></textarea><small style="display:block;margin-top:6px;color:#9aa5af">Obrigatório ao editar. O motivo e os campos modificados ficam registrados na auditoria.</small></div>
           </div>
           <div class="staff-form-buttons"><button type="button" onclick="staffCloseForm()">Cancelar</button><button id="staffSaveButton" class="primary" type="submit">Salvar ficha</button></div>
         </form>
@@ -1485,7 +1486,7 @@ const staffStatusText = { ativo:'Ativo', afastado:'Afastado', desligado:'Desliga
 
 async function renderStaff() {
   if (!currentMember) return;
-  $('staffAdminControls').classList.toggle('hidden', leadershipLevel<6);
+  $('staffAdminControls').classList.toggle('hidden', leadershipLevel<7);
   $('staffList').innerHTML = '<div class="empty">Carregando equipe...</div>';
   clearMessage('staffMessage');
   const {data,error} = await supabase.from('detroit_membros').select('*').order('data_ingresso',{ascending:false}).limit(1000);
@@ -1547,12 +1548,12 @@ function filterStaff() {
 }
 
 window.staffOpenForm = function(id=null) {
-  if(leadershipLevel<6) return;
+  if(leadershipLevel<6 || (id==null && leadershipLevel<7)) return;
   const m = id == null ? null : detroitStaff.find(x=>String(x.id)===String(id));
   if(id != null && (!m || !canEditStaffRecord(m))) return;
   // Mesmo editando por ferramentas de desenvolvedor, o banco valida novamente.
   document.querySelectorAll('#staffRole option').forEach(option=>{
-    option.disabled=staffRoleLevel(option.value)>leadershipLevel;
+    option.disabled=staffRoleLevel(option.value)>=(m?leadershipLevel:leadershipLevel+1);
   });
   $('staffForm').reset();
   $('staffFormId').value = m?m.id:'';
@@ -1573,6 +1574,9 @@ window.staffOpenForm = function(id=null) {
   $('staffSituation').value = m?.situacao||'ativo';
   $('staffNotes').value = m?.observacoes||'';
   $('staffRecordPromotion').checked = false;
+  $('dm3ReasonWrap').classList.toggle('hidden', !m);
+  $('dm3StaffChangeReason').required = Boolean(m);
+  $('dm3StaffChangeReason').value = '';
   $('staffFormWrap').classList.remove('hidden');
   $('staffFormWrap').scrollIntoView({behavior:'smooth',block:'start'});
 };
@@ -1591,7 +1595,7 @@ $('staffForm').addEventListener('submit', async event=>{
   const id = $('staffFormId').value;
   const old = detroitStaff.find(x=>String(x.id)===id);
   const role = $('staffRole').value.trim();
-  if (staffRoleLevel(role) > leadershipLevel || (old && !canEditStaffRecord(old))) {
+  if ((old ? staffRoleLevel(role)>=leadershipLevel : staffRoleLevel(role)>leadershipLevel) || (old && !canEditStaffRecord(old))) {
     showMessage('staffMessage','Você não pode alterar um cargo igual ou superior ao seu, nem atribuir cargo acima do seu.');
     return;
   }
@@ -1617,13 +1621,20 @@ $('staffForm').addEventListener('submit', async event=>{
     p_discord_user_id:$('staffDiscord').value.trim()||null,
     p_observacoes:$('staffNotes').value.trim()||null
   };
+  if(id){
+    const reason=$('dm3StaffChangeReason').value.trim();
+    if(reason.length<10 || reason.length>300){
+      showMessage('staffMessage','Informe uma justificativa de 10 a 300 caracteres para editar a ficha.');return;
+    }
+    params.p_justificativa=reason;
+  }
   const button = $('staffSaveButton'); button.disabled=true;
   try {
-    const {error} = await supabase.rpc('detroit_salvar_membro',params);
+    const {error} = await supabase.rpc(id?'detroit_30_lideranca_atualizar_ficha':'detroit_salvar_membro',params);
     if(error)throw error;
     staffCloseForm();
     await renderStaff();
-    showMessage('staffMessage','Ficha salva com sucesso. Alteração registrada no histórico.','success');
+    showMessage('staffMessage',id?'Ficha atualizada com justificativa e auditoria da Liderança 3.0.':'Membro cadastrado com sucesso.','success');
   } catch(e) {
     console.error('Erro ao salvar membro Detroit Mechanics',e);
     showMessage('staffMessage','Não foi possível salvar a ficha: '+(e.message||'Erro desconhecido'));
@@ -1645,9 +1656,24 @@ $('staffList').addEventListener('click',async event=>{
   $('staffHistoryTitle').textContent='Histórico de '+m.nome_rp;
   $('staffHistoryList').innerHTML='<div class="empty">Carregando histórico...</div>';
   $('staffHistoryWrap').classList.remove('hidden');
-  const {data,error}=await supabase.from('detroit_membros_historico').select('tipo,descricao,cargo_anterior,cargo_novo,situacao_anterior,situacao_nova,criado_em').eq('membro_id',id).order('criado_em',{ascending:false}).limit(100);
-  if(error) $('staffHistoryList').innerHTML='<div class="empty">Erro ao carregar histórico: '+escapeHTML(error.message)+'</div>';
-  else $('staffHistoryList').innerHTML=(data||[]).length?(data||[]).map(h=>`<div class="staff-event"><small>${escapeHTML(new Date(h.criado_em).toLocaleString('pt-BR'))} · ${escapeHTML(h.tipo.toUpperCase())}</small><strong>${escapeHTML(h.descricao)}</strong></div>`).join(''):'<div class="empty">Ainda não existem movimentações registradas.</div>';
+  const canSeeProtected=canEditStaffRecord(m);
+  const [legacy,leadership]=await Promise.all([
+    supabase.from('detroit_membros_historico').select('tipo,descricao,cargo_anterior,cargo_novo,situacao_anterior,situacao_nova,criado_em').eq('membro_id',id).order('criado_em',{ascending:false}).limit(100),
+    canSeeProtected?supabase.rpc('detroit_30_lideranca_historico_ficha',{p_membro_id:id}):Promise.resolve({data:[],error:null})
+  ]);
+  const events=[];
+  for(const h of legacy.data||[]) events.push({at:h.criado_em,type:String(h.tipo||'Registro').toUpperCase(),description:h.descricao||'Movimentação anterior'});
+  for(const h of leadership.data||[]){
+    const labels={nome_rp:'Nome RP',passaporte_rp:'Passaporte',cargo:'Cargo',subcargos:'Subcargos',data_ingresso:'Data de ingresso',data_ultima_promocao:'Última promoção',situacao:'Situação',telefone_rp:'Telefone',discord_user_id:'Discord ID',observacoes:'Observações'};
+    const fields=(h.campos_alterados||[]).map(x=>labels[x]||x).join(', ');
+    events.push({at:h.criado_em,type:'ALTERAÇÃO · LIDERANÇA 3.0',description:`Por ${h.autor_nome||'Liderança'} · ${fields||'Ficha'} · Motivo: ${h.justificativa||'Não informado'}`});
+  }
+  events.sort((a,b)=>new Date(b.at)-new Date(a.at));
+  if(!events.length && (legacy.error||leadership.error)){
+    $('staffHistoryList').innerHTML='<div class="empty">Não foi possível consultar o histórico. '+escapeHTML((legacy.error||leadership.error).message||'Tente novamente.')+'</div>';
+  }else{
+    $('staffHistoryList').innerHTML=events.length?events.slice(0,150).map(h=>`<div class="staff-event"><small>${escapeHTML(new Date(h.at).toLocaleString('pt-BR'))} · ${escapeHTML(h.type)}</small><strong>${escapeHTML(h.description)}</strong></div>`).join(''):'<div class="empty">Ainda não existem movimentações registradas.</div>';
+  }
   $('staffHistoryWrap').scrollIntoView({behavior:'smooth',block:'start'});
 });
 
