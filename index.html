@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#080808">
-<title>Detroit Mechanics 3.0 | Management Hub</title>
+<title>Detroit Mechanics | Management Hub</title>
 <link rel="icon" type="image/png" href="detroit-icon-512.png">
 <link rel="apple-touch-icon" href="detroit-icon-512.png">
 <style>
@@ -385,6 +385,25 @@ body:has(#adminPanel:not(.hidden)) #viewAccess{padding:0!important;margin:0}
 #adminPanel .dm3-exclusive-option input{width:18px;height:18px;accent-color:#ec3149;flex:0 0 auto}
 #adminPanel .dm3-exclusive-option span{display:grid;gap:4px}
 #adminPanel .dm3-exclusive-option small{color:#acb8c6;font-size:12px;line-height:1.5}
+
+/* Detroit Management Hub - experiência integrada / identidade pública sem numeração */
+.dm3-noti-trigger{position:relative}
+.dm3-noti-trigger[data-unread]:not([data-unread="0"]):after{content:attr(data-unread);position:absolute;top:-6px;right:-4px;min-width:17px;height:17px;border-radius:20px;background:#e53d51;color:#fff;font:bold 10px/17px system-ui;text-align:center;padding:0 3px;box-shadow:0 2px 8px #0008}
+.dm3-notification-drawer{position:fixed;top:100px;right:clamp(10px,3vw,55px);z-index:990;width:min(390px,calc(100vw - 20px));max-height:min(78vh,740px);overflow:auto;padding:17px;border:1px solid #465161;border-radius:17px;background:#101821;box-shadow:0 16px 60px #000b}
+.dm3-drawer-top{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:10px}.dm3-drawer-top h3,.dm3-drawer-top strong{margin:0;font-size:17px;color:#fff}.dm3-drawer-top button{border:1px solid #4b5662;background:#252d36;color:#fff;border-radius:8px;padding:7px 12px}
+.dm3-muted{font-size:12px;color:#b4c1ce;margin:3px 0 14px;line-height:1.6}
+.dm3-notification-item{display:flex;gap:10px;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #303b45}.dm3-notification-item.is-read{opacity:.62}.dm3-notification-item strong{font-size:12px;display:block}.dm3-notification-item small{font-size:11px;line-height:1.6;display:block;color:#aab7c5;margin-top:5px}
+.dm3-notification-item button,.dm3-inline-actions button,.dm3-focus-head button,.dm3-quick-range button,.dm3-quick-box button,.dm3-recruit-board button{background:#26313b;border:1px solid #465466;border-radius:9px;color:#eaf0f5;padding:8px 11px;font:inherit;font-size:12px;cursor:pointer}.dm3-notification-item button:hover,.dm3-inline-actions button:hover,.dm3-quick-range button:hover,.dm3-recruit-board button:hover{border-color:#e94656;color:#fff}.dm3-notification-item .dm3-inline-actions{flex-direction:column}
+.dm3-inline-actions{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+.dm3-focus{border:1px solid #35414d;border-radius:15px;background:linear-gradient(120deg,#111b25,#0c131b);padding:19px;margin:18px 0}.dm3-focus-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}.dm3-focus-head h3{font-size:16px;margin:0 0 5px}.dm3-focus-head p{font-size:12px;color:#9cacb7;margin:0}.dm3-task-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:9px}
+.dm3-task{display:flex;align-items:center;gap:12px;text-align:left;border:1px solid #354452;background:#17232f;border-radius:12px;color:#fff;padding:11px;min-width:0;cursor:pointer}.dm3-task strong{font-size:12px;display:block}.dm3-task small{font-size:11px;color:#a4b6c5;display:block;margin-top:5px}.dm3-task-symbol{font-size:21px;color:#ec6272}.dm3-task-arrow{font-size:19px;margin-left:auto}.dm3-task:hover{border-color:#eb5a6b}.dm3-all-clear{font-size:13px;color:#a6d6bf;padding:14px}
+.dm3-recruit-board{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin:16px 0}.dm3-stage{display:flex;flex-direction:column;gap:6px;text-align:left;padding:13px!important;min-width:0}.dm3-stage small{color:#a7b5c5;font-size:11px}.dm3-stage strong{font-size:20px}.dm3-stage.active{border-color:#f04d63!important;background:#31202b!important}
+.dm3-modal{position:fixed;inset:0;z-index:9999;background:#000b;display:flex;align-items:center;justify-content:center;padding:18px}.dm3-modal.hidden{display:none}.dm3-modal-body{width:min(720px,100%);max-height:94vh;overflow:auto;padding:22px;background:#111a24;color:#f4f6f8;border:1px solid #536070;border-radius:17px;box-shadow:0 18px 70px #000c}.dm3-notes-list{display:grid;gap:9px;max-height:320px;overflow:auto;margin:14px 0;padding-right:5px}.dm3-note-card{border:1px solid #354454;border-radius:10px;background:#1a2732;padding:12px}.dm3-note-card strong{font-size:13px}.dm3-note-card small{display:block;margin-top:4px;color:#9db0be;font-size:11px}.dm3-note-card p{font-size:12px;line-height:1.6;white-space:pre-wrap;color:#e4e7ea;margin:10px 0}.dm3-followup{font-size:11px;color:#dcb7bd;display:flex;gap:10px;align-items:center;flex-wrap:wrap}.dm3-followup button{border:1px solid #7d4250;background:#39202b;border-radius:8px;color:#fff;padding:6px 9px;cursor:pointer}
+.dm3-quick-range{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 14px}.dm3-material-filters{display:grid;grid-template-columns:minmax(190px,2fr) minmax(130px,1fr) auto;gap:12px;align-items:end}.dm3-material-history{font-size:12px;color:#bdc7d2;display:flex;gap:7px;align-items:center;padding-bottom:13px}
+.dm3-quick-box{width:min(480px,100%)}.dm3-quick-box input{width:100%;border:1px solid #46546a;background:#1b2833;border-radius:9px;color:#fff;padding:13px}.dm3-quick-box #dm3QuickItems{display:grid;gap:7px;margin-top:12px}.dm3-quick-box #dm3QuickItems button{display:flex;justify-content:space-between;text-align:left;padding:11px}
+@media(max-width:1050px){.dm3-recruit-board{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:680px){.dm3-recruit-board{grid-template-columns:repeat(2,minmax(0,1fr))}.dm3-focus{padding:13px}.dm3-focus-head{align-items:flex-start}.dm3-task-list{grid-template-columns:1fr}.dm3-modal-body{padding:15px}.dm3-material-filters{grid-template-columns:1fr}.dm3-material-history{padding-bottom:5px}.dm3-notification-item{align-items:flex-start;flex-direction:column}.dm3-notification-item .dm3-inline-actions{flex-direction:row}.dm3-notification-drawer{top:70px}}
+
 </style>
 </head>
 <body>
@@ -403,7 +422,7 @@ body:has(#adminPanel:not(.hidden)) #viewAccess{padding:0!important;margin:0}
 <symbol id="d3-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.5"/><path d="M10 2h4l.65 2.6 2 .8 2.3-1.4 2.6 2.6-1.3 2.4.8 2L23 11v3l-2.6.7-.8 2 1.3 2.3-2.6 2.6-2.4-1.3-2 .8L14 23h-4l-.7-2.6-2-.8-2.3 1.3-2.6-2.6 1.3-2.4-.8-2L1 14v-3l2.6-.7.8-2-1.3-2.3L5.7 3.4l2.3 1.3 2-.8Z"/></symbol>
 </svg>
 <div class="shell">
-<div class="v2-dev-mark"><span class="pulse-dot"></span> DETROIT MECHANICS 3.0 <span class="sep">/</span> MANAGEMENT HUB <span class="sep">/</span> SISTEMA OFICIAL</div>
+<div class="v2-dev-mark"><span class="pulse-dot"></span> DETROIT MECHANICS <span class="sep">/</span> MANAGEMENT HUB <span class="sep">/</span> SISTEMA OFICIAL</div>
 <header class="topbar">
   <a class="brand" href="#" aria-label="Detroit Mechanics início" onclick="showView('apply');return false">
     <div class="mark site-logo" aria-hidden="true"><img src="DETROIT-MECHANICS.png" alt="" width="76" height="76" decoding="async"></div>
@@ -488,15 +507,15 @@ body:has(#adminPanel:not(.hidden)) #viewAccess{padding:0!important;margin:0}
   </div>
   <div id="adminPanel" class="panel wide hidden premium-app">
 <div class="d3-masthead">
-  <div class="d3-brandmark"><span class="d3-gear-frame"><svg class="d3-icon" aria-hidden="true"><use href="#d3-gear"></use></svg></span><span class="d3-logo-text"><strong>DETROIT</strong><small>MANAGEMENT HUB <b>3.0</b></small></span></div>
+  <div class="d3-brandmark"><span class="d3-gear-frame"><svg class="d3-icon" aria-hidden="true"><use href="#d3-gear"></use></svg></span><span class="d3-logo-text"><strong>DETROIT</strong><small>MANAGEMENT HUB</small></span></div>
   <div class="d3-tagline"><span>ORGANIZAÇÃO</span><span>PLANEJAMENTO</span><span>RESULTADOS</span></div>
   <div class="d3-mast-spacer" aria-hidden="true"></div>
-  <div class="d3-header-tools"><button class="d3-search" type="button" onclick="dm3FocusSearch()"><svg class="d3-icon" aria-hidden="true"><use href="#d3-search"></use></svg><span>Buscar eventos, reuniões...</span></button>
-  <button class="d3-notification" type="button" onclick="dm3OpenCalendar('all')" title="Abrir calendário"><svg class="d3-icon" aria-hidden="true"><use href="#d3-bell"></use></svg></button>
+  <div class="d3-header-tools"><button class="d3-search" type="button" onclick="dm3OpenQuickNav()"><svg class="d3-icon" aria-hidden="true"><use href="#d3-search"></use></svg><span>Buscar telas e ferramentas...</span></button>
+  <button class="d3-notification dm3-noti-trigger" id="dm3NotificationButton" type="button" onclick="dm3ToggleNotifications()" title="Notificações e pendências" aria-label="Notificações e pendências"><svg class="d3-icon" aria-hidden="true"><use href="#d3-bell"></use></svg></button>
   <div class="d3-profile"><span class="d3-avatar">DM</span><span><strong id="d3ProfileName">Detroit Mechanics</strong><small>Portal Interno</small></span></div></div>
 </div>
     <aside class="app-sidebar" aria-label="Menu do painel">
-      <div class="side-title"><span class="side-monogram gear-mark" aria-label="Engrenagem Detroit Mechanics"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 13.9 3l1 2.5 2 .8 2.4-1.1 1.3 2.3-2 1.8.3 2.1 2.4 1v2.6l-2.5.9-.7 2 1.2 2.3-2 1.5-2-1.9-2.2.3L13 21.5h-2.5l-.9-2.6-2-.8-2.5 1.1-1.3-2.2 2-1.9-.3-2.1L3 12V9.5l2.5-.9.7-2-1.2-2.3 2-1.5 2 1.9 2.2-.3Z"/><circle cx="12" cy="12" r="3.5"/></svg></span><span><strong>DETROIT</strong><small>MANAGEMENT HUB 3.0</small></span></div>
+      <div class="side-title"><span class="side-monogram gear-mark" aria-label="Engrenagem Detroit Mechanics"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 13.9 3l1 2.5 2 .8 2.4-1.1 1.3 2.3-2 1.8.3 2.1 2.4 1v2.6l-2.5.9-.7 2 1.2 2.3-2 1.5-2-1.9-2.2.3L13 21.5h-2.5l-.9-2.6-2-.8-2.5 1.1-1.3-2.2 2-1.9-.3-2.1L3 12V9.5l2.5-.9.7-2-1.2-2.3 2-1.5 2 1.9 2.2-.3Z"/><circle cx="12" cy="12" r="3.5"/></svg></span><span><strong>DETROIT</strong><small>MANAGEMENT HUB</small></span></div>
       <div class="side-group-title">MENU PRINCIPAL</div>
       <nav class="sidebar-nav dm3-simple-nav" id="adminTabs" aria-label="Menu principal">
         <button type="button" id="tabDashboard" class="active" onclick="switchAdminTab('dashboard')"><svg class="d3-icon" aria-hidden="true"><use href="#d3-calendar"></use></svg><span>Dashboard</span></button>
@@ -511,9 +530,15 @@ body:has(#adminPanel:not(.hidden)) #viewAccess{padding:0!important;margin:0}
         <button id="tabRecruit" type="button">Inscrições</button>
         <button id="tabStaff" type="button">Equipe</button>
       </div>
-      <div class="side-footer"><span class="pulse-dot"></span> Detroit Mechanics 3.0<small>Gestão integrada e organização</small></div>
+      <div class="side-footer"><span class="pulse-dot"></span> Detroit Mechanics<small>Gestão integrada e organização</small></div>
     </aside>
     <div class="app-main">
+      <section id="dm3NotificationDrawer" class="dm3-notification-drawer hidden" aria-label="Central de notificações" role="region">
+        <div class="dm3-drawer-top"><strong>Notificações</strong><button type="button" onclick="dm3ToggleNotifications(false)" title="Fechar notificações">✕</button></div>
+        <p class="dm3-muted">Somente alertas dos setores autorizados para sua conta.</p>
+        <div id="dm3NotificationList"><div class="empty">Abra para consultar.</div></div>
+        <button type="button" class="p25-button" onclick="dm3LoadNotifications()">Atualizar notificações</button>
+      </section>
     <div class="app-eyebrow">WORKSPACE / <span id="appBreadcrumb">VISÃO GERAL</span></div>
     <div id="dm3ContextNav" class="dm3-context-nav hidden"><button type="button" id="dm3Back" onclick="dm3BackToGroup()">← Voltar</button><span id="dm3ContextPath">Departamentos</span></div>
     <div class="admin-head"><div><span class="badge">● ACESSO AUTORIZADO</span><h2 id="appHeading" style="margin-top:12px">Visão geral</h2><p id="adminSummary">Acompanhe o recrutamento em tempo real.</p></div><button class="ghost logout-button" onclick="logout()">↪ Sair da conta</button></div>
@@ -562,7 +587,9 @@ body:has(#adminPanel:not(.hidden)) #viewAccess{padding:0!important;margin:0}
       </div>
       <div class="p25-control-card">
         <div class="p25-card-head"><strong>Arquivos disponíveis</strong><button class="p25-button" type="button" onclick="dm3LoadMaterials()">Atualizar</button></div>
-        <div class="field"><label for="dm3MaterialSearch">Buscar material</label><input id="dm3MaterialSearch" placeholder="Título, categoria ou descrição"></div>
+        <div class="dm3-material-filters"><div class="field"><label for="dm3MaterialSearch">Buscar material</label><input id="dm3MaterialSearch" placeholder="Título, categoria ou descrição"></div>
+<div class="field"><label for="dm3MaterialFilterCategory">Categoria</label><select id="dm3MaterialFilterCategory"><option value="">Todas</option><option value="apostila">Apostilas</option><option value="treinamento">Treinamentos</option><option value="procedimento">Procedimentos</option><option value="outro">Outros</option></select></div>
+<label class="dm3-material-history"><input id="dm3MaterialShowHistory" type="checkbox"> Exibir versões anteriores</label></div>
         <div id="dm3MaterialsList" class="p25-records"><div class="empty">Abra esta área para consultar os materiais.</div></div>
       </div>
       <div class="dm3-note">Apenas os membros autorizados podem consultar ou enviar arquivos. Links de download são temporários e expiram automaticamente.</div>
@@ -580,13 +607,13 @@ body:has(#adminPanel:not(.hidden)) #viewAccess{padding:0!important;margin:0}
       <div class="section-banner"><span class="hero-tag">RECRUTAMENTO / AGENDA</span><h3>Agenda de recrutamentos</h3><p>Horários de entrevistas e atividades do recrutamento. Não mistura estes agendamentos com eventos e cursos.</p></div>
       <div class="p25-control-card"><div class="p25-card-head"><strong>Agendar período</strong><small>Somente recrutadores e liderança autorizados.</small></div>
         <div id="dm3RecruitScheduleMessage" class="message" role="status"></div>
-        <form id="dm3RecruitScheduleForm" class="dm3-new-grid">
+        <form id="dm3RecruitScheduleForm" class="dm3-new-grid"><input type="hidden" id="dm3RecruitEditId">
           <div class="field dm3-span-all"><label for="dm3RecruitTitle">Atividade *</label><input id="dm3RecruitTitle" maxlength="140" required placeholder="Ex.: Entrevistas de novos candidatos"></div>
           <div class="field"><label for="dm3RecruitStart">Início *</label><input id="dm3RecruitStart" type="datetime-local" required></div>
           <div class="field"><label for="dm3RecruitEnd">Término *</label><input id="dm3RecruitEnd" type="datetime-local" required></div>
           <label class="dm3-span-all dm3-exclusive-option"><input id="dm3RecruitExclusive" type="checkbox" checked> <span><strong>Reserva exclusiva de horário</strong><small>Desmarque para permitir entrevistas e outros compromissos simultâneos. Os horários sempre aparecem no calendário geral.</small></span></label>
           <div class="field dm3-span-all"><label for="dm3RecruitNotes">Observações (opcional)</label><textarea id="dm3RecruitNotes" maxlength="1000" placeholder="Responsáveis, reunião ou informações internas..."></textarea></div>
-          <button class="primary dm3-span-all" type="submit" id="dm3RecruitScheduleSave">+ Salvar horário de recrutamento</button>
+          <div class="dm3-span-all" id="dm3RecruitConflictMessage" aria-live="polite"></div><button class="primary" type="submit" id="dm3RecruitScheduleSave">+ Salvar horário de recrutamento</button><button type="button" class="p25-button hidden" id="dm3RecruitCancelEdit" onclick="dm3AbortRecruitEdit()">Cancelar edição</button>
         </form>
       </div>
       <div class="p25-control-card"><div class="p25-card-head"><strong>Programação de recrutamento</strong><button class="p25-button" type="button" onclick="dm3LoadRecruitSchedule()">Atualizar</button></div><div id="dm3RecruitScheduleRows" class="p25-records"><div class="empty">Aguardando consulta.</div></div></div>
@@ -595,7 +622,7 @@ body:has(#adminPanel:not(.hidden)) #viewAccess{padding:0!important;margin:0}
       <div class="section-banner"><span class="hero-tag">COMITÊ / APROPRIAÇÃO DE HORAS</span><h3>Apropriação de Horas</h3><p>Consulte as jornadas por intervalo livre de datas. Os totais são calculados em minutos e agrupados por funcionário.</p></div>
       <div class="p25-control-card">
         <div class="p25-card-head"><strong>Consultar horas trabalhadas</strong><small>O período é inclusivo: conta o primeiro e o último dia.</small></div>
-        <form id="dm3HoursForm" class="dm3-new-grid">
+        <div class="dm3-quick-range"><button type="button" onclick="dm3PickHoursRange('week')">Esta semana</button><button type="button" onclick="dm3PickHoursRange('month')">Este mês</button><button type="button" onclick="dm3PickHoursRange('last30')">Últimos 30 dias</button><button type="button" onclick="dm3PickHoursRange('previous')">Mês anterior</button></div><form id="dm3HoursForm" class="dm3-new-grid">
           <div class="field"><label for="dm3HoursMember">Colaborador</label><select id="dm3HoursMember"><option value="">Todos os colaboradores</option></select></div>
           <div class="field"><label for="dm3HoursStart">Data inicial *</label><input id="dm3HoursStart" type="date" required></div>
           <div class="field"><label for="dm3HoursEnd">Data final *</label><input id="dm3HoursEnd" type="date" required></div>
@@ -603,7 +630,7 @@ body:has(#adminPanel:not(.hidden)) #viewAccess{padding:0!important;margin:0}
         </form><div id="dm3HoursMessage" class="message" role="status"></div>
       </div>
       <div class="p25-stat-grid"><div class="staff-stat"><small>Total de horas</small><strong id="dm3HoursTotal">—</strong></div><div class="staff-stat"><small>Jornadas</small><strong id="dm3HoursSessions">—</strong></div><div class="staff-stat"><small>Colaboradores</small><strong id="dm3HoursPeople">—</strong></div></div>
-      <div class="p25-control-card"><div class="p25-card-head"><strong>Resumo por funcionário</strong><button class="p25-button" type="button" onclick="dm3ExportHours()">Exportar CSV</button></div><div id="dm3HoursSummary" class="p25-people"><div class="empty">Selecione um período e clique em Consultar.</div></div></div>
+      <div class="p25-control-card"><div class="p25-card-head"><strong>Resumo por funcionário</strong><button class="p25-button" type="button" onclick="dm3ExportHours()">Exportar CSV</button></div><div class="dm3-quick-range"><button type="button" onclick="dm3SortHours('hours')">Maior total</button><button type="button" onclick="dm3SortHours('name')">Nome A–Z</button><button type="button" onclick="dm3ExportHoursSummary()">Exportar resumo</button></div><div id="dm3HoursSummary" class="p25-people"><div class="empty">Selecione um período e clique em Consultar.</div></div></div>
       <div class="p25-control-card"><div class="p25-card-head"><strong>Detalhamento das jornadas</strong><small>Entrada, saída e horas por período, inclusive quando atravessa a meia-noite.</small></div><div id="dm3HoursRows" class="p25-records"><div class="empty">Nenhuma consulta realizada.</div></div></div>
     </section>
     <section id="complaintsSection" class="hidden" aria-label="Denúncias do Comitê de Ética">
@@ -620,6 +647,18 @@ body:has(#adminPanel:not(.hidden)) #viewAccess{padding:0!important;margin:0}
         </form>
       </div>
       <div class="p25-control-card"><div class="p25-card-head"><strong>Denúncias registradas</strong><button class="p25-button" onclick="dm3LoadComplaints()" type="button">Atualizar</button></div><div id="dm3ComplaintsRows" class="p25-records"><div class="empty">Aguardando consulta.</div></div></div>
+      <div class="p25-control-card hidden" id="dm3CasePanel">
+        <div class="p25-card-head"><strong id="dm3CaseTitle">Acompanhamento de denúncia</strong><button type="button" onclick="dm3CloseCase()">Fechar</button></div>
+        <form id="dm3CaseForm" class="dm3-new-grid"><input type="hidden" id="dm3CaseId">
+          <div class="field"><label for="dm3CaseStatus">Situação</label><select id="dm3CaseStatus"><option value="recebida">Recebida</option><option value="em_analise">Em análise</option><option value="concluida">Concluída</option><option value="arquivada">Arquivada</option></select></div>
+          <div class="field"><label for="dm3CaseOwner">Responsável pela apuração</label><select id="dm3CaseOwner"><option value="">Não atribuído</option></select></div>
+          <div class="field dm3-span-all"><label for="dm3CaseDecision">Parecer / conclusão</label><textarea id="dm3CaseDecision" rows="3" maxlength="3000" placeholder="Obrigatório quando a denúncia for concluída ou arquivada"></textarea></div>
+          <div class="field dm3-span-all"><label for="dm3CaseComment">Movimentação / providência *</label><textarea id="dm3CaseComment" rows="3" minlength="5" maxlength="1500" required></textarea></div>
+          <div class="field dm3-span-all"><label for="dm3CaseEvidence">Nova evidência (link HTTPS, opcional)</label><input id="dm3CaseEvidence" type="url" maxlength="500" placeholder="https://..."></div>
+          <button class="primary dm3-span-all" type="submit">Salvar movimentação</button>
+        </form><div id="dm3CaseMessage" role="status"></div>
+        <h4>Histórico da apuração</h4><div id="dm3CaseTimeline" class="dm3-notes-list"></div>
+      </div>
     </section>
     <section id="reportsSection" class="hidden" aria-label="Relatórios da liderança">
       <div class="section-banner"><span class="hero-tag">LIDERANÇA / INDICADORES</span><h3>Relatórios</h3><p>Relatórios operacionais já existentes, reunidos numa única tela.</p></div>
@@ -627,12 +666,12 @@ body:has(#adminPanel:not(.hidden)) #viewAccess{padding:0!important;margin:0}
     </section>
     <section id="settingsSection" class="hidden" aria-label="Configurações da liderança">
       <div class="section-banner"><span class="hero-tag">LIDERANÇA / SISTEMA</span><h3>Configurações do site</h3><p>Visão rápida das integrações e dos controles. Segredos e tokens continuam restritos ao Supabase e à Northflank.</p></div>
-      <div class="p25-control-card"><div class="p25-card-head"><strong>Detroit Management Hub</strong><small>Versão 3.0</small></div><div class="dm3-config-list"><div><span>Bot / Discord</span><strong>Detroit Mechanics | Operations</strong></div><div><span>Canal de comunicados</span><strong>1569751815162040351</strong></div><div><span>Canal de atendimentos</span><strong>1569878079046946946</strong></div><div><span>Segurança</span><strong>Permissões conferidas no Supabase</strong></div></div><div class="dm3-card-actions"><button onclick="dm3OpenModule('members','leadership')">Gerenciar acessos</button><button onclick="dm3OpenModule('auditoria','leadership')">Abrir auditoria</button></div></div>
+      <div class="p25-control-card"><div class="p25-card-head"><strong>Detroit Management Hub</strong><small>Portal interno</small></div><div class="dm3-config-list"><div><span>Bot / Discord</span><strong>Detroit Mechanics | Operations</strong></div><div><span>Canal de comunicados</span><strong>1569751815162040351</strong></div><div><span>Canal de atendimentos</span><strong>1569878079046946946</strong></div><div><span>Segurança</span><strong>Permissões conferidas no Supabase</strong></div></div><div class="dm3-card-actions"><button onclick="dm3OpenModule('members','leadership')">Gerenciar acessos</button><button onclick="dm3OpenModule('auditoria','leadership')">Abrir auditoria</button></div></div>
       <div class="dm3-note">Para editar tokens, webhooks ou variáveis de ambiente, utilize os painéis administrativos oficiais. Nunca salve credenciais no HTML.</div>
     </section>
-    <section id="calendarSection" class="hidden" aria-label="Calendário integrado 3.0">
-      <div class="d30-preview-note"><div><strong>Calendário 3.0 — Gestão integrada</strong><div>Agenda oficial de eventos, reuniões, cursos e comunicados da equipe.</div></div><span>Mensagens gerenciadas pelo bot 3.0</span></div>
-      <iframe id="calendarFrame" title="Calendário, reuniões e cursos — Detroit Mechanics 3.0" loading="lazy" allow="clipboard-read; clipboard-write"></iframe>
+    <section id="calendarSection" class="hidden" aria-label="Calendário integrado">
+      <div class="d30-preview-note"><div><strong>Calendário integrado</strong><div>Agenda oficial de eventos, reuniões, cursos e comunicados da equipe.</div></div><span>Mensagens gerenciadas pelo bot</span></div>
+      <iframe id="calendarFrame" title="Calendário, reuniões e cursos — Detroit Mechanics" loading="lazy" allow="clipboard-read; clipboard-write"></iframe>
     </section>
     <section id="dashboardSection" class="dashboard-section">
 <div class="d3-dashboard" id="d3Dashboard">
@@ -667,6 +706,10 @@ body:has(#adminPanel:not(.hidden)) #viewAccess{padding:0!important;margin:0}
   </section>
   <div class="d3-dashboard-actions"><button type="button" onclick="dm3OpenCalendar('all','new')">+ Novo agendamento</button><button type="button" onclick="dm3OpenCalendar('course')"><svg class="d3-icon" aria-hidden="true"><use href="#d3-graduate"></use></svg> Cursos e treinamentos</button></div>
 </div>
+<section class="dm3-focus" id="dm3FocusSection" aria-label="Minhas pendências">
+  <div class="dm3-focus-head"><div><h3>Minhas pendências</h3><p>Atividades que precisam da sua atenção, de acordo com seu acesso.</p></div><button type="button" onclick="dm3LoadHome()">Atualizar</button></div>
+  <div id="dm3HomeTasks" class="dm3-task-list"><div class="empty">Carregando pendências...</div></div>
+</section>
 <details id="dm3LegacyInsights" class="d3-legacy-insights"><summary>Exibir indicadores de recrutamento e inscrições</summary><div class="d3-legacy-wrap">
       <div class="dash-welcome"><span class="hero-tag">ORGANIZAÇÃO • PLANEJAMENTO • RESULTADOS</span><h3>Gestão que acompanha seu ritmo.</h3><p>Organize a equipe, acompanhe o recrutamento e acesse reuniões, cursos e eventos em um único lugar.</p></div>
       <div class="stat-grid" id="dashboardStats" aria-live="polite">
@@ -682,7 +725,7 @@ body:has(#adminPanel:not(.hidden)) #viewAccess{padding:0!important;margin:0}
       </div></details>
     </section>
 
-    <div id="recruitSection" class="hidden"><div class="section-banner"><span class="hero-tag">GESTÃO DE CANDIDATOS</span><h3>Inscrições recebidas</h3><p>Pesquise, filtre e acompanhe cada etapa do recrutamento.</p></div><div class="toolbar"><input class="search" id="searchRequests" placeholder="Buscar por nome, passaporte ou ID do Discord..."><button onclick="exportCSV()">Exportar CSV</button></div>
+    <div id="recruitSection" class="hidden"><div class="section-banner"><span class="hero-tag">GESTÃO DE CANDIDATOS</span><h3>Inscrições recebidas</h3><p>Pesquise, filtre e acompanhe cada etapa do recrutamento.</p></div><div id="dm3RecruitBoard" class="dm3-recruit-board" aria-label="Etapas do recrutamento"></div><div class="toolbar"><input class="search" id="searchRequests" placeholder="Buscar por nome, passaporte ou ID do Discord..."><button onclick="exportCSV()">Exportar CSV</button></div>
     <div class="v2-filters">
       <label>Status<select id="v2StatusFilter"><option value="">Todos</option><option value="pendente">Pendente</option><option value="em_analise">Em análise</option><option value="entrevista">Entrevista</option><option value="aprovado">Aprovado</option><option value="reprovado">Reprovado</option></select></label>
       <label>Experiência<select id="v2ExperienceFilter"><option value="">Todas</option><option value="sim">Com experiência</option><option value="nao">Sem experiência</option></select></label>
@@ -817,7 +860,7 @@ body:has(#adminPanel:not(.hidden)) #viewAccess{padding:0!important;margin:0}
         <div id="workSummary" class="p25-people"><div class="empty">Escolha uma semana para consultar.</div></div>
       </div>
       <div class="p25-control-card"><div class="p25-card-head"><strong>Jornadas registradas</strong><small>Use <strong>Editar</strong> para ajustar os horários ou <strong>Excluir</strong> para retirar um lançamento incorreto dos totais. As correções ficam registradas na auditoria do sistema.</small></div><div id="workRows" class="p25-records"><div class="empty">Nenhum registro carregado.</div></div></div>
-      <div class="security-note">Este controle é destinado à organização interna do servidor de roleplay e não substitui um sistema de ponto trabalhista formal. Totais exibidos em horas e minutos. Exclusões são lógicas e correções ficam na auditoria. Os registros de auditoria são preservados no Supabase e encaminhados conforme a integração do Discord Operations 3.0.</div>
+      <div class="security-note">Controle interno do servidor RP, sem caráter trabalhista formal. Totais exibidos em horas e minutos; correções e exclusões permanecem auditadas.</div>
     </section>
 
     <section id="warningsSection" class="hidden" aria-label="Registro de advertências">
@@ -843,9 +886,23 @@ body:has(#adminPanel:not(.hidden)) #viewAccess{padding:0!important;margin:0}
     <div class="security-note">As solicitações são armazenadas no banco centralizado. Somente contas autorizadas pela política do banco podem consultá-las ou excluí-las.</div>
     </div>
   </div>
-  <div class="foot">DETROIT MECHANICS · MANAGEMENT HUB 3.0 · GESTÃO POR DEPARTAMENTOS</div>
+  <div class="foot">DETROIT MECHANICS · MANAGEMENT HUB · GESTÃO POR DEPARTAMENTOS</div>
 </section>
 </main>
+</div>
+<div class="dm3-modal hidden" id="dm3NotesModal" role="dialog" aria-modal="true" aria-labelledby="dm3NotesTitle">
+  <div class="dm3-modal-body">
+    <div class="dm3-drawer-top"><h3 id="dm3NotesTitle">Observações da inscrição</h3><button type="button" onclick="dm3CloseNotes()">✕</button></div>
+    <p class="dm3-muted">Anotações internas do recrutamento. Não são enviadas ao candidato nem ao Discord.</p>
+    <div id="dm3NotesList" class="dm3-notes-list"><div class="empty">Carregando...</div></div>
+    <form id="dm3NotesForm" class="dm3-new-grid">
+      <div class="field"><label for="dm3NotesType">Tipo</label><select id="dm3NotesType"><option value="observacao">Observação</option><option value="tentativa_contato">Tentativa de contato</option><option value="sem_resposta">Sem resposta</option><option value="reagendamento">Reagendamento</option><option value="retorno">Retorno combinado</option><option value="outro">Outro</option></select></div>
+      <div class="field"><label for="dm3NotesFollowup">Próximo contato (opcional)</label><input type="datetime-local" id="dm3NotesFollowup"></div>
+      <div class="field dm3-span-all"><label for="dm3NotesText">O que aconteceu? *</label><textarea id="dm3NotesText" minlength="5" maxlength="1600" rows="4" required placeholder="Ex.: Tentei contato pelo Discord às 19h, mas não houve retorno."></textarea></div>
+      <div class="dm3-span-all" id="dm3NotesMessage" role="status"></div>
+      <button type="submit" class="primary" id="dm3NotesSave">Salvar observação</button><button type="button" class="p25-button" onclick="dm3CloseNotes()">Fechar</button>
+    </form>
+  </div>
 </div>
 <div id="dmModal" class="d28-modal hidden" role="dialog" aria-modal="true" aria-labelledby="dmTitle">
   <div class="d28-modal-card">
@@ -1054,7 +1111,7 @@ window.switchAdminTab = function(tab) {
   $('dm3ContextNav').classList.toggle('hidden',['dashboard','departments','leadership'].includes(tab));
   $('dm3ContextPath').textContent=dm3NavGroup==='leadership'?'Liderança / '+titles[tab]:'Departamentos / '+titles[tab];
   $('dm3Back').textContent=dm3NavGroup==='leadership'?'← Voltar para Liderança':'← Voltar para Departamentos';
-  if(tab==='dashboard') {dm3RefreshDashboard();if(canRecruit)renderRequests();return;}
+  if(tab==='dashboard') {dm3RefreshDashboard();dm3LoadHome();dm3LoadNotifications();if(canRecruit)renderRequests();return;}
   if(tab==='calendario') {if(!$('calendarFrame').getAttribute('src'))$('calendarFrame').src='./calendario-3.0-etapa-2e.html?embed=1';return;}
   if(tab==='members')renderMembers();
   else if(tab==='staff')renderStaff();
@@ -1311,6 +1368,7 @@ function paintRequests() {
     }
     return found;
   };
+  dm3DrawRecruitBoard();
   const query=($('searchRequests').value||'').toLocaleLowerCase('pt-BR').trim();
   const status=$('v2StatusFilter').value;
   const experience=$('v2ExperienceFilter').value;
@@ -1363,7 +1421,7 @@ function paintRequests() {
       <p><strong>Telefone:</strong> ${escapeHTML(item.telefone)}<br><strong>ID do Discord:</strong> ${escapeHTML(item.discord_id)}<br><strong>Dias:</strong> ${days}<br><strong>Horários:</strong> ${escapeHTML(item.horario_disponivel)}<br><strong>Experiência:</strong> ${escapeHTML(item.experiencia||'Não informado')}${item.sobre?'<br><strong>Sobre:</strong> '+escapeHTML(item.sobre):''}</p>
       ${badge}
       ${ownerMarkup}
-      <div class="d28-request-actions"><button type="button" data-open-dm="${escapeHTML(String(item.id))}">✉ Enviar mensagem no Discord</button></div>
+      <div class="d28-request-actions"><button type="button" data-open-dm="${escapeHTML(String(item.id))}">✉ Enviar mensagem no Discord</button><button type="button" data-dm3-notes-id="${escapeHTML(String(item.id))}">▤ Observações e retornos</button></div>
       <div class="d28-discord-note">${item.aceita_dm_discord?'Candidato autorizou contato via Discord.':'Candidato não autorizou mensagens privadas pelo formulário; disponível apenas cópia do texto.'}</div>
       <div class="v2-recruit-actions">${claimButton}${releaseButton}${transferTools}</div>
       ${canEditStatus?`<div class="v2-actions"><label for="v2-status-${escapeHTML(String(item.id))}">Status:</label><select id="v2-status-${escapeHTML(String(item.id))}" data-candidate-status="${escapeHTML(String(item.id))}">${options}</select><button data-save-status="${escapeHTML(String(item.id))}">Salvar status</button></div>`:'<p class="v2-tip">Para alterar o status, assuma esta inscrição. Se ela já tiver responsável, peça a transferência a um ADM.</p>'}
@@ -1540,7 +1598,7 @@ function filterStaff() {
       </div>
       ${m.observacoes?'<p class="staff-note"><strong>Observações:</strong> '+escapeHTML(m.observacoes)+'</p>':''}
       <div class="staff-card-actions">
-        <button type="button" data-staff-history="${safeId}">Ver histórico</button>
+        <button type="button" data-staff-history="${safeId}">Ver histórico</button>${(staffSectorAccess.includes('instrutores')||leadershipLevel>=6)?`<button type="button" data-dm3-training="${safeId}">Treinamentos</button>`:''}
         ${canEditStaffRecord(m)?`<button class="staff-edit-btn" type="button" data-staff-edit="${safeId}">Editar ficha</button>`:''}
       </div>
     </article>`;
@@ -1634,7 +1692,7 @@ $('staffForm').addEventListener('submit', async event=>{
     if(error)throw error;
     staffCloseForm();
     await renderStaff();
-    showMessage('staffMessage',id?'Ficha atualizada com justificativa e auditoria da Liderança 3.0.':'Membro cadastrado com sucesso.','success');
+    showMessage('staffMessage',id?'Ficha atualizada com justificativa e auditoria.':'Membro cadastrado com sucesso.','success');
   } catch(e) {
     console.error('Erro ao salvar membro Detroit Mechanics',e);
     showMessage('staffMessage','Não foi possível salvar a ficha: '+(e.message||'Erro desconhecido'));
@@ -1666,7 +1724,7 @@ $('staffList').addEventListener('click',async event=>{
   for(const h of leadership.data||[]){
     const labels={nome_rp:'Nome RP',passaporte_rp:'Passaporte',cargo:'Cargo',subcargos:'Subcargos',data_ingresso:'Data de ingresso',data_ultima_promocao:'Última promoção',situacao:'Situação',telefone_rp:'Telefone',discord_user_id:'Discord ID',observacoes:'Observações'};
     const fields=(h.campos_alterados||[]).map(x=>labels[x]||x).join(', ');
-    events.push({at:h.criado_em,type:'ALTERAÇÃO · LIDERANÇA 3.0',description:`Por ${h.autor_nome||'Liderança'} · ${fields||'Ficha'} · Motivo: ${h.justificativa||'Não informado'}`});
+    events.push({at:h.criado_em,type:'ALTERAÇÃO · LIDERANÇA',description:`Por ${h.autor_nome||'Liderança'} · ${fields||'Ficha'} · Motivo: ${h.justificativa||'Não informado'}`});
   }
   events.sort((a,b)=>new Date(b.at)-new Date(a.at));
   if(!events.length && (legacy.error||leadership.error)){
@@ -2280,10 +2338,10 @@ async function dm3RefreshDashboard(){
   d3El('d3StatCampaigns').textContent=scheduled.filter(v=>v.tipo==='campanha').length+rules.filter(v=>v.categoria==='conscientizacao').length;
   d3El('d3StatDates').textContent=rules.filter(v=>v.categoria!=='conscientizacao').length;
   const byDate=items=>items.sort((a,b)=>String(a.inicio).localeCompare(String(b.inicio)));
-  d3SetList('d3UpcomingEvents',byDate(scheduled.filter(v=>v.tipo==='evento')));
-  d3SetList('d3UpcomingMeetings',byDate(scheduled.filter(v=>v.tipo==='reuniao')));
+  d3SetList('d3UpcomingEvents',byDate(scheduled.filter(v=>v.tipo==='evento'&&new Date(v.fim||v.inicio)>now)));
+  d3SetList('d3UpcomingMeetings',byDate(scheduled.filter(v=>v.tipo==='reuniao'&&new Date(v.fim||v.inicio)>now)));
   const automatically=rules.map(a=>({titulo:a.titulo,inicio:`${y}-${String(m).padStart(2,'0')}-${String(a.dia||1).padStart(2,'0')}T12:00:00-03:00`}));
-  d3SetList('d3UpcomingCampaigns',byDate([...scheduled.filter(v=>v.tipo==='campanha'),...rules.filter(v=>v.categoria==='conscientizacao').map(a=>({titulo:a.titulo,inicio:`${y}-${String(m).padStart(2,'0')}-${String(a.dia||1).padStart(2,'0')}T12:00:00-03:00`}))]));
+  d3SetList('d3UpcomingCampaigns',byDate([...scheduled.filter(v=>v.tipo==='campanha'&&new Date(v.fim||v.inicio)>now),...rules.filter(v=>v.categoria==='conscientizacao'&&Number(v.dia)>=now.getDate()).map(a=>({titulo:a.titulo,inicio:`${y}-${String(m).padStart(2,'0')}-${String(a.dia||1).padStart(2,'0')}T12:00:00-03:00`}))]));
   d3SetList('d3UpcomingDates',byDate(rules.filter(v=>v.categoria!=='conscientizacao').map(a=>({titulo:a.titulo,inicio:`${y}-${String(m).padStart(2,'0')}-${String(a.dia||1).padStart(2,'0')}T12:00:00-03:00`}))));
   const st=d3El('d3SyncStatus');if(st){st.textContent='Agenda conectada ao Supabase · bot Discord configurado';st.classList.add('success');}
   dm3LastLoaded=Date.now();
@@ -2336,7 +2394,7 @@ $('dm3HoursForm').addEventListener('submit',async e=>{
  $('dm3HoursTotal').textContent=dm3Mins(total);
  $('dm3HoursSessions').textContent=String(dm3HoursData.length);
  $('dm3HoursPeople').textContent=String(grouped.size);
- $('dm3HoursSummary').innerHTML=grouped.size?[...grouped.values()].sort((a,b)=>a.nome.localeCompare(b.nome,'pt-BR')).map(r=>`<div class="dm3-recruit-row"><div><strong>${escapeHTML(r.nome)}</strong><small>${escapeHTML(r.cargo)} · ${r.n} período(s)</small></div><strong>${dm3Mins(r.total)}</strong></div>`).join(''):'<div class="empty">Nenhuma jornada encontrada para este período.</div>';
+ dm3HoursTotals=[...grouped.values()];$('dm3HoursSummary').innerHTML=grouped.size?dm3HoursTotals.sort((a,b)=>a.total===b.total?a.nome.localeCompare(b.nome,'pt-BR'):b.total-a.total).map(r=>`<div class="dm3-recruit-row"><div><strong>${escapeHTML(r.nome)}</strong><small>${escapeHTML(r.cargo)} · ${r.n} período(s)</small></div><strong>${dm3Mins(r.total)}</strong></div>`).join(''):'<div class="empty">Nenhuma jornada encontrada para este período.</div>';
  $('dm3HoursRows').innerHTML=dm3HoursData.length?dm3HoursData.map(r=>`<div class="dm3-recruit-row"><div><strong>${escapeHTML(r.nome_rp)}</strong><small>${escapeHTML(dm3FmtDateTime(r.inicio))} — ${escapeHTML(dm3FmtDateTime(r.fim))}</small></div><strong>${dm3Mins(r.minutos)}</strong></div>`).join(''):'<div class="empty">Nenhuma jornada no período.</div>';
  showMessage('dm3HoursMessage',`Consulta concluída: ${dm3HoursData.length} jornadas · ${dm3Mins(total)}.`,'success');
 });
@@ -2348,9 +2406,9 @@ window.dm3ExportHours=function(){
 };
 window.dm3LoadRecruitSchedule=async function(){
  if(!dm3CanRecruit)return;const target=$('dm3RecruitScheduleRows');target.innerHTML='<div class="empty">Consultando períodos...</div>';
- const {data,error}=await supabase.rpc('detroit_30_listar_recrutamentos');
+ const {data,error}=await supabase.rpc('detroit_30_lista_recrutamentos_edicao');
  if(error){target.innerHTML=`<div class="empty">Não foi possível consultar a agenda: ${escapeHTML(error.message)}. Instale o SQL complementar.</div>`;return;}
- target.innerHTML=(data||[]).length?(data||[]).map(r=>`<div class="dm3-recruit-row"><div><strong>${escapeHTML(r.titulo)}</strong><small>${dm3FmtDateTime(r.inicio)} a ${dm3FmtDateTime(r.fim)} · ${escapeHTML(r.situacao)} · ${r.reserva_exclusiva?'Horário exclusivo':'Permite simultâneos'}${r.observacoes?' · '+escapeHTML(r.observacoes):''}</small></div>${r.situacao==='agendado'?`<button type="button" onclick="dm3CancelRecruitSchedule(${Number(r.id)})">Cancelar</button>`:''}</div>`).join(''):'<div class="empty">Ainda não há horários cadastrados.</div>';
+ dm3RecruitScheduleCache=data||[];target.innerHTML=(data||[]).length?(data||[]).map(r=>`<div class="dm3-recruit-row"><div><strong>${escapeHTML(r.titulo)}</strong><small>${dm3FmtDateTime(r.inicio)} a ${dm3FmtDateTime(r.fim)} · ${escapeHTML(r.situacao)} · ${r.reserva_exclusiva?'Horário exclusivo':'Permite simultâneos'}${r.observacoes?' · '+escapeHTML(r.observacoes):''}</small></div>${r.situacao==='agendado'&&r.pode_editar?`<div class="dm3-inline-actions"><button type="button" onclick="dm3StartRecruitEdit(${Number(r.id)})">Editar</button><button type="button" onclick="dm3CancelRecruitSchedule(${Number(r.id)})">Cancelar</button></div>`:''}</div>`).join(''):'<div class="empty">Ainda não há horários cadastrados.</div>';
 };
 $('dm3RecruitScheduleForm').addEventListener('submit',async e=>{
  e.preventDefault();if(!dm3CanRecruit)return;clearMessage('dm3RecruitScheduleMessage');
@@ -2358,9 +2416,11 @@ $('dm3RecruitScheduleForm').addEventListener('submit',async e=>{
  if(!begin||!end||end<=begin){showMessage('dm3RecruitScheduleMessage','Confira o início e término da atividade.');return;}
  const btn=$('dm3RecruitScheduleSave');btn.disabled=true;
  try{
- const {error}=await supabase.rpc('detroit_30_agendar_recrutamento',{p_titulo:$('dm3RecruitTitle').value.trim(),p_inicio:begin+':00-03:00',p_fim:end+':00-03:00',p_observacoes:$('dm3RecruitNotes').value.trim(),p_reserva_exclusiva:$('dm3RecruitExclusive').checked});
+ const editId=Number($('dm3RecruitEditId').value)||0;
+  const payload={p_titulo:$('dm3RecruitTitle').value.trim(),p_inicio:begin+':00-03:00',p_fim:end+':00-03:00',p_observacoes:$('dm3RecruitNotes').value.trim(),p_reserva_exclusiva:$('dm3RecruitExclusive').checked};
+  const {error}=await supabase.rpc(editId?'detroit_30_editar_recrutamento':'detroit_30_agendar_recrutamento',editId?{p_id:editId,...payload}:payload);
  if(error)throw error;
- $('dm3RecruitScheduleForm').reset();showMessage('dm3RecruitScheduleMessage','Horário registrado com sucesso.','success');await dm3LoadRecruitSchedule();
+ dm3AbortRecruitEdit();showMessage('dm3RecruitScheduleMessage',editId?'Horário atualizado.':'Horário registrado com sucesso.','success');await dm3LoadRecruitSchedule();
  }catch(err){showMessage('dm3RecruitScheduleMessage','Não foi possível salvar: '+err.message);}finally{btn.disabled=false;}
 });
 window.dm3CancelRecruitSchedule=async function(id){
@@ -2383,9 +2443,9 @@ $('dm3ComplaintForm').addEventListener('submit',async e=>{
 window.dm3LoadComplaints=async function(){
  if(!staffSectorAccess.includes('comite'))return;
  const target=$('dm3ComplaintsRows');target.innerHTML='<div class="empty">Consultando denúncias...</div>';
- const {data,error}=await supabase.rpc('detroit_30_listar_denuncias');
+ const {data,error}=await supabase.rpc('detroit_30_listar_denuncias_gerencial');
  if(error){target.innerHTML='<div class="empty">Não foi possível consultar: '+escapeHTML(error.message)+'. Instale o SQL complementar.</div>';return;}
- target.innerHTML=(data||[]).length?(data||[]).map(r=>`<div class="dm3-complaint-row"><div><strong>#${Number(r.id)} · ${escapeHTML(r.titulo)}</strong><small>${escapeHTML(r.situacao)} · ${escapeHTML(r.prioridade)} · ${dm3FmtDateTime(r.criado_em)} · Membro: ${escapeHTML(r.membro_nome||'Não identificado')}</small><p style="font-size:12px;line-height:1.6;color:#ccd6df;white-space:pre-wrap">${escapeHTML(r.descricao)}</p>${r.evidencia&&/^https:\/\//i.test(r.evidencia)?`<a target="_blank" rel="noopener noreferrer" href="${escapeHTML(r.evidencia)}">Ver evidência</a>`:''}</div><div><label for="dm3DenStatus${Number(r.id)}" style="display:block;font-size:11px;margin-bottom:5px">Situação</label><select id="dm3DenStatus${Number(r.id)}"><option value="recebida" ${r.situacao==='recebida'?'selected':''}>Recebida</option><option value="em_analise" ${r.situacao==='em_analise'?'selected':''}>Em análise</option><option value="concluida" ${r.situacao==='concluida'?'selected':''}>Concluída</option><option value="arquivada" ${r.situacao==='arquivada'?'selected':''}>Arquivada</option></select><button style="margin-top:7px" type="button" onclick="dm3UpdateComplaint(${Number(r.id)})">Atualizar</button></div></div>`).join(''):'<div class="empty">Nenhuma denúncia cadastrada.</div>';
+ dm3CasesCache=data||[];target.innerHTML=(data||[]).length?(data||[]).map(r=>`<div class="dm3-complaint-row"><div><strong>#${Number(r.id)} · ${escapeHTML(r.titulo)}</strong><small>${escapeHTML(r.situacao)} · ${escapeHTML(r.prioridade)} · ${dm3FmtDateTime(r.criado_em)} · Membro: ${escapeHTML(r.membro_nome||'Não identificado')}</small><p style="font-size:12px;line-height:1.6;color:#ccd6df;white-space:pre-wrap">${escapeHTML(r.descricao)}</p>${r.evidencia&&/^https:\/\//i.test(r.evidencia)?`<a target="_blank" rel="noopener noreferrer" href="${escapeHTML(r.evidencia)}">Ver evidência</a>`:''}</div><div class="dm3-inline-actions"><button type="button" onclick="dm3OpenCase(${Number(r.id)})">Acompanhar</button></div></div>`).join(''):'<div class="empty">Nenhuma denúncia cadastrada.</div>';
 };
 window.dm3UpdateComplaint=async function(id){
  if(!staffSectorAccess.includes('comite'))return;
@@ -2404,24 +2464,24 @@ const dm3MaterialSize=bytes=>bytes>=1048576?(bytes/1048576).toFixed(1)+' MB':Mat
 window.dm3LoadMaterials=async function(){
   if(!currentMember||!staffSectorAccess.includes('instrutores'))return;
   $('dm3MaterialsList').innerHTML='<div class="empty">Consultando biblioteca...</div>';
-  const {data,error}=await supabase.rpc('detroit_30_listar_materiais');
+  const {data,error}=await supabase.rpc('detroit_30_listar_materiais_v2');
   if(activeTab!=='materiais')return;
   if(error){$('dm3MaterialsList').innerHTML='<div class="empty">Não foi possível consultar os materiais: '+escapeHTML(error.message)+'</div>';return;}
   dm3MaterialsCache=data||[];dm3FilterMaterials();
 };
 function dm3FilterMaterials(){
   const search=($('dm3MaterialSearch').value||'').toLocaleLowerCase('pt-BR').trim();
-  const result=dm3MaterialsCache.filter(r=>!search||[r.titulo,r.descricao,r.categoria,r.nome_arquivo].join(' ').toLocaleLowerCase('pt-BR').includes(search));
-  $('dm3MaterialsList').innerHTML=result.length?result.map(r=>`<div class="dm3-recruit-row"><div><strong>${escapeHTML(r.titulo)}</strong><small>${escapeHTML(r.categoria)} · ${escapeHTML(r.nome_arquivo)} · ${dm3MaterialSize(Number(r.tamanho))} · ${dm3FmtDateTime(r.criado_em)}</small>${r.descricao?`<p style="color:#b8bec9;font-size:12px;line-height:1.55;margin:6px 0 0">${escapeHTML(r.descricao)}</p>`:''}</div><button type="button" data-dm3-material-open="${Number(r.id)}">Abrir arquivo</button></div>`).join(''):'<div class="empty">Nenhum material encontrado.</div>';
+  const cat=$('dm3MaterialFilterCategory').value;const history=$('dm3MaterialShowHistory').checked;const result=dm3MaterialsCache.filter(r=>(history||r.versao_atual!==false)&&(!cat||r.categoria===cat)&&(!search||[r.titulo,r.descricao,r.categoria,r.nome_arquivo].join(' ').toLocaleLowerCase('pt-BR').includes(search)));
+  $('dm3MaterialsList').innerHTML=result.length?result.map(r=>`<div class="dm3-recruit-row"><div><strong>${escapeHTML(r.titulo)}</strong><small>${escapeHTML(r.categoria)} · ${escapeHTML(r.nome_arquivo)} · ${dm3MaterialSize(Number(r.tamanho))} · ${dm3FmtDateTime(r.criado_em)} · Versão ${Number(r.versao||1)}${r.versao_atual===false?' · Anterior':''}</small>${r.descricao?`<p style="color:#b8bec9;font-size:12px;line-height:1.55;margin:6px 0 0">${escapeHTML(r.descricao)}</p>`:''}</div><div class="dm3-inline-actions"><button type="button" data-dm3-material-preview="${Number(r.id)}">Pré-visualizar</button><button type="button" data-dm3-material-open="${Number(r.id)}">Baixar</button></div></div>`).join(''):'<div class="empty">Nenhum material encontrado.</div>';
 }
-$('dm3MaterialSearch').addEventListener('input',dm3FilterMaterials);
+$('dm3MaterialSearch').addEventListener('input',dm3FilterMaterials);$('dm3MaterialFilterCategory').addEventListener('change',dm3FilterMaterials);$('dm3MaterialShowHistory').addEventListener('change',dm3FilterMaterials);
 $('dm3MaterialsList').addEventListener('click',async event=>{
-  const btn=event.target.closest('button[data-dm3-material-open]');if(!btn)return;
+  const btn=event.target.closest('button[data-dm3-material-open],button[data-dm3-material-preview]');if(!btn)return;
   if(!currentMember||!staffSectorAccess.includes('instrutores'))return;
-  const row=dm3MaterialsCache.find(r=>Number(r.id)===Number(btn.dataset.dm3MaterialOpen));if(!row)return;
+  const preview=btn.hasAttribute('data-dm3-material-preview');const row=dm3MaterialsCache.find(r=>Number(r.id)===Number(btn.dataset.dm3MaterialOpen||btn.dataset.dm3MaterialPreview));if(!row)return;
   btn.disabled=true;const before=btn.textContent;btn.textContent='Abrindo...';
   try{
-    const {data,error}=await supabase.storage.from(dm3MaterialsBucket).createSignedUrl(row.caminho,90,{download:row.nome_arquivo});
+    const {data,error}=await supabase.storage.from(dm3MaterialsBucket).createSignedUrl(row.caminho,90,preview?{}:{download:row.nome_arquivo});
     if(error||!data?.signedUrl)throw error||new Error('Link temporário indisponível');
     const a=document.createElement('a');a.href=data.signedUrl;a.target='_blank';a.rel='noopener noreferrer';document.body.appendChild(a);a.click();a.remove();
   }catch(error){showMessage('dm3MaterialsMessage','Não foi possível baixar o arquivo: '+(error.message||'erro desconhecido'));}
@@ -2452,6 +2512,242 @@ $('dm3MaterialForm').addEventListener('submit',async event=>{
     $('dm3MaterialForm').reset();showMessage('dm3MaterialsMessage','Material cadastrado na biblioteca privada.','success');await dm3LoadMaterials();
   }catch(error){showMessage('dm3MaterialsMessage','Falha ao enviar material: '+(error.message||'erro desconhecido'));}
   finally{btn.disabled=false;btn.textContent='Enviar arquivo para biblioteca';}
+});
+
+/* Management Hub: melhoria de experiência integrada, sem alteracao de versao publica. */
+let dm3NotificationsCache=[];
+let dm3OpenNotesId=null;
+let dm3RecruitScheduleCache=[];
+let dm3CasesCache=[];
+let dm3CaseCurrent=null;
+let dm3HoursTotals=[];
+
+window.dm3ToggleNotifications=function(force){
+ if(!currentMember)return;
+ const drawer=$('dm3NotificationDrawer');
+ const show=typeof force==='boolean'?force:drawer.classList.contains('hidden');
+ drawer.classList.toggle('hidden',!show);
+ if(show)dm3LoadNotifications();
+};
+window.dm3LoadNotifications=async function(){
+ if(!currentMember)return;
+ const list=$('dm3NotificationList');
+ const {data,error}=await supabase.rpc('detroit_30_central_listar',{p_limite:40});
+ if(error){list.innerHTML='<div class="empty">Não foi possível carregar notificações: '+escapeHTML(error.message)+'</div>';return;}
+ dm3NotificationsCache=data||[];
+ const unread=dm3NotificationsCache.filter(n=>!n.lida).length;
+ $('dm3NotificationButton').dataset.unread=unread>99?'99+':String(unread);
+ $('dm3NotificationButton').setAttribute('aria-label',`${unread} notificações não lidas`);
+ list.innerHTML=dm3NotificationsCache.length?dm3NotificationsCache.map(n=>`<article class="dm3-notification-item ${n.lida?'is-read':''}">
+ <div><strong>${escapeHTML(n.titulo)}</strong><small>${escapeHTML(n.resumo||'')} · ${escapeHTML(dm3FmtDateTime(n.criado_em))}</small></div>
+ <div class="dm3-inline-actions">${n.referencia?`<button type="button" data-dm3-noti-open="${Number(n.id)}">Abrir</button>`:''}${!n.lida?`<button type="button" data-dm3-noti-read="${Number(n.id)}">Lido</button>`:''}</div></article>`).join(''):'<div class="empty">Nenhuma notificação para sua conta.</div>';
+};
+$('dm3NotificationList').addEventListener('click',async event=>{
+ const open=event.target.closest('[data-dm3-noti-open]'),mark=event.target.closest('[data-dm3-noti-read]');
+ const target=open||mark;if(!target)return;
+ const row=dm3NotificationsCache.find(n=>Number(n.id)===Number(open?open.dataset.dm3NotiOpen:mark.dataset.dm3NotiRead));
+ if(!row)return;
+ if(!row.lida){const {error}=await supabase.rpc('detroit_30_central_marcar_lida',{p_id:Number(row.id)});if(error){alert('Não foi possível marcar como lido: '+error.message);return;}}
+ if(open){
+  dm3ToggleNotifications(false);
+  if(row.referencia==='calendario')dm3OpenCalendar('all');
+  else if(row.referencia==='recruitSchedule'||row.referencia==='recruit'||row.referencia==='denuncias')dm3OpenModule(row.referencia,'departments');
+ }
+ await dm3LoadNotifications();
+});
+window.dm3LoadHome=async function(){
+ if(!currentMember)return;
+ const target=$('dm3HomeTasks');
+ const {data,error}=await supabase.rpc('detroit_30_minhas_pendencias');
+ if(activeTab!=='dashboard')return;
+ if(error){target.innerHTML='<div class="empty">Pendências indisponíveis: '+escapeHTML(error.message)+'</div>';return;}
+ const tasks=(data||[]).slice(0,18);
+ target.innerHTML=tasks.length?tasks.map((t,i)=>`<button type="button" class="dm3-task" data-dm3-task="${i}"><span class="dm3-task-symbol">${t.categoria==='comite'?'⚖':'◷'}</span><span><strong>${escapeHTML(t.titulo)}</strong><small>${escapeHTML(t.detalhe)}</small></span><span class="dm3-task-arrow">›</span></button>`).join(''):'<div class="dm3-all-clear">✓ Nenhuma pendência que precise da sua atenção.</div>';
+ window.dm3TaskSnapshot=tasks;
+};
+$('dm3HomeTasks').addEventListener('click',e=>{
+ const btn=e.target.closest('[data-dm3-task]');if(!btn)return;
+ const t=window.dm3TaskSnapshot?.[Number(btn.dataset.dm3Task)];if(!t)return;
+ if(t.referencia==='recruit'||t.referencia==='denuncias')dm3OpenModule(t.referencia,'departments');
+});
+
+window.dm3DrawRecruitBoard=function(){
+ const box=$('dm3RecruitBoard');if(!box||!dm3CanRecruit)return;
+ const statuses=[['','Todas'],['pendente','Pendentes'],['em_analise','Em análise'],['entrevista','Entrevistas'],['aprovado','Aprovados'],['reprovado','Reprovados']];
+ box.innerHTML=statuses.map(([v,label])=>`<button type="button" class="dm3-stage ${$('v2StatusFilter').value===v?'active':''}" data-dm3-stage="${v}"><small>${label}</small><strong>${v?requests.filter(r=>v2Status(r)===v).length:requests.length}</strong></button>`).join('');
+};
+$('dm3RecruitBoard').addEventListener('click',e=>{
+ const btn=e.target.closest('[data-dm3-stage]');if(!btn)return;
+ $('v2StatusFilter').value=btn.dataset.dm3Stage;paintRequests();
+});
+
+window.dm3CloseNotes=function(){dm3OpenNotesId=null;$('dm3NotesModal').classList.add('hidden');$('dm3NotesForm').reset();};
+window.dm3OpenNotes=async function(id){
+ if(!dm3CanRecruit)return;
+ dm3OpenNotesId=Number(id);const item=requests.find(r=>Number(r.id)===dm3OpenNotesId);
+ if(!item)return;
+ $('dm3NotesTitle').textContent='Observações · '+item.nome_completo+' · #'+(item.numero_protocolo||item.id);
+ $('dm3NotesModal').classList.remove('hidden');
+ const canWrite=!item.responsavel_id||item.responsavel_id===currentMember?.user_id||isLeadership()||currentMember?.cargo==='adm';
+ $('dm3NotesSave').disabled=!canWrite;
+ $('dm3NotesMessage').textContent=canWrite?'Registros internos, com autoria e data.':'Somente o responsável atual ou a Liderança pode adicionar notas.';
+ await dm3ReloadNotes();
+};
+async function dm3ReloadNotes(){
+ if(!dm3OpenNotesId)return;
+ const id=dm3OpenNotesId,target=$('dm3NotesList');
+ target.innerHTML='<div class="empty">Carregando histórico interno...</div>';
+ const {data,error}=await supabase.rpc('detroit_30_listar_notas_recrutamento',{p_inscricao_id:id});
+ if(dm3OpenNotesId!==id)return;
+ if(error){target.innerHTML='<div class="empty">'+escapeHTML(error.message)+'</div>';return;}
+ target.innerHTML=(data||[]).length?data.map(n=>`<div class="dm3-note-card"><strong>${escapeHTML(({observacao:'Observação',tentativa_contato:'Tentativa de contato',sem_resposta:'Sem resposta',reagendamento:'Reagendamento',retorno:'Retorno combinado',outro:'Outro'})[n.tipo]||n.tipo)}</strong><small>${escapeHTML(n.autor_nome)} · ${escapeHTML(dm3FmtDateTime(n.criado_em))}</small><p>${escapeHTML(n.texto)}</p>${n.proximo_contato_em?`<div class="dm3-followup">Retorno previsto: ${escapeHTML(dm3FmtDateTime(n.proximo_contato_em))} · ${n.concluido_em?'Concluído':'Pendente'} ${!n.concluido_em&&n.pode_concluir?`<button type="button" data-dm3-followup="${Number(n.id)}">Marcar concluído</button>`:''}</div>`:''}</div>`).join(''):'<div class="empty">Nenhuma observação interna ainda.</div>';
+}
+$('requestList').addEventListener('click',e=>{const btn=e.target.closest('[data-dm3-notes-id]');if(btn)dm3OpenNotes(btn.dataset.dm3NotesId);});
+$('dm3NotesList').addEventListener('click',async e=>{
+ const btn=e.target.closest('[data-dm3-followup]');if(!btn)return;
+ btn.disabled=true;
+ const {error}=await supabase.rpc('detroit_30_concluir_retorno_recrutamento',{p_nota_id:Number(btn.dataset.dm3Followup)});
+ if(error){alert(error.message);btn.disabled=false;return;}
+ await dm3ReloadNotes();
+});
+$('dm3NotesForm').addEventListener('submit',async e=>{
+ e.preventDefault();if(!dm3OpenNotesId)return;
+ const save=$('dm3NotesSave');save.disabled=true;
+ $('dm3NotesMessage').textContent='Salvando...';
+ const date=$('dm3NotesFollowup').value;
+ const {error}=await supabase.rpc('detroit_30_registrar_nota_recrutamento',{
+  p_inscricao_id:dm3OpenNotesId,p_tipo:$('dm3NotesType').value,
+  p_texto:$('dm3NotesText').value.trim(),p_proximo_contato_em:date?date+':00-03:00':null});
+ save.disabled=false;
+ if(error){$('dm3NotesMessage').textContent='Erro: '+error.message;return;}
+ $('dm3NotesForm').reset();$('dm3NotesMessage').textContent='Observação registrada com sucesso.';
+ await dm3ReloadNotes();
+});
+$('dm3NotesModal').addEventListener('click',e=>{if(e.target===$('dm3NotesModal'))dm3CloseNotes();});
+
+window.dm3StartRecruitEdit=function(id){
+ const row=dm3RecruitScheduleCache.find(r=>Number(r.id)===Number(id));
+ if(!row||!row.pode_editar||row.situacao!=='agendado')return;
+ const local=v=>{const d=new Date(v);if(Number.isNaN(d.getTime()))return '';const p=new Intl.DateTimeFormat('sv-SE',{timeZone:'America/Sao_Paulo',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).format(d);return p.replace(' ','T');};
+ $('dm3RecruitEditId').value=String(row.id);$('dm3RecruitTitle').value=row.titulo;
+ $('dm3RecruitStart').value=local(row.inicio);$('dm3RecruitEnd').value=local(row.fim);
+ $('dm3RecruitNotes').value=row.observacoes||'';$('dm3RecruitExclusive').checked=Boolean(row.reserva_exclusiva);
+ $('dm3RecruitScheduleSave').textContent='Salvar alterações';$('dm3RecruitCancelEdit').classList.remove('hidden');
+ $('dm3RecruitScheduleForm').scrollIntoView({behavior:'smooth',block:'center'});
+};
+window.dm3AbortRecruitEdit=function(){
+ $('dm3RecruitScheduleForm').reset();$('dm3RecruitEditId').value='';
+ $('dm3RecruitScheduleSave').textContent='+ Salvar horário de recrutamento';
+ $('dm3RecruitCancelEdit').classList.add('hidden');
+ $('dm3RecruitConflictMessage').textContent='';
+};
+async function dm3CheckRecruitAvailability(){
+ if(!dm3CanRecruit)return;
+ const st=$('dm3RecruitStart').value,en=$('dm3RecruitEnd').value,target=$('dm3RecruitConflictMessage');
+ if(!st||!en||en<=st){target.textContent='';return;}
+ const begin=new Date(st+':00-03:00'),end=new Date(en+':00-03:00');
+ if(!Number.isFinite(begin.getTime())||!Number.isFinite(end.getTime()))return;
+ const range=[st+':00-03:00',en+':00-03:00'];
+ const [recruit,events]=await Promise.all([
+  supabase.rpc('detroit_30_ocupacoes_recrutamento',{p_inicio:range[0],p_fim:range[1]}),
+  supabase.from('detroit_30_agenda').select('id,titulo,inicio,fim,reserva_exclusiva').lt('inicio',range[1]).gt('fim',range[0]).eq('situacao','publicado').limit(20)
+ ]);
+ const ownId=Number($('dm3RecruitEditId').value)||0;
+ const overlaps=[...(recruit.data||[]).filter(r=>Number(r.id)!==ownId).map(r=>({titulo:r.titulo,exclusive:r.reserva_exclusiva})),...(events.data||[]).map(r=>({titulo:r.titulo,exclusive:r.reserva_exclusiva}))];
+ target.textContent=overlaps.length?`ℹ Existem ${overlaps.length} atividades no intervalo. ${overlaps.some(x=>x.exclusive)?'Há uma reserva exclusiva: confira o conflito antes de salvar.':'São eventos simultâneos não exclusivos.'}`:'✓ Nenhuma sobreposição de evento/recrutamento identificada.';
+};
+for(const id of ['dm3RecruitStart','dm3RecruitEnd'])$(id).addEventListener('change',dm3CheckRecruitAvailability);
+
+window.dm3OpenCase=async function(id){
+ if(!staffSectorAccess.includes('comite'))return;
+ const row=dm3CasesCache.find(r=>Number(r.id)===Number(id));if(!row)return;
+ dm3CaseCurrent=row;
+ $('dm3CaseId').value=String(row.id);$('dm3CaseTitle').textContent='Apuração da denúncia #'+row.id;
+ $('dm3CaseStatus').value=row.situacao;$('dm3CaseDecision').value=row.parecer||'';
+ $('dm3CaseComment').value='';$('dm3CaseEvidence').value='';$('dm3CaseMessage').textContent='';
+ $('dm3CasePanel').classList.remove('hidden');
+ const {data,error}=await supabase.rpc('detroit_30_responsaveis_comite');
+ if(!error){$('dm3CaseOwner').innerHTML='<option value="">Não atribuído</option>'+(data||[]).filter(x=>x.situacao==='ativo'&&((x.subcargos||[]).includes('Comitê')||staffRoleLevel(x.cargo)>=5)).map(x=>`<option value="${Number(x.id)}">${escapeHTML(x.nome_rp)}</option>`).join('');}
+ $('dm3CaseOwner').value=row.responsavel_id?String(row.responsavel_id):'';
+ await dm3LoadCaseHistory();
+ $('dm3CasePanel').scrollIntoView({behavior:'smooth',block:'start'});
+};
+window.dm3CloseCase=function(){dm3CaseCurrent=null;$('dm3CasePanel').classList.add('hidden');};
+async function dm3LoadCaseHistory(){
+ if(!dm3CaseCurrent)return;
+ const id=dm3CaseCurrent.id,target=$('dm3CaseTimeline');target.innerHTML='<div class="empty">Carregando histórico...</div>';
+ const {data,error}=await supabase.rpc('detroit_30_historico_denuncia',{p_id:id});
+ if(dm3CaseCurrent?.id!==id)return;
+ target.innerHTML=error?'<div class="empty">'+escapeHTML(error.message)+'</div>':(data||[]).length?data.map(x=>`<div class="dm3-note-card"><strong>${escapeHTML(x.situacao||'Movimentação')}</strong><small>${escapeHTML(x.autor_nome||'Comitê')} · ${escapeHTML(dm3FmtDateTime(x.criado_em))}</small><p>${escapeHTML(x.comentario||'')}</p>${x.evidencia_url?`<a href="${escapeHTML(x.evidencia_url)}" target="_blank" rel="noopener noreferrer">Abrir evidência</a>`:''}</div>`).join(''):'<div class="empty">Ainda sem movimentações.</div>';
+}
+$('dm3CaseForm').addEventListener('submit',async e=>{
+ e.preventDefault();if(!dm3CaseCurrent)return;
+ const comment=$('dm3CaseComment').value.trim(),status=$('dm3CaseStatus').value,decision=$('dm3CaseDecision').value.trim();
+ if(['concluida','arquivada'].includes(status)&&decision.length<10){$('dm3CaseMessage').textContent='Informe um parecer de pelo menos 10 caracteres para concluir ou arquivar.';return;}
+ const btn=e.target.querySelector('[type="submit"]');btn.disabled=true;
+ const {error}=await supabase.rpc('detroit_30_gerir_denuncia',{
+  p_id:Number(dm3CaseCurrent.id),p_situacao:status,
+  p_responsavel_id:$('dm3CaseOwner').value?Number($('dm3CaseOwner').value):null,
+  p_parecer:decision,p_comentario:comment,p_evidencia_url:$('dm3CaseEvidence').value.trim()||null
+ });
+ btn.disabled=false;
+ if(error){$('dm3CaseMessage').textContent='Erro: '+error.message;return;}
+ $('dm3CaseMessage').textContent='Movimentação salva com sucesso.';
+ await dm3LoadComplaints();
+ const refreshed=dm3CasesCache.find(r=>Number(r.id)===Number(dm3CaseCurrent.id));if(refreshed)dm3CaseCurrent=refreshed;
+ $('dm3CaseComment').value='';$('dm3CaseEvidence').value='';await dm3LoadCaseHistory();
+});
+
+function dm3DateValue(d){const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),day=String(d.getDate()).padStart(2,'0');return `${y}-${m}-${day}`;}
+window.dm3PickHoursRange=function(range){
+ const today=new Date();let start=new Date(today.getFullYear(),today.getMonth(),today.getDate()),end=new Date(start);
+ if(range==='week')start.setDate(start.getDate()-((start.getDay()+6)%7));
+ if(range==='month')start=new Date(today.getFullYear(),today.getMonth(),1);
+ if(range==='last30')start.setDate(start.getDate()-29);
+ if(range==='previous'){start=new Date(today.getFullYear(),today.getMonth()-1,1);end=new Date(today.getFullYear(),today.getMonth(),0);}
+ $('dm3HoursStart').value=dm3DateValue(start);$('dm3HoursEnd').value=dm3DateValue(end);
+ $('dm3HoursForm').requestSubmit();
+};
+window.dm3SortHours=function(by){
+ const rows=[...dm3HoursTotals].sort(by==='name'?(a,b)=>a.nome.localeCompare(b.nome,'pt-BR'):(a,b)=>b.total-a.total||a.nome.localeCompare(b.nome,'pt-BR'));
+ $('dm3HoursSummary').innerHTML=rows.length?rows.map((r,i)=>`<div class="dm3-recruit-row"><div><strong>${by==='hours'?`${i+1}º · `:''}${escapeHTML(r.nome)}</strong><small>${escapeHTML(r.cargo)} · ${r.n} período(s)</small></div><strong>${dm3Mins(r.total)}</strong></div>`).join(''):'<div class="empty">Consulte um período para gerar o ranking.</div>';
+};
+window.dm3ExportHoursSummary=function(){
+ if(!dm3HoursTotals.length){alert('Consulte um período antes de exportar.');return;}
+ const esc=v=>`"${String(v??'').replace(/^[=+@-]/,"'").replace(/"/g,'""')}\"`;
+ const rows=[['Funcionário','Cargo','Jornadas','Minutos','Horas'],...dm3HoursTotals.map(x=>[x.nome,x.cargo,x.n,x.total,dm3Mins(x.total)])];
+ const blob=new Blob(['\ufeff'+rows.map(r=>r.map(esc).join(';')).join('\r\n')],{type:'text/csv;charset=utf-8'});
+ const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='Detroit-Apropriacao-Resumo.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);
+};
+
+$('staffList').addEventListener('click',async e=>{
+ const btn=e.target.closest('[data-dm3-training]');if(!btn)return;
+ const id=Number(btn.dataset.dm3Training),m=detroitStaff.find(x=>Number(x.id)===id);if(!m)return;
+ const {data,error}=await supabase.rpc('detroit_30_historico_treinamentos',{p_membro_id:id});
+ if(error){alert('Não foi possível consultar treinamentos: '+error.message);return;}
+ $('staffHistoryTitle').textContent='Treinamentos concluídos · '+m.nome_rp;
+ $('staffHistoryList').innerHTML=(data||[]).length?data.map(r=>`<div class="staff-event"><small>${escapeHTML(dm3FmtDateTime(r.data_atualizacao))} · CONCLUÍDO</small><strong>${escapeHTML(r.titulo)}</strong></div>`).join(''):'<div class="empty">Nenhum treinamento concluído registrado.</div>';
+ $('staffHistoryWrap').classList.remove('hidden');$('staffHistoryWrap').scrollIntoView({behavior:'smooth',block:'start'});
+});
+
+// Command palette for faster navigation, without exposing unauthorized tools.
+window.dm3OpenQuickNav=function(){
+ if(!currentMember)return;
+ let overlay=$('dm3QuickNav');
+ if(!overlay){overlay=document.createElement('div');overlay.id='dm3QuickNav';overlay.className='dm3-modal';overlay.innerHTML=`<div class="dm3-modal-body dm3-quick-box"><div class="dm3-drawer-top"><h3>Ir para...</h3><button type="button" onclick="dm3CloseQuickNav()">✕</button></div><input id="dm3QuickSearch" placeholder="Busque um departamento ou ferramenta" aria-label="Pesquisar ferramentas"><div id="dm3QuickItems"></div></div>`;document.body.appendChild(overlay);overlay.addEventListener('click',e=>{if(e.target===overlay)dm3CloseQuickNav();});overlay.querySelector('input').addEventListener('input',dm3RenderQuickNav);overlay.querySelector('#dm3QuickItems').addEventListener('click',e=>{const b=e.target.closest('[data-dm3-quick]');if(!b)return;const a=window.dm3QuickActions.find(x=>x.tab===b.dataset.dm3Quick);if(!a)return;dm3CloseQuickNav();a.action();});}
+ window.dm3QuickActions=[{tab:'dashboard',label:'Dashboard',action:()=>switchAdminTab('dashboard')},{tab:'departments',label:'Departamentos',action:()=>switchAdminTab('departments')},{tab:'calendario',label:'Calendário',action:()=>dm3OpenCalendar('all')}];
+ if(dm3CanRecruit)window.dm3QuickActions.push({tab:'recruit',label:'Inscrições recebidas',action:()=>dm3OpenModule('recruit','departments')},{tab:'recruitSchedule',label:'Agenda de recrutamento',action:()=>dm3OpenModule('recruitSchedule','departments')});
+ if(staffSectorAccess.includes('comite'))window.dm3QuickActions.push({tab:'apropriacao',label:'Apropriação de horas',action:()=>dm3OpenModule('apropriacao','departments')},{tab:'denuncias',label:'Denúncias',action:()=>dm3OpenModule('denuncias','departments')});
+ if(staffSectorAccess.includes('instrutores'))window.dm3QuickActions.push({tab:'materiais',label:'Materiais e apostilas',action:()=>dm3OpenMaterials()});
+ if(staffSectorAccess.includes('rp'))window.dm3QuickActions.push({tab:'rp',label:'Relações Públicas',action:()=>dm3OpenModule('rp','departments')});
+ if(isLeadership())window.dm3QuickActions.push({tab:'leadership',label:'Liderança',action:()=>switchAdminTab('leadership')});
+ $('dm3QuickSearch').value='';dm3RenderQuickNav();overlay.classList.remove('hidden');$('dm3QuickSearch').focus();
+};
+function dm3RenderQuickNav(){const q=($('dm3QuickSearch')?.value||'').toLocaleLowerCase('pt-BR');$('dm3QuickItems').innerHTML=(window.dm3QuickActions||[]).filter(x=>x.label.toLocaleLowerCase('pt-BR').includes(q)).map(x=>`<button type="button" data-dm3-quick="${x.tab}">${escapeHTML(x.label)} <span>›</span></button>`).join('')||'<div class="empty">Nada encontrado.</div>';}
+window.dm3CloseQuickNav=function(){$('dm3QuickNav')?.classList.add('hidden');};
+document.addEventListener('keydown',e=>{
+ if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){if(!currentMember)return;e.preventDefault();dm3OpenQuickNav();}
+ if(e.key==='Escape'){dm3CloseQuickNav();if(!$('dm3NotesModal').classList.contains('hidden'))dm3CloseNotes();}
 });
 
 </script>
