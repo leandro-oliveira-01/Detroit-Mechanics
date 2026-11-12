@@ -546,6 +546,27 @@ body:has(#adminPanel:not(.hidden)) #viewAccess{padding:0!important;margin:0}
       </div>
       <div class="dm3-note" id="dm3NoDepartments">Os setores disponíveis dependem dos subcargos vinculados ao seu Discord.</div>
     </section>
+
+    <section id="materialsSection" class="hidden" aria-label="Biblioteca de materiais dos Instrutores">
+      <div class="section-banner"><span class="hero-tag">INSTRUTORES / BIBLIOTECA</span><h3>Materiais e apostilas</h3><p>Arquivos internos, com acesso restrito aos Instrutores autorizados e à liderança. Os documentos ficam em armazenamento privado, não em links públicos.</p></div>
+      <div class="p25-control-card">
+        <div class="p25-card-head"><strong>Adicionar material</strong><small>PDF, DOC, DOCX, PPT, PPTX, XLS, XLSX, TXT, PNG ou JPG · até 15 MB</small></div>
+        <div class="message" id="dm3MaterialsMessage" role="status"></div>
+        <form id="dm3MaterialForm" class="dm3-new-grid">
+          <div class="field dm3-span-all"><label for="dm3MaterialTitle">Título *</label><input id="dm3MaterialTitle" maxlength="140" minlength="3" required placeholder="Ex.: Manual de procedimentos da mecânica"></div>
+          <div class="field"><label for="dm3MaterialCategory">Categoria</label><select id="dm3MaterialCategory"><option value="apostila">Apostila</option><option value="treinamento">Treinamento</option><option value="procedimento">Procedimento</option><option value="outro">Outro</option></select></div>
+          <div class="field"><label for="dm3MaterialFile">Arquivo *</label><input id="dm3MaterialFile" type="file" accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.txt,.png,.jpg,.jpeg" required></div>
+          <div class="field dm3-span-all"><label for="dm3MaterialDescription">Descrição (opcional)</label><textarea id="dm3MaterialDescription" maxlength="1000" placeholder="Como e quando utilizar este material"></textarea></div>
+          <button class="primary dm3-span-all" type="submit" id="dm3MaterialSave">Enviar arquivo para biblioteca</button>
+        </form>
+      </div>
+      <div class="p25-control-card">
+        <div class="p25-card-head"><strong>Arquivos disponíveis</strong><button class="p25-button" type="button" onclick="dm3LoadMaterials()">Atualizar</button></div>
+        <div class="field"><label for="dm3MaterialSearch">Buscar material</label><input id="dm3MaterialSearch" placeholder="Título, categoria ou descrição"></div>
+        <div id="dm3MaterialsList" class="p25-records"><div class="empty">Abra esta área para consultar os materiais.</div></div>
+      </div>
+      <div class="dm3-note">Apenas os membros autorizados podem consultar ou enviar arquivos. Links de download são temporários e expiram automaticamente.</div>
+    </section>
     <section id="leadershipSection" class="hidden" aria-label="Ferramentas da liderança">
       <div class="section-banner"><span class="hero-tag">ÁREA RESTRITA / GESTÃO</span><h3>Liderança</h3><p>Controle administrativo e estratégico da Detroit Mechanics. Ações de alto impacto exigem autorização.</p></div>
       <div class="dm3-home-grid">
@@ -1015,17 +1036,18 @@ window.switchAdminTab = function(tab) {
   if(['auditoria','settings','reports'].includes(tab)&&leadershipLevel<6) return;
   if(sectorTabs.includes(tab)&&!staffSectorAccess.includes(tab)) return;
   if(['ponto','advertencias','apropriacao','denuncias'].includes(tab)&&!staffSectorAccess.includes('comite')) return;
-  const known=['dashboard','departments','leadership','calendario','recruit','recruitSchedule','staff','members','ponto','apropriacao','denuncias','advertencias','auditoria','reports','settings',...sectorTabs];
+   if(tab==='materiais'&&!staffSectorAccess.includes('instrutores'))return;
+  const known=['dashboard','departments','leadership','calendario','recruit','recruitSchedule','staff','members','ponto','apropriacao','denuncias','materiais','advertencias','auditoria','reports','settings',...sectorTabs];
   if(!known.includes(tab))return;
   activeTab=tab;
-  const sectionIds={dashboard:'dashboardSection',departments:'departmentsSection',leadership:'leadershipSection',calendario:'calendarSection',recruit:'recruitSection',recruitSchedule:'recruitScheduleSection',staff:'staffSection',members:'membersSection',ponto:'worktimeSection',apropriacao:'appropriationSection',denuncias:'complaintsSection',advertencias:'warningsSection',auditoria:'auditSection',reports:'reportsSection',settings:'settingsSection'};
+  const sectionIds={dashboard:'dashboardSection',departments:'departmentsSection',leadership:'leadershipSection',calendario:'calendarSection',recruit:'recruitSection',recruitSchedule:'recruitScheduleSection',staff:'staffSection',members:'membersSection',ponto:'worktimeSection',apropriacao:'appropriationSection',denuncias:'complaintsSection',materiais:'materialsSection',advertencias:'warningsSection',auditoria:'auditSection',reports:'reportsSection',settings:'settingsSection'};
   for(const group of sectorTabs) sectionIds[group]='sectorSection';
   for(const id of new Set(Object.values(sectionIds))) $(id).classList.add('hidden');
   $(sectionIds[tab]).classList.remove('hidden');
   $('committeeTools').classList.toggle('hidden',tab!=='comite');
   const group=tab==='dashboard'?'dashboard':tab==='departments'?'departments':tab==='leadership'?'leadership':dm3NavGroup;
   for(const [name,id] of [['dashboard','tabDashboard'],['departments','tabDepartments'],['leadership','tabLeadership']]) $(id).classList.toggle('active',group===name);
-  const titles={dashboard:'Visão geral',departments:'Departamentos',leadership:'Liderança',calendario:'Calendário',recruit:'Inscrições recebidas',recruitSchedule:'Agenda de recrutamento',staff:'Equipe da Mecânica',members:'Acessos ao painel',instrutores:'Instrutores',comite:'Comitê de Ética',rp:'Relações Públicas',ponto:'Controle de Ponto',apropriacao:'Apropriação de horas',denuncias:'Denúncias',advertencias:'Advertências',auditoria:'Central de Logs',reports:'Relatórios',settings:'Configurações'};
+  const titles={dashboard:'Visão geral',departments:'Departamentos',leadership:'Liderança',calendario:'Calendário',recruit:'Inscrições recebidas',recruitSchedule:'Agenda de recrutamento',staff:'Equipe da Mecânica',members:'Acessos ao painel',instrutores:'Instrutores',comite:'Comitê de Ética',rp:'Relações Públicas',ponto:'Controle de Ponto',apropriacao:'Apropriação de horas',denuncias:'Denúncias',materiais:'Materiais e apostilas',advertencias:'Advertências',auditoria:'Central de Logs',reports:'Relatórios',settings:'Configurações'};
   $('appHeading').textContent=titles[tab];
   $('appBreadcrumb').textContent=titles[tab].toUpperCase();
   $('dm3ContextNav').classList.toggle('hidden',['dashboard','departments','leadership'].includes(tab));
@@ -1039,6 +1061,7 @@ window.switchAdminTab = function(tab) {
   else if(tab==='ponto')renderWorktime();
   else if(tab==='apropriacao')dm3InitHours();
   else if(tab==='denuncias')dm3InitComplaints();
+   else if(tab==='materiais')dm3LoadMaterials();
   else if(tab==='recruitSchedule')dm3LoadRecruitSchedule();
   else if(tab==='advertencias')renderWarnings();
   else if(sectorTabs.includes(tab))renderSector(tab);
@@ -1051,15 +1074,7 @@ window.dm3OpenDeptCalendar=function(type){
  if(['event','campaign'].includes(type)&&!staffSectorAccess.includes('rp'))return;
  dm3NavGroup='departments';window.dm3OpenCalendar(type);
 };
-window.dm3OpenMaterials=async function(){
- if(!staffSectorAccess.includes('instrutores'))return;
- window.dm3OpenModule('instrutores','departments');
- // Filtra o registro já existente do tipo Material didático.
- if(activeTab==='instrutores'){
-   const timer=setInterval(()=>{if(activeTab!=='instrutores'){clearInterval(timer);return;}const el=$('sectorTypeFilter');if(el?.querySelector('option[value="material"]')){el.value='material';filterSector();clearInterval(timer);}},120);
-   setTimeout(()=>clearInterval(timer),3500);
- }
-};
+window.dm3OpenMaterials=function(){if(!staffSectorAccess.includes('instrutores'))return;window.dm3OpenModule('materiais','departments');};
 
 function refreshDashboard(items) {
   const freq = new Map();
@@ -2353,6 +2368,65 @@ window.dm3UpdateComplaint=async function(id){
  if(error){showMessage('dm3ComplaintsMessage','Não foi possível atualizar: '+error.message);return;}
  showMessage('dm3ComplaintsMessage','Denúncia atualizada e registrada no histórico.','success');await dm3LoadComplaints();
 };
+
+
+/* Detroit Mechanics 3.0 — Materiais privados dos Instrutores. Permissões no banco e no Storage. */
+const dm3MaterialsBucket='detroit-30-materiais';
+let dm3MaterialsCache=[];
+const dm3MaterialExtensions=new Set(['pdf','doc','docx','ppt','pptx','xls','xlsx','txt','png','jpg','jpeg']);
+const dm3MaterialSize=bytes=>bytes>=1048576?(bytes/1048576).toFixed(1)+' MB':Math.max(1,Math.round(bytes/1024))+' KB';
+window.dm3LoadMaterials=async function(){
+  if(!currentMember||!staffSectorAccess.includes('instrutores'))return;
+  $('dm3MaterialsList').innerHTML='<div class="empty">Consultando biblioteca...</div>';
+  const {data,error}=await supabase.rpc('detroit_30_listar_materiais');
+  if(activeTab!=='materiais')return;
+  if(error){$('dm3MaterialsList').innerHTML='<div class="empty">Não foi possível consultar os materiais: '+escapeHTML(error.message)+'</div>';return;}
+  dm3MaterialsCache=data||[];dm3FilterMaterials();
+};
+function dm3FilterMaterials(){
+  const search=($('dm3MaterialSearch').value||'').toLocaleLowerCase('pt-BR').trim();
+  const result=dm3MaterialsCache.filter(r=>!search||[r.titulo,r.descricao,r.categoria,r.nome_arquivo].join(' ').toLocaleLowerCase('pt-BR').includes(search));
+  $('dm3MaterialsList').innerHTML=result.length?result.map(r=>`<div class="dm3-recruit-row"><div><strong>${escapeHTML(r.titulo)}</strong><small>${escapeHTML(r.categoria)} · ${escapeHTML(r.nome_arquivo)} · ${dm3MaterialSize(Number(r.tamanho))} · ${dm3FmtDateTime(r.criado_em)}</small>${r.descricao?`<p style="color:#b8bec9;font-size:12px;line-height:1.55;margin:6px 0 0">${escapeHTML(r.descricao)}</p>`:''}</div><button type="button" data-dm3-material-open="${Number(r.id)}">Abrir arquivo</button></div>`).join(''):'<div class="empty">Nenhum material encontrado.</div>';
+}
+$('dm3MaterialSearch').addEventListener('input',dm3FilterMaterials);
+$('dm3MaterialsList').addEventListener('click',async event=>{
+  const btn=event.target.closest('button[data-dm3-material-open]');if(!btn)return;
+  if(!currentMember||!staffSectorAccess.includes('instrutores'))return;
+  const row=dm3MaterialsCache.find(r=>Number(r.id)===Number(btn.dataset.dm3MaterialOpen));if(!row)return;
+  btn.disabled=true;const before=btn.textContent;btn.textContent='Abrindo...';
+  try{
+    const {data,error}=await supabase.storage.from(dm3MaterialsBucket).createSignedUrl(row.caminho,90,{download:row.nome_arquivo});
+    if(error||!data?.signedUrl)throw error||new Error('Link temporário indisponível');
+    const a=document.createElement('a');a.href=data.signedUrl;a.target='_blank';a.rel='noopener noreferrer';document.body.appendChild(a);a.click();a.remove();
+  }catch(error){showMessage('dm3MaterialsMessage','Não foi possível baixar o arquivo: '+(error.message||'erro desconhecido'));}
+  finally{btn.disabled=false;btn.textContent=before;}
+});
+$('dm3MaterialForm').addEventListener('submit',async event=>{
+  event.preventDefault();if(!currentMember||!staffSectorAccess.includes('instrutores'))return;
+  clearMessage('dm3MaterialsMessage');
+  const file=$('dm3MaterialFile').files?.[0];
+  if(!file){showMessage('dm3MaterialsMessage','Selecione um arquivo.');return;}
+  const ext=(file.name.split('.').pop()||'').toLowerCase();
+  if(!dm3MaterialExtensions.has(ext)){showMessage('dm3MaterialsMessage','Formato não permitido.');return;}
+  if(file.size<1||file.size>15*1024*1024){showMessage('dm3MaterialsMessage','O arquivo deve ter entre 1 byte e 15 MB.');return;}
+  const title=$('dm3MaterialTitle').value.trim();if(title.length<3){showMessage('dm3MaterialsMessage','Informe um título válido.');return;}
+  const btn=$('dm3MaterialSave');btn.disabled=true;btn.textContent='Enviando...';
+  let path='';
+  try{
+    const {data:user,error:authError}=await supabase.auth.getUser();
+    if(authError||!user?.user?.id)throw new Error('Faça login novamente para enviar materiais.');
+    path=user.user.id+'/'+crypto.randomUUID()+'.'+ext;
+    const upload=await supabase.storage.from(dm3MaterialsBucket).upload(path,file,{cacheControl:'3600',upsert:false,contentType:file.type||'application/octet-stream'});
+    if(upload.error)throw upload.error;
+    const saved=await supabase.rpc('detroit_30_cadastrar_material',{
+      p_titulo:title,p_descricao:$('dm3MaterialDescription').value.trim(),p_categoria:$('dm3MaterialCategory').value,
+      p_caminho:path,p_nome_arquivo:file.name,p_tamanho:file.size,p_tipo:file.type||'application/octet-stream'
+    });
+    if(saved.error){await supabase.storage.from(dm3MaterialsBucket).remove([path]);throw saved.error;}
+    $('dm3MaterialForm').reset();showMessage('dm3MaterialsMessage','Material cadastrado na biblioteca privada.','success');await dm3LoadMaterials();
+  }catch(error){showMessage('dm3MaterialsMessage','Falha ao enviar material: '+(error.message||'erro desconhecido'));}
+  finally{btn.disabled=false;btn.textContent='Enviar arquivo para biblioteca';}
+});
 
 </script>
 </body>
