@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#080808">
-<title>Detroit Mechanics 3.0 </title>
+<title>Detroit Mechanics 3.0 | Management Hub</title>
 <link rel="icon" type="image/png" href="detroit-icon-512.png">
 <link rel="apple-touch-icon" href="detroit-icon-512.png">
 <style>
@@ -346,14 +346,45 @@ body:has(#adminPanel:not(.hidden)) #viewAccess{padding:0!important;margin:0}
 }
 
 
-/* Detroit Mechanics 3.0 — consulta flexível de horas por intervalo de datas */
-#worktimeSection .p30-date-filters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-items:end;margin:8px 0 10px}
-#worktimeSection .p30-date-filters .field{min-width:0}
-#worktimeSection .p30-date-filters input,#worktimeSection .p30-date-filters select{width:100%;min-width:0}
-#worktimeSection .p30-date-filters #workRefresh{grid-column:1/-1;justify-self:start;min-width:170px}
-#worktimeSection .p30-range-feedback{font-size:12px;color:#aab3c1;line-height:1.6;margin:2px 0 12px}
-@media(max-width:780px){#worktimeSection .p30-date-filters{grid-template-columns:repeat(2,minmax(0,1fr))}#worktimeSection .p30-date-filters .p30-employee{grid-column:1/-1}}
-@media(max-width:540px){#worktimeSection .p30-date-filters{grid-template-columns:1fr}#worktimeSection .p30-date-filters .p30-employee{grid-column:auto}#worktimeSection .p30-date-filters #workRefresh{width:100%;justify-self:stretch}}
+/* Detroit 3.0 · menus em tres grupos / módulos por autorização */
+#adminPanel .dm3-simple-nav{gap:10px}
+#adminPanel .dm3-simple-nav>button{font-size:15px;min-height:52px;border-radius:12px;font-weight:800}
+#adminPanel .dm3-home-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin:17px 0}
+#adminPanel .dm3-dept-card{background:linear-gradient(150deg,#171c24,#101217);border:1px solid #353e4a;border-radius:15px;padding:22px;min-width:0;box-shadow:0 10px 34px #0002}
+#adminPanel .dm3-dept-card:hover{border-color:#7c3345}
+#adminPanel .dm3-dept-card h3{font-size:18px;font-weight:850;margin:9px 0}
+#adminPanel .dm3-dept-card p{font-size:13px;line-height:1.6;color:#aeb8c6;min-height:43px;margin:0 0 17px}
+#adminPanel .dm3-card-mark{font-size:13px;letter-spacing:2px;font-weight:900;color:#ff596e;display:flex;align-items:center;justify-content:space-between}
+#adminPanel .dm3-card-mark span{font-size:26px;letter-spacing:0;color:#ff6d7a}
+#adminPanel .dm3-card-actions{display:grid;grid-template-columns:1fr;gap:7px}
+#adminPanel .dm3-card-actions button{width:100%;border:1px solid #37414c;background:#202630;color:#ecf2fa;border-radius:9px;text-align:left;padding:12px 14px;font-size:13px;font-weight:650;transition:.15s}
+#adminPanel .dm3-card-actions button:hover,#adminPanel .dm3-card-actions button:focus-visible{border-color:#db334e;background:#351e27;outline:0}
+#adminPanel .dm3-context-nav{display:flex;align-items:center;gap:10px;margin:0 0 12px;color:#9fadb8;font-size:12px}
+#adminPanel .dm3-context-nav button{background:#1e242e;color:#fff;border:1px solid #394450;border-radius:9px;padding:9px 13px;font-weight:700}
+#adminPanel .dm3-new-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;align-items:end}
+#adminPanel .dm3-new-grid .field{margin-bottom:0}
+#adminPanel .dm3-span-all{grid-column:1/-1}
+#adminPanel .dm3-note{background:#111b24;border:1px solid #293c4c;padding:15px;border-radius:12px;font-size:12px;line-height:1.7;color:#bac4cf}
+#adminPanel .dm3-config-list{display:grid;gap:10px;margin:12px 0 19px}
+#adminPanel .dm3-config-list>div{display:flex;gap:15px;justify-content:space-between;align-items:center;border-bottom:1px solid #35404a;padding:12px 2px}
+#adminPanel .dm3-config-list span{font-size:12px;color:#9dacbc}
+#adminPanel .dm3-config-list strong{font-size:12px;overflow-wrap:anywhere;text-align:right}
+#adminPanel .dm3-recruit-row,#adminPanel .dm3-complaint-row{display:flex;justify-content:space-between;align-items:center;gap:18px;border:1px solid #313d49;border-radius:10px;background:#121920;padding:14px;margin:8px 0}
+#adminPanel .dm3-recruit-row strong,#adminPanel .dm3-complaint-row strong{display:block;font-size:13px;overflow-wrap:anywhere}
+#adminPanel .dm3-recruit-row small,#adminPanel .dm3-complaint-row small{color:#94a3b1;display:block;margin-top:5px;line-height:1.5;font-size:11px}
+#adminPanel .dm3-recruit-row button,#adminPanel .dm3-complaint-row button,#adminPanel .dm3-complaint-row select{background:#202732;color:#fff;border:1px solid #434b56;padding:9px;border-radius:8px;font-size:12px}
+#adminPanel .dm3-dashboard-technical{display:none}
+#adminPanel .d3-central-calendar{grid-template-columns:minmax(0,1fr)!important}
+#adminPanel .d3-right-panels{grid-template-columns:1fr!important}
+@media(max-width:900px){#adminPanel .dm3-home-grid{grid-template-columns:1fr}}
+@media(max-width:650px){#adminPanel .dm3-new-grid{grid-template-columns:1fr}#adminPanel .dm3-span-all{grid-column:1}#adminPanel .dm3-recruit-row,#adminPanel .dm3-complaint-row{flex-direction:column;align-items:stretch}}
+
+
+/* Detroit Management Hub 3.0: reserva de horario por departamento */
+#adminPanel .dm3-exclusive-option{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:11px;background:#17212a;border:1px solid #384957;color:#e5ecf5;cursor:pointer}
+#adminPanel .dm3-exclusive-option input{width:18px;height:18px;accent-color:#ec3149;flex:0 0 auto}
+#adminPanel .dm3-exclusive-option span{display:grid;gap:4px}
+#adminPanel .dm3-exclusive-option small{color:#acb8c6;font-size:12px;line-height:1.5}
 </style>
 </head>
 <body>
@@ -467,40 +498,117 @@ body:has(#adminPanel:not(.hidden)) #viewAccess{padding:0!important;margin:0}
     <aside class="app-sidebar" aria-label="Menu do painel">
       <div class="side-title"><span class="side-monogram gear-mark" aria-label="Engrenagem Detroit Mechanics"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 13.9 3l1 2.5 2 .8 2.4-1.1 1.3 2.3-2 1.8.3 2.1 2.4 1v2.6l-2.5.9-.7 2 1.2 2.3-2 1.5-2-1.9-2.2.3L13 21.5h-2.5l-.9-2.6-2-.8-2.5 1.1-1.3-2.2 2-1.9-.3-2.1L3 12V9.5l2.5-.9.7-2-1.2-2.3 2-1.5 2 1.9 2.2-.3Z"/><circle cx="12" cy="12" r="3.5"/></svg></span><span><strong>DETROIT</strong><small>MANAGEMENT HUB 3.0</small></span></div>
       <div class="side-group-title">MENU PRINCIPAL</div>
-      <div class="sidebar-nav" id="adminTabs">
+      <nav class="sidebar-nav dm3-simple-nav" id="adminTabs" aria-label="Menu principal">
         <button type="button" id="tabDashboard" class="active" onclick="switchAdminTab('dashboard')"><svg class="d3-icon" aria-hidden="true"><use href="#d3-calendar"></use></svg><span>Dashboard</span></button>
-        <button type="button" id="tabCalendar" onclick="switchAdminTab('calendario')"><svg class="d3-icon" aria-hidden="true"><use href="#d3-calendar"></use></svg><span>Calendário</span></button>
-        <button type="button" id="tabRecruit" onclick="switchAdminTab('recruit')"><svg class="d3-icon" aria-hidden="true"><use href="#d3-users"></use></svg><span>Inscrições</span></button>
-        <button type="button" id="tabStaff" onclick="switchAdminTab('staff')"><svg class="d3-icon" aria-hidden="true"><use href="#d3-users"></use></svg><span>Equipe</span></button>
-        <details class="d3-nav-more" id="d3ToolsMenu">
-          <summary><svg class="d3-icon" aria-hidden="true"><use href="#d3-settings"></use></svg><span>Ferramentas</span><span class="d3-chevron" aria-hidden="true">⌄</span></summary>
-          <div class="d3-subnav">
-            <button type="button" onclick="dm3OpenCalendar('event')">Eventos</button>
-            <button type="button" onclick="dm3OpenCalendar('campaign')">Campanhas</button>
-            <button type="button" onclick="dm3OpenCalendar('date')">Datas comemorativas</button>
-            <button type="button" onclick="dm3OpenCalendar('all')">Avisos e notificações</button>
-            <button type="button" id="tabMembers" class="hidden" onclick="switchAdminTab('members')">Permissões</button>
-            <button type="button" onclick="dm3ShowRecruitSummary()">Relatórios</button>
-            <button type="button" onclick="dm3OpenSettings()">Configurações</button>
-          </div>
-        </details>
-        <details class="d3-nav-more" id="d3DeptMenu">
-          <summary><svg class="d3-icon" aria-hidden="true"><use href="#d3-users"></use></svg><span>Departamentos</span><span class="d3-chevron" aria-hidden="true">⌄</span></summary>
-          <div class="d3-subnav">
-            <button type="button" id="tabInstructors" class="hidden" onclick="switchAdminTab('instrutores')">Instrutores</button>
-            <button type="button" id="tabEthics" class="hidden" onclick="switchAdminTab('comite')">Comitê de Ética</button>
-            <button type="button" id="tabWorktime" class="hidden" onclick="switchAdminTab('ponto')">Controle de Ponto</button>
-            <button type="button" id="tabWarnings" class="hidden" onclick="switchAdminTab('advertencias')">Advertências</button>
-            <button type="button" id="tabPR" class="hidden" onclick="switchAdminTab('rp')">Relações Públicas</button>
-            <button type="button" id="tabAudit" class="hidden" onclick="switchAdminTab('auditoria')">Central de Logs</button>
-          </div>
-        </details>
+        <button type="button" id="tabDepartments" onclick="switchAdminTab('departments')"><svg class="d3-icon" aria-hidden="true"><use href="#d3-users"></use></svg><span>Departamentos</span></button>
+        <button type="button" id="tabLeadership" class="hidden" onclick="switchAdminTab('leadership')"><svg class="d3-icon" aria-hidden="true"><use href="#d3-shield"></use></svg><span>Liderança</span></button>
+      </nav>
+      <!-- Identificadores legados mantidos invisíveis para compatibilidade com os módulos existentes. -->
+      <div class="hidden" aria-hidden="true" inert>
+        <details id="d3ToolsMenu"><summary>Ferramentas</summary><button id="tabMembers" type="button">Permissões</button></details>
+        <details id="d3DeptMenu"><summary>Departamentos</summary><button id="tabInstructors" type="button">Instrutores</button><button id="tabEthics" type="button">Comitê</button><button id="tabWorktime" type="button">Ponto</button><button id="tabWarnings" type="button">Advertências</button><button id="tabPR" type="button">RP</button><button id="tabAudit" type="button">Logs</button></details>
+        <button id="tabCalendar" type="button">Calendário</button>
+        <button id="tabRecruit" type="button">Inscrições</button>
+        <button id="tabStaff" type="button">Equipe</button>
       </div>
       <div class="side-footer"><span class="pulse-dot"></span> Detroit Mechanics 3.0<small>Gestão integrada e organização</small></div>
     </aside>
     <div class="app-main">
     <div class="app-eyebrow">WORKSPACE / <span id="appBreadcrumb">VISÃO GERAL</span></div>
+    <div id="dm3ContextNav" class="dm3-context-nav hidden"><button type="button" id="dm3Back" onclick="dm3BackToGroup()">← Voltar</button><span id="dm3ContextPath">Departamentos</span></div>
     <div class="admin-head"><div><span class="badge">● ACESSO AUTORIZADO</span><h2 id="appHeading" style="margin-top:12px">Visão geral</h2><p id="adminSummary">Acompanhe o recrutamento em tempo real.</p></div><button class="ghost logout-button" onclick="logout()">↪ Sair da conta</button></div>
+
+    <section id="departmentsSection" class="hidden" aria-label="Departamentos autorizados">
+      <div class="section-banner"><span class="hero-tag">EQUIPE / AMBIENTE AUTORIZADO</span><h3>Departamentos</h3><p>Escolha seu setor. Você verá apenas as áreas para as quais sua conta possui autorização.</p></div>
+      <div class="dm3-home-grid">
+        <article class="dm3-dept-card hidden" id="dm3RecruitCard"><div class="dm3-card-mark">01 <span>◉</span></div><h3>Recrutamento</h3><p>Organize entrevistas, acompanhe candidatos e consulte a equipe.</p><div class="dm3-card-actions">
+          <button onclick="dm3OpenModule('recruitSchedule','departments')">Agenda de recrutamentos</button>
+          <button onclick="dm3OpenModule('recruit','departments')">Inscrições recebidas</button>
+          <button onclick="dm3OpenModule('staff','departments')">Equipe</button>
+        </div></article>
+        <article class="dm3-dept-card hidden" id="dm3RPCard"><div class="dm3-card-mark">02 <span>✦</span></div><h3>Relações Públicas</h3><p>Programe eventos, campanhas e ações da comunicação.</p><div class="dm3-card-actions">
+          <button onclick="dm3OpenDeptCalendar('event')">Calendário de eventos</button>
+          <button onclick="dm3OpenDeptCalendar('campaign')">Campanhas</button>
+          <button onclick="dm3OpenModule('rp','departments')">Registros do setor</button>
+        </div></article>
+        <article class="dm3-dept-card hidden" id="dm3CommitteeCard"><div class="dm3-card-mark">03 <span>⚖</span></div><h3>Comitê de Ética</h3><p>Controle de jornadas, medidas disciplinares e denúncias confidenciais.</p><div class="dm3-card-actions">
+          <button onclick="dm3OpenModule('ponto','departments')">Controle de ponto</button>
+          <button onclick="dm3OpenModule('apropriacao','departments')">Apropriação de horas</button>
+          <button onclick="dm3OpenModule('advertencias','departments')">Advertências</button>
+          <button onclick="dm3OpenModule('denuncias','departments')">Denúncias</button>
+          <button onclick="dm3OpenModule('comite','departments')">Registros do comitê</button>
+        </div></article>
+        <article class="dm3-dept-card hidden" id="dm3InstructorsCard"><div class="dm3-card-mark">04 <span>▤</span></div><h3>Instrutores</h3><p>Agende cursos e mantenha os materiais organizados.</p><div class="dm3-card-actions">
+          <button onclick="dm3OpenDeptCalendar('course')">Agenda de cursos e treinamentos</button>
+          <button onclick="dm3OpenMaterials()">Materiais e apostilas</button>
+          <button onclick="dm3OpenModule('instrutores','departments')">Turmas e participantes</button>
+        </div></article>
+      </div>
+      <div class="dm3-note" id="dm3NoDepartments">Os setores disponíveis dependem dos subcargos vinculados ao seu Discord.</div>
+    </section>
+    <section id="leadershipSection" class="hidden" aria-label="Ferramentas da liderança">
+      <div class="section-banner"><span class="hero-tag">ÁREA RESTRITA / GESTÃO</span><h3>Liderança</h3><p>Controle administrativo e estratégico da Detroit Mechanics. Ações de alto impacto exigem autorização.</p></div>
+      <div class="dm3-home-grid">
+        <article class="dm3-dept-card"><div class="dm3-card-mark">A <span>♜</span></div><h3>Equipe e cargos</h3><p>Consultar fichas, acompanhar promoções e gerenciar registros conforme a hierarquia.</p><div class="dm3-card-actions"><button onclick="dm3OpenModule('staff','leadership')">Gerenciar equipe</button></div></article>
+        <article class="dm3-dept-card"><div class="dm3-card-mark">B <span>♙</span></div><h3>Permissões</h3><p>Gerenciar solicitações de acesso ao painel e cargos autorizados.</p><div class="dm3-card-actions"><button onclick="dm3OpenModule('members','leadership')">Acessos ao painel</button></div></article>
+        <article class="dm3-dept-card" id="dm3LogsCard"><div class="dm3-card-mark">C <span>▦</span></div><h3>Auditoria e relatórios</h3><p>Consultar ações registradas e os indicadores da operação.</p><div class="dm3-card-actions"><button onclick="dm3OpenModule('auditoria','leadership')">Central de logs</button><button onclick="dm3OpenModule('reports','leadership')">Relatórios</button></div></article>
+        <article class="dm3-dept-card" id="dm3SettingsCard"><div class="dm3-card-mark">D <span>⚙</span></div><h3>Configurações</h3><p>Integração Discord, segurança, dados e identificação da versão atual.</p><div class="dm3-card-actions"><button onclick="dm3OpenModule('settings','leadership')">Configurações do site</button></div></article>
+      </div>
+    </section>
+    <section id="recruitScheduleSection" class="hidden" aria-label="Agenda de recrutamentos">
+      <div class="section-banner"><span class="hero-tag">RECRUTAMENTO / AGENDA</span><h3>Agenda de recrutamentos</h3><p>Horários de entrevistas e atividades do recrutamento. Não mistura estes agendamentos com eventos e cursos.</p></div>
+      <div class="p25-control-card"><div class="p25-card-head"><strong>Agendar período</strong><small>Somente recrutadores e liderança autorizados.</small></div>
+        <div id="dm3RecruitScheduleMessage" class="message" role="status"></div>
+        <form id="dm3RecruitScheduleForm" class="dm3-new-grid">
+          <div class="field dm3-span-all"><label for="dm3RecruitTitle">Atividade *</label><input id="dm3RecruitTitle" maxlength="140" required placeholder="Ex.: Entrevistas de novos candidatos"></div>
+          <div class="field"><label for="dm3RecruitStart">Início *</label><input id="dm3RecruitStart" type="datetime-local" required></div>
+          <div class="field"><label for="dm3RecruitEnd">Término *</label><input id="dm3RecruitEnd" type="datetime-local" required></div>
+          <label class="dm3-span-all dm3-exclusive-option"><input id="dm3RecruitExclusive" type="checkbox" checked> <span><strong>Reserva exclusiva de horário</strong><small>Desmarque para permitir entrevistas e outros compromissos simultâneos. Os horários sempre aparecem no calendário geral.</small></span></label>
+          <div class="field dm3-span-all"><label for="dm3RecruitNotes">Observações (opcional)</label><textarea id="dm3RecruitNotes" maxlength="1000" placeholder="Responsáveis, reunião ou informações internas..."></textarea></div>
+          <button class="primary dm3-span-all" type="submit" id="dm3RecruitScheduleSave">+ Salvar horário de recrutamento</button>
+        </form>
+      </div>
+      <div class="p25-control-card"><div class="p25-card-head"><strong>Programação de recrutamento</strong><button class="p25-button" type="button" onclick="dm3LoadRecruitSchedule()">Atualizar</button></div><div id="dm3RecruitScheduleRows" class="p25-records"><div class="empty">Aguardando consulta.</div></div></div>
+    </section>
+    <section id="appropriationSection" class="hidden" aria-label="Apropriação de horas">
+      <div class="section-banner"><span class="hero-tag">COMITÊ / APROPRIAÇÃO DE HORAS</span><h3>Apropriação de Horas</h3><p>Consulte as jornadas por intervalo livre de datas. Os totais são calculados em minutos e agrupados por funcionário.</p></div>
+      <div class="p25-control-card">
+        <div class="p25-card-head"><strong>Consultar horas trabalhadas</strong><small>O período é inclusivo: conta o primeiro e o último dia.</small></div>
+        <form id="dm3HoursForm" class="dm3-new-grid">
+          <div class="field"><label for="dm3HoursMember">Colaborador</label><select id="dm3HoursMember"><option value="">Todos os colaboradores</option></select></div>
+          <div class="field"><label for="dm3HoursStart">Data inicial *</label><input id="dm3HoursStart" type="date" required></div>
+          <div class="field"><label for="dm3HoursEnd">Data final *</label><input id="dm3HoursEnd" type="date" required></div>
+          <button class="primary" type="submit">Consultar</button>
+        </form><div id="dm3HoursMessage" class="message" role="status"></div>
+      </div>
+      <div class="p25-stat-grid"><div class="staff-stat"><small>Total de horas</small><strong id="dm3HoursTotal">—</strong></div><div class="staff-stat"><small>Jornadas</small><strong id="dm3HoursSessions">—</strong></div><div class="staff-stat"><small>Colaboradores</small><strong id="dm3HoursPeople">—</strong></div></div>
+      <div class="p25-control-card"><div class="p25-card-head"><strong>Resumo por funcionário</strong><button class="p25-button" type="button" onclick="dm3ExportHours()">Exportar CSV</button></div><div id="dm3HoursSummary" class="p25-people"><div class="empty">Selecione um período e clique em Consultar.</div></div></div>
+      <div class="p25-control-card"><div class="p25-card-head"><strong>Detalhamento das jornadas</strong><small>Entrada, saída e horas por período, inclusive quando atravessa a meia-noite.</small></div><div id="dm3HoursRows" class="p25-records"><div class="empty">Nenhuma consulta realizada.</div></div></div>
+    </section>
+    <section id="complaintsSection" class="hidden" aria-label="Denúncias do Comitê de Ética">
+      <div class="section-banner"><span class="hero-tag">COMITÊ / REGISTROS RESTRITOS</span><h3>Denúncias</h3><p>Registre ocorrências com objetividade e acompanhe a apuração. Dados visíveis somente ao Comitê e liderança autorizada.</p></div>
+      <div class="p25-control-card"><div class="p25-card-head"><strong>Nova denúncia</strong><small>O registro não pode ser excluído pelo site. Informações sensíveis devem ser tratadas com discrição.</small></div>
+        <div id="dm3ComplaintsMessage" class="message" role="status"></div>
+        <form id="dm3ComplaintForm" class="dm3-new-grid">
+          <div class="field dm3-span-all"><label for="dm3ComplaintTitle">Assunto *</label><input id="dm3ComplaintTitle" maxlength="140" minlength="5" required placeholder="Ex.: Relato sobre conduta em atendimento"></div>
+          <div class="field"><label for="dm3ComplaintMember">Membro citado (opcional)</label><select id="dm3ComplaintMember"><option value="">Não identificado</option></select></div>
+          <div class="field"><label for="dm3ComplaintPriority">Prioridade</label><select id="dm3ComplaintPriority"><option value="normal">Normal</option><option value="alta">Alta</option><option value="urgente">Urgente</option></select></div>
+          <div class="field dm3-span-all"><label for="dm3ComplaintBody">Descrição objetiva dos fatos *</label><textarea id="dm3ComplaintBody" minlength="20" maxlength="5000" rows="5" required></textarea></div>
+          <div class="field dm3-span-all"><label for="dm3ComplaintEvidence">Link de evidência (opcional)</label><input id="dm3ComplaintEvidence" type="url" maxlength="500" placeholder="https://..."></div>
+          <button type="submit" class="primary dm3-span-all">Registrar denúncia com protocolo</button>
+        </form>
+      </div>
+      <div class="p25-control-card"><div class="p25-card-head"><strong>Denúncias registradas</strong><button class="p25-button" onclick="dm3LoadComplaints()" type="button">Atualizar</button></div><div id="dm3ComplaintsRows" class="p25-records"><div class="empty">Aguardando consulta.</div></div></div>
+    </section>
+    <section id="reportsSection" class="hidden" aria-label="Relatórios da liderança">
+      <div class="section-banner"><span class="hero-tag">LIDERANÇA / INDICADORES</span><h3>Relatórios</h3><p>Relatórios operacionais já existentes, reunidos numa única tela.</p></div>
+      <div class="dm3-home-grid"><article class="dm3-dept-card"><h3>Recrutamento</h3><p>Resumo de inscrições e conversões por etapa.</p><div class="dm3-card-actions"><button onclick="dm3ShowRecruitSummary()">Visualizar inscrições</button></div></article><article class="dm3-dept-card"><h3>Horas trabalhadas</h3><p>Apropriação por data inicial e data final, exportável para CSV.</p><div class="dm3-card-actions"><button onclick="dm3OpenModule('apropriacao','leadership')">Consultar apropriação</button></div></article></div>
+    </section>
+    <section id="settingsSection" class="hidden" aria-label="Configurações da liderança">
+      <div class="section-banner"><span class="hero-tag">LIDERANÇA / SISTEMA</span><h3>Configurações do site</h3><p>Visão rápida das integrações e dos controles. Segredos e tokens continuam restritos ao Supabase e à Northflank.</p></div>
+      <div class="p25-control-card"><div class="p25-card-head"><strong>Detroit Management Hub</strong><small>Versão 3.0</small></div><div class="dm3-config-list"><div><span>Bot / Discord</span><strong>Detroit Mechanics | Operations</strong></div><div><span>Canal de comunicados</span><strong>1569751815162040351</strong></div><div><span>Canal de atendimentos</span><strong>1569878079046946946</strong></div><div><span>Segurança</span><strong>Permissões conferidas no Supabase</strong></div></div><div class="dm3-card-actions"><button onclick="dm3OpenModule('members','leadership')">Gerenciar acessos</button><button onclick="dm3OpenModule('auditoria','leadership')">Abrir auditoria</button></div></div>
+      <div class="dm3-note">Para editar tokens, webhooks ou variáveis de ambiente, utilize os painéis administrativos oficiais. Nunca salve credenciais no HTML.</div>
+    </section>
     <section id="calendarSection" class="hidden" aria-label="Calendário integrado 3.0">
       <div class="d30-preview-note"><div><strong>Calendário 3.0 — Gestão integrada</strong><div>Agenda oficial de eventos, reuniões, cursos e comunicados da equipe.</div></div><span>Mensagens gerenciadas pelo bot 3.0</span></div>
       <iframe id="calendarFrame" title="Calendário, reuniões e cursos — Detroit Mechanics 3.0" loading="lazy" allow="clipboard-read; clipboard-write"></iframe>
@@ -519,9 +627,9 @@ body:has(#adminPanel:not(.hidden)) #viewAccess{padding:0!important;margin:0}
        <iframe id="d3DashboardCalendar" title="Calendário Detroit Mechanics" loading="lazy" src="./calendario-3.0-etapa-2e.html?embed=1&amp;compact=1" tabindex="0"></iframe>
     </div>
     <aside class="d3-right-panels">
-     <section class="d3-side-card"><div class="d3-card-header"><svg class="d3-icon" aria-hidden="true"><use href="#d3-send"></use></svg><strong>Envio automático para Discord</strong><span class="d3-status-dot" title="Configuração depende do Supabase"></span></div><p>Eventos, reuniões e comunicados podem ser enviados ao canal de avisos.</p>
-        <div class="d3-setting-row"><span class="d3-discord-symbol">◉</span><div><small>Canal do Discord</small><strong>1120785992694104255</strong></div><button title="Copiar ID do canal" onclick="navigator.clipboard.writeText('1120785992694104255')">⧉</button></div>
-        <div class="d3-setting-row"><svg class="d3-icon" aria-hidden="true"><use href="#d3-users"></use></svg><div><small>Mencionar cargo</small><strong class="d3-highlight">@detroit</strong></div><button title="Copiar ID do cargo" onclick="navigator.clipboard.writeText('845703548653928489')">⧉</button></div>
+     <section class="d3-side-card dm3-dashboard-technical"><div class="d3-card-header"><svg class="d3-icon" aria-hidden="true"><use href="#d3-send"></use></svg><strong>Envio automático para Discord</strong><span class="d3-status-dot" title="Configuração depende do Supabase"></span></div><p>Eventos, reuniões e comunicados podem ser enviados ao canal de avisos.</p>
+        <div class="d3-setting-row"><span class="d3-discord-symbol">◉</span><div><small>Canal do Discord</small><strong>1569751815162040351</strong></div><button title="Copiar ID do canal" onclick="navigator.clipboard.writeText('1569751815162040351')">⧉</button></div>
+        <div class="d3-setting-row"><svg class="d3-icon" aria-hidden="true"><use href="#d3-users"></use></svg><div><small>Mencionar cargo</small><strong class="d3-highlight">@detroit</strong></div><button title="Copiar ID do cargo" onclick="navigator.clipboard.writeText('1570015464623448164')">⧉</button></div>
         <div class="d3-sync" id="d3SyncStatus">Integração configurada • aguardando verificação</div>
         <p class="d3-disclaimer">As menções são enviadas conforme as permissões e a configuração de cada comunicado.</p>
      </section>
@@ -672,24 +780,22 @@ body:has(#adminPanel:not(.hidden)) #viewAccess{padding:0!important;margin:0}
         </form>
       </div>
       <div class="p25-stat-grid p26-stat-grid">
-        <div class="staff-stat"><small>Horas do período</small><strong id="workHours">—</strong></div>
+        <div class="staff-stat"><small>Horas da semana</small><strong id="workHours">—</strong></div>
         <div class="staff-stat"><small>Jornadas registradas</small><strong id="workClosed">—</strong></div>
         <div class="staff-stat"><small>Funcionários com ponto</small><strong id="workPeople">—</strong></div>
       </div>
       <div class="p25-control-card">
-        <div class="p25-card-head"><strong>Apropriação de horas dos colaboradores</strong><small>Escolha a data inicial e a data final. A consulta considera a data da entrada e inclui a duração integral do turno, mesmo quando a saída ocorre no dia seguinte.</small></div>
-        <div class="p30-date-filters">
-          <div class="field"><label for="workDateStart">Data inicial</label><input id="workDateStart" type="date" aria-label="Data inicial da consulta"></div>
-          <div class="field"><label for="workDateEnd">Data final</label><input id="workDateEnd" type="date" aria-label="Data final da consulta"></div>
-          <div class="field p30-employee"><label for="workFilterMember">Colaborador</label><select id="workFilterMember"><option value="">Todos os funcionários</option></select></div>
-          <button type="button" class="p25-button primary" id="workRefresh">Consultar período</button>
+        <div class="p25-card-head"><strong>Horas e lançamentos da semana</strong><small>Selecione qualquer dia da semana desejada. Os totais são atualizados após salvar, editar ou excluir.</small></div>
+        <div class="p25-grid p26-filters">
+          <div class="field"><label for="workWeek">Semana de referência</label><input id="workWeek" type="date"></div>
+          <div class="field"><label for="workFilterMember">Mostrar registros de</label><select id="workFilterMember"><option value="">Toda a equipe</option></select></div>
+          <button type="button" class="p25-button p25-span" id="workRefresh">Atualizar registros</button>
         </div>
-        <div id="workRangeFeedback" class="p30-range-feedback" role="status" aria-live="polite">Selecione as datas e clique em Consultar período.</div>
-        <div class="p25-card-head p26-summary-title"><strong>Resumo por funcionário no período</strong></div>
-        <div id="workSummary" class="p25-people"><div class="empty">Escolha um período para consultar.</div></div>
+        <div class="p25-card-head p26-summary-title"><strong>Resumo semanal por funcionário</strong></div>
+        <div id="workSummary" class="p25-people"><div class="empty">Escolha uma semana para consultar.</div></div>
       </div>
       <div class="p25-control-card"><div class="p25-card-head"><strong>Jornadas registradas</strong><small>Use <strong>Editar</strong> para ajustar os horários ou <strong>Excluir</strong> para retirar um lançamento incorreto dos totais. As correções ficam registradas na auditoria do sistema.</small></div><div id="workRows" class="p25-records"><div class="empty">Nenhum registro carregado.</div></div></div>
-      <div class="security-note">Este controle é destinado à organização interna do servidor de roleplay e não substitui um sistema de ponto trabalhista formal. Totais exibidos em horas e minutos. Exclusões são lógicas e correções ficam na auditoria. Com a auditoria 2.7 configurada, inclusões, edições e exclusões são notificadas nos canais administrativos do Discord.</div>
+      <div class="security-note">Este controle é destinado à organização interna do servidor de roleplay e não substitui um sistema de ponto trabalhista formal. Totais exibidos em horas e minutos. Exclusões são lógicas e correções ficam na auditoria. Os registros de auditoria são preservados no Supabase e encaminhados conforme a integração do Discord Operations 3.0.</div>
     </section>
 
     <section id="warningsSection" class="hidden" aria-label="Registro de advertências">
@@ -715,7 +821,7 @@ body:has(#adminPanel:not(.hidden)) #viewAccess{padding:0!important;margin:0}
     <div class="security-note">As solicitações são armazenadas no banco centralizado. Somente contas autorizadas pela política do banco podem consultá-las ou excluí-las.</div>
     </div>
   </div>
-  <div class="foot">DETROIT MECHANICS · PREMIUM DARK V2.8 · CONTROLE DE PONTO MANUAL</div>
+  <div class="foot">DETROIT MECHANICS · MANAGEMENT HUB 3.0 · GESTÃO POR DEPARTAMENTOS</div>
 </section>
 </main>
 </div>
@@ -746,11 +852,13 @@ let auditRecords = [];
 let currentMember = null;
 let activeTab = "dashboard";
 let staffSectorAccess = [];
+let dm3CanRecruit = false;
+let dm3NavGroup = 'departments';
 let leadershipLevel = 0;
 const rankRoles = ['Trainee','Aux. Mechanic','Mechanic','Mechanic Sr','Supervisor','Chief','Owner'];
 const staffRoleLevel = role => Math.max(0, rankRoles.indexOf(role)+1);
 const isLeadership = () => leadershipLevel >= 5;
-const canEditStaffRecord = member => isLeadership() && staffRoleLevel(member.cargo) < leadershipLevel;
+const canEditStaffRecord = member => leadershipLevel>=6 && staffRoleLevel(member.cargo) < leadershipLevel;
 const sectorTabs = ['instrutores','comite','rp'];
 const sectorConfigs = {
  instrutores:{name:'Instrutores',subtitle:'FORMAÇÃO E TREINAMENTOS', description:'Organize cursos, turmas, avaliações, materiais e a evolução dos participantes.', types:{curso:'Curso',turma:'Turma',material:'Material didático',avaliacao:'Avaliação'}, statuses:{planejado:'Planejado',em_andamento:'Em andamento',concluido:'Concluído',cancelado:'Cancelado'}},
@@ -807,6 +915,7 @@ async function refreshAccess() {
   const { data: { session } } = await supabase.auth.getSession();
   currentMember = null;
   staffSectorAccess = [];
+  dm3CanRecruit=false;
   leadershipLevel = 0;
   let operationalUserId = null;
   let discordProfile = null;
@@ -854,7 +963,8 @@ async function refreshAccess() {
       }
     }
   }
-  const canRecruit = currentMember && (isLeadership() || ['adm','recrutador'].includes(currentMember.cargo));
+  const canRecruit = Boolean(currentMember && (isLeadership() || ['adm','recrutador'].includes(currentMember.cargo) || (discordProfile?.subcargos||[]).includes('Recrutadores')));
+  dm3CanRecruit=canRecruit;
   const canComite = Boolean(currentMember && staffSectorAccess.includes('comite'));
   $('tabWorktime').classList.toggle('hidden',!canComite);
   $('tabWarnings').classList.toggle('hidden',!canComite);
@@ -870,17 +980,22 @@ async function refreshAccess() {
   $('tabAudit').classList.toggle('hidden',leadershipLevel<6);
   const deptMenu=$('d3DeptMenu');
   if(deptMenu) deptMenu.classList.toggle('hidden', ![...deptMenu.querySelectorAll('button')].some(b=>!b.classList.contains('hidden')));
+  for(const [id,allowed] of [['dm3RecruitCard',canRecruit],['dm3RPCard',staffSectorAccess.includes('rp')],['dm3CommitteeCard',canComite],['dm3InstructorsCard',staffSectorAccess.includes('instrutores')]]) $(id).classList.toggle('hidden',!allowed);
+  $('dm3NoDepartments').classList.toggle('hidden',Boolean(canRecruit||staffSectorAccess.length));
+  $('tabLeadership').classList.toggle('hidden',!isLeadership());
+  $('dm3LogsCard').classList.toggle('hidden',leadershipLevel<6);
+  $('dm3SettingsCard').classList.toggle('hidden',leadershipLevel<6);
   const authorized = Boolean(currentMember); // Membro validado pelo Supabase: calendário visível a toda equipe ativa.
   $('authPanel').classList.toggle('hidden',authorized);
   $('adminPanel').classList.toggle('hidden',!authorized);
   if (!canRecruit && ['recruit','staff','members'].includes(activeTab)) {
-    activeTab=staffSectorAccess[0]||'calendario';
+    activeTab='departments';
   }
-  if (!isLeadership()) {
+  if (leadershipLevel<6) {
     $('staffFormWrap').classList.add('hidden');
   }
-  if (!canComite && ['ponto','advertencias'].includes(activeTab)) activeTab=canRecruit?'dashboard':staffSectorAccess[0]||'calendario';
-  if (leadershipLevel<6 && activeTab==='auditoria') activeTab='calendario';
+  if (!canComite && ['ponto','advertencias','apropriacao','denuncias'].includes(activeTab)) activeTab='departments';
+  if (leadershipLevel<6 && ['auditoria','reports','settings'].includes(activeTab)) activeTab='departments';
   if (authorized) {
     $('adminSummary').textContent=`${currentMember.nome} · ${isLeadership()?rankRoles[leadershipLevel-1]+' / Liderança':currentMember.cargo==='adm'?'ADM':canRecruit?'Recrutador':'Equipe da Mecânica'}`;
     switchAdminTab(activeTab);
@@ -893,41 +1008,57 @@ async function refreshAccess() {
 
 window.switchAdminTab = function(tab) {
   if (!currentMember) return;
-  const canRecruit = isLeadership() || ['adm','recrutador'].includes(currentMember.cargo);
-  if (['recruit','staff'].includes(tab) && !canRecruit) return;
-  if (tab === 'members' && !isLeadership()) return;
-  if (tab === 'auditoria' && leadershipLevel<6) return;
-  if (sectorTabs.includes(tab) && !staffSectorAccess.includes(tab)) return;
-  if (['ponto','advertencias'].includes(tab) && !staffSectorAccess.includes('comite')) return;
-  if (!['dashboard','calendario','recruit','staff','members','ponto','advertencias','auditoria',...sectorTabs].includes(tab)) return;
-  activeTab = tab;
-  if(tab==='members') $('d3ToolsMenu').open=true;
-  if(['instrutores','comite','ponto','advertencias','rp','auditoria'].includes(tab)) $('d3DeptMenu').open=true;
-  for (const [name, id, buttonId] of [['dashboard','dashboardSection','tabDashboard'],['recruit','recruitSection','tabRecruit'],['staff','staffSection','tabStaff'],['members','membersSection','tabMembers']]) {
-    $(id).classList.toggle('hidden', tab !== name);
-    $(buttonId).classList.toggle('active', tab === name);
-  }
-  $('calendarSection').classList.toggle('hidden',tab!=='calendario');
-  $('tabCalendar').classList.toggle('active',tab==='calendario');
-  if(tab==='calendario' && !$('calendarFrame').getAttribute('src')) $('calendarFrame').src='./calendario-3.0-etapa-2e.html?embed=1';
-  $('sectorSection').classList.toggle('hidden',!sectorTabs.includes(tab));
+  const canRecruit=dm3CanRecruit;
+  if (['recruit','recruitSchedule'].includes(tab)&&!canRecruit) return;
+  if(tab==='staff'&&!canRecruit&&!isLeadership()) return;
+  if (['leadership','members','reports','settings'].includes(tab)&&!isLeadership()) return;
+  if(['auditoria','settings','reports'].includes(tab)&&leadershipLevel<6) return;
+  if(sectorTabs.includes(tab)&&!staffSectorAccess.includes(tab)) return;
+  if(['ponto','advertencias','apropriacao','denuncias'].includes(tab)&&!staffSectorAccess.includes('comite')) return;
+  const known=['dashboard','departments','leadership','calendario','recruit','recruitSchedule','staff','members','ponto','apropriacao','denuncias','advertencias','auditoria','reports','settings',...sectorTabs];
+  if(!known.includes(tab))return;
+  activeTab=tab;
+  const sectionIds={dashboard:'dashboardSection',departments:'departmentsSection',leadership:'leadershipSection',calendario:'calendarSection',recruit:'recruitSection',recruitSchedule:'recruitScheduleSection',staff:'staffSection',members:'membersSection',ponto:'worktimeSection',apropriacao:'appropriationSection',denuncias:'complaintsSection',advertencias:'warningsSection',auditoria:'auditSection',reports:'reportsSection',settings:'settingsSection'};
+  for(const group of sectorTabs) sectionIds[group]='sectorSection';
+  for(const id of new Set(Object.values(sectionIds))) $(id).classList.add('hidden');
+  $(sectionIds[tab]).classList.remove('hidden');
   $('committeeTools').classList.toggle('hidden',tab!=='comite');
-  $('worktimeSection').classList.toggle('hidden',tab!=='ponto');
-  $('warningsSection').classList.toggle('hidden',tab!=='advertencias');
-  $('auditSection').classList.toggle('hidden',tab!=='auditoria');
-  for (const [name,id] of [['instrutores','tabInstructors'],['comite','tabEthics'],['rp','tabPR'],['ponto','tabWorktime'],['advertencias','tabWarnings']]) $(id).classList.toggle('active',tab===name);
-  const titles = {calendario:'Calendário e agenda',dashboard:'Visão geral',recruit:'Inscrições',staff:'Equipe da Mecânica',members:'Acessos ao painel',instrutores:'Instrutores',comite:'Comitê de Ética e Promoções',rp:'Relações Públicas',ponto:'Controle de Ponto',advertencias:'Advertências',auditoria:'Central de Logs'};
-  $('appHeading').textContent = titles[tab];
-  $('appBreadcrumb').textContent = titles[tab].toUpperCase();
-  if(tab==='dashboard') { dm3RefreshDashboard(); if(!canRecruit) return; }
-  if (tab === 'calendario') return; // Conteúdo encapsulado com autorização própria do Supabase.
-  if (tab === 'members') renderMembers();
-  else if (tab === 'staff') renderStaff();
-  else if (tab === 'auditoria') renderAudit();
-  else if (tab === 'ponto') renderWorktime();
-  else if (tab === 'advertencias') renderWarnings();
-  else if (sectorTabs.includes(tab)) renderSector(tab);
-  else renderRequests();
+  const group=tab==='dashboard'?'dashboard':tab==='departments'?'departments':tab==='leadership'?'leadership':dm3NavGroup;
+  for(const [name,id] of [['dashboard','tabDashboard'],['departments','tabDepartments'],['leadership','tabLeadership']]) $(id).classList.toggle('active',group===name);
+  const titles={dashboard:'Visão geral',departments:'Departamentos',leadership:'Liderança',calendario:'Calendário',recruit:'Inscrições recebidas',recruitSchedule:'Agenda de recrutamento',staff:'Equipe da Mecânica',members:'Acessos ao painel',instrutores:'Instrutores',comite:'Comitê de Ética',rp:'Relações Públicas',ponto:'Controle de Ponto',apropriacao:'Apropriação de horas',denuncias:'Denúncias',advertencias:'Advertências',auditoria:'Central de Logs',reports:'Relatórios',settings:'Configurações'};
+  $('appHeading').textContent=titles[tab];
+  $('appBreadcrumb').textContent=titles[tab].toUpperCase();
+  $('dm3ContextNav').classList.toggle('hidden',['dashboard','departments','leadership'].includes(tab));
+  $('dm3ContextPath').textContent=dm3NavGroup==='leadership'?'Liderança / '+titles[tab]:'Departamentos / '+titles[tab];
+  $('dm3Back').textContent=dm3NavGroup==='leadership'?'← Voltar para Liderança':'← Voltar para Departamentos';
+  if(tab==='dashboard') {dm3RefreshDashboard();if(canRecruit)renderRequests();return;}
+  if(tab==='calendario') {if(!$('calendarFrame').getAttribute('src'))$('calendarFrame').src='./calendario-3.0-etapa-2e.html?embed=1';return;}
+  if(tab==='members')renderMembers();
+  else if(tab==='staff')renderStaff();
+  else if(tab==='auditoria')renderAudit();
+  else if(tab==='ponto')renderWorktime();
+  else if(tab==='apropriacao')dm3InitHours();
+  else if(tab==='denuncias')dm3InitComplaints();
+  else if(tab==='recruitSchedule')dm3LoadRecruitSchedule();
+  else if(tab==='advertencias')renderWarnings();
+  else if(sectorTabs.includes(tab))renderSector(tab);
+  else if(tab==='recruit')renderRequests();
+};
+window.dm3BackToGroup=function(){window.switchAdminTab(dm3NavGroup==='leadership'?'leadership':'departments');};
+window.dm3OpenModule=function(tab,group='departments') {dm3NavGroup=group;window.switchAdminTab(tab);};
+window.dm3OpenDeptCalendar=function(type){
+ if(type==='course'&&!staffSectorAccess.includes('instrutores'))return;
+ if(['event','campaign'].includes(type)&&!staffSectorAccess.includes('rp'))return;
+ dm3NavGroup='departments';window.dm3OpenCalendar(type);
+};
+window.dm3OpenMaterials=async function(){
+ if(!staffSectorAccess.includes('instrutores'))return;
+ window.dm3OpenModule('instrutores','departments');
+ // Filtra o registro já existente do tipo Material didático.
+ if(activeTab==='instrutores'){
+   const timer=setInterval(()=>{if(activeTab!=='instrutores'){clearInterval(timer);return;}const el=$('sectorTypeFilter');if(el?.querySelector('option[value="material"]')){el.value='material';filterSector();clearInterval(timer);}},120);
+   setTimeout(()=>clearInterval(timer),3500);
+ }
 };
 
 function refreshDashboard(items) {
@@ -1339,7 +1470,7 @@ const staffStatusText = { ativo:'Ativo', afastado:'Afastado', desligado:'Desliga
 
 async function renderStaff() {
   if (!currentMember) return;
-  $('staffAdminControls').classList.toggle('hidden', !isLeadership());
+  $('staffAdminControls').classList.toggle('hidden', leadershipLevel<6);
   $('staffList').innerHTML = '<div class="empty">Carregando equipe...</div>';
   clearMessage('staffMessage');
   const {data,error} = await supabase.from('detroit_membros').select('*').order('data_ingresso',{ascending:false}).limit(1000);
@@ -1401,7 +1532,7 @@ function filterStaff() {
 }
 
 window.staffOpenForm = function(id=null) {
-  if(!isLeadership()) return;
+  if(leadershipLevel<6) return;
   const m = id == null ? null : detroitStaff.find(x=>String(x.id)===String(id));
   if(id != null && (!m || !canEditStaffRecord(m))) return;
   // Mesmo editando por ferramentas de desenvolvedor, o banco valida novamente.
@@ -1440,7 +1571,7 @@ $('staffRecordPromotion').addEventListener('change', () => {
 });
 $('staffForm').addEventListener('submit', async event=>{
   event.preventDefault();
-  if(!isLeadership()) return;
+  if(leadershipLevel<6) return;
   clearMessage('staffMessage');
   const id = $('staffFormId').value;
   const old = detroitStaff.find(x=>String(x.id)===id);
@@ -1790,130 +1921,65 @@ function p26ResetForm({preserveMember=true}={}) {
   $('workCancelEdit').classList.add('hidden');
   p26Preview();
 }
-// Dados já são protegidos pela RPC oficial, inclusive nas consultas históricas.
-// Cada semana é consultada separadamente; os IDs são deduplicados entre semanas.
-let p30PontoConsultaId=0;
-function p30DataBR(data){
- const parts=String(data||'').split('-');
- return parts.length===3?`${parts[2]}/${parts[1]}/${parts[0]}`:String(data||'');
-}
-function p30SemanasNoPeriodo(inicio,fim){
- const cursor=new Date(`${inicio}T12:00:00Z`),ultimo=new Date(`${fim}T12:00:00Z`);
- cursor.setUTCDate(cursor.getUTCDate()-((cursor.getUTCDay()+6)%7));
- const semanas=[];
- for(;cursor<=ultimo;cursor.setUTCDate(cursor.getUTCDate()+7))semanas.push(cursor.toISOString().slice(0,10));
- return semanas;
-}
-function p30MinutosDaJornada(row){
- if(!row.inicio||!row.fim)return 0; // Ponto aberto: não presumir jornada trabalhada.
- const inicio=Date.parse(row.inicio),fim=Date.parse(row.fim);
- return Number.isFinite(inicio)&&Number.isFinite(fim)?Math.max(0,Math.round((fim-inicio)/60000)):0;
-}
 function p26FilterRecords(){
- const chosen=$('workFilterMember').value;
- const rows=chosen?pointSessions.filter(r=>String(r.membro_id)===chosen):pointSessions;
- let minutos=0,closed=0,opened=0;
- const people=new Map();
- for(const r of rows){
-   const m=Number(r.dm_minutos||0);minutos+=m;
-   if(r.fim)closed++;else opened++;
-   const key=String(r.membro_id);
-   const p=people.get(key)||{nome:r.nome_rp,cargo:r.cargo,minutos:0,closed:0,opened:0};
-   p.minutos+=m;
-   if(r.fim)p.closed++;else p.opened++;
-   people.set(key,p);
- }
- $('workHours').textContent=p25FormatHours(minutos/60);
- $('workClosed').textContent=closed;
- $('workPeople').textContent=people.size;
- $('workSummary').innerHTML=people.size?[...people.values()].sort((a,b)=>b.minutos-a.minutos).map(p=>
-   `<article class="p25-record"><div class="p25-record-main"><strong>${escapeHTML(p.nome)}</strong><small>${escapeHTML(p.cargo)} · ${p.closed} jornada(s)${p.opened?' · '+p.opened+' registro(s) incompleto(s)':''}</small></div><div class="p25-record-side"><span class="p25-pill ok">${escapeHTML(p25FormatHours(p.minutos/60))}</span></div></article>`).join(''):
-   '<div class="empty">Nenhuma jornada encontrada para este período e filtro.</div>';
- $('workRows').innerHTML=rows.length?rows.map(r=>{
-   const open=!r.fim;
-   return `<article class="p25-record"><div class="p25-record-main">
-     <strong>${escapeHTML(r.nome_rp)} <span class="p25-pill ${open?'muted':'ok'}">${open?'Incompleto (antigo)':'Registrado'}</span></strong>
-     <small>${escapeHTML(p25DateTime(r.inicio))} → ${escapeHTML(p25DateTime(r.fim))}</small>
-     <small>${escapeHTML(r.cargo)} · Lançamento #${escapeHTML(String(r.id))}</small>
-   </div><div class="p25-record-side"><span>${escapeHTML(p25FormatHours(Number(r.dm_minutos||0)/60))}</span>
-     <div class="p26-record-buttons"><button type="button" class="p25-button" data-p26-edit="${escapeHTML(String(r.id))}">✎ Editar</button>
-       <button type="button" class="p25-button p26-danger" data-p26-delete="${escapeHTML(String(r.id))}">Excluir</button></div>
-   </div></article>`;
- }).join(''):'<div class="empty">Nenhuma jornada encontrada para este filtro.</div>';
+  const chosen=$('workFilterMember').value;
+  const rows=chosen?pointSessions.filter(r=>String(r.membro_id)===chosen):pointSessions;
+  $('workRows').innerHTML=rows.length?rows.map(r=>{
+    const open=!r.fim;
+    return `<article class="p25-record"><div class="p25-record-main">
+      <strong>${escapeHTML(r.nome_rp)} <span class="p25-pill ${open?'muted':'ok'}">${open?'Incompleto (antigo)':'Registrado'}</span></strong>
+      <small>${escapeHTML(p25DateTime(r.inicio))} → ${escapeHTML(p25DateTime(r.fim))}</small>
+      <small>${escapeHTML(r.cargo)} · Lançamento #${escapeHTML(String(r.id))}</small>
+    </div><div class="p25-record-side"><span>${escapeHTML(p25FormatHours(r.horas))}</span>
+      <div class="p26-record-buttons"><button type="button" class="p25-button" data-p26-edit="${escapeHTML(String(r.id))}">✎ Editar</button>
+        <button type="button" class="p25-button p26-danger" data-p26-delete="${escapeHTML(String(r.id))}">Excluir</button></div>
+    </div></article>`;
+  }).join(''):'<div class="empty">Nenhuma jornada encontrada para este filtro.</div>';
 }
 async function renderWorktime(){
  if(!currentMember||!staffSectorAccess.includes('comite'))return;
- const consultaId=++p30PontoConsultaId;
- const hoje=p25Today();
- if(!$('workDateStart').value)$('workDateStart').value=hoje.slice(0,8)+'01';
- if(!$('workDateEnd').value)$('workDateEnd').value=hoje;
- const inicio=$('workDateStart').value,fim=$('workDateEnd').value;
  clearMessage('worktimeMessage');
- if(!inicio||!fim||inicio>fim){
-   $('workRangeFeedback').textContent='Verifique as datas: a data inicial não pode ser posterior à data final.';
-   showMessage('worktimeMessage','Informe um período válido (data inicial até data final).');
-   return;
- }
- const semanas=p30SemanasNoPeriodo(inicio,fim);
- const botao=$('workRefresh');
- botao.disabled=true;
- $('workRangeFeedback').textContent=`Consultando ${p30DataBR(inicio)} a ${p30DataBR(fim)}...`;
- $('workRows').innerHTML='<div class="empty">Buscando jornadas no período...</div>';
+ $('workRows').innerHTML='<div class="empty">Carregando jornadas...</div>';
  try{
-   await p25LoadCrew();
-   if(consultaId!==p30PontoConsultaId||activeTab!=='ponto')return;
-   const selecao=$('workMember').value;
-   p25InitializeSelect('workMember',comiteCrew.filter(m=>m.situacao==='ativo'),'Selecione um funcionário');
-   if(!p26EditingId&&selecao)$('workMember').value=selecao;
-   if(!$('workManualDate').value)$('workManualDate').value=hoje;
-   const filtragem=$('workFilterMember'),escolha=filtragem.value;
-   const membros=new Map(comiteCrew.map(m=>[String(m.id),m]));
-   filtragem.innerHTML='<option value="">Todos os funcionários</option>'+[...membros].map(([id,m])=>`<option value="${escapeHTML(id)}">${escapeHTML(m.nome_rp)}</option>`).join('');
-   if(membros.has(escolha))filtragem.value=escolha;
-   const map=new Map();
-   // Blocos de até 5 requisições preservam desempenho em períodos extensos.
-   for(let i=0;i<semanas.length;i+=5){
-     const lote=semanas.slice(i,i+5);
-     const resultados=await Promise.all(lote.map(p_semana=>supabase.rpc('detroit_ponto_semana',{p_semana})));
-     if(consultaId!==p30PontoConsultaId||activeTab!=='ponto')return;
-     resultados.forEach((r,j)=>{
-       if(r.error)throw r.error;
-       const dados=Array.isArray(r.data)?r.data:[];
-       if(dados.length>=5000)throw Error(`A semana de ${p30DataBR(lote[j])} atingiu o limite de 5000 registros. Consulte um período menor para evitar informações incompletas.`);
-       for(const registro of dados)map.set(String(registro.id),registro);
-     });
-     $('workRangeFeedback').textContent=`Consultando ${p30DataBR(inicio)} a ${p30DataBR(fim)} · ${Math.min(i+5,semanas.length)}/${semanas.length} semanas...`;
-   }
-   if(consultaId!==p30PontoConsultaId||activeTab!=='ponto')return;
-   // Datas referem-se ao dia local da ENTRADA. Turnos noturnos ficam completos no dia de início.
-   pointSessions=[...map.values()].filter(r=>{
-     const dia=p26BrazilParts(r.inicio)?.day;
-     return dia&&dia>=inicio&&dia<=fim;
-   }).map(r=>({...r,dm_minutos:p30MinutosDaJornada(r)}))
-     .sort((a,b)=>Date.parse(b.inicio)-Date.parse(a.inicio)||Number(b.id)-Number(a.id));
-   $('workRangeFeedback').textContent=`Período: ${p30DataBR(inicio)} a ${p30DataBR(fim)} · ${pointSessions.length} jornada(s) · ${semanas.length} semana(s) consultada(s).`;
-   p26FilterRecords();
+  await p25LoadCrew();
+  const currentSelection=$('workMember').value;
+  p25InitializeSelect('workMember',comiteCrew.filter(m=>m.situacao==='ativo'),'Selecione um funcionário');
+  if(!p26EditingId && currentSelection)$('workMember').value=currentSelection;
+  if(!$('workManualDate').value)$('workManualDate').value=p25Today();
+  if(!$('workWeek').value)$('workWeek').value=p25Today();
+  const week=$('workWeek').value;
+  const {data,error}=await supabase.rpc('detroit_ponto_semana',{p_semana:week});
+  if(error)throw error;
+  if(activeTab!=='ponto'||week!==$('workWeek').value)return;
+  pointSessions=Array.isArray(data)?data:[];
+  const filter=$('workFilterMember'),priorFilter=filter.value;
+  const options=new Map(comiteCrew.map(m=>[String(m.id),m]));
+  filter.innerHTML='<option value="">Toda a equipe</option>'+[...options].map(([id,m])=>`<option value="${escapeHTML(id)}">${escapeHTML(m.nome_rp)}</option>`).join('');
+  if(options.has(priorFilter))filter.value=priorFilter;
+  let total=0,closed=0,opened=0;
+  const people=new Map();
+  for(const r of pointSessions){
+    const hours=Number(r.horas||0);total+=hours;
+    if(r.fim)closed++;else opened++;
+    const p=people.get(r.membro_id)||{id:r.membro_id,nome:r.nome_rp,cargo:r.cargo,hours:0,closed:0,opened:0};
+    p.hours+=hours;if(r.fim)p.closed++;else p.opened++;
+    people.set(r.membro_id,p);
+  }
+  $('workHours').textContent=p25FormatHours(total);
+  $('workClosed').textContent=closed;
+  $('workPeople').textContent=people.size;
+  $('workSummary').innerHTML=people.size?[...people.values()].sort((a,b)=>b.hours-a.hours).map(p=>
+    `<article class="p25-record"><div class="p25-record-main"><strong>${escapeHTML(p.nome)}</strong><small>${escapeHTML(p.cargo)} · ${p.closed} jornada(s)${p.opened?' · '+p.opened+' registro(s) antigo(s) incompleto(s)':''}</small></div><div class="p25-record-side"><span class="p25-pill ok">${escapeHTML(p25FormatHours(p.hours))}</span></div></article>`).join(''):
+    '<div class="empty">Nenhum lançamento nesta semana.</div>';
+  p26FilterRecords();
  }catch(e){
-   if(consultaId!==p30PontoConsultaId)return;
-   console.error('Consulta de ponto por período',e);
-   pointSessions=[];
-   $('workRows').innerHTML='<div class="empty">Não foi possível consultar o período.</div>';
-   $('workSummary').innerHTML='<div class="empty">Consulta não concluída.</div>';
-   $('workRangeFeedback').textContent='A consulta falhou. Os totais anteriores foram limpos para evitar informação incorreta.';
-   $('workHours').textContent='—';$('workClosed').textContent='—';$('workPeople').textContent='—';
-   showMessage('worktimeMessage','Erro ao consultar os pontos: '+(e.message||'erro desconhecido'));
- }finally{if(consultaId===p30PontoConsultaId)botao.disabled=false;}
+  console.error('Controle de Ponto',e);
+  $('workRows').innerHTML='<div class="empty">Não foi possível carregar: '+escapeHTML(e.message||'erro desconhecido')+'</div>';
+  showMessage('worktimeMessage','Erro ao consultar os pontos: '+(e.message||'erro desconhecido'));
+ }
 }
 for(const name of ['workManualDate','workManualStart','workManualEnd'])$(name).addEventListener('input',p26Preview);
-for(const name of ['workDateStart','workDateEnd'])$(name).addEventListener('change',()=>{
-  ++p30PontoConsultaId;
-  $('workRefresh').disabled=false;
-  pointSessions=[];
-  $('workRangeFeedback').textContent='Datas alteradas. Clique em Consultar período para atualizar os resultados.';
-  $('workHours').textContent='—';$('workClosed').textContent='—';$('workPeople').textContent='—';
-  $('workSummary').innerHTML='<div class="empty">Clique em Consultar período.</div>';
-  $('workRows').innerHTML='<div class="empty">Clique em Consultar período.</div>';
-});
+$('workWeek').addEventListener('change',()=>{if(activeTab==='ponto')renderWorktime()});
 $('workRefresh').addEventListener('click',()=>{if(activeTab==='ponto')renderWorktime()});
 $('workFilterMember').addEventListener('change',p26FilterRecords);
 $('workCancelEdit').addEventListener('click',()=>{p26ResetForm();clearMessage('worktimeMessage');});
@@ -1939,11 +2005,7 @@ $('workManualForm').addEventListener('submit',async event=>{
   });
   if(result.error)throw result.error;
   p26ResetForm();
-  const diaSalvo=p26BrazilParts(time.start.toISOString()).day;
-  if(diaSalvo<$('workDateStart').value||diaSalvo>$('workDateEnd').value){
-    $('workDateStart').value=diaSalvo;
-    $('workDateEnd').value=diaSalvo;
-  }
+  $('workWeek').value=p26BrazilParts(time.start.toISOString()).day;
   await renderWorktime();
   showMessage('worktimeMessage',isEditing?'Jornada corrigida. A versão anterior ficou registrada na auditoria.':'Jornada salva com sucesso.','success');
  }catch(e){showMessage('worktimeMessage','Não foi possível salvar: '+(e.message||'erro desconhecido'));}
@@ -2202,6 +2264,95 @@ window.dm3ShowRecruitSummary = function(){
 };
 window.dm3OpenSettings=function(){window.dm3OpenCalendar('all');};
 window.dm3FocusSearch=function(){window.dm3OpenCalendar('all');const f=d3El('calendarFrame');f?.addEventListener('load',()=>f.contentWindow?.postMessage({source:'detroit-parent',type:'dm3-search'},window.location.origin),{once:true});};
+
+
+/* Detroit 3.0 — acesso unificado aos departamentos. SQL complementar necessário antes de ativar os módulos novos. */
+const dm3FmtDateTime=value=>{if(!value)return '—';const date=new Date(value);return Number.isNaN(date.getTime())?'—':new Intl.DateTimeFormat('pt-BR',{timeZone:'America/Sao_Paulo',day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'}).format(date);};
+const dm3Mins=(minutes)=>`${Math.floor((Number(minutes)||0)/60)}h${String((Number(minutes)||0)%60).padStart(2,'0')}`;
+let dm3HoursData=[];
+async function dm3InitHours(){
+ const start=$('dm3HoursStart'),end=$('dm3HoursEnd');
+ if(!start.value)start.value=new Date(Date.now()-30*864e5).toISOString().slice(0,10);
+ if(!end.value)end.value=new Date().toISOString().slice(0,10);
+ const {data,error}=await supabase.rpc('detroit_comite_equipe');
+ if(error){showMessage('dm3HoursMessage','Erro ao carregar equipe: '+error.message);return;}
+ const old=$('dm3HoursMember').value;
+ $('dm3HoursMember').innerHTML='<option value="">Todos os colaboradores</option>'+(data||[]).map(m=>`<option value="${Number(m.id)}">${escapeHTML(m.nome_rp)}</option>`).join('');
+ $('dm3HoursMember').value=old;
+}
+$('dm3HoursForm').addEventListener('submit',async e=>{
+ e.preventDefault();if(!staffSectorAccess.includes('comite'))return;
+ clearMessage('dm3HoursMessage');
+ const start=$('dm3HoursStart').value,end=$('dm3HoursEnd').value;
+ if(!start||!end||start>end){showMessage('dm3HoursMessage','Selecione um intervalo válido de datas.');return;}
+ const selected=$('dm3HoursMember').value;
+ const {data,error}=await supabase.rpc('detroit_30_apropriar_horas',{p_inicio:start,p_fim:end,p_membro_id:selected?Number(selected):null});
+ if(error){showMessage('dm3HoursMessage','Não foi possível consultar: '+error.message);return;}
+ if(activeTab!=='apropriacao')return;
+ dm3HoursData=data||[];
+ const grouped=new Map();let total=0;
+ for(const r of dm3HoursData){const minutes=Number(r.minutos)||0;total+=minutes;const key=String(r.membro_id);const old=grouped.get(key)||{nome:r.nome_rp,cargo:r.cargo,n:0,total:0};old.n++;old.total+=minutes;grouped.set(key,old);}
+ $('dm3HoursTotal').textContent=dm3Mins(total);
+ $('dm3HoursSessions').textContent=String(dm3HoursData.length);
+ $('dm3HoursPeople').textContent=String(grouped.size);
+ $('dm3HoursSummary').innerHTML=grouped.size?[...grouped.values()].sort((a,b)=>a.nome.localeCompare(b.nome,'pt-BR')).map(r=>`<div class="dm3-recruit-row"><div><strong>${escapeHTML(r.nome)}</strong><small>${escapeHTML(r.cargo)} · ${r.n} período(s)</small></div><strong>${dm3Mins(r.total)}</strong></div>`).join(''):'<div class="empty">Nenhuma jornada encontrada para este período.</div>';
+ $('dm3HoursRows').innerHTML=dm3HoursData.length?dm3HoursData.map(r=>`<div class="dm3-recruit-row"><div><strong>${escapeHTML(r.nome_rp)}</strong><small>${escapeHTML(dm3FmtDateTime(r.inicio))} — ${escapeHTML(dm3FmtDateTime(r.fim))}</small></div><strong>${dm3Mins(r.minutos)}</strong></div>`).join(''):'<div class="empty">Nenhuma jornada no período.</div>';
+ showMessage('dm3HoursMessage',`Consulta concluída: ${dm3HoursData.length} jornadas · ${dm3Mins(total)}.`,'success');
+});
+window.dm3ExportHours=function(){
+ if(!dm3HoursData.length){alert('Consulte um período antes de exportar.');return;}
+ const quote=v=>{let s=String(v??'');if(/^[\s\x00-\x1f]*[=+@-]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"';};
+ const lines=[['Funcionário','Cargo','Entrada','Saída','Minutos','Total'],...dm3HoursData.map(r=>[r.nome_rp,r.cargo,dm3FmtDateTime(r.inicio),dm3FmtDateTime(r.fim),r.minutos,dm3Mins(r.minutos)])].map(row=>row.map(quote).join(';')).join('\r\n');
+ const blob=new Blob(['\ufeff'+lines],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='Detroit-Mechanics-3.0-Apropriacao-de-Horas.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);
+};
+window.dm3LoadRecruitSchedule=async function(){
+ if(!dm3CanRecruit)return;const target=$('dm3RecruitScheduleRows');target.innerHTML='<div class="empty">Consultando períodos...</div>';
+ const {data,error}=await supabase.rpc('detroit_30_listar_recrutamentos');
+ if(error){target.innerHTML=`<div class="empty">Não foi possível consultar a agenda: ${escapeHTML(error.message)}. Instale o SQL complementar.</div>`;return;}
+ target.innerHTML=(data||[]).length?(data||[]).map(r=>`<div class="dm3-recruit-row"><div><strong>${escapeHTML(r.titulo)}</strong><small>${dm3FmtDateTime(r.inicio)} a ${dm3FmtDateTime(r.fim)} · ${escapeHTML(r.situacao)} · ${r.reserva_exclusiva?'Horário exclusivo':'Permite simultâneos'}${r.observacoes?' · '+escapeHTML(r.observacoes):''}</small></div>${r.situacao==='agendado'?`<button type="button" onclick="dm3CancelRecruitSchedule(${Number(r.id)})">Cancelar</button>`:''}</div>`).join(''):'<div class="empty">Ainda não há horários cadastrados.</div>';
+};
+$('dm3RecruitScheduleForm').addEventListener('submit',async e=>{
+ e.preventDefault();if(!dm3CanRecruit)return;clearMessage('dm3RecruitScheduleMessage');
+ const begin=$('dm3RecruitStart').value,end=$('dm3RecruitEnd').value;
+ if(!begin||!end||end<=begin){showMessage('dm3RecruitScheduleMessage','Confira o início e término da atividade.');return;}
+ const btn=$('dm3RecruitScheduleSave');btn.disabled=true;
+ try{
+ const {error}=await supabase.rpc('detroit_30_agendar_recrutamento',{p_titulo:$('dm3RecruitTitle').value.trim(),p_inicio:begin+':00-03:00',p_fim:end+':00-03:00',p_observacoes:$('dm3RecruitNotes').value.trim(),p_reserva_exclusiva:$('dm3RecruitExclusive').checked});
+ if(error)throw error;
+ $('dm3RecruitScheduleForm').reset();showMessage('dm3RecruitScheduleMessage','Horário registrado com sucesso.','success');await dm3LoadRecruitSchedule();
+ }catch(err){showMessage('dm3RecruitScheduleMessage','Não foi possível salvar: '+err.message);}finally{btn.disabled=false;}
+});
+window.dm3CancelRecruitSchedule=async function(id){
+ if(!dm3CanRecruit||!confirm('Cancelar este horário de recrutamento?'))return;
+ const {error}=await supabase.rpc('detroit_30_cancelar_recrutamento',{p_id:id});
+ if(error){showMessage('dm3RecruitScheduleMessage','Erro ao cancelar: '+error.message);return;}
+ await dm3LoadRecruitSchedule();showMessage('dm3RecruitScheduleMessage','Horário cancelado.','success');
+};
+async function dm3InitComplaints(){
+ const {data,error}=await supabase.rpc('detroit_comite_equipe');
+ if(!error){const old=$('dm3ComplaintMember').value;$('dm3ComplaintMember').innerHTML='<option value="">Não identificado</option>'+(data||[]).map(m=>`<option value="${Number(m.id)}">${escapeHTML(m.nome_rp)}</option>`).join('');$('dm3ComplaintMember').value=old;}
+ await dm3LoadComplaints();
+}
+$('dm3ComplaintForm').addEventListener('submit',async e=>{
+ e.preventDefault();if(!staffSectorAccess.includes('comite'))return;clearMessage('dm3ComplaintsMessage');
+ const {data,error}=await supabase.rpc('detroit_30_registrar_denuncia',{p_titulo:$('dm3ComplaintTitle').value.trim(),p_descricao:$('dm3ComplaintBody').value.trim(),p_membro_id:$('dm3ComplaintMember').value?Number($('dm3ComplaintMember').value):null,p_prioridade:$('dm3ComplaintPriority').value,p_evidencia:$('dm3ComplaintEvidence').value.trim()||null});
+ if(error){showMessage('dm3ComplaintsMessage','Erro ao registrar: '+error.message);return;}
+ $('dm3ComplaintForm').reset();showMessage('dm3ComplaintsMessage','Denúncia #'+String(data)+' registrada. Histórico preservado.','success');await dm3LoadComplaints();
+});
+window.dm3LoadComplaints=async function(){
+ if(!staffSectorAccess.includes('comite'))return;
+ const target=$('dm3ComplaintsRows');target.innerHTML='<div class="empty">Consultando denúncias...</div>';
+ const {data,error}=await supabase.rpc('detroit_30_listar_denuncias');
+ if(error){target.innerHTML='<div class="empty">Não foi possível consultar: '+escapeHTML(error.message)+'. Instale o SQL complementar.</div>';return;}
+ target.innerHTML=(data||[]).length?(data||[]).map(r=>`<div class="dm3-complaint-row"><div><strong>#${Number(r.id)} · ${escapeHTML(r.titulo)}</strong><small>${escapeHTML(r.situacao)} · ${escapeHTML(r.prioridade)} · ${dm3FmtDateTime(r.criado_em)} · Membro: ${escapeHTML(r.membro_nome||'Não identificado')}</small><p style="font-size:12px;line-height:1.6;color:#ccd6df;white-space:pre-wrap">${escapeHTML(r.descricao)}</p>${r.evidencia&&/^https:\/\//i.test(r.evidencia)?`<a target="_blank" rel="noopener noreferrer" href="${escapeHTML(r.evidencia)}">Ver evidência</a>`:''}</div><div><label for="dm3DenStatus${Number(r.id)}" style="display:block;font-size:11px;margin-bottom:5px">Situação</label><select id="dm3DenStatus${Number(r.id)}"><option value="recebida" ${r.situacao==='recebida'?'selected':''}>Recebida</option><option value="em_analise" ${r.situacao==='em_analise'?'selected':''}>Em análise</option><option value="concluida" ${r.situacao==='concluida'?'selected':''}>Concluída</option><option value="arquivada" ${r.situacao==='arquivada'?'selected':''}>Arquivada</option></select><button style="margin-top:7px" type="button" onclick="dm3UpdateComplaint(${Number(r.id)})">Atualizar</button></div></div>`).join(''):'<div class="empty">Nenhuma denúncia cadastrada.</div>';
+};
+window.dm3UpdateComplaint=async function(id){
+ if(!staffSectorAccess.includes('comite'))return;
+ const status=$('dm3DenStatus'+id).value;
+ const {error}=await supabase.rpc('detroit_30_atualizar_denuncia',{p_id:id,p_situacao:status});
+ if(error){showMessage('dm3ComplaintsMessage','Não foi possível atualizar: '+error.message);return;}
+ showMessage('dm3ComplaintsMessage','Denúncia atualizada e registrada no histórico.','success');await dm3LoadComplaints();
+};
 
 </script>
 </body>

@@ -95,6 +95,11 @@ body.embed .btn,body.embed .manage-actions button{font-size:13px}
 body.embed #eventForm label{font-size:13px}
 @media(max-width:580px){body.embed .week-day{font-size:10px}body.embed .event-pill{font-size:10px}}
 
+
+#eventForm label.dm3-excl-control{display:flex;align-items:center;gap:12px;border-radius:10px;border:1px solid #3b4c56;background:#18212a;padding:13px 14px;cursor:pointer}
+#eventForm label.dm3-excl-control input{width:18px!important;height:18px;padding:0;flex-shrink:0;accent-color:#e7354f}
+.dm3-excl-control span{display:grid;gap:4px}.dm3-excl-control small{color:#afbeca;font-size:11px;line-height:1.5}
+.event-pill.recruitment{border-left:3px solid #3b91db;color:#8bc8ff;background:#0c273b}
 </style>
   
 </head>
@@ -192,6 +197,7 @@ body.embed #eventForm label{font-size:13px}
       <label id="audienceWrap">Público-alvo<select id="audience" name="audience"><option value="equipe">Toda a equipe</option><option value="lideranca">Somente liderança</option><option value="instrutores">Somente instrutores</option><option value="rp">Somente Relações Públicas</option></select></label>
       <label class="course-vagas" id="courseVagas" style="display:none">Vagas do curso<input type="number" name="vagas" min="1" max="1000" value="10"></label>
       <label>Descrição<textarea name="description" maxlength="400" rows="3" placeholder="Informações para a agenda..."></textarea></label>
+      <label id="exclusiveWrap" class="dm3-excl-control"><input type="checkbox" name="exclusive" id="exclusiveBooking"> <span><strong>Reserva exclusiva de horário</strong><small>Desmarcado: permite outros agendamentos no mesmo horário. Marcado: impede conflito com outras reservas exclusivas.</small></span></label>
       <div class="check-row" id="discordOption"><input type="checkbox" id="previewDiscord" name="notifyDiscord"><label for="previewDiscord">Publicar também no Discord (somente compromissos destinados a toda a equipe)</label></div>
       <p style="margin:0;color:#9eacba;font-size:11px">Cursos podem ser divulgados conforme a configuração do bot. Para reuniões e eventos, marque a opção de publicação no Discord quando disponível.</p>
       <div id="formError" class="form-error" role="alert" hidden></div>
@@ -207,7 +213,7 @@ import {createClient} from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2
 const $ = id => document.getElementById(id);
 const initialEvents = [];
 let campaigns = [];
-const kindNames={meeting:'Reunião',course:'Curso',event:'Evento',campaign:'Campanha',date:'Data automática'};
+const kindNames={meeting:'Reunião',course:'Curso',event:'Evento',campaign:'Campanha',date:'Data automática',recruitment:'Recrutamento'};
 const supabase=createClient('https://xgkvufuawoenbgfrcpfc.supabase.co', 'sb_publishable_UqEmUACvcUcqeqkDHGjqQg_Dmairqoo');
 let session=null, canAgenda=false,canInstrutor=false, isLeader=false, memberId=null, loadGeneration=0, editContext=null;
 let events=[...initialEvents];
@@ -307,7 +313,7 @@ function renderManagementList(){
   const manage=canManageEntry(e);
   const label=kindNames[e.type]||'Agenda';
   const id=htmlEscape(e.id);
-  return `<div class="manage-row"><div class="manage-text"><strong>${htmlEscape(e.title)}</strong><small>${htmlEscape(label)} • ${niceDate(e.start)} às ${niceTime(e.start)}–${niceTime(e.end)} • ${htmlEscape(e.owner)}${e.audience&&e.type!=='course'?' • '+htmlEscape(e.audience):''}</small></div>`+
+  return `<div class="manage-row"><div class="manage-text"><strong>${htmlEscape(e.title)}</strong><small>${htmlEscape(label)} • ${niceDate(e.start)} às ${niceTime(e.start)}–${niceTime(e.end)} • ${htmlEscape(e.owner)} • ${e.exclusive?'🔒 Reserva exclusiva':'✓ Permite simultâneos'}${e.audience&&e.type!=='course'?' • '+htmlEscape(e.audience):''}</small></div>`+
   (manage?`<div class="manage-actions"><button type="button" class="btn btn-outline" data-manage="edit" data-entry="${id}">Editar</button><button type="button" class="btn danger-action" data-manage="cancel" data-entry="${id}">Cancelar</button></div>`:`<span class="manage-label">Consulta</span>`)+`</div>`;
  }).join('');
 }
@@ -325,7 +331,7 @@ function openEdit(id){
  $('eventForm').elements.owner.value=item.owner;
  $('eventForm').elements.description.value=item.description;
  $('eventForm').elements.vagas.value=item.vagas||10;
- $('audience').value=item.audience||'equipe';$('previewDiscord').checked=Boolean(item.notifyDiscord);
+ $('audience').value=item.audience||'equipe';$('previewDiscord').checked=Boolean(item.notifyDiscord);$('exclusiveBooking').checked=Boolean(item.exclusive);
  toggleCourseVagas();$('createDialog').showModal();
 }
 async function cancelEntry(id){
@@ -370,31 +376,33 @@ async function loadData(){
  const generation=++loadGeneration;
  const {start,end}=monthBounds();
  try{
-  const [ag,tu,cu,dt]=await Promise.all([
-   supabase.from('detroit_30_agenda').select('id,tipo,titulo,descricao,inicio,fim,local_texto,situacao,origem,publico,criado_por,notificar_discord').gte('fim',start).lt('inicio',end).order('inicio').limit(500),
+  const [ag,tu,cu,dt,rec]=await Promise.all([
+   supabase.from('detroit_30_agenda').select('id,tipo,titulo,descricao,inicio,fim,local_texto,situacao,origem,publico,criado_por,notificar_discord,reserva_exclusiva').gte('fim',start).lt('inicio',end).order('inicio').limit(500),
    supabase.from('detroit_30_turmas').select('id,curso_id,inicio,fim,situacao,vagas,local_texto,instrutor_membro_id,criado_por').gte('fim',start).lt('inicio',end).in('situacao',['agendada','confirmada','concluida']).limit(500),
    supabase.from('detroit_30_cursos').select('id,titulo,ementa,situacao').limit(1000),
-   supabase.from('detroit_30_datas_automaticas').select('codigo,titulo,descricao,mes,dia,categoria').eq('ativo',true).limit(100)
+   supabase.from('detroit_30_datas_automaticas').select('codigo,titulo,descricao,mes,dia,categoria').eq('ativo',true).limit(100),
+   supabase.rpc('detroit_30_ocupacoes_recrutamento',{p_inicio:start,p_fim:end})
   ]);
-  for(const response of [ag,tu,cu,dt])if(response.error)throw response.error;
+  for(const response of [ag,tu,cu,dt,rec])if(response.error)throw response.error;
   if(generation!==loadGeneration)return;
   const names=new Map((cu.data||[]).map(c=>[c.id,c]));
   events=[...(ag.data||[]).filter(r=>r.situacao!=='cancelado').map(r=>({
     id:'a'+r.id,type:({'reuniao':'meeting','evento':'event','campanha':'campaign','conscientizacao':'campaign','comemorativa':'date','aviso':'event'}[r.tipo]||'event'),
     title:r.titulo,start:spFromIso(r.inicio),end:spFromIso(r.fim),description:r.descricao||'',owner:r.local_texto||'Detroit Mechanics',
-    status:r.situacao,origin:r.origem,audience:r.publico,createdBy:r.criado_por,notifyDiscord:r.notificar_discord
+    status:r.situacao,origin:r.origem,audience:r.publico,createdBy:r.criado_por,notifyDiscord:r.notificar_discord,exclusive:r.reserva_exclusiva
   })),...(tu.data||[]).map(r=>({id:'t'+r.id,type:'course',title:names.get(r.curso_id)?.titulo||'Curso da equipe',start:spFromIso(r.inicio),end:spFromIso(r.fim),description:names.get(r.curso_id)?.ementa||'',owner:r.local_texto||'Detroit Mechanics',
-     status:r.situacao,instructorId:r.instrutor_membro_id,createdBy:r.criado_por,vagas:r.vagas,courseId:r.curso_id}))];
+     status:r.situacao,instructorId:r.instrutor_membro_id,createdBy:r.criado_por,vagas:r.vagas,courseId:r.curso_id,exclusive:true})),
+   ...(rec.data||[]).map(r=>({id:'r'+r.id,type:'recruitment',title:r.titulo,start:spFromIso(r.inicio),end:spFromIso(r.fim),owner:'Recrutamento',description:'',status:'agendado',automatic:true,exclusive:r.reserva_exclusiva}))];
   campaigns=dt.data||[];renderCalendar();
   setStatus(`Supabase conectado • ${events.length} agendamentos consultados • Envio Discord controlado`,true);
  }catch(err){setStatus('Erro ao consultar agenda: '+errorInfo(err));console.error('Detroit 3.0 carregamento:',err)}
 }
-function toggleCourseVagas(){const course=$('newType').value==='course';$('courseVagas').style.display=course?'block':'none';$('audienceWrap').style.display=course?'none':'grid';$('discordOption').style.display=(course||$('audience').value!=='equipe')?'none':'flex';if(course||$('audience').value!=='equipe')$('previewDiscord').checked=false;}
+function toggleCourseVagas(){const course=$('newType').value==='course';$('exclusiveWrap').style.display=course?'none':'flex';if(course)$('exclusiveBooking').checked=true;$('courseVagas').style.display=course?'block':'none';$('audienceWrap').style.display=course?'none':'grid';$('discordOption').style.display=(course||$('audience').value!=='equipe')?'none':'flex';if(course||$('audience').value!=='equipe')$('previewDiscord').checked=false;}
 function openCreate(type='event'){
  if(!session){notify('Faça login no painel oficial primeiro.');return;}
  if(type==='course'&&!canInstrutor){notify('Sua conta não tem permissão para agendar cursos.');return;}
  if(type!=='course'&&!canAgenda){notify('Sua conta não tem permissão para agendar eventos ou reuniões.');return;}
- resetEdit();$('eventForm').reset();$('newType').value=(canAgenda?type:'course');$('previewDiscord').checked=false;$('formError').hidden=true;toggleCourseVagas();
+ resetEdit();$('eventForm').reset();$('newType').value=(canAgenda?type:'course');$('previewDiscord').checked=false;$('exclusiveBooking').checked=(type==='course'||type==='meeting');$('formError').hidden=true;toggleCourseVagas();
  const d=new Date(),now=spFromIso(d.toISOString());
  const begin=new Date(d.getTime()+3600000);begin.setMinutes(0,0,0);
  $('newStart').value=spFromIso(begin.toISOString());$('newEnd').value=spFromIso(new Date(begin.getTime()+3600000).toISOString());
@@ -406,6 +414,13 @@ async function saveLive(e){
  v.type=editContext?.type||v.type; // Select desabilitado durante edicao nao participa do FormData.
  const start=Date.parse(spISOString(v.start)),end=Date.parse(spISOString(v.end));
  if(!v.title?.trim()||!Number.isFinite(start)||!Number.isFinite(end)||end<=start){err.textContent='Informe título e horários válidos.';err.hidden=false;return;}
+ if(v.type!=='course'){
+   const simultaneos=events.filter(x=>x.id!==editContext?.id&&!x.automatic&&start<Date.parse(spISOString(x.end))&&end>Date.parse(spISOString(x.start)));
+   if(simultaneos.length && v.exclusive!=='on'){
+      const names=simultaneos.slice(0,3).map(x=>x.title).join(', ');
+      if(!confirm('Já existe(m) '+simultaneos.length+' compromisso(s) no mesmo período: '+names+'. Como a reserva NÃO é exclusiva, deseja continuar?'))return;
+   }
+ }
  const submit=form.querySelector('button[type=submit]');submit.disabled=true;
  try{
   if(v.type==='course'){
@@ -426,7 +441,7 @@ async function saveLive(e){
    const tipo=({event:'evento',meeting:'reuniao',campaign:'campanha'})[v.type];if(!tipo)throw Error('Tipo de evento inválido');
    if(!['equipe','lideranca','instrutores','rp'].includes(v.audience))throw Error('Público inválido');
    const record={titulo:v.title.trim(),descricao:v.description||'',inicio:spISOString(v.start),fim:spISOString(v.end),
-    local_texto:v.owner||null,publico:v.audience,notificar_discord:Boolean(v.notifyDiscord==='on' && v.audience==='equipe'),atualizado_em:new Date().toISOString()};
+    local_texto:v.owner||null,publico:v.audience,notificar_discord:Boolean(v.notifyDiscord==='on' && v.audience==='equipe'),reserva_exclusiva:Boolean(v.exclusive==='on'),atualizado_em:new Date().toISOString()};
    if(editContext){
     const {data,error}=await supabase.from('detroit_30_agenda').update(record)
        .eq('id',Number(editContext.id.slice(1))).eq('origem','manual').neq('situacao','cancelado').select('id');
@@ -438,7 +453,7 @@ async function saveLive(e){
   }
   cursor=new Date(v.start+'-03:00');filter='all';search='';$('globalSearch').value='';view='month';form.closest('dialog').close();
   notify((editContext?'Alterações salvas':'Agendamento criado')+' no Supabase. O aviso Discord depende da ativação e das opções do registro.');resetEdit();await loadData();
- }catch(ex){err.textContent=ex.code==='23P01'?'Já existe um curso agendado neste intervalo. Escolha outro horário.':errorInfo(ex);err.hidden=false;console.error('Detroit 3.0 cadastro:',ex)}
+ }catch(ex){err.textContent=ex.code==='23P01'?'Conflito de horários entre reservas exclusivas. Escolha outro horário ou desmarque a exclusividade.':errorInfo(ex);err.hidden=false;console.error('Detroit 3.0 cadastro:',ex)}
  finally{submit.disabled=false}
 }
 document.querySelectorAll('.nav-item').forEach(b=>b.addEventListener('click',()=>chooseScreen(b.dataset.screen)));
@@ -451,7 +466,7 @@ $('todayBtn').addEventListener('click',()=>{cursor=new Date();renderCalendar();l
 $('globalSearch').addEventListener('input',e=>{search=e.target.value.trim().toLocaleLowerCase('pt-BR');renderCalendar()});
 $('openCreate').addEventListener('click',()=>openCreate());$('scheduleCourse').addEventListener('click',()=>openCreate('course'));
 $('closeDialog').addEventListener('click',()=>$('createDialog').close());$('cancelDialog').addEventListener('click',()=>$('createDialog').close());
-$('newType').addEventListener('change',toggleCourseVagas);$('audience').addEventListener('change',toggleCourseVagas);
+$('newType').addEventListener('change',()=>{$('exclusiveBooking').checked=['course','meeting'].includes($('newType').value);toggleCourseVagas();});$('audience').addEventListener('change',toggleCourseVagas);
 $('eventForm').addEventListener('submit',saveLive);
 $('reloadManage').addEventListener('click',loadData);
 $('managementList').addEventListener('click',async e=>{
