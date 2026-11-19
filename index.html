@@ -458,10 +458,10 @@ body:has(#adminPanel:not(.hidden)) #viewAccess{padding:0!important;margin:0}
     <div class="field"><label for="discord">ID do Discord *</label><input id="discord" type="text" inputmode="numeric" autocomplete="off" minlength="17" maxlength="20" pattern="[0-9]{17,20}" title="Informe somente o ID numérico do usuário no Discord (17 a 20 dígitos)" placeholder="Ex.: 123456789012345678" aria-describedby="discord-help" required><div id="discord-help" style="font-size:12px;line-height:1.5;color:#a4a4ad;margin-top:7px">Somente números, sem @ ou nome de usuário. No Discord: ative o Modo Desenvolvedor nas configurações e escolha <strong>Copiar ID do usuário</strong> no perfil.</div></div>
     <div class="field"><label for="experience">Já trabalhou como mecânico? *</label><select id="experience" required><option value="">Selecione uma opção</option><option>Sim, tenho experiência</option><option>Não, será minha primeira experiência</option></select></div>
     <div class="field"><label for="about">Conte um pouco sobre você (opcional)</label><textarea id="about" maxlength="800" placeholder="Experiência, interesse na vaga ou outras informações..."></textarea></div>
-    <label class="inline-check"><input type="checkbox" id="dmConsent"><span>Autorizo receber por mensagem privada do bot da Detroit Mechanics a confirmação da inscrição e contatos sobre o recrutamento no Discord informado. Posso não autorizar e ainda enviar a inscrição.</span></label>
     <label class="inline-check"><input type="checkbox" id="confirm" required><span>Confirmo que as informações enviadas são verdadeiras e que estou informando apenas dados do personagem (RP).</span></label>
     <p class="legal-disclosure">Antes de enviar, conheça nossos <a href="termos.html">Termos de Serviço</a> e saiba como usamos os dados na <a href="privacidade.html">Política de Privacidade</a>.</p>
-    <button class="primary" type="submit">Enviar solicitação</button>
+    <p class="legal-disclosure">Ao confirmar sua inscrição, você autoriza a Detroit Mechanics a entrar em contato com você pelo bot no Discord para fins de recrutamento e acompanhamento do processo seletivo.</p>
+    <button class="primary" type="submit">Confirmar inscrição</button>
   </form>
   <footer class="legal-footer" aria-label="Informações e documentos oficiais">
     <span class="legal-brand">DETROIT MECHANICS · RECRUTAMENTO RP</span>
@@ -600,7 +600,7 @@ body:has(#adminPanel:not(.hidden)) #viewAccess{padding:0!important;margin:0}
         <article class="dm3-dept-card"><div class="dm3-card-mark">A <span>♜</span></div><h3>Equipe e cargos</h3><p>Consultar fichas, acompanhar promoções e gerenciar registros conforme a hierarquia.</p><div class="dm3-card-actions"><button onclick="dm3OpenModule('staff','leadership')">Gerenciar equipe</button></div></article>
         <article class="dm3-dept-card"><div class="dm3-card-mark">B <span>♙</span></div><h3>Permissões</h3><p>Gerenciar solicitações de acesso ao painel e cargos autorizados.</p><div class="dm3-card-actions"><button onclick="dm3OpenModule('members','leadership')">Acessos ao painel</button></div></article>
         <article class="dm3-dept-card" id="dm3LogsCard"><div class="dm3-card-mark">C <span>▦</span></div><h3>Auditoria e relatórios</h3><p>Consultar ações registradas e os indicadores da operação.</p><div class="dm3-card-actions"><button onclick="dm3OpenModule('auditoria','leadership')">Central de logs</button><button onclick="dm3OpenModule('reports','leadership')">Relatórios</button></div></article>
-        <article class="dm3-dept-card" id="dm3SettingsCard"><div class="dm3-card-mark">D <span>⚙</span></div><h3>Configurações</h3><p>Integração Discord, segurança, dados e identificação da versão atual.</p><div class="dm3-card-actions"><button onclick="dm3OpenModule('settings','leadership')">Configurações do site</button></div></article>
+        <article class="dm3-dept-card" id="dm3SettingsCard"><div class="dm3-card-mark">D <span>⚙</span></div><h3>Configurações</h3><p>Integração Discord, segurança e dados do sistema.</p><div class="dm3-card-actions"><button onclick="dm3OpenModule('settings','leadership')">Configurações do site</button></div></article>
       </div>
     </section>
     <section id="recruitScheduleSection" class="hidden" aria-label="Agenda de recrutamentos">
@@ -1242,12 +1242,11 @@ $('applicationForm').addEventListener('submit', async event => {
       p_telefone:payload.telefone,p_dias_disponiveis:payload.dias_disponiveis,
       p_horario_disponivel:payload.horario_disponivel,p_discord_id:payload.discord_id,
       p_experiencia:payload.experiencia,p_sobre:payload.sobre,
-      p_aceita_dm_discord:$('dmConsent').checked
+      p_aceita_dm_discord:true
     });
     if (error) throw error;
-    const wantsDM=$('dmConsent').checked;
     event.target.reset();
-    showMessage('applyMessage', 'Inscrição enviada com sucesso! Protocolo #'+protocolo+'. '+(wantsDM?'Solicitamos uma confirmação por DM no Discord informado (a entrega depende das configurações do Discord).':'Você optou por não receber DM; acompanhe o recrutamento pelos canais oficiais.'), 'success');
+    showMessage('applyMessage', 'Inscrição enviada com sucesso! Protocolo #'+protocolo+'. Solicitamos uma confirmação por DM no Discord informado. A entrega depende das permissões do Discord.', 'success');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   } catch (error) {
     console.error('Erro ao enviar inscrição:', error);
@@ -1255,7 +1254,7 @@ $('applicationForm').addEventListener('submit', async event => {
   } finally {
     if (submitButton) {
       submitButton.disabled = false;
-      submitButton.textContent = 'Enviar solicitação';
+      submitButton.textContent = 'Confirmar inscrição';
     }
   }
 });
@@ -2247,16 +2246,16 @@ $('dmSend').addEventListener('click',async()=>{
   });
   if(error)throw error;
   showMessage('dmMessage','Mensagem incluída na fila (#'+data+'). Verificando se o Discord aceitou a entrega...','success');
-  for(let i=0;i<3;i++){
+  for(let i=0;i<8;i++){
    await new Promise(resolve=>setTimeout(resolve,2200));
-   const response=await supabase.rpc('detroit_28_status_mensagem',{p_inscricao_id:Number(item.id)});
+   const response=await supabase.rpc('detroit_status_envio_discord',{p_inscricao_id:Number(item.id),p_fila_id:data});
    if(response.error)break;
    const state=response.data?.status;
    if(state==='enviado'){
     showMessage('dmMessage','A API do Discord confirmou o envio da mensagem para o destinatário.','success');return;
    }
    if(state==='falhou'){
-    showMessage('dmMessage','O Discord não entregou esta DM. Verifique se o candidato compartilha um servidor com o bot e permite mensagens privadas.');return;
+    showMessage('dmMessage','O Discord não entregou esta DM. Diagnóstico: '+(response.data?.erro||'Motivo não registrado. Confira a fila de mensagens no Supabase.'));return;
    }
   }
   showMessage('dmMessage','Mensagem ainda em processamento. Confira a Edge Function e o status da fila no Supabase.','success');
@@ -2402,7 +2401,7 @@ window.dm3ExportHours=function(){
  if(!dm3HoursData.length){alert('Consulte um período antes de exportar.');return;}
  const quote=v=>{let s=String(v??'');if(/^[\s\x00-\x1f]*[=+@-]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"';};
  const lines=[['Funcionário','Cargo','Entrada','Saída','Minutos','Total'],...dm3HoursData.map(r=>[r.nome_rp,r.cargo,dm3FmtDateTime(r.inicio),dm3FmtDateTime(r.fim),r.minutos,dm3Mins(r.minutos)])].map(row=>row.map(quote).join(';')).join('\r\n');
- const blob=new Blob(['\ufeff'+lines],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='Detroit-Mechanics-3.0-Apropriacao-de-Horas.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);
+ const blob=new Blob(['\ufeff'+lines],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='Detroit-Mechanics-Apropriacao-de-Horas.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);
 };
 window.dm3LoadRecruitSchedule=async function(){
  if(!dm3CanRecruit)return;const target=$('dm3RecruitScheduleRows');target.innerHTML='<div class="empty">Consultando períodos...</div>';
